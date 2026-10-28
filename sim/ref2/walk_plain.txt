@@ -1,0 +1,10 @@
+0 {'walk_dir_+1': 147, 'walk_bags': 147, 'ports_checked': 1617, 'max_ports_over_bound_x100': 76, 'levels': 7, 'P_used': 1, 'T_checks': 18}
+1 {'walk_dir_+1': 105, 'walk_bags': 105, 'ports_checked': 1037, 'max_ports_over_bound_x100': 80, 'levels': 5, 'P_used': 2, 'T_checks': 20}
+2 {'walk_dir_+1': 113, 'walk_bags': 113, 'ports_checked': 1377, 'max_ports_over_bound_x100': 82, 'levels': 6, 'T_checks': 17}
+3 {'walk_dir_+1': 142, 'walk_bags': 142, 'ports_checked': 1188, 'max_ports_over_bound_x100': 77, 'levels': 6, 'P_used': 2, 'T_checks': 19}
+4 {'walk_dir_+1': 126, 'walk_bags': 126, 'ports_checked': 1225, 'max_ports_over_bound_x100': 76, 'levels': 6, 'T_checks': 19}
+5 {'walk_dir_+1': 120, 'walk_bags': 120, 'ports_checked': 1289, 'max_ports_over_bound_x100': 56, 'levels': 6, 'T_checks': 19}
+6 {'walk_dir_+1': 98, 'walk_bags': 98, 'ports_checked': 1266, 'max_ports_over_bound_x100': 74, 'levels': 6, 'T_checks': 17}
+7 {'walk_dir_+1': 113, 'walk_bags': 113, 'ports_checked': 1085, 'max_ports_over_bound_x100': 55, 'levels': 6, 'T_checks': 18}
+TOTAL {'walk_dir_+1': 964, 'walk_bags': 964, 'ports_checked': 10084, 'max_ports_over_bound_x100': 576, 'levels': 48, 'P_used': 5, 'T_checks': 147}
+(outside comps k, label changes) histogram: [((0, 0), 821), ((1, 0), 80), ((1, 1), 199), ((1, 2), 622), ((2, 0), 7), ((2, 1), 6), ((2, 2), 9), ((2, 3), 43), ((2, 4), 3), ((3, 3), 1)]

@@ -1,0 +1,12 @@
+k=1
+seed 0: n=202 |S_root|=10 children=30 max outside comps at an S vertex=7 |L_root|=54 (=5.4 |S|)
+seed 1: n=180 |S_root|=12 children=25 max outside comps at an S vertex=4 |L_root|=44 (=3.7 |S|)
+seed 2: n=172 |S_root|=10 children=24 max outside comps at an S vertex=6 |L_root|=44 (=4.4 |S|)
+k=3
+seed 0: n=526 |S_root|=10 children=84 max outside comps at an S vertex=19 |L_root|=108 (=10.8 |S|)
+seed 1: n=460 |S_root|=12 children=69 max outside comps at an S vertex=10 |L_root|=88 (=7.3 |S|)
+seed 2: n=436 |S_root|=10 children=68 max outside comps at an S vertex=16 |L_root|=88 (=8.8 |S|)
+k=6
+seed 0: n=1012 |S_root|=10 children=165 max outside comps at an S vertex=37 |L_root|=189 (=18.9 |S|)
+seed 1: n=880 |S_root|=12 children=135 max outside comps at an S vertex=19 |L_root|=154 (=12.8 |S|)
+seed 2: n=832 |S_root|=10 children=134 max outside comps at an S vertex=31 |L_root|=154 (=15.4 |S|)
