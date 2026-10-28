@@ -177,7 +177,9 @@ are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_c
   quasimetric that is Monge for a prescribed circular order is realized by a plane digraph
   with $O(|T|^6)$ vertices and its terminals on the boundary in that order. CONGEST does not
   charge for local computation, so a bag's centre can find such a graph by exhaustive search.
-  Polynomial local time would need [1, Thm 2], whose proof does not show the order guarantee.
+  The proof in [10] is a greedy construction, but [10] bounds the running time only for
+  finding the order, not for the construction. Polynomial local time would need that analysis,
+  or [1, Thm 2], whose proof does not show the order guarantee.
 
 ### Theorem B (negative weights)
 

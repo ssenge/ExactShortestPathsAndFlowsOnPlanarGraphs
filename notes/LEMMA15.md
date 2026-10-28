@@ -106,8 +106,10 @@ The following are used as black boxes.
   - **Computing K.** CONGEST does not charge for local computation. So c_X can find K by
     exhaustive search over plane digraphs with O(|T|⁶) vertices, solving an LP for the
     weights each time. A rational d gives rational weights.
-  - **Polynomial local time.** If that is wanted, [1, Thm 2] is the candidate, but only
-    after its order guarantee has been checked. Nothing below needs it.
+  - **Polynomial local time.** The proof in [10] is a greedy construction that inserts one
+    terminal shortest path at a time, but [10] states a running time only for finding the
+    order ([10, Thm 2], O(|T|⁶)), not for the construction. A polynomial bound needs either
+    that analysis or [1, Thm 2] with its order guarantee checked. Nothing below needs it.
 - **(G4) Monge.** Let a plane digraph be disk-drawn with terminal set T in order σ, with
   finite terminal distances. Then the distances satisfy (M) for σ.
 
