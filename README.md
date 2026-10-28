@@ -8,7 +8,9 @@ model. The two main claims are:
   rounds (Theorem C), down from $\tilde O(D^2)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
-(Lemma 14) is false as stated. This repository shows why and gives a repair.
+(Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
+the decomposition that [1] uses for its round count (Property 6) is also false, and that
+gap is still open; see [Status](#status).
 
 ## Status
 
@@ -16,11 +18,18 @@ Please read this before relying on anything here.
 - The proofs are written up in `notes/`, not yet as a paper. **No human expert has checked
   them.** Every review so far was done by AI agents: a referee pass and an adversarial pass on
   each layer. AI reviewers can share blind spots with the AI that helped write the proofs.
-- **Theorems A, B, C and C′ are conditional on Lemma 14′**, our replacement for the false
-  [1, Lemma 14]. Lemma 14′ is proved in `notes/LEMMA15.md` §3. A referee pass found it correct
-  given its assumptions and raised one serious point, which is fixed. An adversarial pass on
-  the earlier draft broke nothing and found only the referee's points again. An adversarial
-  pass on the fixed text has not been run yet.
+- **Correctness.** Theorems A, B, C and C′ give correct outputs given Lemma 14′, our
+  replacement for the false [1, Lemma 14], and the black boxes listed below. Lemma 14′ is
+  proved in `notes/LEMMA15.md` §3. A referee pass found it correct given its assumptions,
+  and its one serious point is fixed. Two adversarial passes, the second on the fixed text,
+  found nothing wrong in it.
+- **Round counts: open.** [1, Lemma 9 (6)] states that at every depth of the decomposition
+  each edge lies in at most two induced subgraphs G[X]. The second adversarial pass showed
+  that this is false on $K_{2,m}$ plus one edge, for every decomposition with the other
+  properties (`notes/LEMMA15.md`, (S9)). [1] runs all bags of one depth in parallel because
+  of this property, and so do our notes. So the $\tilde O(D/\varepsilon)$ bound of [1] for the
+  labels, and the $\tilde O(D)$ of Theorem A, are not proved until the schedule is repaired.
+  Theorems B, C and C′ inherit this. Correctness does not depend on the property.
 - All results hold with high probability. They would be deterministic if the bounded-diameter
   decomposition (BDD) of [8] could be built deterministically, which is open.
 - Some steps use published results as black boxes; see [What is assumed](#what-is-assumed).
@@ -70,9 +79,11 @@ directed SSSP problem (even with non-negative weights)".
 | Lemma V: distances from a virtual source, and a fix of the query of [1] | $\tilde O(D/\varepsilon)$ | | minor |
 | Lemma D: the face-disjoint graph of [9], weighted, realizes dual distances | | | minor |
 | [1, Lemma 14] is false | | | modest |
+| Property 6 of [1, Lemma 9] is false for induced bags | | | modest |
 | Lemmas 14′, 15′, 16′: the repair of [1, Lemmas 14 to 16] | | | minor |
 
-All four theorems are conditional on Lemma 14′ (see [Status](#status)). The ratings in short:
+All four theorems are conditional (see [Status](#status)): their correctness on Lemma 14′,
+and their round bounds also on a repair of Property 6. The ratings in short:
 - **Theorem A** closes the planar exact-SSSP gap up to polylogarithmic factors and answers
   the second question of [9]. The proof is short, though: the reduction of [3], the labels of
   [1], and Lemma V. Since [3, §3.1] already says its boosting works in any model that can run
@@ -84,6 +95,10 @@ All four theorems are conditional on Lemma 14′ (see [Status](#status)). The ra
 - **Theorem C′** is the proof of [9, Thm 1.3] with an exact oracle plugged in.
 - **The finding about [1, Lemma 14]** is a correctness gap in the main CONGEST result of an
   unrefereed preprint. The repair changes no bound.
+- **The finding about Property 6** removes the round bound of the main theorem of [1] as
+  written. It also shows that [8, Def. 4.1] together with [8, Lemma 4.3 (8′)] cannot hold on
+  a simple family of graphs; [8] describes the intended property for the edges a bag owns,
+  which is not refuted.
 
 ### Theorem A (exact SSSP)
 
@@ -163,6 +178,12 @@ are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_c
   - every step runs in $\tilde O(D)$ rounds.
 
   None of the three configurations above can occur with tiles (§3.6).
+- **Round count: Property 6.** On $G_m=K_{2,m}$ plus the edge $uw$, every child that receives
+  a petal must contain both $u$ and $w$. With separators and leaves of size $O(\log n)$, about
+  $n/\log^2 n$ bags of one depth then contain the edge $uw$, not two. Correctness never uses
+  this property, but the parallel schedule of [1] does. A repair would need, for each bag, a
+  communication subgraph of diameter $\tilde O(D)$ that shares edges between hubs with only
+  polylog many bags of the same depth. This is open.
 - **Analytic layer (§4 to §7).** Lemma 15 of [1] has further gaps, all fixed here:
   - with the witness suggested in the text, the error exponent doubles at every level;
   - the linear program has no triangle constraints;
@@ -300,6 +321,11 @@ test round counts.
   one child per outside component is incompatible with the decomposition's properties on
   stars. `g1_grouped.py` repeats that search with the grouping of [8] and finds balanced
   children.
+- `sim/attack3/`: the second adversarial pass, on the fixed text: 14,500 instances with no
+  failure in Lemma 14′ or in the parts of Lemmas 15′ and 16′ that use it, with negative
+  controls. `p6.py` builds the family on which Property 6 fails
+  (`python3 -I p6.py 100 u 8 nopost`), and `lp46_demo.py` a step of [8] that adds more than
+  one tree component. `sweep.py` and `run.py` drive the sweeps; `logs/` holds their output.
 - `sim/attack/`: the counterexamples to [1, Lemma 14], and checks of the analytic layer:
   gluing (`r1_glue.py`), rounding (`r6_round.py`), the error recursion (`l16.py`), the squaring
   in [1, Thm 2] (`s1_square.py`), and the first adversarial runs on Lemma V and Lemma D
@@ -327,6 +353,8 @@ plain-text extractions of [1] (arXiv v2) and [9].
 - Weighted girth of planar digraphs, also at $\tilde O(D^2)$.
 - Can the $n^{o(1)}$ in Theorem C be removed? That needs a reduction for negative weights with
   polylogarithmic overhead.
+- Can the bags of one depth be processed in parallel in $\tilde O(D)$ rounds without
+  Property 6? This decides whether the round bounds of [1] and of Theorem A hold.
 - Is there a deterministic decomposition with the properties of [1, Lemma 9]? It would make
   all four theorems deterministic.
 - Can the realization step run in polynomial local time?

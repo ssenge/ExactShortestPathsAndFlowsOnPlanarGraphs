@@ -31,8 +31,14 @@ Status (2026-10-28):
     search finds children of at most n/2 + 1 vertices.
   - A chord fan puts 2k − 2 label changes on one vertex. That breaks the old bound of 4 per
     vertex, but not 4 + 2c_s.
-- **Still open.** No adversarial pass has seen the fixed text, and no human has checked §3.
-  Until then Theorem A, and everything built on it, stays conditional on Lemma 14′.
+- **Second adversarial pass**, on this text (§3.7). Nothing in §3, in Claim 7, in P_X, or in
+  the parts of Lemmas 15′ and 16′ that use them failed on 14,500 instances. It found one
+  serious problem in the assumptions, (S9): Property 6 is false for induced bags. That
+  breaks the round count, not correctness. It also corrected four details of our reading of
+  [8], and showed that one step of [8] can add more than one component to T[X] (§1).
+- **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. No human has
+  checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
+  needs a replacement for Property 6, which is open (S9).
 
 ## 1. What we take from [1]
 
@@ -44,6 +50,11 @@ Notation is that of [1, Sec. 5]:
     from T[X] plus O(log n) edges. [1, Lemma 9] states the stronger Property 4, that T[X]
     itself is a spanning tree of height O(D), but [8, Def. 4.1 (6)] only gives O(log n)
     components for T[X]. We use T_X, which costs one log factor in sizes and rounds.
+    The O(log n) components come from [8, Claim 4.6, Lemma 4.7], which add one component
+    per level. That step is false: a child met S_X in two arcs and went from 1 to 3
+    components in one step (second adversarial pass, `sim/attack3/lp46_demo.py`). In all
+    faithful runs the total stayed at most depth + 1, and with adversarial z_s at most
+    depth + 3. If the total were Θ(log² n), sizes and rounds would lose one more log factor.
   - S_X: the separator, a simple cycle made of a path q_X of T_X with at least one edge and
     one closing edge, which may be virtual and is then drawn inside a face of G[X]
     [8, Thm 4.4]. |S_X| = O(D log n).
@@ -70,12 +81,17 @@ The following are used as black boxes.
     on S_X and the outside vertices.
     - In that graph, a separator vertex s on the boundary of the bag's region is split into
       two copies, at the direction z_s that points out of the region. The edges on either
-      side of z_s go to different copies. An unsplit vertex keeps all its edges.
+      side of z_s go to different copies. An unsplit vertex keeps all its edges into the
+      outside wedge; edges drawn inside S_X are not in the auxiliary graph.
     - The one child that is disconnected without the virtual edge is split into its two
       components.
     - A vertex outside S_X has all its edges in the auxiliary graph, which gives the second
       item. The splitting rule gives contiguity.
     - So s lies in X_in and in at most two outside children, which is 7(a).
+    - Details. [8] also makes a child of every auxiliary component that consists of separator
+      vertices only; (G1′) leaves these out, since they contain no vertex outside S_X. When
+      S_X runs through a hole of X, "out of the region" is not defined at some s, and s is
+      not split. At a vertex that S_X visits twice, one z_s is kept. 7(a) held in every run.
 
   Two consequences that [1] uses without stating them:
   - **(7c′)** if x ∈ X_i ∖ S_X and xt ∈ E(G[X]), then t ∈ X_i. An inside x has only inside
@@ -200,6 +216,34 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
   infers that faces merge from the fact that the cut paths form a connected tree. §3
   replaces Def. 6 and Lemma 14; §3.6 explains why none of the three configurations can occur
   there.
+- **(S9) Property 6 is false for induced bags.** [1, Lemma 9 (6)] says that at every depth
+  each edge lies in at most two subgraphs G[X], and [8, Lemma 4.3 (8′)] says the same. Both
+  fail on G_m, which is K_{2,m} plus the edge uw: planar, with D = 2 (second adversarial
+  pass, `sim/attack3/p6.py`).
+  - Let B be the set of bags that contain u and w. Take a non-leaf X ∈ B and a petal
+    a ∈ X ∖ S_X. Then a lies in exactly one child X_i, and by (7c′), or by [8, Def. 4.1 (3)],
+    the edges ua and wa lie in G[X_i]. So X_i ∈ B.
+  - Hence every petal ends in a separator or a leaf of a bag of B, and m ≤ |B|·O(D log n).
+    With at most two bags of B per depth, |B| = O(log n), so m = O(log² n), which is false
+    for large m.
+  - Measured with n = 102, 202 and 402: up to 32, 64 and 128 bags of one depth contain uw.
+  - The argument uses only the height, the bounds on |S_X| and on leaves, (7a) and (7c′).
+    So no decomposition with these properties satisfies Property 6 on G_m. The overview of
+    [8] describes the intended property for the edges a bag owns ("one from each side of
+    that edge"), which is not the same as induced subgraphs.
+  - **What it breaks.** Correctness does not use Property 6: no proof of Lemmas 14′ to 16′ or
+    of Lemma V does. The round counts do. [1] and these notes run all bags of one depth in
+    parallel because of Property 6: the Γ computations (§3.5), the transfers of §5 step 1
+    and §6, and the convergecast of Lemma V (NOTES). On G_m with T rooted at u, Ω(n/log² n)
+    bags of one depth each send Õ(D) words across uw. So the Õ(D/ε) bound of [1, Thm 4], and
+    the Õ(D) of Theorem A, are not proved as written.
+  - **Repair: open.** Two observations, not yet written out in full. A vertex that lies in no
+    separator of depth < d lies in exactly one bag of depth d, and the edges at such a vertex
+    are used by that bag only. And Lemma V and Lemma 16′ only need the labels of v for the
+    bags in which v is not an ancestor hub: in Lemma V take the deepest bag in which both u*
+    and v are of this kind and that contains P*. What is missing is a communication subgraph
+    per bag, of diameter Õ(D), that uses each edge between two hubs for at most polylog many
+    bags of one depth.
 - **(S8) Smaller gaps.**
   - Def. 6 step 3 is undefined when P_X ∪ ∂S*_X = ∅, which is the case for the root's
     children.
@@ -539,8 +583,9 @@ most 3|∂S*_X| of them. ∎
 
 ### 3.5 Locality, (T5)
 
-**Building Γ_{d+1}.** All of this runs for all bags of depth d in parallel, with congestion 2
-by Property 6, so a level takes Õ(D) rounds.
+**Building Γ_{d+1}.** All of this runs for all bags of depth d in parallel. [1] bounds the
+congestion of such steps by 2 through Property 6, which is false for induced bags (S9), so
+the Õ(D) rounds per level are open with (S9).
 - **Labels.** Each end of e knows its bags (Property 2) and whether it lies in S_X. Once
   every centre has broadcast its parent's ID within its bag, it also knows which of its bags
   is the parent of which. So λ_{d+1} is computed locally.
@@ -695,9 +740,28 @@ Two prototypes in `sim/tiles/` build the construction literally:
     families gives a largest child of at most n/2 + 1 (`g1_grouped.py`).
   - With a single outside child, Claim 7 holds in the form 4 + 2c_s. The chord fan of
     `region_fan.py` has c_v = k − 1 and 2k − 2 label changes at v.
-- **Side observation.** The harness's own separators often break Property 6, with up to 21
-  bags per edge at one depth. They are not [8]'s separators, so this says nothing about
-  (G1).
+- **Property 6.** The harness's separators often break Property 6, with up to 21 bags per
+  edge at one depth. The second pass showed that on some graphs every decomposition with
+  the other properties breaks it (S9).
+
+**Second adversarial pass** (`sim/attack3/`, on this text).
+- **Instances.** 14,500 instances in nine sweeps, n ≤ 510, depth ≤ 16, 1.12 million bags.
+  The families are Delaunay graphs with dropped edges, jittered grids, K_{2,m} with a chord
+  and subdivided petals, fans, nested rings, Delaunay graphs with pendant leaves in every
+  corner, and flowers. 5,000 instances follow (G1′) faithfully (T_X ⊇ T[X] from a BFS tree,
+  inherited z_s). The others use other trees T_X to force P_X.
+- **Results.** No failure.
+  - Claim 7: at most 3 + 2c_s label changes at a vertex in 2.5 million checks;
+    |L_A|/|S_A| ≤ 4.75; |J_X| ≤ 0.98·Σ_{A ∈ Anc*(X)} |N_A|.
+  - P_X was forced 5,327 times, with up to 54 edges.
+  - Lemma 15′: 2.4 million end-to-end gluings with replaced child metrics; R1 on 24.6
+    million pairs; (M) in σ_τ on 4.3·10⁹ inequalities; H_X planar in all 324,191 cases;
+    rounding and (I3) in exact arithmetic (`r6check.py`).
+  - Lemma 16′: 3.6·10⁸ checks with adversarial hub oracles.
+  - (7a), (7b), (7c) and (7c′) held at all 324,191 separators.
+- **Negative controls.** Shuffled port orders, shuffled wheel rims, a dropped corner of L_X,
+  a removed P_X and a dropped hub term in Lemma 16′ were all detected.
+- **Findings.** (S9), the step of [8] in §1, and the details of (G1′) in §1.
 
 ## 4. Tools
 
@@ -898,7 +962,8 @@ C. This is exact, which is (I2) at height 0.
    exist.
 
 The rounds are those of [1]: one broadcast of Õ(D/ε′) words per level, levels in sequence,
-and Õ(D) rounds per level for Γ (T5). Steps 2 to 6 are local. ∎
+and Õ(D) rounds per level for Γ (T5). Steps 2 to 6 are local. ∎ (The round count assumes
+[1]'s parallel schedule for the bags of one level, which rests on Property 6; see (S9).)
 
 Bookkeeping: the leaf oracle's error is paid at the parent, in step 2. A query to the oracle
 of H_X costs one more factor 1+ε′, so labels built from H_X are within (1+ε′)^{3h(X)+1}
@@ -922,7 +987,8 @@ leaf term. The rounds are Õ(D/ε′) per level, so Õ(D/ε′) in total.
 *Construction.*
 - **Leaves.** All of G[L] is broadcast inside L, as in [1].
 - **Broadcast for non-leaf X.** The oracle labels of H_X on ∂S⁺_X go to every vertex of X, as
-  in [1]: Õ(D/ε′) words per bag, all bags of one level in parallel by Property 6. Let δ^H be
+  in [1]: Õ(D/ε′) words per bag, all bags of one level in parallel by Property 6, which is
+  false for induced bags (S9). Let δ^H be
   the answers. By Lemma 15′ and (G5), dist_{G[X]} ≤ δ^H ≤ (1+ε′)^{3h(X)+1}·dist_{G[X]} on
   ∂S⁺_X.
 - **Hubs.** For v ∈ ∂S⁺_X, set d̃_X(v,h) := δ^H(v,h).
@@ -978,20 +1044,21 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   This fixes (S1), (S2), (S3), (S5) and (S6). The combinatorial core of R1, Lemma R6, one
   level of Lemma 16′ and the parameters are also checked in Lean (`Tools.lean`,
   `Labels.lean`).
-- **Proved here, refereed, and attacked in its earlier draft.** Lemma 14′ (§3), with
-  Lemmas R3 (restated) and R7. The referee's fixes are in. The adversarial pass on the
-  earlier draft found nothing that these fixes do not cover. This fixes (S4) and (S7). The
-  checks of §3.7 found no counterexample.
+- **Proved here, refereed, and attacked twice.** Lemma 14′ (§3), with Lemmas R3 (restated)
+  and R7. The referee's fixes are in, and the second adversarial pass, on this text, found
+  nothing in §3. This fixes (S4) and (S7).
+- **Open: the round count** (S9). Property 6 is false for induced bags, so the parallel
+  schedule of [1], and with it the Õ(D/ε) bound for the labels, needs a new argument.
 - **Black boxes.**
   - (G1) in the form (G1′), read off [8]'s construction, with T_X in place of [1]'s
     Property 4.
   - (G3), which is [10, Thm 1] (refereed). The centres search for K exhaustively, which
     CONGEST allows.
   - (G4), (G5) and (G6).
-- **Consequence.** Once an adversarial pass on the fixed §3 is in, Theorem A, and through
-  it Theorems B, C and C′, rest only on the black boxes. Until then they are
-  conditional on Lemma 14′. [1, Thm 4] is in the same position: its proof goes through
-  [1, Lemma 14], and §3 with §5 repairs it.
+- **Consequence.** Given the black boxes, Theorem A, and through it Theorems B, C and C′,
+  are correct algorithms. Their round bounds are conditional on a repair of (S9). No human
+  has checked the proofs. [1, Thm 4] is in the same position: its proof goes through
+  [1, Lemma 14], which §3 with §5 repairs, and through Property 6.
 
 **Ratings.**
 - **The repair: minor.** It changes no bound. The tile construction is simpler than [1]'s hub
@@ -999,3 +1066,7 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   else's lemma, and its value is that Theorem A and [1, Thm 4] become correct.
 - **The finding that [1, Lemma 14] fails: modest.** It is a correctness gap in the main
   CONGEST result of an unrefereed paper.
+- **(S9): modest.** It removes the round bound of the main theorem of [1] as written, and it
+  shows that [8, Def. 4.1] together with [8, Lemma 4.3 (8′)] has no model on a simple
+  family. Whether results of [8] are affected depends on how its algorithms use the bags;
+  its overview describes the version for owned edges, which is not refuted.

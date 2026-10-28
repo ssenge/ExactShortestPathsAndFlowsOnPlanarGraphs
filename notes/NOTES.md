@@ -74,15 +74,15 @@ approaches, is as hard as reachability up to n^{o(1)} [6]. **Odds: low.**
 {0, …, n^{O(1)}}, hop diameter D, and source s. A CONGEST algorithm computes exact
 distances from s and a shortest path tree in Õ(D) rounds w.h.p.
 
-**Status: conditional on Lemma 14′** (`LEMMA15.md` §3). The labels (L) come from [1, Lemmas
-15 and 16], whose topological core, [1, Lemma 14], is false as stated (LEMMA15.md, (S7)).
-LEMMA15.md §3 now proves Lemma 14′ with a new construction (tiles), and the prototype checks
-pass. A referee pass found it correct given its black box. Its one serious point, that the
-assumed child shape contradicts 7(a), is fixed by using [8]'s actual shape. An adversarial
-pass on the earlier draft broke nothing in §3 and found only the referee's two points again
-(LEMMA15.md §3.7). The condition stays until an adversarial pass on the fixed text is in.
-The rest of the repair is proved and has been checked twice. Theorems B, C and C′ inherit
-the condition.
+**Status: the algorithm is correct given Lemma 14′; the Õ(D) bound is open** (`LEMMA15.md`).
+The labels (L) come from [1, Lemmas 15 and 16], whose topological core, [1, Lemma 14], is
+false as stated (LEMMA15.md, (S7)). LEMMA15.md §3 proves Lemma 14′ with a new construction
+(tiles). After the referee's fixes, a referee pass and two adversarial passes found nothing
+wrong in it; no human has checked it. The second adversarial pass found that Property 6 of
+[1, Lemma 9] is false for induced bags (LEMMA15.md, (S9)). Correctness does not use it, but
+[1]'s Õ(D/ε) bound for the labels does, since it runs all bags of one depth in parallel.
+Until that schedule is repaired, Theorem A is an exact algorithm whose Õ(D) round bound is
+not proved. Theorems B, C and C′ inherit both points.
 
 It is deterministic if the BDD is built deterministically. [1] calls itself deterministic,
 but its BDD comes from Li-Parter, whose only random step is the Ghaffari-Parter separator
@@ -125,7 +125,8 @@ Given (L), (1+ε)-approximate distances from a virtual source with offsets φ ta
 1. For every bag X and h ∈ ∂S⁺_X, compute A_X(h) = min_{u∈X} φ(u) + d̃_X(u,h). This is a
    min-convergecast of |∂S⁺_X| = Õ(D) values over T_X, pipelined in Õ(D) rounds and
    broadcast back down. All bags of one depth run in parallel because edge congestion is
-   at most 2. Over all O(log n) depths this takes Õ(D) rounds.
+   at most 2 by Property 6, which is false for induced bags (LEMMA15.md, (S9)); this round
+   count is open with it. Over all O(log n) depths this takes Õ(D) rounds.
 2. Each leaf bag L gathers G[L] and φ|_L, as in the base case of [1, Lemma 16], and computes
    loc_L(v) = min_{u∈L} φ(u) + dist_{G[L]}(u,v) exactly.
 3. Each v outputs d̃(v) = min( min_{leaves L ∋ v} loc_L(v), min_{X ∋ v, h ∈ ∂S⁺_X} A_X(h) + d̃_X(h,v) ).
@@ -223,6 +224,8 @@ model that can run the oracle.
   1. It depends on [1], which is four months old and unrefereed.
   2. The authors of [1] can be expected to notice this soon.
   3. [1, Lemma 14] is false as stated, so (L) is conditional on Lemma 14′ (LEMMA15.md).
+  4. Property 6 of [1, Lemma 9] is false for induced bags, so the Õ(D/ε) round bound of (L)
+     needs a new parallel schedule (LEMMA15.md, (S9)).
 
 ### Still to verify before anything goes public
 
@@ -235,8 +238,8 @@ as a composition of the sources. Its points are folded into this file. Still ope
     topological interface, Lemma 14′. The pieces are: the O′ witness for the LP, which stops
     the error from squaring per level; the triangle and all-orientation Monge constraints;
     rounding; gluing; and finiteness per component.
-  - **Topological layer: proved, refereed once with the fixes in, and attacked once in its
-    earlier draft.** [1, Lemma 14], that cutting the hub
+  - **Topological layer: proved, refereed once with the fixes in, and attacked twice, the
+    second time on the fixed text.** [1, Lemma 14], that cutting the hub
     network merges all holes into one face, fails in three configurations consistent with
     Properties 1 to 7:
     1. separator chords in induced bags;
@@ -250,8 +253,8 @@ as a composition of the sources. Its points are folded into this file. Still ope
     every tile is a disk. Children refine parents, ports per bag are O(D log n), and outside
     edges (at most 3|∂S*_X|) go straight into H_X. The prototypes ran 2.7 million Monge checks with
     every gluing planar, and the adversarial harness 1.55·10⁹ (M) inequalities on 24,850
-    instances, with no failures (§3.7). Still needed: an adversarial pass on the fixed
-    text.
+    instances, with no failures (§3.7). The second adversarial pass added 14,500 instances
+    with no failure in §3, and found (S9) in the assumptions.
   - **Realization: no longer needed from [1].** [10, Thm 1] (SODA 2025, refereed) proves
     that every quasimetric that is Monge for a prescribed circular order σ is realized by a
     plane digraph with O(|T|⁶) vertices and the terminals on the boundary in order σ. CONGEST
@@ -431,7 +434,8 @@ D·n^{o(1)}.
 - **C′: modest.** It is [9]'s own proof with an exact oracle plugged in.
 - **Lemma D: minor**, but it is the enabling observation.
 
-Dependency chain (A, B, C, C′ conditional on Lemma 14′ until LEMMA15.md §3 is reviewed): [1] Thm 9 → Lemma V → (R) [3] → Theorem A → [6] + planar shortcuts →
+Dependency chain (correctness of A, B, C, C′ rests on Lemma 14′; their round bounds also on a
+repair of LEMMA15.md (S9)): [1] Thm 9 → Lemma V → (R) [3] → Theorem A → [6] + planar shortcuts →
 Theorem B → Lemma D → Miller-Naor ([9, Sec. 6.1]).
 
 ### Numerical checks (`sim/check.py`)
