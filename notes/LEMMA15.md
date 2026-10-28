@@ -728,6 +728,12 @@ lower bound. ∎
 Adversarial check: 8533 terminal-image pairs, including zero weights, ∞ distances and
 identifications inside one piece, with 0 failures (`r1_glue.py`).
 
+*Lean.* `glue` in `lean/SsspFlow/Tools.lean` proves the combinatorial core in walk form. A walk
+between terminal images cuts into segments of one piece with no terminal image inside
+(`decomp`), and matches of the segments compose. The quotient Glue(A; ~) itself is not
+formalized: its two properties used above (every arc in one piece, all arcs at a non-terminal
+vertex in one piece) enter as hypotheses, and so does dist_{B_i} ≤ λ·dist_{A_i} on segments.
+
 **Lemma R3 (replacing pieces keeps planarity).** Let Σ be the sphere or a closed disk.
 Suppose:
 - **(D1)** each A_i is disk-drawn in a closed disk D_i with T_i in order σ_i;
@@ -790,6 +796,9 @@ d_K(a,b) ≤ d_K̂(a,b) ≤ (1+ε′)·d_K(a,b).
 
 Adversarial check: 2406 pairs with 0 failures; the worst (ratio − 1)/ε was 0.33
 (`r6_round.py`).
+
+*Lean.* `rounding` in `Tools.lean`, in walk form, with `rnd_bounds` for the range of the new
+weights.
 
 **Lemma R7 (components in one disk).** Let A be disk-drawn in D with terminals T in order σ.
 - **(a)** Distinct components C, C′ of A have non-crossing terminal sets: there are no
@@ -943,6 +952,10 @@ symmetric, with the last vertex of S_X in place of the first. ∎
 Adversarial check: 90,940 (v,h) checks per child model, in both directions, with 0 failures
 (`l16.py`). (7c′) held in every run, even in the model where full (7c) fails.
 
+*Lean.* `labelOut` and `labelIn` in `lean/SsspFlow/Labels.lean` prove one level, in both
+directions. (7c′) with (7b) enters as a closure hypothesis: an arc of G[X] at a vertex of
+X_i ∖ S_X stays in X_i. The child factor may be any λ_i ≤ λ.
+
 ## 7. Parameters
 
 Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε ∈ (0,1].
@@ -950,6 +963,8 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   Õ(D/ε′) = Õ(D/ε) and rounds are Õ(D/ε).
 - **(I3).** It keeps log N = O(log n) in (G5), given 1/ε ≤ poly(n); Theorem A uses
   ε₀ = Θ(1/log n).
+- **Lean.** `params` in `Tools.lean` proves the inequality, and `level_step` the chain of
+  factors in step 4 of Lemma 15′.
 
 ## 8. What this settles, and what it does not
 
@@ -958,7 +973,9 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   - the d ≥ 1 and finiteness chain;
   - the parameters.
 
-  This fixes (S1), (S2), (S3), (S5) and (S6).
+  This fixes (S1), (S2), (S3), (S5) and (S6). The combinatorial core of R1, Lemma R6, one
+  level of Lemma 16′ and the parameters are also checked in Lean (`Tools.lean`,
+  `Labels.lean`).
 - **Proved here, refereed, and attacked in its earlier draft.** Lemma 14′ (§3), with
   Lemmas R3 (restated) and R7. The referee's fixes are in. The adversarial pass on the
   earlier draft found nothing that these fixes do not cover. This fixes (S4) and (S7). The

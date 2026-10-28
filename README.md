@@ -250,6 +250,20 @@ Lean 4 (`leanprover/lean4:v4.36.0-rc1`) with Mathlib; the exact Mathlib revision
   - `rotSetup` builds $\hat G$ from a combinatorial map, `rot_pair` shows that both arcs of an
     edge join the same two corners, and `rot_lemmaD` is Lemma D for that graph.
   - Planarity is never used, so the weighting works on any surface.
+- `lean/SsspFlow/Tools.lean`: tools of the repair of [1], with walks in multidigraphs and
+  "for every walk on one side there is a walk on the other side at most $\lambda$ times as
+  long" as the form of $\mathrm{dist}\le\lambda\cdot\mathrm{dist}$.
+  - `glue`: the combinatorial core of Lemma R1 (gluing keeps terminal approximation). A walk
+    between terminal images cuts into segments of one piece with no terminal image inside
+    (`decomp`). The quotient construction is not formalized; its properties are hypotheses.
+  - `rounding`: Lemma R6 (capping and rounding up to multiples of $\eta$ costs at most a factor
+    $1+\varepsilon$ when $\eta\cdot|V|\le\varepsilon$ and distances are at least 1), with
+    `rnd_bounds` for the new weights.
+  - `level_step`: the factor $(1+\varepsilon')^3$ per level of Lemma 15′.
+  - `params`: $(1+\varepsilon/(2(3H+1)))^{3H+1}\le 1+\varepsilon$ for $\varepsilon\in[0,1]$.
+- `lean/SsspFlow/Labels.lean`, theorems `SsspFlow.labelOut` and `SsspFlow.labelIn`: one level
+  of Lemma 16′ in both directions. The separation property of the child bags enters as a
+  closure hypothesis on arcs.
 - `lean/SsspFlow/Boost.lean`, theorem `SsspFlow.Boost.Run.exact`: the discretized boosting of
   [3] with base $\ell_i+\eta$. Lengths stay nonnegative (`Run.len_nonneg`), every vertex
   contracts by a factor $1-1/\alpha$ up to an additive $(n-1)\eta$, and the final rounding is
@@ -257,7 +271,8 @@ Lean 4 (`leanprover/lean4:v4.36.0-rc1`) with Mathlib; the exact Mathlib revision
   gives $-\eta$.
 
 Not formalized: the CONGEST algorithms and their round counts, planarity and the diameter
-bound of $\hat G$, the decomposition, and the repair of [1] (Lemmas 14′ to 16′).
+bound of $\hat G$, the decomposition, Lemma 14′ and everything else in the repair that uses
+planarity (Lemmas R3, R5, R7, and the Monge condition).
 
 ## Numerical checks (`sim/`)
 
