@@ -1,0 +1,3573 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "literal",
+  "tiebreak": "minid",
+  "pairs": 1
+ },
+ "start": 0,
+ "count": 300,
+ "runs": 1,
+ "families": {
+  "messy": 44,
+  "grid": 42,
+  "tree_plus": 46,
+  "wheel": 43,
+  "cycle_chords": 46,
+  "delaunay": 48,
+  "nested": 31
+ },
+ "family_fail": {
+  "messy": 8,
+  "delaunay": 12,
+  "tree_plus": 7,
+  "cycle_chords": 5,
+  "wheel": 8,
+  "grid": 6,
+  "nested": 3
+ },
+ "flag_instances": {
+  "struct_merge": 37,
+  "i_dist": 46,
+  "i_floor": 37,
+  "struct_merged_with_source": 37,
+  "ii_parent_outside": 31,
+  "iii_not_tree": 40,
+  "i_pair": 29,
+  "i_len": 28,
+  "len_lt_trueA1": 28,
+  "iv_value": 27,
+  "iv_path_through_merge": 33,
+  "iv_cut_value": 27,
+  "iv_cut_not_separating": 33,
+  "dev_mirrored_endpoint": 38,
+  "iii_noparent": 9,
+  "fail_exception": 9,
+  "impl_no_seed": 3
+ },
+ "nfail": 49,
+ "secs": 1.3166279792785645,
+ "fails": [
+  {
+   "seed": 0,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 20, ('p', 0, 1), [(33, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 28, ('p', 0, 0), [(4, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 3, 20, ('p', 0, 1), 0, 235))",
+    "('i_floor', (('L', 2, 'b1'), 20, 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 3, 33, ('p', 1, 1), 78, 157))",
+    "('i_floor', (('L', 2, 'b1'), 33, 1, 2))"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 1,
+     "mode": "L",
+     "e0": 16
+    },
+    "ept": {
+     "v": 1,
+     "ci": 1,
+     "mode": "L",
+     "e0": 19
+    },
+    "Pedges": [
+     2,
+     5,
+     8
+    ],
+    "pf": [
+     3,
+     2,
+     6,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      2,
+      5,
+      8
+     ],
+     "2": [
+      0,
+      1,
+      2,
+      5,
+      8,
+      16
+     ],
+     "3": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      16
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 6,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 11,
+   "m": 15,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "struct_merged_with_source": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 17, ('p', 0, 0), [(29, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 18, ('p', 0, 1), [(28, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 21, 17, ('p', 0, 0), 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 17, ('p', 0, 0)))",
+    "('iv_cut_not_separating', [])"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 10,
+     "ci": 0,
+     "mode": "L",
+     "e0": 14
+    },
+    "ept": {
+     "v": 4,
+     "ci": 2,
+     "mode": "L",
+     "e0": 1
+    },
+    "Pedges": [
+     3,
+     7
+    ],
+    "pf": [
+     4,
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      7
+     ],
+     "2": [
+      3,
+      7,
+      14
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 14,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 28,
+   "m": 53,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 3, 'b1'), 58, ('p', 4, 0), [(14, 2)]))",
+    "('struct_merge', (('L', 3, 'b1'), 71, ('p', 4, 1), [(62, 1), (65, 0)]))",
+    "('i_dist', (('L', 3, 'b1'), 44, 58, ('p', 4, 0), 0, 338))",
+    "('i_floor', (('L', 3, 'b1'), 58, 0, 2))",
+    "('i_dist', (('L', 3, 'b1'), 44, 66, ('p', 3, 0), 169, 338))",
+    "('i_floor', (('L', 3, 'b1'), 66, 1, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 15,
+     "ci": 2,
+     "mode": "L",
+     "e0": 43
+    },
+    "ept": {
+     "v": 16,
+     "ci": 0,
+     "mode": "L",
+     "e0": 7
+    },
+    "Pedges": [
+     3,
+     31,
+     41,
+     51
+    ],
+    "pf": [
+     5,
+     4,
+     25,
+     12,
+     7
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      31,
+      41,
+      51
+     ],
+     "2": [
+      3,
+      28,
+      31,
+      41,
+      42,
+      51
+     ],
+     "3": [
+      3,
+      7,
+      14,
+      28,
+      31,
+      41,
+      42,
+      51
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 17,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 14,
+   "m": 16,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "struct_merged_with_source": 1,
+    "i_pair": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 12, ('p', 2, 0), [(16, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 15, ('p', 2, 1), [(17, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 54, 12, ('p', 2, 0), 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 12, ('p', 2, 0)))",
+    "('i_pair', (('L', 2, 'b1'), 12, 15, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 0,
+     "mode": "L",
+     "e0": 11
+    },
+    "ept": {
+     "v": 13,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [
+     5,
+     13
+    ],
+    "pf": [
+     0,
+     1,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      5,
+      13
+     ],
+     "2": [
+      5,
+      8,
+      13
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 28,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 24,
+   "m": 38,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 30, ('p', 0, 1), [(30, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 0, 0), [(19, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 79, 30, ('p', 0, 1), 0, 238))",
+    "('i_floor', (('L', 2, 'b1'), 30, 0, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 30, ('p', 0, 1)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 39, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 15
+    },
+    "ept": {
+     "v": 16,
+     "ci": 2,
+     "mode": "L",
+     "e0": 26
+    },
+    "Pedges": [
+     3,
+     9,
+     29
+    ],
+    "pf": [
+     5,
+     2,
+     3,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      9,
+      29
+     ],
+     "2": [
+      3,
+      9,
+      15,
+      29
+     ],
+     "3": [
+      3,
+      8,
+      9,
+      15,
+      24,
+      29
+     ]
+    },
+    "levels": 3,
+    "n_results": 5,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 30,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 3,
+   "m": 3,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 86, 4, ('p', 0, 0), 12000049, 12000001))",
+    "('i_floor', (('L', 1, 'b1'), 4, 1000004, 1000000))",
+    "('iii_noparent', (('L', 1, 'b1'), 4))",
+    "('iii_not_tree', (('L', 1, 'b1'), 86))",
+    "('i_pair', (('L', 1, 'b1'), 3, 4, 12000062, 12000014))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 1000000,
+    "P_len": 1,
+    "e0_same": true,
+    "eps": {
+     "v": 2,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 50,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 11,
+   "m": 14,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 12, ('p', 2, 0), [(16, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 17, ('p', 2, 1), [(18, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 134, 12, ('p', 2, 0), 0, 267))",
+    "('i_floor', (('L', 2, 'b1'), 12, 0, 5))",
+    "('i_dist', (('L', 2, 'b1'), 134, 14, ('p', 1, 0), 54, 213))",
+    "('i_floor', (('L', 2, 'b1'), 14, 1, 4))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 1,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [
+     9,
+     11
+    ],
+    "pf": [
+     3,
+     4,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      9,
+      11
+     ],
+     "2": [
+      8,
+      9,
+      11
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 57,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 24,
+   "m": 42,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 4,
+    "i_dist": 7,
+    "i_floor": 7,
+    "ii_parent_outside": 4,
+    "struct_merged_with_source": 2,
+    "iii_not_tree": 2,
+    "i_pair": 1,
+    "i_len": 2,
+    "len_lt_trueA1": 2,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 45, ('p', 5, 0), [(0, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 54, ('p', 5, 1), [(53, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 152, 41, ('p', 3, 0), 286, 1140))",
+    "('i_floor', (('L', 2, 'b1'), 41, 2, 8))",
+    "('i_dist', (('L', 2, 'b1'), 152, 43, ('p', 4, 0), 143, 1283))",
+    "('i_floor', (('L', 2, 'b1'), 43, 1, 9))"
+   ],
+   "info": {
+    "mincut": 10,
+    "P_len": 6,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 0,
+     "mode": "R",
+     "e0": 15
+    },
+    "ept": {
+     "v": 22,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     23,
+     24,
+     26,
+     30,
+     32
+    ],
+    "pf": [
+     10,
+     12,
+     14,
+     18,
+     15,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      23,
+      24,
+      26,
+      30,
+      32
+     ],
+     "2": [
+      0,
+      21,
+      23,
+      24,
+      26,
+      30,
+      32,
+      36
+     ],
+     "3": [
+      0,
+      15,
+      20,
+      21,
+      23,
+      24,
+      26,
+      30,
+      32,
+      36
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 58,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 23,
+   "m": 25,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 156, 5, ('f', 1), 10883, 1604))",
+    "('i_floor', (('L', 1, 'b1'), 5, 136, 20))",
+    "('i_dist', (('L', 1, 'b1'), 156, 6, ('f', 3), 11284, 2005))",
+    "('i_floor', (('L', 1, 'b1'), 6, 141, 25))",
+    "('i_dist', (('L', 1, 'b1'), 156, 7, ('p', 0, 0), 10081, 802))",
+    "('i_floor', (('L', 1, 'b1'), 7, 126, 10))"
+   ],
+   "info": {
+    "mincut": 10,
+    "P_len": 2,
+    "e0_same": true,
+    "eps": {
+     "v": 17,
+     "ci": 0,
+     "mode": "L",
+     "e0": 19
+    },
+    "ept": {
+     "v": 14,
+     "ci": 3,
+     "mode": "L",
+     "e0": 19
+    },
+    "Pedges": [
+     12
+    ],
+    "pf": [
+     2,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      12
+     ]
+    }
+   }
+  },
+  {
+   "seed": 62,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "face",
+   "n": 10,
+   "m": 11,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 164, 5, ('p', 0, 0), 469, 80))",
+    "('i_floor', (('L', 1, 'b1'), 5, 12, 2))",
+    "('i_dist', (('L', 1, 'b1'), 164, 7, ('p', 1, 0), 509, 120))",
+    "('i_floor', (('L', 1, 'b1'), 7, 13, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 5))",
+    "('iii_not_tree', (('L', 1, 'b1'), 164))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 2,
+    "e0_same": true,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 6
+    },
+    "ept": {
+     "v": 4,
+     "ci": 1,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     3
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      3
+     ]
+    }
+   }
+  },
+  {
+   "seed": 65,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 20,
+   "m": 24,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 11, ('p', 0, 1), [(19, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 17, ('p', 0, 0), [(15, 1), (17, 0)]))",
+    "('i_dist', (('L', 2, 'b1'), 171, 17, ('p', 0, 0), 0, 330))",
+    "('i_floor', (('L', 2, 'b1'), 17, 0, 4))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 17, ('p', 0, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 18, 2))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 1,
+     "mode": "L",
+     "e0": 9
+    },
+    "ept": {
+     "v": 17,
+     "ci": 0,
+     "mode": "L",
+     "e0": 17
+    },
+    "Pedges": [
+     7,
+     23
+    ],
+    "pf": [
+     4,
+     0,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      7,
+      23
+     ],
+     "2": [
+      7,
+      9,
+      23
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 70,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 19,
+   "m": 38,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 5,
+    "i_floor": 5,
+    "ii_parent_outside": 3,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 40, ('p', 0, 1), [(22, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 48, ('p', 0, 0), [(9, 0), (12, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 185, 22, ('f', 0), 364, 2063))",
+    "('i_floor', (('L', 2, 'b1'), 22, 3, 17))",
+    "('i_dist', (('L', 2, 'b1'), 185, 23, ('f', 1), 486, 1699))",
+    "('i_floor', (('L', 2, 'b1'), 23, 4, 14))"
+   ],
+   "info": {
+    "mincut": 14,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 4,
+     "mode": "L",
+     "e0": 11
+    },
+    "ept": {
+     "v": 8,
+     "ci": 1,
+     "mode": "L",
+     "e0": 25
+    },
+    "Pedges": [
+     3,
+     6,
+     36
+    ],
+    "pf": [
+     4,
+     5,
+     3,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      6,
+      36
+     ],
+     "2": [
+      3,
+      6,
+      11,
+      13,
+      23,
+      36
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 72,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 27,
+   "m": 53,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 60, ('p', 2, 0), [(89, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 63, ('p', 2, 1), [(88, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 192, 60, ('p', 2, 0), 0, 148))",
+    "('i_floor', (('L', 2, 'b1'), 60, 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 60, ('p', 2, 0)))",
+    "('i_len', (('L', 2), 2, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 3,
+     "ci": 1,
+     "mode": "L",
+     "e0": 15
+    },
+    "ept": {
+     "v": 15,
+     "ci": 0,
+     "mode": "L",
+     "e0": 44
+    },
+    "Pedges": [
+     25,
+     43
+    ],
+    "pf": [
+     12,
+     19,
+     9
+    ],
+    "incised_per_level": {
+     "1": [
+      25,
+      43
+     ],
+     "2": [
+      25,
+      43,
+      44
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 73,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 25, ('p', 3, 0), [(18, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 32, ('p', 3, 1), [(23, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 196, 25, ('p', 3, 0), 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 196, 27, ('p', 2, 0), 1, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 25, ('p', 3, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 27, 2))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 1,
+     "mode": "R",
+     "e0": 14
+    },
+    "ept": {
+     "v": 10,
+     "ci": 1,
+     "mode": "L",
+     "e0": 9
+    },
+    "Pedges": [
+     3,
+     11,
+     13
+    ],
+    "pf": [
+     4,
+     3,
+     10,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      11,
+      13
+     ],
+     "2": [
+      3,
+      9,
+      11,
+      13,
+      19
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 74,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 15,
+   "m": 22,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (199, 'l'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 1,
+     "mode": "R",
+     "e0": 18
+    },
+    "ept": {
+     "v": 14,
+     "ci": 0,
+     "mode": "L",
+     "e0": 21
+    },
+    "Pedges": [
+     3,
+     7,
+     11,
+     17
+    ],
+    "pf": [
+     8,
+     3,
+     4,
+     5,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      7,
+      11,
+      17
+     ],
+     "2": [
+      1,
+      3,
+      5,
+      7,
+      11,
+      17
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 76,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 7,
+   "m": 12,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 4,
+    "i_floor": 4,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 13, ('p', 0, 1), [(2, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 19, ('p', 0, 0), [(16, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 205, 13, ('p', 0, 1), 0, 216))",
+    "('i_floor', (('L', 2, 'b1'), 13, 0, 4))",
+    "('i_dist', (('L', 2, 'b1'), 205, 20, ('f', 0), 56, 160))",
+    "('i_floor', (('L', 2, 'b1'), 20, 1, 3))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 2,
+     "ci": 1,
+     "mode": "L",
+     "e0": 1
+    },
+    "ept": {
+     "v": 4,
+     "ci": 1,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     8,
+     10
+    ],
+    "pf": [
+     2,
+     6,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      8,
+      10
+     ],
+     "2": [
+      0,
+      1,
+      7,
+      8,
+      10
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 80,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 15,
+   "m": 28,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 1,
+    "ii_parent_outside": 2,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 28, ('p', 0, 0), [(21, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 0, 1), [(48, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 215, 36, ('f', 11), 90, 92))",
+    "('i_dist', (('L', 2, 'b1'), 215, 38, ('p', 0, 1), 0, 182))",
+    "('i_floor', (('L', 2, 'b1'), 38, 0, 2))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 30, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 11,
+     "ci": 0,
+     "mode": "R",
+     "e0": 10
+    },
+    "ept": {
+     "v": 0,
+     "ci": 2,
+     "mode": "L",
+     "e0": 12
+    },
+    "Pedges": [
+     24,
+     26
+    ],
+    "pf": [
+     10,
+     14,
+     12
+    ],
+    "incised_per_level": {
+     "1": [
+      24,
+      26
+     ],
+     "2": [
+      10,
+      11,
+      24,
+      26
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 82,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 220, 4, ('f', 2), 1082, 183))",
+    "('i_floor', (('L', 1, 'b1'), 4, 24, 4))",
+    "('i_dist', (('L', 1, 'b1'), 220, 5, ('p', 0, 0), 1081, 182))",
+    "('i_floor', (('L', 1, 'b1'), 5, 24, 4))",
+    "('i_dist', (('L', 1, 'b1'), 220, 7, ('p', 1, 0), 1127, 228))",
+    "('i_floor', (('L', 1, 'b1'), 7, 25, 5))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 2,
+    "e0_same": true,
+    "eps": {
+     "v": 5,
+     "ci": 1,
+     "mode": "L",
+     "e0": 7
+    },
+    "ept": {
+     "v": 4,
+     "ci": 1,
+     "mode": "L",
+     "e0": 7
+    },
+    "Pedges": [
+     1
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "seed": 97,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 12,
+   "m": 16,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "ii_parent_outside": 3,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 11, ('p', 0, 1), [(12, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 17, ('p', 0, 0), [(15, 1), (19, 0), (21, 0), (28, 0), (30, 0)]))",
+    "('i_dist', (('L', 2, 'b1'), 251, 17, ('p', 0, 0), 0, 4))",
+    "('i_dist', (('L', 2, 'b1'), 251, 18, ('f', 2), 1, 3))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 9, 2))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 13, 2))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 1,
+     "mode": "L",
+     "e0": 6
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     4,
+     7
+    ],
+    "pf": [
+     4,
+     3,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      4,
+      7
+     ],
+     "2": [
+      4,
+      6,
+      7,
+      12
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 123,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 29,
+   "m": 62,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 3,
+    "i_floor": 3,
+    "ii_parent_outside": 1,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 74, ('p', 3, 1), [(100, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 75, ('p', 3, 0), [(99, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 308, 72, ('p', 2, 1), 343, 171000857))",
+    "('i_floor', (('L', 2, 'b1'), 72, 2, 1000005))",
+    "('i_dist', (('L', 2, 'b1'), 308, 74, ('p', 3, 1), 0, 171001200))",
+    "('i_floor', (('L', 2, 'b1'), 74, 0, 1000007))"
+   ],
+   "info": {
+    "mincut": 1000007,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 20,
+     "ci": 4,
+     "mode": "L",
+     "e0": 38
+    },
+    "ept": {
+     "v": 16,
+     "ci": 0,
+     "mode": "R",
+     "e0": 50
+    },
+    "Pedges": [
+     46,
+     47,
+     49
+    ],
+    "pf": [
+     25,
+     31,
+     30,
+     32
+    ],
+    "incised_per_level": {
+     "1": [
+      46,
+      47,
+      49
+     ],
+     "2": [
+      46,
+      47,
+      49,
+      50
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 125,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 24,
+   "m": 39,
+   "flags": {
+    "dev_mirrored_endpoint": 2,
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 37, ('p', 2, 1), [(2, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 2, 0), [(1, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 314, 38, ('p', 2, 0), 0, 1162))",
+    "('i_floor', (('L', 2, 'b1'), 38, 0, 10))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 38, ('p', 2, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 41, 2))"
+   ],
+   "info": {
+    "mincut": 10,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 20,
+     "ci": 2,
+     "mode": "R",
+     "e0": 26
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "R",
+     "e0": 1
+    },
+    "Pedges": [
+     0,
+     35
+    ],
+    "pf": [
+     14,
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      35
+     ],
+     "2": [
+      0,
+      1,
+      35
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 139,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 5,
+   "m": 7,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "ii_parent_outside": 1,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 6, ('p', 0, 0), [(3, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 14, ('p', 0, 1), [(8, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 347, 14, ('p', 0, 1), 0, 200))",
+    "('i_floor', (('L', 2, 'b1'), 14, 0, 6))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 13, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 14, ('p', 0, 1)))"
+   ],
+   "info": {
+    "mincut": 6,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 0,
+     "mode": "R",
+     "e0": 1
+    },
+    "ept": {
+     "v": 3,
+     "ci": 2,
+     "mode": "L",
+     "e0": 5
+    },
+    "Pedges": [
+     3,
+     4
+    ],
+    "pf": [
+     0,
+     2,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      4
+     ],
+     "2": [
+      1,
+      3,
+      4
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 145,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 16,
+   "m": 30,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 36, ('p', 2, 0), [(1, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 39, ('p', 2, 1), [(0, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 362, 36, ('p', 2, 0), 0, 91))",
+    "('i_floor', (('L', 2, 'b1'), 36, 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 36, ('p', 2, 0)))",
+    "('i_pair', (('L', 2, 'b1'), 39, 36, 0, 91))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 3,
+     "mode": "R",
+     "e0": 26
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     20,
+     23
+    ],
+    "pf": [
+     14,
+     11,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      20,
+      23
+     ],
+     "2": [
+      0,
+      20,
+      23
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 149,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 17,
+   "m": 32,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 4,
+    "ii_parent_outside": 2,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 32, ('p', 0, 0), [(28, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 46, ('p', 0, 1), [(31, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 371, 18, ('f', 1), 3, 5))",
+    "('i_dist', (('L', 2, 'b1'), 371, 43, ('f', 3), 2, 4))",
+    "('i_dist', (('L', 2, 'b1'), 371, 44, ('f', 11), 1, 5))",
+    "('i_dist', (('L', 2, 'b1'), 371, 46, ('p', 0, 1), 0, 6))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "R",
+     "e0": 14
+    },
+    "ept": {
+     "v": 6,
+     "ci": 0,
+     "mode": "L",
+     "e0": 17
+    },
+    "Pedges": [
+     1,
+     15
+    ],
+    "pf": [
+     10,
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      15
+     ],
+     "2": [
+      1,
+      2,
+      3,
+      14,
+      15,
+      22
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 154,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 15,
+   "m": 26,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 30, ('p', 2, 0), [(37, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 35, ('p', 2, 1), [(19, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 384, 30, ('p', 2, 0), 0, 342))",
+    "('i_floor', (('L', 2, 'b1'), 30, 0, 4))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 30, ('p', 2, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 32, 2))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 10,
+     "ci": 1,
+     "mode": "L",
+     "e0": 18
+    },
+    "Pedges": [
+     10,
+     22
+    ],
+    "pf": [
+     1,
+     2,
+     7
+    ],
+    "incised_per_level": {
+     "1": [
+      10,
+      22
+     ],
+     "2": [
+      9,
+      10,
+      18,
+      22
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 156,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 15,
+   "m": 17,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 388, 5, ('f', 0), 1290, 3))",
+    "('i_floor', (('L', 1, 'b1'), 5, 23, 0))",
+    "('i_dist', (('L', 1, 'b1'), 388, 6, ('f', 3), 1291, 4))",
+    "('i_floor', (('L', 1, 'b1'), 6, 23, 0))",
+    "('i_dist', (('L', 1, 'b1'), 388, 7, ('p', 0, 0), 1289, 2))",
+    "('i_floor', (('L', 1, 'b1'), 7, 23, 0))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": true,
+    "eps": {
+     "v": 7,
+     "ci": 1,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [
+     5
+    ],
+    "pf": [
+     1,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      5
+     ]
+    }
+   }
+  },
+  {
+   "seed": 164,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 19,
+   "m": 33,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "ii_parent_outside": 1,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 30, ('p', 0, 0), [(48, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 0, 1), [(4, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 405, 38, ('p', 0, 1), 0, 596))",
+    "('i_floor', (('L', 2, 'b1'), 38, 0, 6))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 37, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 38, ('p', 0, 1)))"
+   ],
+   "info": {
+    "mincut": 6,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 0,
+     "mode": "R",
+     "e0": 24
+    },
+    "ept": {
+     "v": 2,
+     "ci": 1,
+     "mode": "L",
+     "e0": 7
+    },
+    "Pedges": [
+     2,
+     20
+    ],
+    "pf": [
+     1,
+     2,
+     8
+    ],
+    "incised_per_level": {
+     "1": [
+      2,
+      20
+     ],
+     "2": [
+      2,
+      20,
+      24
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 171,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 17,
+   "m": 28,
+   "flags": {
+    "struct_merge": 4,
+    "i_dist": 2,
+    "i_floor": 1,
+    "struct_merged_with_source": 2,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 23, ('p', 0, 1), [(5, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 33, ('p', 0, 0), [(0, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 421, 33, ('p', 0, 0), 0, 102))",
+    "('i_floor', (('L', 2, 'b1'), 33, 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 33, ('p', 0, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 36, 2))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 4,
+     "mode": "L",
+     "e0": 2
+    },
+    "ept": {
+     "v": 16,
+     "ci": 0,
+     "mode": "L",
+     "e0": 27
+    },
+    "Pedges": [
+     0,
+     8,
+     21,
+     23
+    ],
+    "pf": [
+     0,
+     1,
+     12,
+     7,
+     8
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      8,
+      21,
+      23
+     ],
+     "2": [
+      0,
+      2,
+      8,
+      18,
+      21,
+      23
+     ],
+     "3": [
+      0,
+      2,
+      8,
+      18,
+      21,
+      23,
+      27
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 172,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 8,
+   "m": 14,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 3,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 3,
+    "iii_not_tree": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 15, ('p', 0, 1), [(0, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 21, ('p', 0, 0), [(3, 1), (14, 0)]))",
+    "('i_dist', (('L', 2, 'b1'), 427, 15, ('p', 0, 1), 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 427, 25, ('f', 7), 1, 2))",
+    "('i_dist', (('L', 2, 'b1'), 427, 26, ('p', 1, 1), 1, 3))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 15, ('p', 0, 1)))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 0,
+     "ci": 4,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     1,
+     2
+    ],
+    "pf": [
+     0,
+     2,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      2
+     ],
+     "2": [
+      0,
+      1,
+      2,
+      8,
+      9
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 176,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 29,
+   "m": 66,
+   "flags": {
+    "dev_mirrored_endpoint": 2,
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (437, 'l'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 14,
+     "ci": 0,
+     "mode": "R",
+     "e0": 37
+    },
+    "ept": {
+     "v": 21,
+     "ci": 3,
+     "mode": "R",
+     "e0": 63
+    },
+    "Pedges": [
+     41,
+     49,
+     50,
+     61
+    ],
+    "pf": [
+     28,
+     29,
+     34,
+     33,
+     35
+    ],
+    "incised_per_level": {
+     "1": [
+      41,
+      49,
+      50,
+      61
+     ],
+     "2": [
+      12,
+      41,
+      44,
+      47,
+      49,
+      50,
+      52,
+      61,
+      62
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 181,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 13,
+   "m": 12,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 450, 2, ('p', 0, 0), 481, 81))",
+    "('i_floor', (('L', 1, 'b1'), 2, 12, 2))",
+    "('iii_noparent', (('L', 1, 'b1'), 2))",
+    "('iii_not_tree', (('L', 1, 'b1'), 450))",
+    "('i_pair', (('L', 1, 'b1'), 3, 2, 481, 81))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 1,
+    "e0_same": true,
+    "eps": {
+     "v": 3,
+     "ci": 3,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 12,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 182,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 11,
+   "m": 14,
+   "flags": {
+    "struct_merge": 4,
+    "i_dist": 3,
+    "i_floor": 3,
+    "ii_parent_outside": 5,
+    "struct_merged_with_source": 2,
+    "iii_not_tree": 2,
+    "i_pair": 1,
+    "i_len": 2,
+    "len_lt_trueA1": 2,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 9, ('p', 0, 1), [(16, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 15, ('p', 0, 0), [(0, 0), (3, 0), (4, 0), (6, 0), (8, 0), (10, 0), (12, 0), (14, 1), (18, 0), (20, 0)]))",
+    "('struct_merge', (('L', 2, 'b1'), 12, ('p', 2, 0), [(24, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 19, ('p', 2, 1), [(22, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 453, 15, ('p', 0, 0), 0, 394))",
+    "('i_floor', (('L', 2, 'b1'), 15, 0, 7))"
+   ],
+   "info": {
+    "mincut": 7,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 7,
+     "ci": 2,
+     "mode": "L",
+     "e0": 12
+    },
+    "Pedges": [
+     7,
+     11
+    ],
+    "pf": [
+     0,
+     2,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      7,
+      11
+     ],
+     "2": [
+      7,
+      8,
+      11,
+      12
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 190,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 16,
+   "m": 28,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 26, ('p', 0, 1), [(41, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 34, ('p', 0, 0), [(3, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 471, 34, ('p', 0, 0), 0, 362))",
+    "('i_floor', (('L', 2, 'b1'), 34, 0, 4))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 34, ('p', 0, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 35, 2))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 20
+    },
+    "ept": {
+     "v": 9,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "Pedges": [
+     0,
+     1,
+     18
+    ],
+    "pf": [
+     2,
+     1,
+     0,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      1,
+      18
+     ],
+     "2": [
+      0,
+      1,
+      18,
+      20
+     ],
+     "3": [
+      0,
+      1,
+      9,
+      15,
+      18,
+      24
+     ]
+    },
+    "levels": 3,
+    "n_results": 7,
+    "overlap": 1,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 202,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 15,
+   "m": 21,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 497, 9, ('f', 0), 1682, 62))",
+    "('i_floor', (('L', 1, 'b1'), 9, 28, 1))",
+    "('i_dist', (('L', 1, 'b1'), 497, 10, ('f', 1), 1683, 63))",
+    "('i_floor', (('L', 1, 'b1'), 10, 28, 1))",
+    "('i_dist', (('L', 1, 'b1'), 497, 11, ('f', 3), 1683, 63))",
+    "('i_floor', (('L', 1, 'b1'), 11, 28, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 1,
+    "e0_same": true,
+    "eps": {
+     "v": 6,
+     "ci": 3,
+     "mode": "L",
+     "e0": 20
+    },
+    "ept": {
+     "v": 14,
+     "ci": 0,
+     "mode": "L",
+     "e0": 20
+    },
+    "Pedges": [],
+    "pf": [
+     2
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 209,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 21,
+   "m": 21,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 513, 3, ('f', 0), 1586, 2))",
+    "('i_floor', (('L', 1, 'b1'), 3, 24, 0))",
+    "('i_dist', (('L', 1, 'b1'), 513, 5, ('p', 0, 1), 1585, 1))",
+    "('i_floor', (('L', 1, 'b1'), 5, 24, 0))",
+    "('iii_noparent', (('L', 1, 'b1'), 5))",
+    "('iii_not_tree', (('L', 1, 'b1'), 513))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": true,
+    "eps": {
+     "v": 13,
+     "ci": 2,
+     "mode": "L",
+     "e0": 18
+    },
+    "ept": {
+     "v": 19,
+     "ci": 0,
+     "mode": "L",
+     "e0": 18
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 221,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 20,
+   "m": 35,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 6,
+    "i_floor": 5,
+    "ii_parent_outside": 2,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 37, ('p', 3, 0), [(37, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 52, ('p', 3, 1), [(38, 0), (40, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 539, 23, ('f', 6), 259, 389))",
+    "('i_floor', (('L', 2, 'b1'), 23, 2, 3))",
+    "('i_dist', (('L', 2, 'b1'), 539, 24, ('f', 7), 258, 388))",
+    "('i_floor', (('L', 2, 'b1'), 24, 2, 3))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 15,
+     "ci": 2,
+     "mode": "L",
+     "e0": 26
+    },
+    "ept": {
+     "v": 10,
+     "ci": 2,
+     "mode": "L",
+     "e0": 18
+    },
+    "Pedges": [
+     20,
+     30,
+     33
+    ],
+    "pf": [
+     16,
+     15,
+     0,
+     11
+    ],
+    "incised_per_level": {
+     "1": [
+      20,
+      30,
+      33
+     ],
+     "2": [
+      16,
+      18,
+      20,
+      22,
+      23,
+      25,
+      30,
+      32,
+      33
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 222,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 11,
+   "m": 19,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 4,
+    "i_floor": 4,
+    "ii_parent_outside": 1,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 25, ('p', 0, 0), [(23, 1), (25, 0)]))",
+    "('struct_merge', (('L', 2, 'b1'), 32, ('p', 0, 1), [(10, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 542, 27, ('f', 6), 3, 76))",
+    "('i_floor', (('L', 2, 'b1'), 27, 0, 1))",
+    "('i_dist', (('L', 2, 'b1'), 542, 29, ('f', 9), 2, 77))",
+    "('i_floor', (('L', 2, 'b1'), 29, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 7,
+     "ci": 3,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 0,
+     "ci": 6,
+     "mode": "L",
+     "e0": 2
+    },
+    "Pedges": [
+     0,
+     1
+    ],
+    "pf": [
+     1,
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      1
+     ],
+     "2": [
+      0,
+      1,
+      5,
+      11,
+      14,
+      16
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 230,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 28,
+   "m": 40,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 3, 'b1'), 32, ('p', 3, 1), [(70, 1)]))",
+    "('struct_merge', (('L', 3, 'b1'), 37, ('p', 3, 0), [(66, 2)]))",
+    "('i_dist', (('L', 3, 'b1'), 565, 32, ('p', 3, 1), 0, 405))",
+    "('i_floor', (('L', 3, 'b1'), 32, 0, 3))",
+    "('i_dist', (('L', 3, 'b1'), 565, 42, ('p', 2, 1), 135, 270))",
+    "('i_floor', (('L', 3, 'b1'), 42, 1, 2))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 22,
+     "ci": 2,
+     "mode": "R",
+     "e0": 35
+    },
+    "Pedges": [
+     8,
+     19,
+     33
+    ],
+    "pf": [
+     1,
+     2,
+     6,
+     13
+    ],
+    "incised_per_level": {
+     "1": [
+      8,
+      19,
+      33
+     ],
+     "2": [
+      7,
+      8,
+      19,
+      33
+     ],
+     "3": [
+      7,
+      8,
+      19,
+      23,
+      33,
+      35
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 233,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 12,
+   "m": 17,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 13, ('p', 0, 1), [(5, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 19, ('p', 0, 0), [(2, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 572, 13, ('p', 0, 1), 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 572, 22, ('p', 1, 1), 1, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 13, ('p', 0, 1)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 20, 2))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 1,
+     "mode": "L",
+     "e0": 2
+    },
+    "ept": {
+     "v": 1,
+     "ci": 1,
+     "mode": "R",
+     "e0": 4
+    },
+    "Pedges": [
+     1,
+     3
+    ],
+    "pf": [
+     2,
+     0,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      3
+     ],
+     "2": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 251,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 22,
+   "m": 27,
+   "flags": {
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (611, 'r'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 11,
+     "ci": 1,
+     "mode": "L",
+     "e0": 12
+    },
+    "Pedges": [
+     3,
+     11,
+     18
+    ],
+    "pf": [
+     0,
+     1,
+     3,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      11,
+      18
+     ],
+     "2": [
+      3,
+      6,
+      11,
+      18
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 257,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 8,
+   "m": 14,
+   "flags": {
+    "struct_merge": 4,
+    "i_dist": 10,
+    "i_floor": 10,
+    "ii_parent_outside": 5,
+    "struct_merged_with_source": 2,
+    "iii_not_tree": 2,
+    "i_pair": 2,
+    "i_len": 2,
+    "len_lt_trueA1": 2,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 15, ('p', 0, 1), [(11, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 21, ('p', 0, 0), [(8, 0), (24, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 18, ('p', 2, 0), [(12, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 25, ('p', 2, 1), [(17, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 624, 9, ('f', 0), 4, 215))",
+    "('i_floor', (('L', 2, 'b1'), 9, 0, 4))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 2,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 7,
+     "ci": 1,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     8,
+     12
+    ],
+    "pf": [
+     5,
+     7,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      8,
+      12
+     ],
+     "2": [
+      5,
+      6,
+      8,
+      12
+     ]
+    },
+    "levels": 2,
+    "n_results": 3,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 262,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 9,
+   "m": 14,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "ii_parent_outside": 1,
+    "struct_merged_with_source": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 12, ('p', 0, 1), [(20, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 20, ('p', 0, 0), [(7, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 638, 20, ('p', 0, 0), 0, 113))",
+    "('i_floor', (('L', 2, 'b1'), 20, 0, 2))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 14, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 20, ('p', 0, 0)))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 0,
+     "mode": "L",
+     "e0": 10
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "R",
+     "e0": 7
+    },
+    "Pedges": [
+     3,
+     4,
+     13
+    ],
+    "pf": [
+     3,
+     4,
+     2,
+     6
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      4,
+      13
+     ],
+     "2": [
+      3,
+      4,
+      10,
+      13
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 273,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 42,
+   "m": 59,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 42, ('p', 2, 0), [(82, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 47, ('p', 2, 1), [(102, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 671, 42, ('p', 2, 0), 0, 714))",
+    "('i_floor', (('L', 2, 'b1'), 42, 0, 4))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 42, ('p', 2, 0)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 45, 2))"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 21,
+     "ci": 0,
+     "mode": "L",
+     "e0": 31
+    },
+    "ept": {
+     "v": 36,
+     "ci": 0,
+     "mode": "L",
+     "e0": 41
+    },
+    "Pedges": [
+     11,
+     22
+    ],
+    "pf": [
+     9,
+     4,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      11,
+      22
+     ],
+     "2": [
+      11,
+      22,
+      41,
+      51
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 276,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 16,
+   "m": 30,
+   "flags": {
+    "i_dist": 16,
+    "i_floor": 16,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 677, 17, ('f', 1), 2178, 90))",
+    "('i_floor', (('L', 1, 'b1'), 17, 25, 1))",
+    "('i_dist', (('L', 1, 'b1'), 677, 18, ('f', 3), 2178, 90))",
+    "('i_floor', (('L', 1, 'b1'), 18, 25, 1))",
+    "('i_dist', (('L', 1, 'b1'), 677, 19, ('f', 4), 2178, 90))",
+    "('i_floor', (('L', 1, 'b1'), 19, 25, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": true,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 17
+    },
+    "ept": {
+     "v": 2,
+     "ci": 2,
+     "mode": "L",
+     "e0": 17
+    },
+    "Pedges": [
+     1,
+     15
+    ],
+    "pf": [
+     2,
+     0,
+     15
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      15
+     ]
+    }
+   }
+  },
+  {
+   "seed": 283,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 20,
+   "m": 33,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 4,
+    "i_dist": 5,
+    "i_floor": 4,
+    "struct_merged_with_source": 2,
+    "ii_parent_outside": 4,
+    "iii_not_tree": 2,
+    "i_len": 2,
+    "len_lt_trueA1": 2,
+    "i_pair": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 26, ('p', 0, 0), [(41, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 40, ('p', 0, 1), [(36, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 692, 26, ('p', 0, 0), 0, 228))",
+    "('i_floor', (('L', 2, 'b1'), 26, 0, 2))",
+    "('i_dist', (('L', 2, 'b1'), 692, 28, ('p', 1, 0), 1, 227))",
+    "('i_floor', (('L', 2, 'b1'), 28, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 14,
+     "ci": 3,
+     "mode": "R",
+     "e0": 20
+    },
+    "ept": {
+     "v": 19,
+     "ci": 1,
+     "mode": "L",
+     "e0": 29
+    },
+    "Pedges": [
+     18,
+     25,
+     26,
+     30
+    ],
+    "pf": [
+     6,
+     9,
+     13,
+     12,
+     14
+    ],
+    "incised_per_level": {
+     "1": [
+      18,
+      25,
+      26,
+      30
+     ],
+     "2": [
+      18,
+      20,
+      25,
+      26,
+      27,
+      30
+     ],
+     "3": [
+      18,
+      25,
+      26,
+      27,
+      29,
+      30
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "overlap": 1,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 287,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 11,
+   "m": 12,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "struct_merged_with_source": 1,
+    "i_pair": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 10, ('p', 2, 0), [(8, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 13, ('p', 2, 1), [(9, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 704, 10, ('p', 2, 0), 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 10, ('p', 2, 0)))",
+    "('i_pair', (('L', 2, 'b1'), 10, 13, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 10,
+     "ci": 0,
+     "mode": "L",
+     "e0": 4
+    },
+    "Pedges": [
+     0,
+     9
+    ],
+    "pf": [
+     2,
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      9
+     ],
+     "2": [
+      0,
+      4,
+      9
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 295,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 23,
+   "m": 38,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "struct_merged_with_source": 1,
+    "i_len": 1,
+    "len_lt_trueA1": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 2, 0), [(68, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 41, ('p', 2, 1), [(69, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 724, 38, ('p', 2, 0), 0, 114))",
+    "('i_floor', (('L', 2, 'b1'), 38, 0, 1))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 38, ('p', 2, 0)))",
+    "('i_len', (('L', 2), 2, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 15,
+     "ci": 1,
+     "mode": "L",
+     "e0": 14
+    },
+    "ept": {
+     "v": 19,
+     "ci": 0,
+     "mode": "L",
+     "e0": 34
+    },
+    "Pedges": [
+     16,
+     22
+    ],
+    "pf": [
+     1,
+     16,
+     8
+    ],
+    "incised_per_level": {
+     "1": [
+      16,
+      22
+     ],
+     "2": [
+      16,
+      22,
+      34
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 296,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 21,
+   "m": 45,
+   "flags": {
+    "struct_merge": 4,
+    "i_dist": 7,
+    "i_floor": 5,
+    "ii_parent_outside": 4,
+    "struct_merged_with_source": 2,
+    "iii_not_tree": 2,
+    "i_len": 2,
+    "len_lt_trueA1": 2,
+    "i_pair": 1,
+    "iv_value": 1,
+    "iv_path_through_merge": 1,
+    "iv_cut_value": 1,
+    "iv_cut_not_separating": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 58, ('p', 6, 0), [(8, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 69, ('p', 6, 1), [(77, 0), (78, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 728, 56, ('p', 5, 0), 460, 1076))",
+    "('i_floor', (('L', 2, 'b1'), 56, 3, 7))",
+    "('i_dist', (('L', 2, 'b1'), 728, 58, ('p', 6, 0), 0, 1074))",
+    "('i_floor', (('L', 2, 'b1'), 58, 0, 7))"
+   ],
+   "info": {
+    "mincut": 7,
+    "P_len": 7,
+    "e0_same": false,
+    "eps": {
+     "v": 7,
+     "ci": 4,
+     "mode": "L",
+     "e0": 29
+    },
+    "ept": {
+     "v": 17,
+     "ci": 0,
+     "mode": "L",
+     "e0": 4
+    },
+    "Pedges": [
+     2,
+     27,
+     28,
+     34,
+     39,
+     40
+    ],
+    "pf": [
+     23,
+     21,
+     22,
+     0,
+     3,
+     9,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      2,
+      27,
+      28,
+      34,
+      39,
+      40
+     ],
+     "2": [
+      2,
+      3,
+      4,
+      27,
+      28,
+      34,
+      37,
+      39,
+      40,
+      43
+     ],
+     "3": [
+      2,
+      3,
+      4,
+      15,
+      18,
+      27,
+      28,
+      29,
+      30,
+      31,
+      34,
+      37,
+      39,
+      40,
+      43
+     ]
+    },
+    "levels": 3,
+    "n_results": 6,
+    "reported": 0,
+    "cut_value": 0
+   }
+  },
+  {
+   "seed": 299,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "face",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "struct_merge": 2,
+    "i_dist": 2,
+    "struct_merged_with_source": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 25, ('p', 2, 1), [(23, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 26, ('p', 2, 0), [(18, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 738, 25, ('p', 2, 1), 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 738, 31, ('p', 1, 1), 1, 2))",
+    "('struct_merged_with_source', (('L', 2, 'b1'), 25, ('p', 2, 1)))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 28, 2))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 0,
+     "mode": "L",
+     "e0": 18
+    },
+    "ept": {
+     "v": 10,
+     "ci": 1,
+     "mode": "R",
+     "e0": 11
+    },
+    "Pedges": [
+     8,
+     9
+    ],
+    "pf": [
+     8,
+     9,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      8,
+      9
+     ],
+     "2": [
+      8,
+      9,
+      11,
+      19
+     ]
+    },
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  }
+ ]
+}

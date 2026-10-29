@@ -1,0 +1,6112 @@
+{
+ "opts": {
+  "mode": "Msmall",
+  "variant": "fixed",
+  "tiebreak": "minid",
+  "pairs": 1,
+  "pcommon": 0.15,
+  "pfar": 0.7,
+  "e0rule": "formal"
+ },
+ "start": 0,
+ "count": 3000,
+ "runs": 1,
+ "families": {
+  "messy": 359,
+  "wheel": 360,
+  "delaunay": 389,
+  "cycle_chords": 349,
+  "tree_plus": 379,
+  "grid": 397,
+  "nested": 371,
+  "rings": 396
+ },
+ "family_fail": {
+  "messy": 350,
+  "wheel": 359,
+  "delaunay": 389,
+  "cycle_chords": 349,
+  "tree_plus": 309,
+  "grid": 395,
+  "nested": 366,
+  "rings": 396
+ },
+ "flag_instances": {
+  "levels=None": 2901,
+  "i_dist": 2909,
+  "i_floor": 2518,
+  "iii_noparent": 2909,
+  "iii_not_tree": 2909,
+  "i_pair": 2830,
+  "fail_exception": 2901,
+  "rc_other": 2899,
+  "rc_wrong_or_no_answer": 2901,
+  "levels=1": 95,
+  "dev_mirrored_endpoint": 53,
+  "stat_e0_same": 20,
+  "rc_D2_e0_eq_elast": 14,
+  "levels=2": 4,
+  "stat_Plen>=8": 5
+ },
+ "nfail": 2913,
+ "secs": 8.951375961303711,
+ "fails": [
+  {
+   "seed": 0,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 20,
+   "m": 31,
+   "flags": {
+    "i_dist": 7,
+    "i_floor": 7,
+    "iii_noparent": 7,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 1, 1, ('f', 0), 2, 86))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 1, 4, ('f', 3), 2, 86))",
+    "('i_floor', (('L0',), 4, 0, 1))",
+    "('i_dist', (('L0',), 1, 5, ('f', 4), 2, 85))",
+    "('i_floor', (('L0',), 5, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 1,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 7,
+   "m": 11,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 2, 1, ('f', 0), 2, 62))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 2, 2, ('f', 1), 2, 63))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 2, 4, ('f', 3), 2, 61))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 2,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 51,
+   "m": 118,
+   "flags": {
+    "i_dist": 63,
+    "i_floor": 61,
+    "iii_noparent": 33,
+    "iii_not_tree": 1,
+    "i_pair": 66,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 3, 1, ('f', 0), 3, 579))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 3, 3, ('f', 2), 2, 578))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 3, 5, ('f', 4), 3, 579))",
+    "('i_floor', (('L0',), 5, 0, 2))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 3,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 64,
+   "m": 68,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 4, 1, ('f', 0), 4, 2012))",
+    "('i_floor', (('L0',), 1, 0, 10))",
+    "('i_dist', (('L0',), 4, 2, ('f', 1), 2, 1006))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 4, 3, ('f', 2), 2, 1006))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 10
+   }
+  },
+  {
+   "seed": 4,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 54,
+   "m": 67,
+   "flags": {
+    "i_dist": 14,
+    "i_floor": 14,
+    "iii_noparent": 14,
+    "iii_not_tree": 1,
+    "i_pair": 14,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 5, 1, ('f', 0), 2, 568))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 5, 2, ('f', 1), 4, 1137))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 5, 3, ('f', 2), 4, 758))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 5,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 70,
+   "m": 71,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 6, 1, ('f', 0), 2, 427))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 6, 3, ('f', 2), 2, 214))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 6,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "i_pair": 1,
+    "i_dist": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_pair', (('L', 1, 'b1'), 7, 8, 1, 3))",
+    "('i_dist', (('L', 1, 'b2'), 8, 4, ('f', 1), 2, 3))",
+    "('i_dist', (('L', 1, 'b2'), 8, 7, ('p', 1, 0), 1, 3))",
+    "('iii_noparent', (('L', 1, 'b2'), 4))",
+    "('iii_noparent', (('L', 1, 'b2'), 7))",
+    "('iii_not_tree', (('L', 1, 'b2'), 8))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 10,
+     "ci": 0,
+     "mode": "L",
+     "e0": 10
+    },
+    "ept": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "Pedges": [
+     7
+    ],
+    "pf": [
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      7
+     ]
+    }
+   }
+  },
+  {
+   "seed": 7,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 21,
+   "m": 30,
+   "flags": {
+    "i_dist": 10,
+    "i_floor": 10,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 10,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 9, 1, ('f', 0), 10, 2055))",
+    "('i_floor', (('L0',), 1, 0, 25))",
+    "('i_dist', (('L0',), 9, 2, ('f', 1), 8, 1644))",
+    "('i_floor', (('L0',), 2, 0, 20))",
+    "('i_dist', (('L0',), 9, 3, ('f', 2), 6, 1233))",
+    "('i_floor', (('L0',), 3, 0, 15))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 8,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 20,
+   "m": 23,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 10, 1, ('f', 0), 2, 135))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 10, 3, ('f', 2), 2, 203))",
+    "('i_floor', (('L0',), 3, 0, 3))",
+    "('i_dist', (('L0',), 10, 4, ('f', 3), 2, 68))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 9,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 25,
+   "m": 41,
+   "flags": {
+    "i_dist": 17,
+    "i_floor": 17,
+    "iii_noparent": 17,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 11, 1, ('f', 0), 2, 109))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 11, 2, ('f', 1), 4, 650))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 11, 3, ('f', 2), 4, 759))",
+    "('i_floor', (('L0',), 3, 0, 7))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 10,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 6,
+   "m": 7,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 12, 2, ('f', 1), 2, 22))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 12, 3, ('f', 2), 2, 22))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 11,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 78,
+   "m": 122,
+   "flags": {
+    "i_dist": 40,
+    "i_floor": 38,
+    "iii_noparent": 24,
+    "iii_not_tree": 1,
+    "i_pair": 45,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 13, 1, ('f', 0), 2, 647))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 13, 3, ('f', 2), 2, 970))",
+    "('i_floor', (('L0',), 3, 0, 3))",
+    "('i_dist', (('L0',), 13, 4, ('f', 3), 2, 653))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 12,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 89,
+   "m": 152,
+   "flags": {
+    "i_dist": 64,
+    "i_floor": 64,
+    "iii_noparent": 64,
+    "iii_not_tree": 1,
+    "i_pair": 64,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 14, 1, ('f', 0), 18, 12226))",
+    "('i_floor', (('L0',), 1, 0, 31))",
+    "('i_dist', (('L0',), 14, 2, ('f', 1), 16, 11831))",
+    "('i_floor', (('L0',), 2, 0, 30))",
+    "('i_dist', (('L0',), 14, 3, ('f', 2), 16, 11436))",
+    "('i_floor', (('L0',), 3, 0, 29))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 13,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 26,
+   "m": 27,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 15, 1, ('f', 0), 2, 163))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 15, 2, ('f', 1), 2, 406))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_noparent', (('L0',), 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 14,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 36,
+   "m": 60,
+   "flags": {
+    "i_dist": 25,
+    "i_floor": 25,
+    "iii_noparent": 25,
+    "iii_not_tree": 1,
+    "i_pair": 25,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 16, 2, ('f', 1), 2, 158))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 16, 3, ('f', 2), 2, 158))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 16, 4, ('f', 3), 2, 158))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 15,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 8,
+   "m": 9,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 18, 4, ('f', 0), 2, 31))",
+    "('i_floor', (('L', 1, 'b1'), 4, 0, 1))",
+    "('i_dist', (('L', 1, 'b1'), 18, 5, ('f', 1), 2, 30))",
+    "('i_floor', (('L', 1, 'b1'), 5, 0, 1))",
+    "('i_dist', (('L', 1, 'b1'), 18, 7, ('p', 0, 1), 1, 31))",
+    "('i_floor', (('L', 1, 'b1'), 7, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 2,
+     "ci": 1,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 4,
+     "ci": 0,
+     "mode": "L",
+     "e0": 4
+    },
+    "Pedges": [],
+    "pf": [
+     2
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 16,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 36,
+   "m": 48,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 2,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 8,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 19, 5, ('f', 4), 3, 135))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 19, 9, ('f', 8), 4, 137))",
+    "('i_floor', (('L0',), 9, 0, 1))",
+    "('i_dist', (('L0',), 19, 10, ('f', 9), 4, 5))",
+    "('i_dist', (('L0',), 19, 13, ('f', 12), 4, 6))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 17,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 18,
+   "m": 28,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 11,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 11,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 20, 2, ('f', 1), 2, 301))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 20, 3, ('f', 2), 2, 376))",
+    "('i_floor', (('L0',), 3, 0, 5))",
+    "('i_dist', (('L0',), 20, 4, ('f', 3), 2, 527))",
+    "('i_floor', (('L0',), 4, 0, 7))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 18,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 18,
+   "m": 31,
+   "flags": {
+    "i_dist": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 21, 8, ('f', 7), 2, 3))",
+    "('i_dist', (('L0',), 21, 10, ('f', 9), 2, 3))",
+    "('iii_noparent', (('L0',), 8))",
+    "('iii_noparent', (('L0',), 10))",
+    "('iii_not_tree', (('L0',), 21))",
+    "('i_pair', (('L0',), 8, 1, 2, 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 19,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 30,
+   "m": 60,
+   "flags": {
+    "i_dist": 26,
+    "i_floor": 1,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 22, 1, ('f', 0), 6, 8))",
+    "('i_dist', (('L0',), 22, 2, ('f', 1), 6, 7))",
+    "('i_dist', (('L0',), 22, 3, ('f', 2), 4, 5))",
+    "('i_dist', (('L0',), 22, 8, ('f', 7), 2, 3))",
+    "('i_dist', (('L0',), 22, 9, ('f', 8), 2, 4))",
+    "('i_dist', (('L0',), 22, 12, ('f', 11), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 20,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 24,
+   "m": 46,
+   "flags": {
+    "i_dist": 23,
+    "i_floor": 23,
+    "iii_noparent": 23,
+    "iii_not_tree": 1,
+    "i_pair": 23,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 23, 1, ('f', 0), 2, 587))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 23, 2, ('f', 1), 2, 587))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 23, 3, ('f', 2), 2, 236))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 21,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 17,
+   "m": 32,
+   "flags": {
+    "i_dist": 10,
+    "i_floor": 8,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 16,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 24, 1, ('f', 0), 2, 248))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 24, 3, ('f', 2), 2, 166))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 24, 4, ('f', 3), 2, 83))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 22,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "face",
+   "n": 23,
+   "m": 44,
+   "flags": {
+    "i_dist": 22,
+    "i_floor": 22,
+    "iii_noparent": 22,
+    "iii_not_tree": 1,
+    "i_pair": 22,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 25, 1, ('f', 0), 2, 113))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 25, 2, ('f', 1), 2, 113))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 25, 3, ('f', 2), 2, 113))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 23,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 42,
+   "m": 44,
+   "flags": {
+    "i_pair": 1,
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_pair', (('L', 1, 'b1'), 5, 10, 2, 4))",
+    "('i_dist', (('L', 1, 'b2'), 27, 10, ('p', 1, 1), 1, 3))",
+    "('iii_noparent', (('L', 1, 'b2'), 10))",
+    "('iii_not_tree', (('L', 1, 'b2'), 27))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 1,
+     "mode": "L",
+     "e0": 10
+    },
+    "ept": {
+     "v": 36,
+     "ci": 2,
+     "mode": "L",
+     "e0": 30
+    },
+    "Pedges": [
+     27
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      27
+     ]
+    }
+   }
+  },
+  {
+   "seed": 24,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 24,
+   "m": 37,
+   "flags": {
+    "i_dist": 14,
+    "i_floor": 14,
+    "iii_noparent": 14,
+    "iii_not_tree": 1,
+    "i_pair": 14,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 28, 2, ('f', 1), 2, 199))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 28, 3, ('f', 2), 2, 199))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 28, 4, ('f', 3), 2, 199))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 25,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 28,
+   "m": 41,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 1,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 29, 11, ('f', 10), 2, 223))",
+    "('i_floor', (('L0',), 11, 0, 2))",
+    "('i_dist', (('L0',), 29, 14, ('f', 13), 3, 4))",
+    "('iii_noparent', (('L0',), 11))",
+    "('iii_noparent', (('L0',), 14))",
+    "('iii_not_tree', (('L0',), 29))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 26,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 11,
+   "m": 13,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 30, 1, ('f', 0), 2, 39))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 30, 3, ('f', 2), 2, 39))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 30, 4, ('f', 3), 2, 78))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 27,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 22,
+   "m": 36,
+   "flags": {
+    "i_dist": 15,
+    "i_floor": 15,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 15,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 31, 1, ('f', 0), 6, 574))",
+    "('i_floor', (('L0',), 1, 0, 6))",
+    "('i_dist', (('L0',), 31, 2, ('f', 1), 4, 765))",
+    "('i_floor', (('L0',), 2, 0, 8))",
+    "('i_dist', (('L0',), 31, 3, ('f', 2), 4, 478))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 28,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 44,
+   "m": 74,
+   "flags": {
+    "i_dist": 31,
+    "i_floor": 31,
+    "iii_noparent": 31,
+    "iii_not_tree": 1,
+    "i_pair": 31,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 32, 1, ('f', 0), 4, 388))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 32, 2, ('f', 1), 6, 582))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 32, 3, ('f', 2), 6, 582))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 29,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 66,
+   "m": 100,
+   "flags": {
+    "i_dist": 35,
+    "i_floor": 35,
+    "iii_noparent": 35,
+    "iii_not_tree": 1,
+    "i_pair": 35,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 33, 1, ('f', 0), 4, 1070))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 33, 2, ('f', 1), 6, 1605))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 33, 3, ('f', 2), 6, 1873))",
+    "('i_floor', (('L0',), 3, 0, 7))"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 31,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 55,
+   "m": 90,
+   "flags": {
+    "i_dist": 35,
+    "i_floor": 35,
+    "iii_noparent": 29,
+    "iii_not_tree": 1,
+    "i_pair": 29,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 36, 1, ('f', 0), 2, 238))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 36, 2, ('f', 1), 2, 237))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 36, 3, ('f', 2), 4, 710))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 32,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 30,
+   "m": 52,
+   "flags": {
+    "i_dist": 23,
+    "i_floor": 23,
+    "iii_noparent": 23,
+    "iii_not_tree": 1,
+    "i_pair": 23,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 37, 1, ('f', 0), 2, 676))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 37, 2, ('f', 1), 4, 1352))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 37, 3, ('f', 2), 4, 1352))",
+    "('i_floor', (('L0',), 3, 0, 10))"
+   ],
+   "info": {
+    "mincut": 10
+   }
+  },
+  {
+   "seed": 33,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 12,
+   "m": 17,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 38, 1, ('f', 0), 2, 472))",
+    "('i_floor', (('L0',), 1, 0, 10))",
+    "('i_dist', (('L0',), 38, 2, ('f', 1), 2, 236))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 38, 3, ('f', 2), 2, 472))",
+    "('i_floor', (('L0',), 3, 0, 10))"
+   ],
+   "info": {
+    "mincut": 10
+   }
+  },
+  {
+   "seed": 34,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 9,
+   "m": 12,
+   "flags": {
+    "i_dist": 4,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 40, 7, ('f', 4), 2, 4))",
+    "('i_dist', (('L', 1, 'b1'), 40, 8, ('p', 0, 0), 2, 4))",
+    "('i_dist', (('L', 1, 'b1'), 40, 10, ('p', 1, 0), 1, 3))",
+    "('i_dist', (('L', 1, 'b1'), 40, 12, ('p', 2, 0), 2, 4))",
+    "('iii_noparent', (('L', 1, 'b1'), 10))",
+    "('iii_not_tree', (('L', 1, 'b1'), 40))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [
+     4,
+     7
+    ],
+    "pf": [
+     0,
+     2,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      4,
+      7
+     ]
+    }
+   }
+  },
+  {
+   "seed": 35,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 20,
+   "m": 24,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 41, 1, ('f', 0), 4, 692))",
+    "('i_floor', (('L0',), 1, 0, 10))",
+    "('i_dist', (('L0',), 41, 2, ('f', 1), 4, 692))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 41, 3, ('f', 2), 2, 346))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 36,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 56,
+   "m": 68,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 42, 9, ('f', 8), 2, 3))",
+    "('iii_noparent', (('L0',), 9))",
+    "('iii_not_tree', (('L0',), 42))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 37,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 63,
+   "m": 114,
+   "flags": {
+    "i_dist": 17,
+    "i_floor": 5,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 52,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 43, 3, ('f', 2), 3, 4))",
+    "('i_dist', (('L0',), 43, 4, ('f', 3), 2, 5))",
+    "('i_dist', (('L0',), 43, 9, ('f', 8), 5, 6))",
+    "('i_dist', (('L0',), 43, 12, ('f', 11), 3, 586))",
+    "('i_floor', (('L0',), 12, 0, 2))",
+    "('i_dist', (('L0',), 43, 16, ('f', 15), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 38,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 11,
+   "m": 15,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 44, 1, ('f', 0), 2, 85))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 44, 3, ('f', 2), 2, 85))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 44, 4, ('f', 3), 2, 86))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 39,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 7,
+   "m": 9,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 45, 2, ('f', 1), 2, 27))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 45, 3, ('f', 2), 2, 54))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 45, 4, ('f', 3), 4, 81))",
+    "('i_floor', (('L0',), 4, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 40,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 57,
+   "m": 89,
+   "flags": {
+    "i_dist": 10,
+    "i_floor": 1,
+    "iii_noparent": 7,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 46, 1, ('f', 0), 3, 5))",
+    "('i_dist', (('L0',), 46, 8, ('f', 7), 2, 6))",
+    "('i_dist', (('L0',), 46, 10, ('f', 9), 3, 6))",
+    "('i_dist', (('L0',), 46, 11, ('f', 10), 3, 5))",
+    "('i_dist', (('L0',), 46, 16, ('f', 15), 2, 5))",
+    "('i_dist', (('L0',), 46, 21, ('f', 20), 2, 6))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 41,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 92,
+   "m": 166,
+   "flags": {
+    "i_dist": 75,
+    "i_floor": 75,
+    "iii_noparent": 75,
+    "iii_not_tree": 1,
+    "i_pair": 75,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 47, 1, ('f', 0), 4, 3827))",
+    "('i_floor', (('L0',), 1, 0, 9))",
+    "('i_dist', (('L0',), 47, 2, ('f', 1), 6, 4253))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 47, 3, ('f', 2), 6, 5528))",
+    "('i_floor', (('L0',), 3, 0, 13))"
+   ],
+   "info": {
+    "mincut": 19
+   }
+  },
+  {
+   "seed": 42,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 30,
+   "m": 50,
+   "flags": {
+    "i_dist": 7,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 48, 8, ('f', 7), 2, 4))",
+    "('i_dist', (('L0',), 48, 9, ('f', 8), 3, 4))",
+    "('i_dist', (('L0',), 48, 12, ('f', 11), 2, 3))",
+    "('i_dist', (('L0',), 48, 13, ('f', 12), 3, 4))",
+    "('i_dist', (('L0',), 48, 14, ('f', 13), 4, 6))",
+    "('i_dist', (('L0',), 48, 16, ('f', 15), 4, 5))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 43,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 23,
+   "m": 41,
+   "flags": {
+    "i_dist": 19,
+    "i_floor": 19,
+    "iii_noparent": 19,
+    "iii_not_tree": 1,
+    "i_pair": 19,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 49, 1, ('f', 0), 2, 214))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 49, 2, ('f', 1), 2, 107))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 49, 4, ('f', 3), 2, 213))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 44,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 36,
+   "m": 46,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 2,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 10,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 50, 5, ('f', 4), 3, 132))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 50, 9, ('f', 8), 2, 3))",
+    "('i_dist', (('L0',), 50, 12, ('f', 11), 3, 131))",
+    "('i_floor', (('L0',), 12, 0, 1))",
+    "('iii_noparent', (('L0',), 5))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 45,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 35,
+   "m": 36,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 51, 2, ('f', 1), 2, 217))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 51, 3, ('f', 2), 2, 217))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 46,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 121,
+   "m": 158,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 52, 2, ('f', 1), 3, 440))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 52, 3, ('f', 2), 3, 442))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 52, 4, ('f', 3), 3, 440))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 47,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 60,
+   "m": 87,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 1,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 53, 2, ('f', 1), 3, 237))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 53, 10, ('f', 9), 3, 6))",
+    "('i_dist', (('L0',), 53, 17, ('f', 16), 4, 5))",
+    "('i_dist', (('L0',), 53, 19, ('f', 18), 4, 6))",
+    "('i_dist', (('L0',), 53, 22, ('f', 21), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 48,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 77,
+   "m": 99,
+   "flags": {
+    "i_dist": 23,
+    "i_floor": 23,
+    "iii_noparent": 23,
+    "iii_not_tree": 1,
+    "i_pair": 23,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 54, 1, ('f', 0), 10, 8286))",
+    "('i_floor', (('L0',), 1, 0, 30))",
+    "('i_dist', (('L0',), 54, 2, ('f', 1), 10, 6905))",
+    "('i_floor', (('L0',), 2, 0, 25))",
+    "('i_dist', (('L0',), 54, 3, ('f', 2), 12, 8286))",
+    "('i_floor', (('L0',), 3, 0, 30))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 49,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 21,
+   "m": 36,
+   "flags": {
+    "i_dist": 16,
+    "i_floor": 16,
+    "iii_noparent": 16,
+    "iii_not_tree": 1,
+    "i_pair": 16,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 55, 1, ('f', 0), 2, 566))",
+    "('i_floor', (('L0',), 1, 0, 6))",
+    "('i_dist', (('L0',), 55, 2, ('f', 1), 4, 1037))",
+    "('i_floor', (('L0',), 2, 0, 11))",
+    "('i_dist', (('L0',), 55, 3, ('f', 2), 2, 849))",
+    "('i_floor', (('L0',), 3, 0, 9))"
+   ],
+   "info": {
+    "mincut": 13
+   }
+  },
+  {
+   "seed": 50,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 49,
+   "m": 85,
+   "flags": {
+    "i_dist": 37,
+    "i_floor": 37,
+    "iii_noparent": 37,
+    "iii_not_tree": 1,
+    "i_pair": 37,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 56, 1, ('f', 0), 2, 881))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 56, 3, ('f', 2), 2, 441))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 56, 4, ('f', 3), 2, 662))",
+    "('i_floor', (('L0',), 4, 0, 3))"
+   ],
+   "info": {
+    "mincut": 12
+   }
+  },
+  {
+   "seed": 51,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 33,
+   "m": 39,
+   "flags": {
+    "i_dist": 7,
+    "i_floor": 7,
+    "iii_noparent": 7,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 57, 2, ('f', 1), 2, 113))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 57, 3, ('f', 2), 2, 113))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 57, 4, ('f', 3), 2, 113))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 52,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 68,
+   "m": 71,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 58, 5, ('f', 4), 2, 212))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_not_tree', (('L0',), 58))",
+    "('i_pair', (('L0',), 1, 5, 3, 213))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 53,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 65,
+   "m": 83,
+   "flags": {
+    "i_dist": 19,
+    "i_floor": 19,
+    "iii_noparent": 8,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 59, 1, ('f', 0), 2, 234))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 59, 2, ('f', 1), 2, 235))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 59, 4, ('f', 3), 2, 233))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 54,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 13,
+   "m": 18,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 2,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 60, 3, ('f', 2), 2, 52))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 60, 4, ('f', 3), 2, 52))",
+    "('i_floor', (('L0',), 4, 0, 1))",
+    "('i_dist', (('L0',), 60, 6, ('f', 5), 2, 3))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 55,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 18,
+   "m": 22,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 61, 1, ('f', 0), 2, 64))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 61, 2, ('f', 1), 4, 128))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 61, 3, ('f', 2), 2, 64))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 56,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 43,
+   "m": 73,
+   "flags": {
+    "i_dist": 27,
+    "i_floor": 27,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 31,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 62, 2, ('f', 1), 4, 573))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 62, 3, ('f', 2), 4, 382))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 62, 4, ('f', 3), 3, 383))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 57,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 7,
+   "m": 9,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 63, 1, ('f', 0), 2, 53))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 63, 3, ('f', 2), 2, 131))",
+    "('i_floor', (('L0',), 3, 0, 5))",
+    "('i_dist', (('L0',), 63, 4, ('f', 3), 2, 106))",
+    "('i_floor', (('L0',), 4, 0, 4))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 58,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 29,
+   "m": 30,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 64, 2, ('f', 1), 2, 91))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 64, 3, ('f', 2), 2, 91))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 59,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 62,
+   "m": 63,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 66, 7, ('p', 0, 1), 1, 2))",
+    "('iii_noparent', (('L', 1, 'b1'), 7))",
+    "('iii_not_tree', (('L', 1, 'b1'), 66))",
+    "('i_pair', (('L', 1, 'b1'), 6, 7, 1, 2))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 14,
+     "ci": 1,
+     "mode": "L",
+     "e0": 15
+    },
+    "ept": {
+     "v": 29,
+     "ci": 1,
+     "mode": "L",
+     "e0": 30
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 60,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 22,
+   "m": 22,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 67, 1, ('f', 0), 2, 135))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_not_tree', (('L0',), 67))",
+    "('i_pair', (('L0',), 1, 2, 2, 135))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 61,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 31,
+   "m": 57,
+   "flags": {
+    "i_dist": 27,
+    "i_floor": 27,
+    "iii_noparent": 27,
+    "iii_not_tree": 1,
+    "i_pair": 27,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 68, 1, ('f', 0), 10, 1465))",
+    "('i_floor', (('L0',), 1, 0, 10))",
+    "('i_dist', (('L0',), 68, 2, ('f', 1), 12, 1758))",
+    "('i_floor', (('L0',), 2, 0, 12))",
+    "('i_dist', (('L0',), 68, 3, ('f', 2), 12, 2051))",
+    "('i_floor', (('L0',), 3, 0, 14))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 62,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "i_dist": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 69, 1, ('f', 0), 2, 3))",
+    "('i_dist', (('L0',), 69, 6, ('f', 5), 2, 3))",
+    "('i_dist', (('L0',), 69, 8, ('f', 7), 2, 3))",
+    "('i_dist', (('L0',), 69, 10, ('f', 9), 2, 3))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_noparent', (('L0',), 6))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 63,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 43,
+   "m": 64,
+   "flags": {
+    "i_dist": 22,
+    "i_floor": 22,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 22,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 70, 1, ('f', 0), 7, 521))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 70, 2, ('f', 1), 8, 694))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 70, 3, ('f', 2), 8, 521))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 64,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 74,
+   "m": 125,
+   "flags": {
+    "i_dist": 19,
+    "i_floor": 4,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 71, 7, ('f', 6), 2, 3))",
+    "('i_dist', (('L0',), 71, 14, ('f', 13), 3, 4))",
+    "('i_dist', (('L0',), 71, 16, ('f', 15), 2, 651))",
+    "('i_floor', (('L0',), 16, 0, 2))",
+    "('i_dist', (('L0',), 71, 17, ('f', 16), 2, 4))",
+    "('i_dist', (('L0',), 71, 29, ('f', 28), 5, 330))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 65,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 36,
+   "m": 40,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 72, 2, ('f', 1), 2, 118))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 72, 3, ('f', 2), 2, 235))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 72, 4, ('f', 3), 4, 353))",
+    "('i_floor', (('L0',), 4, 0, 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 66,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 45,
+   "m": 64,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 73, 1, ('f', 0), 4, 524))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 73, 2, ('f', 1), 4, 699))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 73, 3, ('f', 2), 4, 699))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 67,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 72,
+   "m": 130,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 2,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 30,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 74, 9, ('f', 8), 4, 1002))",
+    "('i_floor', (('L0',), 9, 0, 3))",
+    "('i_dist', (('L0',), 74, 14, ('f', 13), 5, 338))",
+    "('i_floor', (('L0',), 14, 0, 1))",
+    "('i_dist', (('L0',), 74, 15, ('f', 14), 5, 7))",
+    "('i_dist', (('L0',), 74, 23, ('f', 22), 5, 7))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 68,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 50,
+   "m": 84,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 5,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 33,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 75, 1, ('f', 0), 12, 13))",
+    "('i_dist', (('L0',), 75, 2, ('f', 1), 14, 233))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 75, 3, ('f', 2), 14, 233))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 75, 4, ('f', 3), 13, 14))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 69,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 26,
+   "m": 54,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 2,
+    "iii_noparent": 12,
+    "iii_not_tree": 1,
+    "i_pair": 24,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 76, 1, ('f', 0), 3, 4))",
+    "('i_dist', (('L0',), 76, 2, ('f', 1), 2, 3))",
+    "('i_dist', (('L0',), 76, 3, ('f', 2), 4, 5))",
+    "('i_dist', (('L0',), 76, 4, ('f', 3), 3, 6))",
+    "('i_dist', (('L0',), 76, 5, ('f', 4), 4, 144))",
+    "('i_floor', (('L0',), 5, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 70,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 81,
+   "m": 114,
+   "flags": {
+    "i_dist": 34,
+    "i_floor": 34,
+    "iii_noparent": 34,
+    "iii_not_tree": 1,
+    "i_pair": 34,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 77, 1, ('f', 0), 4, 933))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 77, 2, ('f', 1), 4, 1554))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 77, 3, ('f', 2), 4, 932))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 71,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 18,
+   "m": 26,
+   "flags": {
+    "i_dist": 3,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 79, 18, ('p', 0, 1), 2, 3))",
+    "('i_dist', (('L', 1, 'b1'), 79, 20, ('p', 1, 1), 1, 4))",
+    "('i_dist', (('L', 1, 'b1'), 79, 22, ('p', 2, 1), 2, 4))",
+    "('iii_noparent', (('L', 1, 'b1'), 20))",
+    "('iii_not_tree', (('L', 1, 'b1'), 79))",
+    "('i_pair', (('L', 1, 'b1'), 13, 11, 2, 3))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 15,
+     "ci": 0,
+     "mode": "L",
+     "e0": 24
+    },
+    "Pedges": [
+     0,
+     9,
+     20
+    ],
+    "pf": [
+     0,
+     1,
+     4,
+     9
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      9,
+      20
+     ]
+    }
+   }
+  },
+  {
+   "seed": 72,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 110,
+   "m": 184,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "i_dist": 32,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 11,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 81, 77, ('f', 1), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 81, 78, ('f', 2), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 81, 79, ('f', 3), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 81, 80, ('f', 4), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 81, 81, ('f', 5), 2, 4))",
+    "('i_dist', (('L', 1, 'b1'), 81, 83, ('f', 8), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 20,
+     "ci": 3,
+     "mode": "R",
+     "e0": 34
+    },
+    "ept": {
+     "v": 99,
+     "ci": 1,
+     "mode": "L",
+     "e0": 172
+    },
+    "Pedges": [
+     13,
+     33,
+     153
+    ],
+    "pf": [
+     14,
+     6,
+     0,
+     67
+    ],
+    "incised_per_level": {
+     "1": [
+      13,
+      33,
+      153
+     ]
+    }
+   }
+  },
+  {
+   "seed": 73,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 64,
+   "m": 64,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b2'), 83, 6, ('p', 1, 1), 1, 2))",
+    "('iii_noparent', (('L', 1, 'b2'), 6))",
+    "('iii_not_tree', (('L', 1, 'b2'), 83))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 49,
+     "ci": 0,
+     "mode": "L",
+     "e0": 58
+    },
+    "ept": {
+     "v": 12,
+     "ci": 0,
+     "mode": "L",
+     "e0": 24
+    },
+    "Pedges": [
+     9
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      9
+     ]
+    }
+   }
+  },
+  {
+   "seed": 74,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 24,
+   "m": 33,
+   "flags": {
+    "i_dist": 10,
+    "i_floor": 10,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 10,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 84, 2, ('f', 1), 2, 183))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 84, 3, ('f', 2), 2, 183))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 84, 4, ('f', 3), 2, 92))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 75,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 25,
+   "m": 40,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 12,
+    "iii_noparent": 12,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 85, 1, ('f', 0), 3, 214))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 85, 2, ('f', 1), 4, 216))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 85, 3, ('f', 2), 2, 320))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 76,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 21,
+   "m": 27,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 86, 1, ('f', 0), 3, 78))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 86, 2, ('f', 1), 2, 77))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 86, 3, ('f', 2), 2, 77))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 77,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 33,
+   "m": 33,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 87, 2, ('f', 1), 2, 501))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_not_tree', (('L0',), 87))",
+    "('i_pair', (('L0',), 2, 1, 2, 501))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 78,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 36,
+   "m": 47,
+   "flags": {
+    "i_dist": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 88, 5, ('f', 4), 3, 4))",
+    "('i_dist', (('L0',), 88, 7, ('f', 6), 3, 4))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_noparent', (('L0',), 7))",
+    "('iii_not_tree', (('L0',), 88))",
+    "('i_pair', (('L0',), 5, 8, 2, 3))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 79,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 23,
+   "m": 40,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 10,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 89, 1, ('f', 0), 2, 106))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 89, 2, ('f', 1), 2, 106))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 89, 3, ('f', 2), 2, 106))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 80,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 56,
+   "m": 58,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 91, 6, ('p', 0, 0), 2, 185))",
+    "('i_floor', (('L', 1, 'b1'), 6, 0, 1))",
+    "('i_dist', (('L', 1, 'b1'), 91, 8, ('p', 1, 0), 1, 185))",
+    "('i_floor', (('L', 1, 'b1'), 8, 0, 1))",
+    "('i_dist', (('L', 1, 'b1'), 91, 10, ('p', 2, 0), 2, 186))",
+    "('i_floor', (('L', 1, 'b1'), 10, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 34,
+     "ci": 1,
+     "mode": "L",
+     "e0": 16
+    },
+    "ept": {
+     "v": 40,
+     "ci": 2,
+     "mode": "L",
+     "e0": 52
+    },
+    "Pedges": [
+     14,
+     40
+    ],
+    "pf": [
+     3,
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      14,
+      40
+     ]
+    }
+   }
+  },
+  {
+   "seed": 81,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 71,
+   "m": 117,
+   "flags": {
+    "i_dist": 47,
+    "i_floor": 47,
+    "iii_noparent": 47,
+    "iii_not_tree": 1,
+    "i_pair": 47,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 92, 1, ('f', 0), 16, 7048))",
+    "('i_floor', (('L0',), 1, 0, 23))",
+    "('i_dist', (('L0',), 92, 2, ('f', 1), 18, 7661))",
+    "('i_floor', (('L0',), 2, 0, 25))",
+    "('i_dist', (('L0',), 92, 3, ('f', 2), 18, 7354))",
+    "('i_floor', (('L0',), 3, 0, 24))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 82,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 13,
+   "m": 24,
+   "flags": {
+    "i_dist": 12,
+    "i_floor": 12,
+    "iii_noparent": 12,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 93, 1, ('f', 0), 2, 129))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 93, 2, ('f', 1), 2, 66))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 93, 3, ('f', 2), 2, 125))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 83,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 31,
+   "m": 56,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 17,
+    "iii_noparent": 17,
+    "iii_not_tree": 1,
+    "i_pair": 18,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 94, 1, ('f', 0), 5, 149))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 94, 2, ('f', 1), 7, 438))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 94, 3, ('f', 2), 7, 583))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 84,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 3,
+   "m": 4,
+   "flags": {
+    "i_dist": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 96, 6, ('p', 0, 1), 1, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 6))",
+    "('iii_not_tree', (('L', 1, 'b1'), 96))",
+    "('i_pair', (('L', 1, 'b1'), 7, 6, 2, 4))",
+    "('i_pair', (('L', 1, 'b1'), 7, 8, 1, 3))",
+    "('i_dist', (('L', 1, 'b2'), 96, 7, ('p', 1, 0), 1, 3))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 2,
+     "mode": "L",
+     "e0": 2
+    },
+    "ept": {
+     "v": 2,
+     "ci": 2,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 85,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 28,
+   "m": 32,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 98, 13, ('p', 0, 1), 1, 2))",
+    "('iii_noparent', (('L', 1, 'b1'), 13))",
+    "('iii_not_tree', (('L', 1, 'b1'), 98))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 17,
+     "ci": 0,
+     "mode": "L",
+     "e0": 17
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 86,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 6,
+   "m": 9,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 99, 1, ('f', 0), 2, 101))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 99, 2, ('f', 1), 2, 202))",
+    "('i_floor', (('L0',), 2, 0, 8))",
+    "('i_dist', (('L0',), 99, 3, ('f', 2), 2, 152))",
+    "('i_floor', (('L0',), 3, 0, 6))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 87,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 21,
+   "m": 31,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 11,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 11,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 100, 1, ('f', 0), 2, 170))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 100, 2, ('f', 1), 2, 170))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 100, 3, ('f', 2), 2, 170))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 88,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 30,
+   "m": 40,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 11,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 11,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 101, 2, ('f', 1), 2, 223))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 101, 3, ('f', 2), 2, 223))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 101, 4, ('f', 3), 2, 223))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 89,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 21,
+   "m": 33,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 102, 1, ('f', 0), 2, 178))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 102, 2, ('f', 1), 4, 443))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 102, 3, ('f', 2), 4, 355))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 8
+   }
+  },
+  {
+   "seed": 90,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 43,
+   "m": 58,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 6,
+    "iii_noparent": 8,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 103, 4, ('f', 3), 3, 4))",
+    "('i_dist', (('L0',), 103, 5, ('f', 4), 4, 164))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 103, 7, ('f', 6), 4, 163))",
+    "('i_floor', (('L0',), 7, 0, 1))",
+    "('i_dist', (('L0',), 103, 8, ('f', 7), 4, 165))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 91,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 48,
+   "m": 67,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 104, 1, ('f', 0), 2, 184))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 104, 2, ('f', 1), 4, 368))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 104, 3, ('f', 2), 4, 368))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 92,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 18,
+   "m": 26,
+   "flags": {
+    "i_dist": 9,
+    "i_floor": 9,
+    "iii_noparent": 9,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 105, 1, ('f', 0), 4, 286))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 105, 2, ('f', 1), 4, 215))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 105, 3, ('f', 2), 4, 428))",
+    "('i_floor', (('L0',), 3, 0, 6))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 93,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 21,
+   "m": 34,
+   "flags": {
+    "i_dist": 14,
+    "i_floor": 14,
+    "iii_noparent": 14,
+    "iii_not_tree": 1,
+    "i_pair": 14,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 106, 1, ('f', 0), 2, 362))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 106, 2, ('f', 1), 2, 181))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 106, 3, ('f', 2), 2, 271))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 11
+   }
+  },
+  {
+   "seed": 94,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 12,
+   "m": 17,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 107, 5, ('f', 4), 2, 49))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 107, 6, ('f', 5), 2, 50))",
+    "('i_floor', (('L0',), 6, 0, 1))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_noparent', (('L0',), 6))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 95,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 8,
+   "m": 14,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 108, 1, ('f', 0), 2, 77))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 108, 2, ('f', 1), 2, 76))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 108, 3, ('f', 2), 2, 77))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 96,
+   "run": 0,
+   "family": "nested",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 30,
+   "m": 37,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 8,
+    "iii_not_tree": 1,
+    "i_pair": 8,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 109, 1, ('f', 0), 8, 740))",
+    "('i_floor', (('L0',), 1, 0, 7))",
+    "('i_dist', (('L0',), 109, 2, ('f', 1), 6, 529))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 109, 3, ('f', 2), 4, 318))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 97,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 51,
+   "m": 68,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 4,
+    "iii_noparent": 9,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 110, 1, ('f', 0), 2, 3))",
+    "('i_dist', (('L0',), 110, 2, ('f', 1), 2, 189))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 110, 6, ('f', 5), 2, 3))",
+    "('i_dist', (('L0',), 110, 8, ('f', 7), 2, 189))",
+    "('i_floor', (('L0',), 8, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 98,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 15,
+   "m": 23,
+   "flags": {
+    "i_dist": 6,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 111, 1, ('f', 0), 5, 6))",
+    "('i_dist', (('L0',), 111, 2, ('f', 1), 4, 5))",
+    "('i_dist', (('L0',), 111, 3, ('f', 2), 4, 5))",
+    "('i_dist', (('L0',), 111, 4, ('f', 3), 3, 4))",
+    "('i_dist', (('L0',), 111, 5, ('f', 4), 3, 4))",
+    "('i_dist', (('L0',), 111, 6, ('f', 5), 2, 3))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 99,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 31,
+   "m": 33,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 112, 2, ('f', 1), 2, 99))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 112, 3, ('f', 2), 2, 99))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 112, 4, ('f', 3), 2, 197))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 100,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 28,
+   "m": 46,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 8,
+    "iii_not_tree": 1,
+    "i_pair": 10,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 113, 3, ('f', 2), 2, 122))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 113, 4, ('f', 3), 2, 243))",
+    "('i_floor', (('L0',), 4, 0, 2))",
+    "('i_dist', (('L0',), 113, 5, ('f', 4), 2, 122))",
+    "('i_floor', (('L0',), 5, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 101,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 10,
+   "m": 14,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 5,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 114, 1, ('f', 0), 2, 79))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 114, 3, ('f', 2), 2, 157))",
+    "('i_floor', (('L0',), 3, 0, 4))",
+    "('i_dist', (('L0',), 114, 4, ('f', 3), 2, 118))",
+    "('i_floor', (('L0',), 4, 0, 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 102,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 21,
+   "m": 40,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 115, 1, ('f', 0), 2, 103))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 115, 2, ('f', 1), 2, 205))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 115, 3, ('f', 2), 2, 308))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 11
+   }
+  },
+  {
+   "seed": 103,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 29,
+   "m": 41,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 116, 1, ('f', 0), 4, 226))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 116, 2, ('f', 1), 6, 339))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 116, 3, ('f', 2), 4, 226))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 104,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 34,
+   "m": 77,
+   "flags": {
+    "i_dist": 44,
+    "i_floor": 44,
+    "iii_noparent": 44,
+    "iii_not_tree": 1,
+    "i_pair": 44,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 117, 1, ('f', 0), 4, 760))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 117, 2, ('f', 1), 4, 950))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 117, 3, ('f', 2), 2, 570))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 105,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 44,
+   "m": 64,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 2,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 11,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 118, 5, ('f', 4), 2, 349))",
+    "('i_floor', (('L0',), 5, 0, 2))",
+    "('i_dist', (('L0',), 118, 6, ('f', 5), 2, 3))",
+    "('i_dist', (('L0',), 118, 8, ('f', 7), 2, 3))",
+    "('i_dist', (('L0',), 118, 14, ('f', 13), 3, 176))",
+    "('i_floor', (('L0',), 14, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 106,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 67,
+   "m": 118,
+   "flags": {
+    "i_dist": 26,
+    "i_floor": 2,
+    "iii_noparent": 11,
+    "iii_not_tree": 1,
+    "i_pair": 36,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 119, 1, ('f', 0), 12, 16))",
+    "('i_dist', (('L0',), 119, 2, ('f', 1), 13, 17))",
+    "('i_dist', (('L0',), 119, 3, ('f', 2), 14, 16))",
+    "('i_dist', (('L0',), 119, 4, ('f', 3), 13, 15))",
+    "('i_dist', (('L0',), 119, 5, ('f', 4), 14, 16))",
+    "('i_dist', (('L0',), 119, 6, ('f', 5), 13, 15))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 107,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 43,
+   "m": 48,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 120, 2, ('f', 1), 2, 141))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 120, 4, ('f', 3), 2, 141))",
+    "('i_floor', (('L0',), 4, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_noparent', (('L0',), 4))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 108,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 16,
+   "m": 30,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 2,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 121, 1, ('f', 0), 2, 3))",
+    "('i_dist', (('L0',), 121, 6, ('f', 5), 2, 3))",
+    "('i_dist', (('L0',), 121, 10, ('f', 9), 2, 3))",
+    "('i_dist', (('L0',), 121, 13, ('f', 12), 2, 3))",
+    "('i_dist', (('L0',), 121, 14, ('f', 13), 2, 233))",
+    "('i_floor', (('L0',), 14, 0, 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 109,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 60,
+   "m": 62,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 122, 1, ('f', 0), 4, 372))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 122, 2, ('f', 1), 2, 186))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 122, 3, ('f', 2), 2, 186))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 110,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 45,
+   "m": 63,
+   "flags": {
+    "i_dist": 19,
+    "i_floor": 19,
+    "iii_noparent": 19,
+    "iii_not_tree": 1,
+    "i_pair": 19,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 123, 1, ('f', 0), 2, 690))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 123, 2, ('f', 1), 4, 1035))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 123, 3, ('f', 2), 2, 690))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 111,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 28,
+   "m": 35,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 8,
+    "iii_not_tree": 1,
+    "i_pair": 8,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 124, 1, ('f', 0), 2, 100))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 124, 2, ('f', 1), 4, 200))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 124, 3, ('f', 2), 4, 399))",
+    "('i_floor', (('L0',), 3, 0, 4))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 112,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 65,
+   "m": 111,
+   "flags": {
+    "i_dist": 47,
+    "i_floor": 47,
+    "iii_noparent": 47,
+    "iii_not_tree": 1,
+    "i_pair": 47,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 125, 1, ('f', 0), 12, 2311))",
+    "('i_floor', (('L0',), 1, 0, 8))",
+    "('i_dist', (('L0',), 125, 2, ('f', 1), 10, 2886))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 125, 3, ('f', 2), 10, 3461))",
+    "('i_floor', (('L0',), 3, 0, 12))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 113,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 66,
+   "m": 133,
+   "flags": {
+    "i_dist": 68,
+    "i_floor": 68,
+    "iii_noparent": 68,
+    "iii_not_tree": 1,
+    "i_pair": 68,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 126, 1, ('f', 0), 2, 334))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 126, 3, ('f', 2), 2, 1333))",
+    "('i_floor', (('L0',), 3, 0, 4))",
+    "('i_dist', (('L0',), 126, 4, ('f', 3), 2, 1335))",
+    "('i_floor', (('L0',), 4, 0, 4))"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 114,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 35,
+   "m": 37,
+   "flags": {
+    "i_dist": 2,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 128, 9, ('p', 1, 1), 1, 2))",
+    "('i_dist', (('L', 1, 'b1'), 128, 11, ('p', 2, 1), 2, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 9))",
+    "('iii_not_tree', (('L', 1, 'b1'), 128))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 25,
+     "ci": 0,
+     "mode": "L",
+     "e0": 25
+    },
+    "Pedges": [
+     1,
+     23
+    ],
+    "pf": [
+     0,
+     1,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      23
+     ]
+    }
+   }
+  },
+  {
+   "seed": 116,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 18,
+   "m": 21,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "i_dist": 3,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 132, 10, ('p', 0, 1), 1, 2))",
+    "('i_dist', (('L', 1, 'b1'), 132, 12, ('p', 1, 1), 2, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 10))",
+    "('iii_not_tree', (('L', 1, 'b1'), 132))",
+    "('i_pair', (('L', 1, 'b1'), 12, 7, 2, 3))",
+    "('i_pair', (('L', 1, 'b1'), 12, 8, 3, 4))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 2,
+     "mode": "L",
+     "e0": 9
+    },
+    "ept": {
+     "v": 1,
+     "ci": 0,
+     "mode": "R",
+     "e0": 2
+    },
+    "Pedges": [
+     1
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "seed": 117,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 30,
+   "m": 41,
+   "flags": {
+    "i_dist": 12,
+    "i_floor": 12,
+    "iii_noparent": 12,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 133, 1, ('f', 0), 2, 114))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 133, 2, ('f', 1), 4, 228))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 133, 3, ('f', 2), 4, 228))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 118,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 26,
+   "m": 38,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 134, 1, ('f', 0), 2, 207))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 134, 2, ('f', 1), 2, 414))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 134, 3, ('f', 2), 2, 311))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 119,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 58,
+   "m": 58,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 135, 2, ('f', 1), 2, 176))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_not_tree', (('L0',), 135))",
+    "('i_pair', (('L0',), 1, 2, 2, 176))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 120,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 63,
+   "m": 68,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 136, 1, ('f', 0), 4, 402))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 136, 2, ('f', 1), 4, 402))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 136, 3, ('f', 2), 2, 402))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 121,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 96,
+   "m": 173,
+   "flags": {
+    "i_dist": 78,
+    "i_floor": 78,
+    "iii_noparent": 78,
+    "iii_not_tree": 1,
+    "i_pair": 78,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 137, 1, ('f', 0), 4, 888))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 137, 2, ('f', 1), 6, 1332))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 137, 3, ('f', 2), 6, 1332))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 122,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 50,
+   "m": 70,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 21,
+    "iii_noparent": 21,
+    "iii_not_tree": 1,
+    "i_pair": 21,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 138, 1, ('f', 0), 4, 1531))",
+    "('i_floor', (('L0',), 1, 0, 8))",
+    "('i_dist', (('L0',), 138, 2, ('f', 1), 4, 1530))",
+    "('i_floor', (('L0',), 2, 0, 8))",
+    "('i_dist', (('L0',), 138, 3, ('f', 2), 2, 956))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 123,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 57,
+   "m": 90,
+   "flags": {
+    "i_dist": 34,
+    "i_floor": 34,
+    "iii_noparent": 34,
+    "iii_not_tree": 1,
+    "i_pair": 34,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 139, 1, ('f', 0), 4, 1668))",
+    "('i_floor', (('L0',), 1, 0, 7))",
+    "('i_dist', (('L0',), 139, 2, ('f', 1), 4, 1907))",
+    "('i_floor', (('L0',), 2, 0, 8))",
+    "('i_dist', (('L0',), 139, 3, ('f', 2), 4, 1431))",
+    "('i_floor', (('L0',), 3, 0, 6))"
+   ],
+   "info": {
+    "mincut": 7
+   }
+  },
+  {
+   "seed": 124,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 10,
+   "m": 12,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 141, 5, ('f', 2), 2, 86))",
+    "('i_floor', (('L', 1, 'b1'), 5, 0, 2))",
+    "('i_dist', (('L', 1, 'b1'), 141, 7, ('p', 0, 0), 1, 85))",
+    "('i_floor', (('L', 1, 'b1'), 7, 0, 2))",
+    "('i_dist', (('L', 1, 'b1'), 141, 9, ('p', 1, 0), 2, 84))",
+    "('i_floor', (('L', 1, 'b1'), 9, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 7,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 0,
+     "ci": 1,
+     "mode": "R",
+     "e0": 10
+    },
+    "Pedges": [
+     1
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "seed": 125,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 42,
+   "m": 56,
+   "flags": {
+    "i_dist": 15,
+    "i_floor": 15,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 15,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 142, 1, ('f', 0), 4, 312))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 142, 2, ('f', 1), 4, 312))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 142, 3, ('f', 2), 4, 312))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 126,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 27,
+   "m": 48,
+   "flags": {
+    "i_dist": 22,
+    "i_floor": 22,
+    "iii_noparent": 18,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 143, 1, ('f', 0), 4, 128))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 143, 2, ('f', 1), 4, 127))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 143, 3, ('f', 2), 3, 126))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 8
+   }
+  },
+  {
+   "seed": 127,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 8,
+   "m": 11,
+   "flags": {
+    "i_dist": 8,
+    "i_floor": 8,
+    "iii_noparent": 5,
+    "iii_not_tree": 2,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 145, 7, ('f', 3), 2, 113))",
+    "('i_floor', (('L', 1, 'b1'), 7, 0, 3))",
+    "('i_dist', (('L', 1, 'b1'), 145, 8, ('f', 4), 2, 112))",
+    "('i_floor', (('L', 1, 'b1'), 8, 0, 3))",
+    "('i_dist', (('L', 1, 'b1'), 145, 9, ('p', 0, 0), 1, 114))",
+    "('i_floor', (('L', 1, 'b1'), 9, 0, 3))"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 7,
+     "ci": 4,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 128,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 50,
+   "m": 53,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 146, 3, ('f', 2), 3, 159))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('iii_noparent', (('L0',), 3))",
+    "('iii_not_tree', (('L0',), 146))",
+    "('i_pair', (('L0',), 3, 1, 2, 159))",
+    "('i_pair', (('L0',), 3, 2, 2, 158))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 130,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 66,
+   "m": 71,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 149, 2, ('f', 1), 2, 210))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 149, 3, ('f', 2), 2, 420))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 149, 4, ('f', 3), 2, 419))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 131,
+   "run": 0,
+   "family": "nested",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 24,
+   "m": 36,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 150, 2, ('f', 1), 2, 391))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 150, 3, ('f', 2), 2, 195))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 150, 4, ('f', 3), 2, 98))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 8
+   }
+  },
+  {
+   "seed": 132,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 11,
+   "m": 13,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 151, 2, ('f', 1), 2, 39))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 151, 3, ('f', 2), 2, 39))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 151, 4, ('f', 3), 2, 39))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 133,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 57,
+   "m": 94,
+   "flags": {
+    "i_dist": 38,
+    "i_floor": 38,
+    "iii_noparent": 38,
+    "iii_not_tree": 1,
+    "i_pair": 38,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 152, 1, ('f', 0), 14, 4683))",
+    "('i_floor', (('L0',), 1, 0, 19))",
+    "('i_dist', (('L0',), 152, 2, ('f', 1), 16, 5176))",
+    "('i_floor', (('L0',), 2, 0, 21))",
+    "('i_dist', (('L0',), 152, 3, ('f', 2), 16, 5422))",
+    "('i_floor', (('L0',), 3, 0, 22))"
+   ],
+   "info": {
+    "mincut": 8
+   }
+  },
+  {
+   "seed": 134,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 89,
+   "m": 151,
+   "flags": {
+    "i_dist": 63,
+    "i_floor": 63,
+    "iii_noparent": 63,
+    "iii_not_tree": 1,
+    "i_pair": 63,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 153, 1, ('f', 0), 18, 3537))",
+    "('i_floor', (('L0',), 1, 0, 9))",
+    "('i_dist', (('L0',), 153, 2, ('f', 1), 20, 3930))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 153, 3, ('f', 2), 20, 3930))",
+    "('i_floor', (('L0',), 3, 0, 10))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 135,
+   "run": 0,
+   "family": "nested",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 16,
+   "m": 24,
+   "flags": {
+    "i_dist": 9,
+    "i_floor": 9,
+    "iii_noparent": 9,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 154, 2, ('f', 1), 2, 131))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 154, 3, ('f', 2), 2, 196))",
+    "('i_floor', (('L0',), 3, 0, 3))",
+    "('i_dist', (('L0',), 154, 4, ('f', 3), 2, 261))",
+    "('i_floor', (('L0',), 4, 0, 4))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 136,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 36,
+   "m": 47,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 3,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 155, 6, ('f', 5), 3, 265))",
+    "('i_floor', (('L0',), 6, 0, 2))",
+    "('i_dist', (('L0',), 155, 9, ('f', 8), 3, 134))",
+    "('i_floor', (('L0',), 9, 0, 1))",
+    "('i_dist', (('L0',), 155, 10, ('f', 9), 2, 3))",
+    "('i_dist', (('L0',), 155, 12, ('f', 11), 2, 263))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 137,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 35,
+   "m": 51,
+   "flags": {
+    "i_dist": 17,
+    "i_floor": 17,
+    "iii_noparent": 17,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 156, 2, ('f', 1), 2, 139))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 156, 3, ('f', 2), 2, 139))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 156, 4, ('f', 3), 2, 139))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 138,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 42,
+   "m": 47,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 157, 6, ('f', 5), 2, 139))",
+    "('i_floor', (('L0',), 6, 0, 1))",
+    "('iii_noparent', (('L0',), 6))",
+    "('iii_not_tree', (('L0',), 157))",
+    "('i_pair', (('L0',), 7, 3, 2, 3))",
+    "('i_pair', (('L0',), 7, 6, 2, 141))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 139,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 5,
+   "m": 7,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 158, 2, ('f', 1), 2, 82))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 158, 3, ('f', 2), 2, 21))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 158, 4, ('f', 3), 2, 42))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 140,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 20,
+   "m": 28,
+   "flags": {
+    "i_dist": 2,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 159, 6, ('f', 5), 2, 3))",
+    "('i_dist', (('L0',), 159, 8, ('f', 7), 3, 4))",
+    "('iii_noparent', (('L0',), 6))",
+    "('iii_not_tree', (('L0',), 159))",
+    "('i_pair', (('L0',), 8, 1, 5, 6))",
+    "('i_pair', (('L0',), 8, 2, 4, 5))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 141,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 64,
+   "m": 129,
+   "flags": {
+    "i_dist": 66,
+    "i_floor": 66,
+    "iii_noparent": 53,
+    "iii_not_tree": 1,
+    "i_pair": 62,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 160, 1, ('f', 0), 6, 1625))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 160, 2, ('f', 1), 6, 1620))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 160, 3, ('f', 2), 4, 978))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 142,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 36,
+   "m": 52,
+   "flags": {
+    "i_dist": 17,
+    "i_floor": 17,
+    "iii_noparent": 17,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 161, 1, ('f', 0), 8, 710))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 161, 2, ('f', 1), 10, 852))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 161, 3, ('f', 2), 10, 710))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 143,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 11,
+   "m": 19,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 162, 5, ('f', 4), 2, 102))",
+    "('i_floor', (('L0',), 5, 0, 2))",
+    "('i_dist', (('L0',), 162, 6, ('f', 5), 2, 53))",
+    "('i_floor', (('L0',), 6, 0, 1))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_noparent', (('L0',), 6))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 144,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 33,
+   "m": 57,
+   "flags": {
+    "i_dist": 14,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 163, 1, ('f', 0), 3, 6))",
+    "('i_dist', (('L0',), 163, 2, ('f', 1), 2, 6))",
+    "('i_dist', (('L0',), 163, 3, ('f', 2), 2, 5))",
+    "('i_dist', (('L0',), 163, 4, ('f', 3), 4, 5))",
+    "('i_dist', (('L0',), 163, 6, ('f', 5), 2, 7))",
+    "('i_dist', (('L0',), 163, 12, ('f', 11), 2, 4))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 145,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 13,
+   "m": 23,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 4,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 164, 4, ('f', 3), 2, 4))",
+    "('i_dist', (('L0',), 164, 5, ('f', 4), 2, 3))",
+    "('i_dist', (('L0',), 164, 8, ('f', 7), 2, 62))",
+    "('i_floor', (('L0',), 8, 0, 1))",
+    "('i_dist', (('L0',), 164, 10, ('f', 9), 4, 123))",
+    "('i_floor', (('L0',), 10, 0, 2))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 146,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 14,
+   "m": 26,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 165, 1, ('f', 0), 2, 136))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 165, 2, ('f', 1), 2, 136))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 165, 3, ('f', 2), 2, 136))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 147,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 23,
+   "m": 35,
+   "flags": {
+    "i_dist": 7,
+    "i_floor": 7,
+    "iii_noparent": 7,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 166, 1, ('f', 0), 2, 189))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 166, 6, ('f', 5), 2, 190))",
+    "('i_floor', (('L0',), 6, 0, 2))",
+    "('i_dist', (('L0',), 166, 9, ('f', 8), 2, 95))",
+    "('i_floor', (('L0',), 9, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 148,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 56,
+   "m": 65,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 167, 3, ('f', 2), 3, 190))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 167, 10, ('f', 9), 3, 189))",
+    "('i_floor', (('L0',), 10, 0, 1))",
+    "('i_dist', (('L0',), 167, 11, ('f', 10), 3, 189))",
+    "('i_floor', (('L0',), 11, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 149,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 32,
+   "m": 53,
+   "flags": {
+    "i_dist": 7,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 18,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 168, 13, ('f', 12), 4, 5))",
+    "('i_dist', (('L0',), 168, 14, ('f', 13), 3, 4))",
+    "('i_dist', (('L0',), 168, 16, ('f', 15), 4, 6))",
+    "('i_dist', (('L0',), 168, 17, ('f', 16), 3, 5))",
+    "('i_dist', (('L0',), 168, 19, ('f', 18), 4, 7))",
+    "('i_dist', (('L0',), 168, 20, ('f', 19), 3, 6))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 150,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 21,
+   "m": 26,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 5,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 169, 2, ('f', 1), 2, 76))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 169, 4, ('f', 3), 2, 77))",
+    "('i_floor', (('L0',), 4, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_noparent', (('L0',), 4))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 151,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 20,
+   "m": 36,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 170, 13, ('f', 12), 2, 3))",
+    "('iii_noparent', (('L0',), 13))",
+    "('iii_not_tree', (('L0',), 170))",
+    "('i_pair', (('L0',), 14, 6, 2, 3))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 152,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 35,
+   "m": 54,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 171, 1, ('f', 0), 2, 145))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 171, 2, ('f', 1), 4, 290))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 171, 3, ('f', 2), 4, 290))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 153,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 57,
+   "m": 89,
+   "flags": {
+    "i_dist": 7,
+    "i_floor": 4,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 172, 3, ('f', 2), 2, 3))",
+    "('i_dist', (('L0',), 172, 10, ('f', 9), 3, 241))",
+    "('i_floor', (('L0',), 10, 0, 1))",
+    "('i_dist', (('L0',), 172, 19, ('f', 18), 5, 242))",
+    "('i_floor', (('L0',), 19, 0, 1))",
+    "('i_dist', (('L0',), 172, 25, ('f', 24), 6, 243))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 154,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 30,
+   "m": 41,
+   "flags": {
+    "i_dist": 5,
+    "i_floor": 4,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 8,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 173, 3, ('f', 2), 3, 4))",
+    "('i_dist', (('L0',), 173, 8, ('f', 7), 2, 115))",
+    "('i_floor', (('L0',), 8, 0, 1))",
+    "('i_dist', (('L0',), 173, 9, ('f', 8), 2, 116))",
+    "('i_floor', (('L0',), 9, 0, 1))",
+    "('i_dist', (('L0',), 173, 12, ('f', 11), 2, 114))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 156,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 31,
+   "m": 52,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 21,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 176, 2, ('f', 1), 2, 273))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 176, 4, ('f', 3), 2, 274))",
+    "('i_floor', (('L0',), 4, 0, 2))",
+    "('i_dist', (('L0',), 176, 6, ('f', 5), 3, 412))",
+    "('i_floor', (('L0',), 6, 0, 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 157,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 10,
+   "m": 18,
+   "flags": {
+    "i_dist": 9,
+    "i_floor": 9,
+    "iii_noparent": 9,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 177, 2, ('f', 1), 2, 48))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 177, 3, ('f', 2), 2, 96))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 177, 4, ('f', 3), 2, 48))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 158,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 57,
+   "m": 73,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 1,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 6,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 178, 5, ('f', 4), 4, 207))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 178, 18, ('f', 17), 3, 4))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_noparent', (('L0',), 18))",
+    "('iii_not_tree', (('L0',), 178))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 159,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 41,
+   "m": 53,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 179, 1, ('f', 0), 4, 298))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 179, 2, ('f', 1), 2, 149))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 179, 3, ('f', 2), 2, 298))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 160,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 44,
+   "m": 75,
+   "flags": {
+    "i_dist": 32,
+    "i_floor": 32,
+    "iii_noparent": 32,
+    "iii_not_tree": 1,
+    "i_pair": 32,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 180, 1, ('f', 0), 4, 587))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 180, 2, ('f', 1), 2, 783))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 180, 3, ('f', 2), 2, 391))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 161,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 65,
+   "m": 68,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 181, 1, ('f', 0), 2, 203))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 181, 2, ('f', 1), 2, 203))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 181, 3, ('f', 2), 2, 203))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 162,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 30,
+   "m": 60,
+   "flags": {
+    "i_dist": 31,
+    "i_floor": 31,
+    "iii_noparent": 31,
+    "iii_not_tree": 1,
+    "i_pair": 31,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 182, 1, ('f', 0), 6, 760))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 182, 2, ('f', 1), 4, 608))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 182, 3, ('f', 2), 6, 760))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 163,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 29,
+   "m": 49,
+   "flags": {
+    "i_dist": 21,
+    "i_floor": 21,
+    "iii_noparent": 21,
+    "iii_not_tree": 1,
+    "i_pair": 21,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 183, 2, ('f', 1), 2, 257))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 183, 3, ('f', 2), 2, 257))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 183, 4, ('f', 3), 2, 257))",
+    "('i_floor', (('L0',), 4, 0, 2))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 164,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 81,
+   "m": 130,
+   "flags": {
+    "i_dist": 50,
+    "i_floor": 50,
+    "iii_noparent": 50,
+    "iii_not_tree": 1,
+    "i_pair": 50,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 184, 1, ('f', 0), 2, 1369))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 184, 2, ('f', 1), 4, 2396))",
+    "('i_floor', (('L0',), 2, 0, 7))",
+    "('i_dist', (('L0',), 184, 3, ('f', 2), 4, 1712))",
+    "('i_floor', (('L0',), 3, 0, 5))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 165,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 60,
+   "m": 119,
+   "flags": {
+    "i_dist": 27,
+    "i_floor": 14,
+    "iii_noparent": 22,
+    "iii_not_tree": 1,
+    "i_pair": 40,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 185, 2, ('f', 1), 2, 4))",
+    "('i_dist', (('L0',), 185, 5, ('f', 4), 3, 301))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 185, 7, ('f', 6), 2, 4))",
+    "('i_dist', (('L0',), 185, 8, ('f', 7), 3, 4))",
+    "('i_dist', (('L0',), 185, 9, ('f', 8), 3, 601))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 166,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 4,
+   "m": 6,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 186, 2, ('f', 1), 2, 18))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('iii_noparent', (('L0',), 2))",
+    "('iii_not_tree', (('L0',), 186))",
+    "('i_pair', (('L0',), 4, 2, 2, 18))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 167,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 58,
+   "m": 68,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 187, 5, ('f', 4), 2, 198))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('iii_noparent', (('L0',), 5))",
+    "('iii_not_tree', (('L0',), 187))",
+    "('i_pair', (('L0',), 10, 5, 4, 199))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 168,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 20,
+   "m": 35,
+   "flags": {
+    "i_dist": 16,
+    "i_floor": 16,
+    "iii_noparent": 16,
+    "iii_not_tree": 1,
+    "i_pair": 16,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 188, 1, ('f', 0), 2, 365))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 188, 2, ('f', 1), 4, 457))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 188, 3, ('f', 2), 4, 639))",
+    "('i_floor', (('L0',), 3, 0, 7))"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 169,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 68,
+   "m": 69,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 189, 1, ('f', 0), 2, 208))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 189, 3, ('f', 2), 2, 208))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 170,
+   "run": 0,
+   "family": "nested",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 190, 1, ('f', 0), 2, 40))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 190, 3, ('f', 2), 2, 79))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('iii_noparent', (('L0',), 1))",
+    "('iii_noparent', (('L0',), 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 171,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 68,
+   "m": 73,
+   "flags": {
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 191, 6, ('f', 5), 2, 217))",
+    "('i_floor', (('L0',), 6, 0, 1))",
+    "('iii_noparent', (('L0',), 6))",
+    "('iii_not_tree', (('L0',), 191))",
+    "('i_pair', (('L0',), 7, 6, 3, 217))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 172,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 32,
+   "m": 44,
+   "flags": {
+    "i_dist": 13,
+    "i_floor": 13,
+    "iii_noparent": 13,
+    "iii_not_tree": 1,
+    "i_pair": 13,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 192, 2, ('f', 1), 2, 122))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 192, 3, ('f', 2), 2, 122))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 192, 4, ('f', 3), 2, 122))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 173,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 88,
+   "m": 115,
+   "flags": {
+    "i_dist": 22,
+    "i_floor": 10,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 28,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 193, 1, ('f', 0), 4, 323))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 193, 5, ('f', 4), 4, 323))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 193, 6, ('f', 5), 4, 640))",
+    "('i_floor', (('L0',), 6, 0, 2))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 174,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 68,
+   "m": 123,
+   "flags": {
+    "i_dist": 45,
+    "i_floor": 44,
+    "iii_noparent": 42,
+    "iii_not_tree": 1,
+    "i_pair": 56,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 194, 1, ('f', 0), 2, 632))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 194, 2, ('f', 1), 2, 947))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 194, 6, ('f', 5), 6, 636))",
+    "('i_floor', (('L0',), 6, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 175,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "face",
+   "n": 99,
+   "m": 155,
+   "flags": {
+    "i_dist": 57,
+    "i_floor": 57,
+    "iii_noparent": 57,
+    "iii_not_tree": 1,
+    "i_pair": 57,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 195, 1, ('f', 0), 8, 3284))",
+    "('i_floor', (('L0',), 1, 0, 8))",
+    "('i_dist', (('L0',), 195, 2, ('f', 1), 8, 4105))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 195, 3, ('f', 2), 6, 3284))",
+    "('i_floor', (('L0',), 3, 0, 8))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 176,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 33,
+   "m": 75,
+   "flags": {
+    "i_dist": 26,
+    "i_floor": 5,
+    "iii_noparent": 18,
+    "iii_not_tree": 1,
+    "i_pair": 25,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 196, 2, ('f', 1), 3, 187))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 196, 4, ('f', 3), 4, 6))",
+    "('i_dist', (('L0',), 196, 5, ('f', 4), 4, 5))",
+    "('i_dist', (('L0',), 196, 9, ('f', 8), 4, 5))",
+    "('i_dist', (('L0',), 196, 10, ('f', 9), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 177,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 28,
+   "m": 39,
+   "flags": {
+    "i_dist": 12,
+    "i_floor": 12,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 12,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 197, 1, ('f', 0), 4, 110))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 197, 2, ('f', 1), 4, 325))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 197, 3, ('f', 2), 3, 109))",
+    "('i_floor', (('L0',), 3, 0, 1))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 178,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 35,
+   "m": 61,
+   "flags": {
+    "i_dist": 17,
+    "i_floor": 17,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 26,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 198, 3, ('f', 2), 2, 159))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 198, 4, ('f', 3), 2, 319))",
+    "('i_floor', (('L0',), 4, 0, 2))",
+    "('i_dist', (('L0',), 198, 8, ('f', 7), 2, 317))",
+    "('i_floor', (('L0',), 8, 0, 2))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 179,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "i_dist": 3,
+    "iii_noparent": 2,
+    "iii_not_tree": 2,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 200, 6, ('p', 0, 1), 1, 2))",
+    "('i_dist', (('L', 1, 'b1'), 200, 8, ('p', 1, 1), 2, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 6))",
+    "('iii_not_tree', (('L', 1, 'b1'), 200))",
+    "('i_pair', (('L', 1, 'b1'), 8, 5, 2, 3))",
+    "('i_pair', (('L', 1, 'b1'), 8, 7, 1, 3))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 11,
+     "ci": 0,
+     "mode": "L",
+     "e0": 11
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     3
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      3
+     ]
+    }
+   }
+  },
+  {
+   "seed": 180,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 4,
+   "m": 6,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 202, 9, ('p', 0, 1), 1, 3))",
+    "('iii_noparent', (('L', 1, 'b1'), 9))",
+    "('iii_not_tree', (('L', 1, 'b1'), 202))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 2,
+     "mode": "L",
+     "e0": 4
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 181,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 35,
+   "m": 60,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 9,
+    "iii_noparent": 10,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 203, 7, ('f', 6), 5, 161))",
+    "('i_floor', (('L0',), 7, 0, 1))",
+    "('i_dist', (('L0',), 203, 8, ('f', 7), 5, 6))",
+    "('i_dist', (('L0',), 203, 9, ('f', 8), 4, 160))",
+    "('i_floor', (('L0',), 9, 0, 1))",
+    "('i_dist', (('L0',), 203, 13, ('f', 12), 5, 161))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 182,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 31,
+   "m": 58,
+   "flags": {
+    "i_dist": 28,
+    "i_floor": 28,
+    "iii_noparent": 28,
+    "iii_not_tree": 1,
+    "i_pair": 28,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 204, 1, ('f', 0), 6, 595))",
+    "('i_floor', (('L0',), 1, 0, 4))",
+    "('i_dist', (('L0',), 204, 2, ('f', 1), 8, 1040))",
+    "('i_floor', (('L0',), 2, 0, 7))",
+    "('i_dist', (('L0',), 204, 3, ('f', 2), 8, 1189))",
+    "('i_floor', (('L0',), 3, 0, 8))"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 183,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 14,
+   "m": 21,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 2,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 205, 3, ('f', 2), 2, 60))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 205, 5, ('f', 4), 3, 59))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 205, 6, ('f', 5), 4, 60))",
+    "('i_floor', (('L0',), 6, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 184,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 44,
+   "m": 45,
+   "flags": {
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 207, 7, ('p', 0, 1), 1, 2))",
+    "('iii_noparent', (('L', 1, 'b1'), 7))",
+    "('iii_not_tree', (('L', 1, 'b1'), 207))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 2,
+     "mode": "L",
+     "e0": 44
+    },
+    "ept": {
+     "v": 32,
+     "ci": 2,
+     "mode": "L",
+     "e0": 39
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 185,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 66,
+   "m": 118,
+   "flags": {
+    "i_dist": 53,
+    "i_floor": 53,
+    "iii_noparent": 53,
+    "iii_not_tree": 1,
+    "i_pair": 53,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 208, 1, ('f', 0), 4, 608))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 208, 2, ('f', 1), 6, 912))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 208, 3, ('f', 2), 6, 912))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 186,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 60,
+   "m": 78,
+   "flags": {
+    "i_dist": 11,
+    "i_floor": 2,
+    "iii_noparent": 6,
+    "iii_not_tree": 1,
+    "i_pair": 8,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 209, 1, ('f', 0), 6, 8))",
+    "('i_dist', (('L0',), 209, 2, ('f', 1), 5, 7))",
+    "('i_dist', (('L0',), 209, 3, ('f', 2), 5, 7))",
+    "('i_dist', (('L0',), 209, 4, ('f', 3), 4, 6))",
+    "('i_dist', (('L0',), 209, 5, ('f', 4), 4, 440))",
+    "('i_floor', (('L0',), 5, 0, 2))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 187,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 30,
+   "m": 49,
+   "flags": {
+    "i_dist": 16,
+    "i_floor": 16,
+    "iii_noparent": 12,
+    "iii_not_tree": 1,
+    "i_pair": 14,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 210, 2, ('f', 1), 3, 390))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 210, 3, ('f', 2), 4, 132))",
+    "('i_floor', (('L0',), 3, 0, 1))",
+    "('i_dist', (('L0',), 210, 4, ('f', 3), 2, 131))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 188,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 34,
+   "m": 36,
+   "flags": {
+    "i_dist": 3,
+    "i_floor": 3,
+    "iii_noparent": 3,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 211, 2, ('f', 1), 2, 108))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 211, 3, ('f', 2), 2, 215))",
+    "('i_floor', (('L0',), 3, 0, 2))",
+    "('i_dist', (('L0',), 211, 4, ('f', 3), 2, 108))",
+    "('i_floor', (('L0',), 4, 0, 1))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 189,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 85,
+   "m": 131,
+   "flags": {
+    "i_dist": 47,
+    "i_floor": 47,
+    "iii_noparent": 47,
+    "iii_not_tree": 1,
+    "i_pair": 47,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 212, 1, ('f', 0), 6, 2787))",
+    "('i_floor', (('L0',), 1, 0, 8))",
+    "('i_dist', (('L0',), 212, 2, ('f', 1), 8, 4180))",
+    "('i_floor', (('L0',), 2, 0, 12))",
+    "('i_dist', (('L0',), 212, 3, ('f', 2), 8, 4529))",
+    "('i_floor', (('L0',), 3, 0, 13))"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 190,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 49,
+   "m": 80,
+   "flags": {
+    "i_dist": 32,
+    "i_floor": 32,
+    "iii_noparent": 32,
+    "iii_not_tree": 1,
+    "i_pair": 32,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 213, 1, ('f', 0), 2, 1051))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 213, 2, ('f', 1), 4, 2102))",
+    "('i_floor', (('L0',), 2, 0, 10))",
+    "('i_dist', (('L0',), 213, 3, ('f', 2), 4, 2102))",
+    "('i_floor', (('L0',), 3, 0, 10))"
+   ],
+   "info": {
+    "mincut": 15
+   }
+  },
+  {
+   "seed": 191,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 24,
+   "m": 46,
+   "flags": {
+    "i_dist": 20,
+    "i_floor": 20,
+    "iii_noparent": 20,
+    "iii_not_tree": 1,
+    "i_pair": 20,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 214, 5, ('f', 4), 2, 354))",
+    "('i_floor', (('L0',), 5, 0, 3))",
+    "('i_dist', (('L0',), 214, 6, ('f', 5), 2, 471))",
+    "('i_floor', (('L0',), 6, 0, 4))",
+    "('i_dist', (('L0',), 214, 7, ('f', 6), 2, 471))",
+    "('i_floor', (('L0',), 7, 0, 4))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 192,
+   "run": 0,
+   "family": "nested",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 35,
+   "m": 43,
+   "flags": {
+    "i_dist": 9,
+    "i_floor": 9,
+    "iii_noparent": 9,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 215, 1, ('f', 0), 4, 612))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 215, 2, ('f', 1), 4, 735))",
+    "('i_floor', (('L0',), 2, 0, 6))",
+    "('i_dist', (('L0',), 215, 3, ('f', 2), 4, 734))",
+    "('i_floor', (('L0',), 3, 0, 6))"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 193,
+   "run": 0,
+   "family": "rings",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 56,
+   "m": 95,
+   "flags": {
+    "i_dist": 40,
+    "i_floor": 40,
+    "iii_noparent": 40,
+    "iii_not_tree": 1,
+    "i_pair": 40,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 216, 1, ('f', 0), 8, 1240))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 216, 2, ('f', 1), 8, 992))",
+    "('i_floor', (('L0',), 2, 0, 4))",
+    "('i_dist', (('L0',), 216, 3, ('f', 2), 6, 744))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 194,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 48,
+   "m": 85,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "i_dist": 20,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 14,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L', 1, 'b1'), 218, 54, ('f', 16), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 218, 56, ('f', 21), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 218, 57, ('f', 22), 2, 4))",
+    "('i_dist', (('L', 1, 'b1'), 218, 58, ('f', 23), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 218, 61, ('f', 26), 3, 4))",
+    "('i_dist', (('L', 1, 'b1'), 218, 62, ('f', 27), 3, 4))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 26,
+     "ci": 3,
+     "mode": "L",
+     "e0": 49
+    },
+    "ept": {
+     "v": 5,
+     "ci": 1,
+     "mode": "R",
+     "e0": 10
+    },
+    "Pedges": [
+     9,
+     33,
+     35,
+     37
+    ],
+    "pf": [
+     19,
+     18,
+     17,
+     0,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      9,
+      33,
+      35,
+      37
+     ]
+    }
+   }
+  },
+  {
+   "seed": 195,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 68,
+   "m": 99,
+   "flags": {
+    "i_dist": 6,
+    "iii_noparent": 5,
+    "iii_not_tree": 1,
+    "i_pair": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 219, 2, ('f', 1), 2, 3))",
+    "('i_dist', (('L0',), 219, 5, ('f', 4), 2, 3))",
+    "('i_dist', (('L0',), 219, 6, ('f', 5), 2, 4))",
+    "('i_dist', (('L0',), 219, 8, ('f', 7), 2, 3))",
+    "('i_dist', (('L0',), 219, 9, ('f', 8), 3, 4))",
+    "('i_dist', (('L0',), 219, 25, ('f', 24), 4, 6))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 196,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 59,
+   "m": 96,
+   "flags": {
+    "i_dist": 38,
+    "i_floor": 38,
+    "iii_noparent": 38,
+    "iii_not_tree": 1,
+    "i_pair": 38,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 220, 1, ('f', 0), 2, 506))",
+    "('i_floor', (('L0',), 1, 0, 2))",
+    "('i_dist', (('L0',), 220, 2, ('f', 1), 2, 506))",
+    "('i_floor', (('L0',), 2, 0, 2))",
+    "('i_dist', (('L0',), 220, 3, ('f', 2), 4, 759))",
+    "('i_floor', (('L0',), 3, 0, 3))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 197,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 7,
+   "m": 10,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 221, 1, ('f', 0), 2, 29))",
+    "('i_floor', (('L0',), 1, 0, 1))",
+    "('i_dist', (('L0',), 221, 2, ('f', 1), 2, 29))",
+    "('i_floor', (('L0',), 2, 0, 1))",
+    "('i_dist', (('L0',), 221, 3, ('f', 2), 2, 58))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 198,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 66,
+   "m": 127,
+   "flags": {
+    "i_dist": 60,
+    "i_floor": 60,
+    "iii_noparent": 49,
+    "iii_not_tree": 1,
+    "i_pair": 62,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 222, 1, ('f', 0), 6, 969))",
+    "('i_floor', (('L0',), 1, 0, 3))",
+    "('i_dist', (('L0',), 222, 2, ('f', 1), 6, 969))",
+    "('i_floor', (('L0',), 2, 0, 3))",
+    "('i_dist', (('L0',), 222, 3, ('f', 2), 5, 647))",
+    "('i_floor', (('L0',), 3, 0, 2))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 199,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 28,
+   "m": 36,
+   "flags": {
+    "i_dist": 6,
+    "i_floor": 6,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 9,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 223, 4, ('f', 3), 2, 204))",
+    "('i_floor', (('L0',), 4, 0, 2))",
+    "('i_dist', (('L0',), 223, 5, ('f', 4), 2, 103))",
+    "('i_floor', (('L0',), 5, 0, 1))",
+    "('i_dist', (('L0',), 223, 6, ('f', 5), 3, 104))",
+    "('i_floor', (('L0',), 6, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 200,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 8,
+   "m": 11,
+   "flags": {
+    "i_dist": 4,
+    "i_floor": 4,
+    "iii_noparent": 4,
+    "iii_not_tree": 1,
+    "i_pair": 4,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 224, 1, ('f', 0), 2, 156))",
+    "('i_floor', (('L0',), 1, 0, 5))",
+    "('i_dist', (('L0',), 224, 3, ('f', 2), 2, 156))",
+    "('i_floor', (('L0',), 3, 0, 5))",
+    "('i_dist', (('L0',), 224, 4, ('f', 3), 2, 312))",
+    "('i_floor', (('L0',), 4, 0, 10))"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 201,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 12,
+   "m": 18,
+   "flags": {
+    "i_dist": 7,
+    "i_floor": 7,
+    "iii_noparent": 7,
+    "iii_not_tree": 1,
+    "i_pair": 7,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 225, 1, ('f', 0), 6, 397))",
+    "('i_floor', (('L0',), 1, 0, 8))",
+    "('i_dist', (('L0',), 225, 2, ('f', 1), 4, 249))",
+    "('i_floor', (('L0',), 2, 0, 5))",
+    "('i_dist', (('L0',), 225, 3, ('f', 2), 6, 446))",
+    "('i_floor', (('L0',), 3, 0, 9))"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 202,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 60,
+   "m": 88,
+   "flags": {
+    "i_dist": 25,
+    "i_floor": 11,
+    "iii_noparent": 15,
+    "iii_not_tree": 1,
+    "i_pair": 17,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 226, 1, ('f', 0), 2, 3))",
+    "('i_dist', (('L0',), 226, 5, ('f', 4), 2, 4))",
+    "('i_dist', (('L0',), 226, 6, ('f', 5), 4, 241))",
+    "('i_floor', (('L0',), 6, 0, 1))",
+    "('i_dist', (('L0',), 226, 7, ('f', 6), 3, 4))",
+    "('i_dist', (('L0',), 226, 8, ('f', 7), 4, 241))"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 203,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 99,
+   "m": 179,
+   "flags": {
+    "i_dist": 29,
+    "i_floor": 4,
+    "iii_noparent": 18,
+    "iii_not_tree": 1,
+    "i_pair": 28,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('i_dist', (('L0',), 227, 4, ('f', 3), 4, 5))",
+    "('i_dist', (('L0',), 227, 8, ('f', 7), 4, 462))",
+    "('i_floor', (('L0',), 8, 0, 1))",
+    "('i_dist', (('L0',), 227, 10, ('f', 9), 4, 8))",
+    "('i_dist', (('L0',), 227, 11, ('f', 10), 4, 9))",
+    "('i_dist', (('L0',), 227, 15, ('f', 14), 6, 8))"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  }
+ ]
+}

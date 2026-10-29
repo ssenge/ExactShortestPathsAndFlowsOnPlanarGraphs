@@ -1,0 +1,728 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "literal",
+  "tiebreak": "minid",
+  "pairs": 1
+ },
+ "start": 0,
+ "count": 30,
+ "runs": 1,
+ "families": {
+  "messy": 4,
+  "grid": 8,
+  "tree_plus": 4,
+  "wheel": 3,
+  "cycle_chords": 4,
+  "delaunay": 2,
+  "nested": 5
+ },
+ "family_fail": {
+  "messy": 4,
+  "grid": 8,
+  "tree_plus": 4,
+  "wheel": 3,
+  "cycle_chords": 3,
+  "delaunay": 2,
+  "nested": 4
+ },
+ "flag_instances": {
+  "struct_merge": 5,
+  "i_dist": 5,
+  "i_floor": 3,
+  "iii_noparent": 5,
+  "ii_parent_outside": 3,
+  "iii_not_tree": 5,
+  "i_pair": 2,
+  "fail_exception": 5,
+  "iv_Pm_prime_nonsimple": 23,
+  "dev_mirrored_endpoint": 1
+ },
+ "nfail": 28,
+ "secs": 1.349452018737793,
+ "fails": [
+  {
+   "seed": 0,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "i_pair": 3,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 20, ('p', 0, 1), [(33, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 28, ('p', 0, 0), [(4, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 3, 20, ('p', 0, 1), 0, 235))",
+    "('i_floor', (('L', 2, 'b1'), 20, 0, 3))",
+    "('i_dist', (('L', 2, 'b1'), 3, 33, ('p', 1, 1), 78, 157))",
+    "('i_floor', (('L', 2, 'b1'), 33, 1, 2))"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 4,
+    "e0_same": false
+   }
+  },
+  {
+   "seed": 1,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 10,
+   "m": 11,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "levels": 2,
+    "n_results": 4,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 2,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 15,
+   "m": 25,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 5,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 5,
+    "cut_value": 5,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 3,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 30,
+   "m": 44,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 2,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 4,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 35,
+   "m": 61,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 5,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 5,
+    "cut_value": 5,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 5,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 25,
+   "m": 26,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 2,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 2,
+    "cut_value": 2,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 6,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 11,
+   "m": 15,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 17, ('p', 0, 0), [(29, 1)]))",
+    "('struct_merge', (('L', 2, 'b1'), 18, ('p', 0, 1), [(28, 2)]))",
+    "('i_dist', (('L', 2, 'b1'), 19, 17, ('p', 0, 0), 0, 1))",
+    "('iii_noparent', (('L', 2, 'b1'), 17))",
+    "('iii_not_tree', (('L', 2, 'b1'), 19))",
+    "('fail_exception', 'tree broken')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false
+   }
+  },
+  {
+   "seed": 7,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 14,
+   "m": 20,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 1,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 1,
+    "cut_value": 1,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 8,
+   "run": 0,
+   "family": "grid",
+   "scheme": "huge",
+   "stmode": "bridge",
+   "n": 9,
+   "m": 11,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 4,
+    "P_len": 2,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 2,
+    "reported": 4,
+    "cut_value": 4,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 9,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "far",
+   "n": 8,
+   "m": 8,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 3,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 3,
+    "cut_value": 3,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 10,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 18,
+   "m": 20,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 12,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "huge",
+   "stmode": "random",
+   "n": 15,
+   "m": 17,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 3,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 3,
+    "cut_value": 3,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 13,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "huge",
+   "stmode": "adj",
+   "n": 14,
+   "m": 24,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 10,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 10,
+    "cut_value": 10,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 14,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 28,
+   "m": 53,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 2,
+    "i_floor": 2,
+    "iii_noparent": 1,
+    "ii_parent_outside": 2,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 3, 'b1'), 58, ('p', 4, 0), [(14, 2)]))",
+    "('struct_merge', (('L', 3, 'b1'), 71, ('p', 4, 1), [(62, 1), (65, 0)]))",
+    "('i_dist', (('L', 3, 'b1'), 42, 58, ('p', 4, 0), 0, 338))",
+    "('i_floor', (('L', 3, 'b1'), 58, 0, 2))",
+    "('i_dist', (('L', 3, 'b1'), 42, 66, ('p', 3, 0), 169, 338))",
+    "('i_floor', (('L', 3, 'b1'), 66, 1, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 5,
+    "e0_same": false
+   }
+  },
+  {
+   "seed": 15,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 14,
+   "m": 15,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "levels": 2,
+    "n_results": 4,
+    "reported": 1,
+    "cut_value": 1,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 16,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 8,
+   "m": 12,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 17,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 14,
+   "m": 16,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "iii_noparent": 1,
+    "iii_not_tree": 1,
+    "i_pair": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 12, ('p', 2, 0), [(16, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 15, ('p', 2, 1), [(17, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 52, 12, ('p', 2, 0), 0, 1))",
+    "('iii_noparent', (('L', 2, 'b1'), 12))",
+    "('iii_not_tree', (('L', 2, 'b1'), 52))",
+    "('i_pair', (('L', 2, 'b1'), 12, 15, 0, 1))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false
+   }
+  },
+  {
+   "seed": 18,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 12,
+   "m": 16,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 19,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 14,
+   "m": 16,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 20,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 12,
+   "m": 15,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 1,
+    "P_len": 2,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 2,
+    "reported": 1,
+    "cut_value": 1,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 21,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 28,
+   "m": 35,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 22,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "face",
+   "n": 30,
+   "m": 50,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 4,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 4,
+    "cut_value": 4,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 23,
+   "run": 0,
+   "family": "messy",
+   "scheme": "huge",
+   "stmode": "face",
+   "n": 20,
+   "m": 37,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 5,
+    "P_len": 2,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 2,
+    "reported": 5,
+    "cut_value": 5,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 24,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 8,
+   "m": 10,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 1,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 1,
+    "cut_value": 1,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 25,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 13,
+   "m": 19,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 26,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 21,
+   "m": 32,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 3,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 3,
+    "cut_value": 3,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 28,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "random",
+   "n": 24,
+   "m": 38,
+   "flags": {
+    "struct_merge": 2,
+    "i_dist": 1,
+    "i_floor": 1,
+    "iii_noparent": 1,
+    "ii_parent_outside": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('struct_merge', (('L', 2, 'b1'), 30, ('p', 0, 1), [(30, 2)]))",
+    "('struct_merge', (('L', 2, 'b1'), 38, ('p', 0, 0), [(19, 1)]))",
+    "('i_dist', (('L', 2, 'b1'), 77, 30, ('p', 0, 1), 0, 238))",
+    "('i_floor', (('L', 2, 'b1'), 30, 0, 2))",
+    "('iii_noparent', (('L', 2, 'b1'), 30))",
+    "('ii_parent_outside', (('L', 2, 'b1'), 39, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 4,
+    "e0_same": false
+   }
+  },
+  {
+   "seed": 29,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 22,
+   "m": 22,
+   "flags": {
+    "iv_Pm_prime_nonsimple": 1
+   },
+   "notes": [],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "levels": 1,
+    "n_results": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  }
+ ]
+}

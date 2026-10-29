@@ -1,0 +1,5077 @@
+{
+ "opts": {
+  "mode": "cw",
+  "variant": "fixed",
+  "tiebreak": "minid",
+  "pairs": 1,
+  "pcommon": 0.15,
+  "pfar": 0.7,
+  "e0rule": "formal"
+ },
+ "start": 0,
+ "count": 3000,
+ "runs": 1,
+ "families": {
+  "messy": 359,
+  "wheel": 360,
+  "delaunay": 389,
+  "cycle_chords": 349,
+  "tree_plus": 379,
+  "grid": 397,
+  "nested": 371,
+  "rings": 396
+ },
+ "family_fail": {
+  "messy": 171,
+  "wheel": 196,
+  "delaunay": 208,
+  "grid": 209,
+  "rings": 227,
+  "cycle_chords": 191,
+  "nested": 183,
+  "tree_plus": 176
+ },
+ "flag_instances": {
+  "levels=None": 1560,
+  "iii_not_tree": 1561,
+  "fail_exception": 1560,
+  "rc_other": 1545,
+  "rc_wrong_or_no_answer": 1560,
+  "levels=2": 477,
+  "levels=1": 604,
+  "levels=4": 100,
+  "levels=5": 25,
+  "stat_overlap": 232,
+  "stat_Plen>=8": 83,
+  "dev_mirrored_endpoint": 457,
+  "levels=3": 234,
+  "stat_i12_outside": 132,
+  "stat_e0_same": 58,
+  "stat_child_range_empty": 8,
+  "rc_D2_e0_eq_elast": 16
+ },
+ "nfail": 1561,
+ "secs": 15.521579027175903,
+ "fails": [
+  {
+   "seed": 0,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 20,
+   "m": 31,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 1))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 1,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 7,
+   "m": 11,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 2))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 2,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 51,
+   "m": 118,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 3))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 6,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 15))",
+    "('iii_not_tree', (('L', 1, 'b2'), 15))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 10,
+     "ci": 0,
+     "mode": "L",
+     "e0": 10
+    },
+    "ept": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "Pedges": [
+     7
+    ],
+    "pf": [
+     0,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      7
+     ]
+    }
+   }
+  },
+  {
+   "seed": 11,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 78,
+   "m": 122,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 36))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 15,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 8,
+   "m": 9,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 52))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 16,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 36,
+   "m": 48,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 53))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 18,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 18,
+   "m": 31,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 58))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 19,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 30,
+   "m": 60,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 59))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 21,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 17,
+   "m": 32,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 64))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 23,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 42,
+   "m": 44,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 67))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 25,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 28,
+   "m": 41,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 70))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 30,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 29,
+   "m": 29,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 93))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 31,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 55,
+   "m": 90,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 94))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 34,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 9,
+   "m": 12,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 102))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [
+     4,
+     5,
+     6
+    ],
+    "pf": [
+     0,
+     2,
+     1,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      4,
+      5,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "seed": 36,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 56,
+   "m": 68,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 106))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 12,
+     "ci": 0,
+     "mode": "L",
+     "e0": 13
+    },
+    "ept": {
+     "v": 19,
+     "ci": 2,
+     "mode": "R",
+     "e0": 28
+    },
+    "Pedges": [
+     14,
+     27
+    ],
+    "pf": [
+     0,
+     3,
+     9
+    ],
+    "incised_per_level": {
+     "1": [
+      14,
+      27
+     ]
+    }
+   }
+  },
+  {
+   "seed": 37,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 63,
+   "m": 114,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 107))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 40,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 57,
+   "m": 89,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 114))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 42,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 30,
+   "m": 50,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 119))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 44,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 36,
+   "m": 46,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 122))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 45,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 35,
+   "m": 36,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 2, 'b1'), 125))",
+    "('iii_not_tree', (('L', 2, 'b2'), 125))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 7,
+     "ci": 1,
+     "mode": "L",
+     "e0": 17
+    },
+    "ept": {
+     "v": 23,
+     "ci": 0,
+     "mode": "L",
+     "e0": 9
+    },
+    "Pedges": [
+     1,
+     16
+    ],
+    "pf": [
+     0,
+     1,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      16
+     ],
+     "2": [
+      1,
+      9,
+      16
+     ]
+    }
+   }
+  },
+  {
+   "seed": 46,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 121,
+   "m": 158,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 127))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 47,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 60,
+   "m": 87,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 128))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 52,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 68,
+   "m": 71,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 153))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 53,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 65,
+   "m": 83,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 154))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 54,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 13,
+   "m": 18,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 155))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 56,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 43,
+   "m": 73,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 160))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 59,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 62,
+   "m": 63,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 168))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 14,
+     "ci": 1,
+     "mode": "L",
+     "e0": 15
+    },
+    "ept": {
+     "v": 29,
+     "ci": 1,
+     "mode": "L",
+     "e0": 30
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 62,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 11,
+   "m": 20,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 183))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 63,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 43,
+   "m": 64,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 184))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 64,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 74,
+   "m": 125,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 185))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 67,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 72,
+   "m": 130,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 194))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 68,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 50,
+   "m": 84,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 195))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 69,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 26,
+   "m": 54,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 196))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 71,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 18,
+   "m": 26,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 205))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 15,
+     "ci": 0,
+     "mode": "L",
+     "e0": 24
+    },
+    "Pedges": [
+     0,
+     9,
+     20
+    ],
+    "pf": [
+     0,
+     1,
+     4,
+     9
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      9,
+      20
+     ]
+    }
+   }
+  },
+  {
+   "seed": 72,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 110,
+   "m": 184,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 206))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 73,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 64,
+   "m": 64,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 208))",
+    "('iii_not_tree', (('L', 1, 'b2'), 208))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 49,
+     "ci": 0,
+     "mode": "L",
+     "e0": 58
+    },
+    "ept": {
+     "v": 12,
+     "ci": 0,
+     "mode": "L",
+     "e0": 24
+    },
+    "Pedges": [
+     9
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      9
+     ]
+    }
+   }
+  },
+  {
+   "seed": 75,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 25,
+   "m": 40,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 213))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 76,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 21,
+   "m": 27,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 214))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 78,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 36,
+   "m": 47,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 217))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 79,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 23,
+   "m": 40,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 218))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 80,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 56,
+   "m": 58,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 219))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 82,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 13,
+   "m": 24,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 235))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 83,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 31,
+   "m": 56,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 236))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 84,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 3,
+   "m": 4,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 238))",
+    "('iii_not_tree', (('L', 1, 'b2'), 238))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 0,
+     "ci": 2,
+     "mode": "L",
+     "e0": 2
+    },
+    "ept": {
+     "v": 2,
+     "ci": 2,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 85,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 28,
+   "m": 32,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 240))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 17,
+     "ci": 0,
+     "mode": "L",
+     "e0": 17
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 90,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 43,
+   "m": 58,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 255))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 94,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 12,
+   "m": 17,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 262))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 95,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 8,
+   "m": 14,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 263))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 97,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 51,
+   "m": 68,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 268))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 98,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 15,
+   "m": 23,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 269))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 100,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 28,
+   "m": 46,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 272))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 105,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 44,
+   "m": 64,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 287))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 106,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 67,
+   "m": 118,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 288))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 107,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 43,
+   "m": 48,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 290))",
+    "('iii_not_tree', (('L', 1, 'b2'), 290))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 30,
+     "ci": 0,
+     "mode": "L",
+     "e0": 30
+    },
+    "ept": {
+     "v": 34,
+     "ci": 1,
+     "mode": "L",
+     "e0": 35
+    },
+    "Pedges": [
+     11
+    ],
+    "pf": [
+     0,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      11
+     ]
+    }
+   }
+  },
+  {
+   "seed": 108,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 16,
+   "m": 30,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 291))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 114,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 35,
+   "m": 37,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 316))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 25,
+     "ci": 0,
+     "mode": "L",
+     "e0": 25
+    },
+    "Pedges": [
+     1,
+     23
+    ],
+    "pf": [
+     0,
+     1,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      1,
+      23
+     ]
+    }
+   }
+  },
+  {
+   "seed": 116,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 18,
+   "m": 21,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 319))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 124,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 10,
+   "m": 12,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 351))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 126,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 27,
+   "m": 48,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 356))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 8
+   }
+  },
+  {
+   "seed": 127,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 8,
+   "m": 11,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 358))",
+    "('iii_not_tree', (('L', 1, 'b2'), 358))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 7,
+     "ci": 4,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 128,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 50,
+   "m": 53,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 359))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 129,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 54,
+   "m": 53,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 361))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 23,
+     "ci": 0,
+     "mode": "L",
+     "e0": 15
+    },
+    "ept": {
+     "v": 42,
+     "ci": 0,
+     "mode": "L",
+     "e0": 29
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 136,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 36,
+   "m": 47,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 406))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 138,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 42,
+   "m": 47,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 412))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 1,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 27,
+     "ci": 1,
+     "mode": "L",
+     "e0": 28
+    },
+    "Pedges": [
+     0,
+     30
+    ],
+    "pf": [
+     1,
+     0,
+     6
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      30
+     ]
+    }
+   }
+  },
+  {
+   "seed": 140,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 20,
+   "m": 28,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 417))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 141,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 64,
+   "m": 129,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 418))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 143,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 11,
+   "m": 19,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 426))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 144,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 33,
+   "m": 57,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 427))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 145,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 13,
+   "m": 23,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 428))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 147,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 23,
+   "m": 35,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 433))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 148,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 56,
+   "m": 65,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 434))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 149,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 32,
+   "m": 53,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 435))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 150,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 21,
+   "m": 26,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 437))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 2,
+     "ci": 2,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     2,
+     4,
+     10
+    ],
+    "pf": [
+     0,
+     2,
+     1,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      2,
+      4,
+      10
+     ]
+    }
+   }
+  },
+  {
+   "seed": 151,
+   "run": 0,
+   "family": "messy",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 20,
+   "m": 36,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 438))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 153,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 57,
+   "m": 89,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 443))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 154,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 30,
+   "m": 41,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 444))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 155,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 56,
+   "m": 55,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 446))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 35,
+     "ci": 0,
+     "mode": "L",
+     "e0": 50
+    },
+    "ept": {
+     "v": 47,
+     "ci": 0,
+     "mode": "L",
+     "e0": 7
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 156,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 31,
+   "m": 52,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 447))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 158,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 57,
+   "m": 73,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 452))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 165,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 60,
+   "m": 119,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 489))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 166,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 4,
+   "m": 6,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 491))",
+    "('iii_not_tree', (('L', 1, 'b2'), 491))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 3,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 2,
+     "ci": 0,
+     "mode": "L",
+     "e0": 3
+    },
+    "ept": {
+     "v": 3,
+     "ci": 1,
+     "mode": "L",
+     "e0": 2
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 167,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 58,
+   "m": 68,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 492))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 171,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 68,
+   "m": 73,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 503))",
+    "('iii_not_tree', (('L', 1, 'b2'), 503))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 33,
+     "ci": 0,
+     "mode": "L",
+     "e0": 44
+    },
+    "ept": {
+     "v": 8,
+     "ci": 4,
+     "mode": "L",
+     "e0": 16
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 173,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 88,
+   "m": 115,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 508))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 174,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 68,
+   "m": 123,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 509))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 176,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 33,
+   "m": 75,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 514))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 177,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 28,
+   "m": 39,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 515))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 178,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 35,
+   "m": 61,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 516))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 179,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 12,
+   "m": 13,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 518))",
+    "('iii_not_tree', (('L', 1, 'b2'), 518))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 11,
+     "ci": 0,
+     "mode": "L",
+     "e0": 11
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     3
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      3
+     ]
+    }
+   }
+  },
+  {
+   "seed": 180,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 4,
+   "m": 6,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 520))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 2,
+     "mode": "L",
+     "e0": 4
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 181,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 35,
+   "m": 60,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 521))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 183,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 14,
+   "m": 21,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 526))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 184,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 44,
+   "m": 45,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 527))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 186,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 60,
+   "m": 78,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 532))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 187,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 30,
+   "m": 49,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 533))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 191,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 24,
+   "m": 46,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 543))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 194,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 48,
+   "m": 85,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 557))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 195,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 68,
+   "m": 99,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 558))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 198,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 66,
+   "m": 127,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 565))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 5
+   }
+  },
+  {
+   "seed": 199,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 28,
+   "m": 36,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 567))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 0,
+     "mode": "L",
+     "e0": 10
+    },
+    "ept": {
+     "v": 22,
+     "ci": 1,
+     "mode": "L",
+     "e0": 22
+    },
+    "Pedges": [
+     9,
+     17,
+     30
+    ],
+    "pf": [
+     0,
+     1,
+     4,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      9,
+      17,
+      30
+     ]
+    }
+   }
+  },
+  {
+   "seed": 202,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 60,
+   "m": 88,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 579))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 203,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 99,
+   "m": 179,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 580))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 204,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 38,
+   "m": 62,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 581))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 205,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 20,
+   "m": 31,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 582))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 206,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 33,
+   "m": 57,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 583))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 210,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 30,
+   "m": 41,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 594))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 212,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 15,
+   "m": 16,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 599))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 213,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 13,
+   "m": 21,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 600))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 214,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 77,
+   "m": 96,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 601))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 219,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 28,
+   "m": 37,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 618))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 221,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 66,
+   "m": 82,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 625))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 224,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 30,
+   "m": 48,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 635))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 226,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 78,
+   "m": 123,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 638))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 229,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 17,
+   "m": 32,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 645))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 235,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 8,
+   "m": 9,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 666))",
+    "('iii_not_tree', (('L', 1, 'b2'), 666))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 3,
+     "ci": 0,
+     "mode": "L",
+     "e0": 3
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "R",
+     "e0": 1
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 236,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 16,
+   "m": 27,
+   "flags": {
+    "dev_mirrored_endpoint": 2,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 668))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 6,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "R",
+     "e0": 3
+    },
+    "ept": {
+     "v": 13,
+     "ci": 2,
+     "mode": "R",
+     "e0": 23
+    },
+    "Pedges": [
+     0,
+     8,
+     15,
+     19,
+     25
+    ],
+    "pf": [
+     0,
+     1,
+     5,
+     8,
+     10,
+     12
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      8,
+      15,
+      19,
+      25
+     ]
+    }
+   }
+  },
+  {
+   "seed": 238,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 28,
+   "m": 36,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 671))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 240,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 23,
+   "m": 43,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 674))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 242,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 72,
+   "m": 104,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 677))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 243,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 60,
+   "m": 74,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 678))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 244,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 68,
+   "m": 70,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 679))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 246,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 50,
+   "m": 86,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 682))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 248,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 114,
+   "m": 153,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 688))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 250,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 15,
+   "m": 21,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 691))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 251,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 85,
+   "m": 131,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 692))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 253,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 146,
+   "m": 240,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 698))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 257,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 44,
+   "m": 56,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 724))",
+    "('iii_not_tree', (('L', 1, 'b2'), 724))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 4,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 12,
+     "ci": 2,
+     "mode": "L",
+     "e0": 22
+    },
+    "ept": {
+     "v": 23,
+     "ci": 0,
+     "mode": "L",
+     "e0": 38
+    },
+    "Pedges": [
+     24
+    ],
+    "pf": [
+     9,
+     11
+    ],
+    "incised_per_level": {
+     "1": [
+      24
+     ]
+    }
+   }
+  },
+  {
+   "seed": 259,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 68,
+   "m": 144,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 731))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 260,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 65,
+   "m": 73,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 733))",
+    "('iii_not_tree', (('L', 1, 'b2'), 733))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 12,
+     "ci": 1,
+     "mode": "L",
+     "e0": 13
+    },
+    "ept": {
+     "v": 55,
+     "ci": 0,
+     "mode": "L",
+     "e0": 55
+    },
+    "Pedges": [
+     20
+    ],
+    "pf": [
+     1,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      20
+     ]
+    }
+   }
+  },
+  {
+   "seed": 261,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 17,
+   "m": 30,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 734))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 262,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 32,
+   "m": 45,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 735))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 265,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 22,
+   "m": 40,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 743))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 266,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 50,
+   "m": 88,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 744))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 267,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 47,
+   "m": 51,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 745))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 268,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 20,
+   "m": 30,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 746))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 269,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 44,
+   "m": 84,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 747))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 274,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 17,
+   "m": 29,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 764))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 276,
+   "run": 0,
+   "family": "nested",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 64,
+   "m": 98,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 771))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "ept": {
+     "v": 13,
+     "ci": 1,
+     "mode": "L",
+     "e0": 22
+    },
+    "Pedges": [
+     0,
+     13,
+     18,
+     20
+    ],
+    "pf": [
+     0,
+     1,
+     6,
+     8,
+     9
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      13,
+      18,
+      20
+     ]
+    }
+   }
+  },
+  {
+   "seed": 278,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 8,
+   "m": 9,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 774))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 282,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 53,
+   "m": 91,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 786))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 285,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 61,
+   "m": 61,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 795))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 286,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 13,
+   "m": 24,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 796))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 288,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 64,
+   "m": 65,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 800))",
+    "('iii_not_tree', (('L', 1, 'b2'), 800))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 35,
+     "ci": 1,
+     "mode": "L",
+     "e0": 50
+    },
+    "ept": {
+     "v": 23,
+     "ci": 1,
+     "mode": "L",
+     "e0": 30
+    },
+    "Pedges": [
+     1
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "seed": 291,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 68,
+   "m": 118,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 807))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 293,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 43,
+   "m": 76,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 812))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 2
+   }
+  },
+  {
+   "seed": 294,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 10,
+   "m": 18,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 813))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 295,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 64,
+   "m": 65,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 814))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 297,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 56,
+   "m": 84,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 817))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 301,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 39,
+   "m": 47,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 828))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 302,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 16,
+   "m": 20,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 829))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 305,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 25,
+   "m": 44,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 836))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 312,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 27,
+   "m": 37,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 853))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 314,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 26,
+   "m": 27,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 857))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 21,
+     "ci": 1,
+     "mode": "L",
+     "e0": 22
+    },
+    "ept": {
+     "v": 1,
+     "ci": 1,
+     "mode": "L",
+     "e0": 2
+    },
+    "Pedges": [],
+    "pf": [
+     1
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 315,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 16,
+   "m": 29,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 858))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 316,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 45,
+   "m": 78,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 859))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 317,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 29,
+   "m": 45,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 860))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 318,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 58,
+   "m": 116,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 861))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 319,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 26,
+   "m": 50,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 862))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 320,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 56,
+   "m": 100,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 863))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 321,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "small",
+   "stmode": "adj",
+   "n": 50,
+   "m": 52,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 864))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 324,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 21,
+   "m": 35,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 871))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 325,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 25,
+   "m": 42,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 872))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 326,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 18,
+   "m": 25,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 873))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 327,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 21,
+   "m": 35,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 874))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 328,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 32,
+   "m": 48,
+   "flags": {
+    "dev_mirrored_endpoint": 2,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 876))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 10,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "R",
+     "e0": 3
+    },
+    "ept": {
+     "v": 29,
+     "ci": 1,
+     "mode": "R",
+     "e0": 44
+    },
+    "Pedges": [
+     0,
+     8,
+     15,
+     23,
+     24,
+     31,
+     34,
+     39,
+     46
+    ],
+    "pf": [
+     0,
+     1,
+     5,
+     8,
+     12,
+     11,
+     14,
+     15,
+     16,
+     17
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      8,
+      15,
+      23,
+      24,
+      31,
+      34,
+      39,
+      46
+     ]
+    }
+   }
+  },
+  {
+   "seed": 330,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 20,
+   "m": 22,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 886))",
+    "('iii_not_tree', (('L', 1, 'b2'), 886))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 1,
+     "mode": "L",
+     "e0": 3
+    },
+    "ept": {
+     "v": 19,
+     "ci": 2,
+     "mode": "L",
+     "e0": 21
+    },
+    "Pedges": [
+     18
+    ],
+    "pf": [
+     0,
+     3
+    ],
+    "incised_per_level": {
+     "1": [
+      18
+     ]
+    }
+   }
+  },
+  {
+   "seed": 331,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 32,
+   "m": 48,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 887))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 332,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 54,
+   "m": 60,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 888))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 334,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 21,
+   "m": 26,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 894))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 19,
+     "ci": 1,
+     "mode": "L",
+     "e0": 20
+    },
+    "ept": {
+     "v": 12,
+     "ci": 0,
+     "mode": "L",
+     "e0": 12
+    },
+    "Pedges": [
+     9,
+     11,
+     15
+    ],
+    "pf": [
+     1,
+     4,
+     6,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      9,
+      11,
+      15
+     ]
+    }
+   }
+  },
+  {
+   "seed": 335,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 18,
+   "m": 34,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 895))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 336,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "equal",
+   "stmode": "adj",
+   "n": 51,
+   "m": 93,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 896))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 337,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 70,
+   "m": 88,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 897))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 338,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 81,
+   "m": 145,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 898))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 339,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 5,
+   "m": 8,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 899))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 342,
+   "run": 0,
+   "family": "grid",
+   "scheme": "equal",
+   "stmode": "deep",
+   "n": 9,
+   "m": 10,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 905))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 3,
+    "e0_same": true,
+    "eps": {
+     "v": 1,
+     "ci": 1,
+     "mode": "L",
+     "e0": 3
+    },
+    "ept": {
+     "v": 2,
+     "ci": 0,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     0,
+     2
+    ],
+    "pf": [
+     0,
+     1,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      0,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "seed": 343,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 24,
+   "m": 30,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 907))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 1,
+    "e0_same": false,
+    "eps": {
+     "v": 1,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "ept": {
+     "v": 8,
+     "ci": 0,
+     "mode": "L",
+     "e0": 8
+    },
+    "Pedges": [],
+    "pf": [
+     0
+    ],
+    "incised_per_level": {
+     "1": []
+    }
+   }
+  },
+  {
+   "seed": 344,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 35,
+   "m": 60,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 908))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 345,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 55,
+   "m": 58,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 909))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 346,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 44,
+   "m": 57,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 910))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 347,
+   "run": 0,
+   "family": "nested",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 40,
+   "m": 55,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 911))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 349,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 41,
+   "m": 60,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 914))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 353,
+   "run": 0,
+   "family": "grid",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 33,
+   "m": 55,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 934))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 355,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 16,
+   "m": 29,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 937))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 356,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 37,
+   "m": 82,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 938))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 9
+   }
+  },
+  {
+   "seed": 359,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 99,
+   "m": 180,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 947))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 361,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 18,
+   "m": 34,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 952))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 363,
+   "run": 0,
+   "family": "wheel",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 9,
+   "m": 15,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 964))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 364,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "deep",
+   "n": 6,
+   "m": 7,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 966))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 1,
+    "P_len": 3,
+    "e0_same": false,
+    "eps": {
+     "v": 4,
+     "ci": 0,
+     "mode": "R",
+     "e0": 6
+    },
+    "ept": {
+     "v": 0,
+     "ci": 0,
+     "mode": "L",
+     "e0": 0
+    },
+    "Pedges": [
+     2,
+     5
+    ],
+    "pf": [
+     0,
+     2,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      2,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "seed": 365,
+   "run": 0,
+   "family": "tree_plus",
+   "scheme": "equal",
+   "stmode": "far",
+   "n": 27,
+   "m": 27,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 967))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 366,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "bridge",
+   "n": 12,
+   "m": 20,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 968))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 6
+   }
+  },
+  {
+   "seed": 367,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "small",
+   "stmode": "face",
+   "n": 49,
+   "m": 113,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 969))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 3
+   }
+  },
+  {
+   "seed": 368,
+   "run": 0,
+   "family": "rings",
+   "scheme": "zeros",
+   "stmode": "face",
+   "n": 19,
+   "m": 30,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 970))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 373,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 20,
+   "m": 31,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 984))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 374,
+   "run": 0,
+   "family": "nested",
+   "scheme": "equal",
+   "stmode": "bridge",
+   "n": 30,
+   "m": 43,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 985))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 0
+   }
+  },
+  {
+   "seed": 376,
+   "run": 0,
+   "family": "messy",
+   "scheme": "small",
+   "stmode": "far",
+   "n": 122,
+   "m": 202,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 988))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  },
+  {
+   "seed": 377,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "zeros",
+   "stmode": "bridge",
+   "n": 35,
+   "m": 38,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 990))",
+    "('iii_not_tree', (('L', 1, 'b2'), 990))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 25,
+     "ci": 1,
+     "mode": "L",
+     "e0": 26
+    },
+    "ept": {
+     "v": 7,
+     "ci": 0,
+     "mode": "L",
+     "e0": 7
+    },
+    "Pedges": [
+     0
+    ],
+    "pf": [
+     1,
+     0
+    ],
+    "incised_per_level": {
+     "1": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "seed": 381,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 13,
+   "m": 23,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 1009))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 4
+   }
+  },
+  {
+   "seed": 384,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "random",
+   "n": 14,
+   "m": 17,
+   "flags": {
+    "iii_not_tree": 2,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L', 1, 'b1'), 1017))",
+    "('iii_not_tree', (('L', 1, 'b2'), 1017))",
+    "('fail_exception', 'parent loop')"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 2,
+    "e0_same": false,
+    "eps": {
+     "v": 13,
+     "ci": 0,
+     "mode": "L",
+     "e0": 16
+    },
+    "ept": {
+     "v": 4,
+     "ci": 0,
+     "mode": "L",
+     "e0": 3
+    },
+    "Pedges": [
+     1
+    ],
+    "pf": [
+     0,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      1
+     ]
+    }
+   }
+  },
+  {
+   "seed": 385,
+   "run": 0,
+   "family": "grid",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 60,
+   "m": 104,
+   "flags": {
+    "iii_not_tree": 1,
+    "fail_exception": 1
+   },
+   "notes": [
+    "('iii_not_tree', (('L0',), 1018))",
+    "('fail_exception', 'level0 tree broken')"
+   ],
+   "info": {
+    "mincut": 1
+   }
+  }
+ ]
+}

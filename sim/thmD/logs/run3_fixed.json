@@ -1,0 +1,35 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "minid",
+  "pairs": 1,
+  "pcommon": 0.15,
+  "pfar": 0.7
+ },
+ "start": 0,
+ "count": 400,
+ "runs": 1,
+ "families": {
+  "messy": 48,
+  "wheel": 47,
+  "delaunay": 53,
+  "cycle_chords": 53,
+  "tree_plus": 41,
+  "grid": 56,
+  "nested": 55,
+  "rings": 47
+ },
+ "family_fail": {},
+ "flag_instances": {
+  "levels=1": 145,
+  "levels=2": 126,
+  "dev_mirrored_endpoint": 112,
+  "levels=4": 36,
+  "levels=3": 85,
+  "levels=5": 8
+ },
+ "nfail": 0,
+ "secs": 3.4872829914093018,
+ "fails": []
+}

@@ -1,0 +1,87 @@
+Theorem D (NOTES.md §5) -- computational attack, 2026-10-29
+==========================================================
+Code: ../thmD.py (single file, python3 -I), ../minimize.py, ../summarize.py, ../lane1.sh, ../lane2.sh
+Per-run tables: runs_table.txt; raw: [A-H,N]_*.json (first 200 failing instances each), min_*.json.
+
+What is implemented
+-------------------
+* Planar rotation systems with multi-edges, faces/corners; Euler check on every instance.
+* Explicit incised dual annuli: node-parts = ranges of labelled darts (Def 2.2 / 2.9), level-1 incision
+  along P with s/t corner cuts (Remark 3.3), recursive incision of P_i' per Remark 2.5 (no re-incision of
+  shared subpaths), [18] Algorithm 3 (leaf annuli, overlap via Claim 2.3 tree from x, i1/i2 skipping via
+  Claim 2.4, children = components, Claim 5.8 bad-edge discard), Sec 5.2 cut read-off (P_m' + P[x..y]).
+* G^_l per [18] Sec 3.1 (+ Remark 3.3) from the incised-edge set (P and chords bounding level-l annuli):
+  D(v), v^L, v^R copies, E_S stars, E_R per dart (4 copies if incised), E_C per edge.
+  Two builds: 'literal' (exactly the formulas) and 'fixed' (two local repairs, see below).
+* Claimed SSSP: weights 0 / K c+1 / M, K=|V(G^_l)|+1, M=K(sum c+1)+1, virtual source sigma with a 0-arc
+  to one copy of p^(f_i) per annulus, Dijkstra; parent of each node-part = tight E_C edge into p^(g)
+  (smallest (edge,side) id, or random tight edge).  Reif is driven ONLY by these trees.
+* Checks per SSSP batch: (i) G^ distance of every p^(g) == annulus Dijkstra (K c+1), all copies on p^ equal,
+  floor(d/K) == dual distance, plus a random single-source pair test; (ii) parent node-part inside the
+  annulus, no p^ shared between node-parts; (iii) parents form a tree, every parent edge tight in the
+  annulus.  Global: every computed P_t vs dist_A1(p_t^0,p_t^1); min_t dist_A1 == mincut (sanity);
+  crossings in A1; (iv) reported value == networkx mincut, read-off edge set has that capacity and
+  separates s,t.
+
+Instances (distinct): 64,000 = messy 8117, wheel 8128, delaunay 8082, cycle_chords 7886, tree_plus 7942,
+grid 7895, nested 7973, rings 7977.  messy = subdivisions (deg 2), parallel edges, pendants/bridges (deg 1).
+Capacities: zeros (55% 0), equal (all c, incl. all 0), huge (10^6 on a few edges), small 0..3.
+s,t: common face, adjacent, far (hops), deep (max dual distance), bridge/deg-1, random.
+f,g: common face (p=0.15/0.5), max dual distance (p=0.7/0.3), random.  Recursion depth 1..6 levels;
+Claim 2.3 overlap occurred in 5668/30000, i1/i2 outside [j,k] in 4180/30000, e0=e_last in 630/30000.
+
+Results
+-------
+fixed G^ (A 30000 minid, C 30000 random tie, D 4000 large n<=~400, G 15000 small): 0 failures of
+(i),(ii),(iii),(iv); every computed P_t equals dist_A1(p_t^0,p_t^1); no path crosses an incised P_i'.
+Informational: computed paths DO cross in A1 in 17/30000 (minid) and 630/30000 (random tie) instances,
+always either two paths of the same annulus (leaf P_j/P_k, overlap-tree paths) or a later path crossing a
+NON-incised part of an earlier P_i (e.g. P_i's continuation along an equal-cost parallel dual edge beside
+P'^1).  So "the P_i do not cross" holds only for the incised parts P_i'; harmless for (iv).
+
+literal G^ ([18] verbatim): B 10673/30000, E 1617/4000, H 3245/15000 instances fail (i); wrong or no final
+answer in 9673 / 1473 / 2907.  Root cause, every failing instance: D1 or D2 (rc_other = 0).
+
+D1  Remark 3.3: "If e is incised then it is handled just like any other incised edge."  When a later
+    chord P_i' passes through the endpoint-case edge e0* (or e_last*), the s- (t-)corner split is dropped:
+    the D-copy of the cut corner gets both the head copy of e0 and the next dart, so the two singleton
+    pieces of p_0^0 and p_0^1 in the leaf annulus become ONE p^ path -> dist 0 -> P_0 = 0.
+    Violates [18] Thm 3.1(1) (vertex-disjoint p^), hence claim (i), hence (iv).
+    Minimal clean witness (simple graph, positive caps, formal conventions; run seed 20 of minimize):
+      V={0,1,2,3}, edges e0=(0,3)c1, e1=(0,1)c1, e2=(1,2)c1, e3=(2,3)c1, e4=(3,1)c5,
+      rotations 0:[e0,e1]  1:[e2,e4,e1]  2:[e2,e3]  3:[e3,e0,e4]  (dart lists [[2,0],[4,9,3],[5,6],[7,1,8]]),
+      s=1, t=2.  Faces f0=(0,3,1), f1=outer(3,0,1,2), f2=(2,1,3).  P=f0-f1-f2 via e0,e2.
+      e0(s)=e4 (corner 1 of s), e_last(t)=e3 (corner 1 of t).  P_1' incises e3 at level 1.
+      Level-2 G^: p^(p_2^0) = p^(p_2^1); dist 0 vs annulus dist 58 (=2K+2, K=28).  Reported 0, mincut 2,
+      read-off cut empty.  Fixed G^ on the same choices: 2, valid cut.
+    Smaller (with zero caps/parallel edges): n=3, s=2 pendant on 0 (cap 1), three parallel 0-1 edges
+      caps 0,0,1, t=1: mincut 1, literal reports 0 (min_D1.json).
+D2  Remark 3.3 E_C rule "always add (u_{j-1},u_j)" at the other endpoint u of e0.  If u is t and e0 is
+    also t's endpoint-case edge (e0 = e_last = st), or u has degree 1, this E_C edge joins copies of t
+    whose corner is itself cut (or is a self-loop), so e0* is miswired / missing.
+    Minimal witness (forced, no choice): G = single edge s-t, capacity 3.  G^_1 E_C = loops (t_0,t_0),
+    (s_0,s_0); dist(p^(p_0^0), p^(p_0^1)) = 29 = M (only via E_S) vs K c+1 = 22; floor = 4 != 3.
+    (cap 0: 8 vs 1.)  In the batches the tree breaks (no tight parent) -> no answer.
+D3  (not a failure of the formal model, a gap in [18]): Remark 3.3's formula needs e0 = e_i with corner i of
+    s in p0.  [18, Sec 5] lets s pick ANY non-P edge of p(p0) at s.  Run F (6000, that rule, literal):
+    3724 runs put v_i^L in the other face of e0, 4364 runs fail, 3462 wrong/no answer.
+    Also, a valid formal choice does not exist in ~30% of instances (the only s-corner on p0 is next to
+    the P-edge); then I used the mirrored copy v_i^R (not in [18]).
+
+Negative controls (fixed G^, 3000 instances each)
+-------------------------------------------------
+c instead of K c+1 : 1561 flagged, all as "parents not a tree" (zero-weight tight cycles); unflagged ones
+                     have no zero-capacity ties in the trees used.
+M = 1              : 2913 flagged ((i) distance mismatch, no parents).
++1 on 30% of E_C arcs: 2841 flagged ((i) mismatch; 1254 also "tree edge not shortest").
+
+Deviations of my G^_l from [18]
+-------------------------------
+literal: (1) e0/e_last chosen as e_i with corner i in p0 and e_i not on P; when impossible, mirrored
+  e0 = e_{i+1} with copy v_i^R (undefined in [18]); (2) E_C ids (edge,side) for the tie-break; sigma attached
+  to one fixed copy of p^(f_i); (3) one G^_l per level shared by all batches (P_i, leaf, overlap SSSPs);
+  (4) source p_i^0 or p_i^1 and overlap vertex x chosen at random (paper: max ID); (5) residual node-parts
+  are kept in G^_l (not 'switched off'); (6) E_C loops for degree-1 vertices kept as the formula gives.
+fixed = literal + (a) an incised endpoint-case edge keeps the corner cut: its copy at the cut corner of
+  s/t attaches to a fresh copy X (E_S to D) instead of D; (b) every E_C edge joins the actual attachment
+  vertices of its two E_R copies at the same primal vertex as [18] chooses (differs only for e0/e_last).

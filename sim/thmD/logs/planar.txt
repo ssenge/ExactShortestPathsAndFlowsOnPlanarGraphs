@@ -1,0 +1,4 @@
+python3 planar_check.py fixed 0 400   -> fixed {planar: 1062}
+python3 planar_check.py literal 0 400 -> literal {planar: 1061}
+python3 planar_check.py fixed 400 300   -> fixed {planar: 786, max_excess_over_4D+4: 0}
+python3 planar_check.py literal 400 300 -> literal {planar: 785, max_excess_over_4D+4: 0}

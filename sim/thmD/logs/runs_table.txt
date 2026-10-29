@@ -1,0 +1,95 @@
+== A_fixed_minid  opts={'mode': 'claimed', 'variant': 'fixed', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=30000  failing=0  secs=156
+   families: {'messy': 3844, 'wheel': 3725, 'delaunay': 3815, 'cycle_chords': 3732, 'tree_plus': 3707, 'grid': 3689, 'nested': 3748, 'rings': 3740}
+   failing per family: {}
+   levels: {'1': 11937, '2': 9919, '3': 5348, '4': 2308, '5': 482, '6': 6}
+   coverage stats (#instances): {'overlap': 5668, 'i12_outside': 4180, 'Plen>=8': 2213, 'e0_same': 630, 'child_range_empty': 162}
+   deviations: {'dev_mirrored_endpoint': 9007}
+   flags (#instances): {'xa_cross_same_annulus': 10, 'xb_cross_nonincised_part': 7}
+
+== B_literal_minid  opts={'mode': 'claimed', 'variant': 'literal', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=30000  failing=10673  secs=159
+   families: {'messy': 3844, 'wheel': 3725, 'delaunay': 3815, 'cycle_chords': 3732, 'tree_plus': 3707, 'grid': 3689, 'nested': 3748, 'rings': 3740}
+   failing per family: {'wheel': 1823, 'delaunay': 2189, 'rings': 1783, 'messy': 1147, 'grid': 1418, 'nested': 1191, 'cycle_chords': 810, 'tree_plus': 312}
+   levels: {'1': 11367, '2': 9859, '3': 5348, '4': 2308, '5': 482, '6': 6, 'None': 630}
+   coverage stats (#instances): {'overlap': 5668, 'i12_outside': 4180, 'Plen>=8': 2213, 'e0_same': 630, 'child_range_empty': 162}
+   deviations: {'dev_mirrored_endpoint': 9007}
+   flags (#instances): {'i_dist': 10673, 'struct_merge': 10043, 'struct_merged_with_source': 10043, 'rc_D1_incised_endpoint_edge': 10043, 'iii_not_tree': 9816, 'rc_wrong_or_no_answer': 9673, 'ii_parent_outside': 9186, 'iv_path_through_merge': 9043, 'iv_cut_not_separating': 9043, 'i_floor': 8530, 'i_len': 7900, 'len_lt_trueA1': 7900, 'iv_value': 7778, 'iv_cut_value': 7778, 'i_pair': 5613, 'iii_noparent': 630, 'fail_exception': 630, 'rc_D2_e0_eq_elast': 630, 'xa_cross_same_annulus': 8, 'xb_cross_nonincised_part': 5}
+   root cause of stored failing instances: {'D1 (incised endpoint-case edge)': 188, 'D2 (e0=e_last=st)': 12}
+
+== C_fixed_random  opts={'mode': 'claimed', 'variant': 'fixed', 'tiebreak': 'random', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=30000  failing=0  secs=156
+   families: {'messy': 3844, 'wheel': 3725, 'delaunay': 3815, 'cycle_chords': 3732, 'tree_plus': 3707, 'grid': 3689, 'nested': 3748, 'rings': 3740}
+   failing per family: {}
+   levels: {'1': 11937, '2': 9875, '3': 5386, '4': 2312, '5': 484, '6': 6}
+   coverage stats (#instances): {'overlap': 5679, 'i12_outside': 4154, 'Plen>=8': 2213, 'e0_same': 596, 'child_range_empty': 153}
+   deviations: {'dev_mirrored_endpoint': 9198}
+   flags (#instances): {'xa_cross_same_annulus': 324, 'xb_cross_nonincised_part': 306}
+
+== D_fixed_big  opts={'mode': 'claimed', 'variant': 'fixed', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.1, 'pfar': 0.8, 'e0rule': 'formal'}  instances=4000  failing=0  secs=54
+   families: {'grid': 523, 'tree_plus': 502, 'messy': 514, 'nested': 500, 'delaunay': 504, 'wheel': 524, 'rings': 472, 'cycle_chords': 461}
+   failing per family: {}
+   levels: {'1': 1268, '2': 1316, '3': 740, '4': 471, '5': 171, '6': 34}
+   coverage stats (#instances): {'e0_same': 64, 'overlap': 1068, 'i12_outside': 837, 'Plen>=8': 578, 'child_range_empty': 35}
+   deviations: {'dev_mirrored_endpoint': 1328}
+   flags (#instances): {'xa_cross_same_annulus': 2}
+
+== E_literal_big  opts={'mode': 'claimed', 'variant': 'literal', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.1, 'pfar': 0.8, 'e0rule': 'formal'}  instances=4000  failing=1617  secs=56
+   families: {'grid': 523, 'tree_plus': 502, 'messy': 514, 'nested': 500, 'delaunay': 504, 'wheel': 524, 'rings': 472, 'cycle_chords': 461}
+   failing per family: {'nested': 189, 'delaunay': 346, 'grid': 250, 'wheel': 286, 'messy': 176, 'rings': 233, 'cycle_chords': 102, 'tree_plus': 35}
+   levels: {'1': 1208, '2': 1312, '3': 740, '4': 471, '5': 171, '6': 34, 'None': 64}
+   coverage stats (#instances): {'e0_same': 64, 'overlap': 1068, 'i12_outside': 837, 'Plen>=8': 578, 'child_range_empty': 35}
+   deviations: {'dev_mirrored_endpoint': 1328}
+   flags (#instances): {'i_dist': 1617, 'struct_merge': 1553, 'struct_merged_with_source': 1553, 'rc_D1_incised_endpoint_edge': 1553, 'iii_not_tree': 1504, 'rc_wrong_or_no_answer': 1473, 'ii_parent_outside': 1440, 'iv_path_through_merge': 1409, 'iv_cut_not_separating': 1409, 'i_floor': 1301, 'i_len': 1237, 'len_lt_trueA1': 1237, 'iv_value': 1215, 'iv_cut_value': 1215, 'i_pair': 828, 'iii_noparent': 64, 'fail_exception': 64, 'rc_D2_e0_eq_elast': 64}
+   root cause of stored failing instances: {'D2 (e0=e_last=st)': 11, 'D1 (incised endpoint-case edge)': 189}
+
+== F_literal_free_e0  opts={'mode': 'claimed', 'variant': 'literal', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'free'}  instances=6000  failing=4364  secs=28
+   families: {'messy': 761, 'wheel': 748, 'delaunay': 769, 'cycle_chords': 722, 'tree_plus': 744, 'grid': 742, 'nested': 736, 'rings': 778}
+   failing per family: {'messy': 478, 'wheel': 634, 'delaunay': 661, 'cycle_chords': 584, 'rings': 653, 'grid': 590, 'nested': 579, 'tree_plus': 185}
+   levels: {'1': 1888, '2': 686, '3': 381, '4': 152, '5': 38, '6': 2, 'None': 2853}
+   coverage stats (#instances): {'overlap': 373, 'i12_outside': 280, 'Plen>=8': 440, 'e0_same': 190, 'child_range_empty': 12}
+   deviations: {'dev_free_wrongface': 3724}
+   flags (#instances): {'i_dist': 4318, 'struct_merge': 4282, 'iii_not_tree': 4262, 'ii_parent_outside': 4179, 'i_pair': 3891, 'rc_D3_free_e0_wrong_face': 3724, 'rc_wrong_or_no_answer': 3462, 'i_floor': 3284, 'struct_ec_wiring': 3069, 'fail_exception': 2064, 'struct_merged_with_source': 2040, 'iv_path_through_merge': 1398, 'iv_cut_not_separating': 1398, 'i_len': 1363, 'len_lt_trueA1': 1363, 'struct_split': 1206, 'iv_value': 1087, 'iv_cut_value': 1087, 'fail_keyerror': 789, 'rc_D1_incised_endpoint_edge': 558, 'iii_noparent': 89, 'rc_D2_e0_eq_elast': 82, 'iii_not_shortest': 15, 'xa_cross_same_annulus': 1}
+   root cause of stored failing instances: {'D1 (incised endpoint-case edge)': 197, 'D2 (e0=e_last=st)': 3}
+
+== G_fixed_small  opts={'mode': 'claimed', 'variant': 'fixed', 'tiebreak': 'random', 'pairs': 1, 'pcommon': 0.5, 'pfar': 0.3, 'e0rule': 'formal'}  instances=15000  failing=0  secs=31
+   families: {'wheel': 1987, 'tree_plus': 1839, 'delaunay': 1890, 'cycle_chords': 1827, 'messy': 1870, 'nested': 1853, 'grid': 1819, 'rings': 1915}
+   failing per family: {}
+   levels: {'1': 9505, '2': 3405, '3': 1744, '4': 341, '5': 5}
+   coverage stats (#instances): {'e0_same': 302, 'overlap': 1275, 'i12_outside': 910, 'Plen>=8': 139, 'child_range_empty': 18}
+   deviations: {'dev_mirrored_endpoint': 2827}
+   flags (#instances): {'xa_cross_same_annulus': 61, 'xb_cross_nonincised_part': 45}
+
+== H_literal_small  opts={'mode': 'claimed', 'variant': 'literal', 'tiebreak': 'random', 'pairs': 1, 'pcommon': 0.5, 'pfar': 0.3, 'e0rule': 'formal'}  instances=15000  failing=3245  secs=30
+   families: {'delaunay': 1873, 'tree_plus': 1894, 'messy': 1889, 'cycle_chords': 1866, 'grid': 1864, 'nested': 1872, 'wheel': 1892, 'rings': 1850}
+   failing per family: {'grid': 376, 'delaunay': 614, 'rings': 663, 'cycle_chords': 218, 'wheel': 407, 'nested': 338, 'tree_plus': 209, 'messy': 420}
+   levels: {'1': 9179, '2': 3484, '3': 1719, '4': 318, '5': 7, 'None': 293}
+   coverage stats (#instances): {'overlap': 1222, 'i12_outside': 883, 'e0_same': 293, 'Plen>=8': 147, 'child_range_empty': 29}
+   deviations: {'dev_mirrored_endpoint': 2768}
+   flags (#instances): {'i_dist': 3245, 'struct_merge': 2952, 'struct_merged_with_source': 2952, 'rc_D1_incised_endpoint_edge': 2952, 'rc_wrong_or_no_answer': 2907, 'iii_not_tree': 2892, 'iv_path_through_merge': 2614, 'iv_cut_not_separating': 2614, 'ii_parent_outside': 2599, 'i_floor': 2549, 'i_len': 2256, 'len_lt_trueA1': 2256, 'iv_value': 2218, 'iv_cut_value': 2218, 'i_pair': 1736, 'iii_noparent': 293, 'fail_exception': 293, 'rc_D2_e0_eq_elast': 293, 'struct_ec_wiring': 43, 'xa_cross_same_annulus': 42, 'xb_cross_nonincised_part': 29}
+   root cause of stored failing instances: {'D1 (incised endpoint-case edge)': 189, 'D2 (e0=e_last=st)': 11}
+
+== N_Msmall  opts={'mode': 'Msmall', 'variant': 'fixed', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=3000  failing=2913  secs=9
+   families: {'messy': 359, 'wheel': 360, 'delaunay': 389, 'cycle_chords': 349, 'tree_plus': 379, 'grid': 397, 'nested': 371, 'rings': 396}
+   failing per family: {'messy': 350, 'wheel': 359, 'delaunay': 389, 'cycle_chords': 349, 'tree_plus': 309, 'grid': 395, 'nested': 366, 'rings': 396}
+   levels: {'1': 95, '2': 4, 'None': 2901}
+   coverage stats (#instances): {'e0_same': 20, 'Plen>=8': 5}
+   deviations: {'dev_mirrored_endpoint': 53}
+   flags (#instances): {'i_dist': 2909, 'iii_noparent': 2909, 'iii_not_tree': 2909, 'fail_exception': 2901, 'rc_wrong_or_no_answer': 2901, 'rc_other': 2899, 'i_pair': 2830, 'i_floor': 2518, 'rc_D2_e0_eq_elast': 14}
+   root cause of stored failing instances: {'other': 200}
+
+== N_cw  opts={'mode': 'cw', 'variant': 'fixed', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=3000  failing=1561  secs=16
+   families: {'messy': 359, 'wheel': 360, 'delaunay': 389, 'cycle_chords': 349, 'tree_plus': 379, 'grid': 397, 'nested': 371, 'rings': 396}
+   failing per family: {'messy': 171, 'wheel': 196, 'delaunay': 208, 'grid': 209, 'rings': 227, 'cycle_chords': 191, 'nested': 183, 'tree_plus': 176}
+   levels: {'1': 604, '2': 477, '3': 234, '4': 100, '5': 25, 'None': 1560}
+   coverage stats (#instances): {'overlap': 232, 'Plen>=8': 83, 'i12_outside': 132, 'e0_same': 58, 'child_range_empty': 8}
+   deviations: {'dev_mirrored_endpoint': 457}
+   flags (#instances): {'iii_not_tree': 1561, 'fail_exception': 1560, 'rc_wrong_or_no_answer': 1560, 'rc_other': 1545, 'rc_D2_e0_eq_elast': 16}
+   root cause of stored failing instances: {'other': 199, 'D2 (e0=e_last=st)': 1}
+
+== N_noise  opts={'mode': 'noise', 'variant': 'fixed', 'tiebreak': 'minid', 'pairs': 1, 'pcommon': 0.15, 'pfar': 0.7, 'e0rule': 'formal'}  instances=3000  failing=2841  secs=14
+   families: {'messy': 359, 'wheel': 360, 'delaunay': 389, 'cycle_chords': 349, 'tree_plus': 379, 'grid': 397, 'nested': 371, 'rings': 396}
+   failing per family: {'messy': 347, 'wheel': 360, 'delaunay': 389, 'cycle_chords': 331, 'tree_plus': 262, 'grid': 394, 'nested': 362, 'rings': 396}
+   levels: {'1': 1020, '2': 775, '3': 376, '4': 163, '5': 31, '6': 2, 'None': 633}
+   coverage stats (#instances): {'overlap': 395, 'i12_outside': 268, 'Plen>=8': 143, 'e0_same': 64, 'child_range_empty': 7}
+   deviations: {'dev_mirrored_endpoint': 651}
+   flags (#instances): {'i_dist': 2801, 'rc_other': 2782, 'i_pair': 2758, 'iii_not_shortest': 1254, 'fail_exception': 633, 'rc_wrong_or_no_answer': 633, 'rc_D2_e0_eq_elast': 59, 'xa_cross_same_annulus': 21, 'xb_cross_nonincised_part': 16}
+   root cause of stored failing instances: {'other': 200}
+

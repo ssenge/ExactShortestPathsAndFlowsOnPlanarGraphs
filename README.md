@@ -7,8 +7,9 @@ model. The main claims are:
 - exact maximum st-flow in directed planar networks in $\min\lbrace\tilde O(D^2),\ D\cdot n^{o(1)}\rbrace$
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
-  $\tilde O(D)$ rounds (Theorem D, new, one referee pass), where only a $(1-o(1))$-approximation was
-  known in $\tilde O(D)$.
+  $\tilde O(D)$ rounds (Theorem D, new, one referee pass and one adversarial pass; it needs a
+  repair at $s$ and $t$ of a construction of [18], tested but not yet proved), where only a
+  $(1-o(1))$-approximation was known in $\tilde O(D)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
@@ -45,8 +46,10 @@ Please read this before relying on anything here.
   - Lemma B5 has had its own referee pass, correct as written, and an adversarial pass on
     about 20.8 million instances, among them every instance with at most 7 vertices, with no
     counterexample.
-- **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed;
-  its adversarial pass is running.
+- **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed.
+  The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
+  Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
+  computed 0). A local repair passed 79,000 runs with no failure; its proof is not written yet.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -307,7 +310,7 @@ $D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $
 size and terminals $s,t$. A CONGEST algorithm computes the value of a minimum st-cut, which is
 the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side and its cut
 edges. It is deterministic given the embedding algorithm of [15], as in [18]. The proof has had
-one referee pass (correct with gaps, all fixed); its adversarial pass is running.
+one referee pass (correct with gaps, all fixed) and one adversarial pass (below).
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
@@ -321,6 +324,30 @@ other dual edges and on the star edges between copies of a vertex, from a virtua
 one zero-weight arc per annulus. As in
 Lemma D, distances below $M$ are exact annulus distances, and the $+1$ breaks ties so that
 the parent choices form shortest-path trees. Details are in `notes/NOTES.md` §5.
+
+**The endpoint repair.** [18, Remark 3.3] adjusts $\hat G_\ell$ at $s$ and $t$ through two
+edges $e_0$ and $e_{\text{last}}$ next to the first and last dual nodes of the first cut path.
+Read literally, it breaks [18, Thm 3.1 (1), (2)] in three ways, found by the adversarial pass
+in `sim/thmD/`:
+- If a later incision passes through $e_0$, Remark 3.3 treats it like any other incised edge.
+  The corner of $s$ that was cut is then joined again, two dual nodes share one path in
+  $\hat G_\ell$, and their distance becomes 0. Smallest witness: vertices 0 to 3, edges
+  $\lbrace 0,3\rbrace,\lbrace 0,1\rbrace,\lbrace 1,2\rbrace,\lbrace 2,3\rbrace$ with capacity 1 and
+  $\lbrace 3,1\rbrace$ with capacity 5, $s=1$, $t=2$: minimum cut 2, computed 0.
+- If $e_0=e_{\text{last}}$ is an edge $st$, the dual edge $e_0^*$ is wired to the wrong copies
+  (one edge $st$ of capacity 3: distance 29 instead of 22).
+- [18, Sec. 5] lets $s$ take any edge outside the path as $e_0$, but the formula needs one
+  particular edge, which in about 30% of instances lies on the path; then we use the
+  mirrored copy.
+
+The repair: an incised $e_0$ attaches on the cut side to a fresh copy of $s$ (and likewise
+$e_{\text{last}}$ at $t$), and each dual edge joins the copies its two path edges actually
+attach to. It is local at $s$ and $t$ and adds at most two vertices. The repaired graph passed
+79,000 runs on 64,000 instances with exact distances, trees and cut values; every one of 1,848
+graphs built for a planarity check was planar with hop diameter at most $4D+4$. The literal
+graph failed in about a third of the instances. A written proof for the repaired graph is the
+remaining gap in Theorem D. These failures may come from a misreading of [18] on our side.
+We have not checked whether they affect the approximate algorithm of [18].
 
 ## What is assumed
 
@@ -427,6 +454,11 @@ test round counts.
   `exh.py` and `exh_trees.py` enumerate all instances for small n, `rand.py`, `fams.py` and
   `geo_cmp.py` run larger ones, `hill.py` climbs towards the step bounds, and `negctl.py`
   runs the negative controls.
+- `sim/thmD/`: the adversarial pass on Theorem D. `thmD.py` runs Reif's algorithm as in [18],
+  driven only by the exact trees of Theorem D, on the literal and the repaired $\hat G_\ell$,
+  and checks every distance, tree and final cut against networkx. `minimize.py` shrinks
+  failures, `planar_check.py` tests planarity and diameter, and `lane1.sh`/`lane2.sh` give the
+  runs. `logs/summary.txt` sums them up.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine

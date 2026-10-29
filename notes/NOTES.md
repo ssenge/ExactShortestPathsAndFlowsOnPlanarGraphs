@@ -498,12 +498,40 @@ as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim
 - By induction over the levels, restricting to an annulus loses nothing, Claims 2.3 and 2.4
   of [18] hold with "without loss of generality" in place of "forbidden", and the minimum over
   the computed P_t is the minimum cut. Ties do no harm: only the existence of an equally short
-  non-crossing path is used. The computed P_i do not cross by construction, since each is a
-  tree path inside its own annulus, whose boundaries are earlier paths, and sibling annuli are
-  disjoint ([18, Claim 2.12]).
+  non-crossing path is used. The incised parts P_i′ ([18, Remark 2.5]) do not cross by
+  construction, since each lies inside its own annulus, whose boundaries are earlier incised
+  parts, and sibling annuli are disjoint ([18, Claim 2.12]). Whole paths P_i can cross along
+  parts that are not incised (equal-cost ties; 17 and 630 of 30,000 test instances under the
+  two tie-breaks). This does no harm, since only the incised parts bound annuli.
 
 So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do this on the graph
-Ĝ_ℓ of [18, Thm 3.1], as Lemma D does on Ĝ:
+Ĝ_ℓ of [18, Thm 3.1], with the endpoint repair below, as Lemma D does on Ĝ:
+- **Endpoint repair.** Read literally, [18, Remark 3.3] breaks [18, Thm 3.1 (1), (2)] at s and
+  t in three ways (sim/thmD):
+  - D1. If a later P_i′ incises e0 (or e_last), Remark 3.3 says to treat it "just like any
+    other incised edge". Then the copy at the cut corner of s rejoins D(s, ·), and the two
+    pieces of p_0^0 and p_0^1 in the leaf annulus become one path p̂. Their distance is 0 and
+    the reported cut is 0. Smallest witness: n = 4; edges (0,3), (0,1), (1,2), (2,3) with
+    capacity 1 and (3,1) with capacity 5; rotations 0: [03, 01], 1: [12, 13, 01], 2: [12, 23],
+    3: [23, 03, 13]; s = 1, t = 2. Minimum cut 2, literal Ĝ_ℓ gives 0.
+  - D2. The rule "always add (u_{j−1}, u_j)" wires e0* wrongly when e0 = e_last = st or the
+    other end has degree 1. Witness: the single edge st with capacity 3 gives distance 29 = M
+    instead of K·3 + 1 = 22.
+  - D3. [18, Sec. 5] lets s choose any edge of p(p_0) at s outside P as e0, but the formula of
+    Remark 3.3 needs the edge e_i whose corner i lies in p_0. In about 30% of instances no such
+    e_i off P exists; then we take e_{i+1} with the mirrored copy v_i^R.
+
+  Repair: (a) when e0 (or e_last) is incised, its E_R copy on the cut-corner side attaches to a
+  fresh copy X of s (or t), joined to D(s, i) by an E_S edge, so the corner stays cut;
+  (b) each E_C edge joins the copies that its two E_R copies actually attach to at that
+  vertex. This changes nothing away from e0 and e_last, it is local at s and t, and it adds at
+  most two copies. With D3's rule, the repaired Ĝ_ℓ passed 79,000 runs on 64,000 instances
+  with no failure of Thm 3.1 (1), (2), the distances, the trees or the final cut. All 1,848
+  graphs built over 700 further instances were planar with hop diameter at most 4D + 4. The
+  literal Ĝ_ℓ failed in 10,673 of 30,000. A written proof of Thm 3.1 (1), (2) and planarity for
+  the repaired graph is still missing. These failures may come from a misreading of [18] on our
+  side; [18]'s own approximate algorithm may be affected in the same way, which we have not
+  checked.
 - **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), its hop diameter is at most 4D + 4 ([18,
   Lemma 3.4] bounds the distances between star centres; other copies are at most two hops from
   their centre), it has at most 3 deg(v) + 1 copies of each vertex v, so O(n) vertices in all,
@@ -574,7 +602,12 @@ SSSP step. The other steps still use [18]'s minor-aggregation simulation.
 
 *Status.* Referee pass (2026-10-29): correct with gaps, no fatal or serious issue. Its two
 load-bearing points (the bound on M, and E_C edges outside the annuli) and its minor points
-are fixed above. An adversarial pass is running. It rests on Theorem A and on [18].
+are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on the repaired
+Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above), so the
+proof now needs Thm 3.1 (1), (2) for the repaired graph, which is not yet written. Negative
+controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
+2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
+and on the endpoint repair.
 
 ### Ratings and dependencies
 

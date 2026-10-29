@@ -1,0 +1,237 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "minid",
+  "pairs": 1
+ },
+ "start": 0,
+ "count": 300,
+ "runs": 1,
+ "families": {
+  "messy": 44,
+  "grid": 42,
+  "tree_plus": 46,
+  "wheel": 43,
+  "cycle_chords": 46,
+  "delaunay": 48,
+  "nested": 31
+ },
+ "family_fail": {
+  "messy": 1,
+  "delaunay": 1,
+  "cycle_chords": 1
+ },
+ "flag_instances": {
+  "dev_mirrored_endpoint": 38,
+  "impl_no_seed": 3
+ },
+ "nfail": 3,
+ "secs": 0.8936688899993896,
+ "fails": [
+  {
+   "seed": 74,
+   "run": 0,
+   "family": "messy",
+   "scheme": "zeros",
+   "stmode": "far",
+   "n": 15,
+   "m": 22,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (199, 'l'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 9,
+     "ci": 1,
+     "mode": "R",
+     "e0": 18
+    },
+    "ept": {
+     "v": 14,
+     "ci": 0,
+     "mode": "L",
+     "e0": 21
+    },
+    "Pedges": [
+     3,
+     7,
+     11,
+     17
+    ],
+    "pf": [
+     8,
+     3,
+     4,
+     5,
+     1
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      7,
+      11,
+      17
+     ],
+     "2": [
+      1,
+      3,
+      5,
+      7,
+      11,
+      17
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 176,
+   "run": 0,
+   "family": "delaunay",
+   "scheme": "zeros",
+   "stmode": "adj",
+   "n": 29,
+   "m": 66,
+   "flags": {
+    "dev_mirrored_endpoint": 2,
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (437, 'l'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 5,
+    "e0_same": false,
+    "eps": {
+     "v": 14,
+     "ci": 0,
+     "mode": "R",
+     "e0": 37
+    },
+    "ept": {
+     "v": 21,
+     "ci": 3,
+     "mode": "R",
+     "e0": 63
+    },
+    "Pedges": [
+     41,
+     49,
+     50,
+     61
+    ],
+    "pf": [
+     28,
+     29,
+     34,
+     33,
+     35
+    ],
+    "incised_per_level": {
+     "1": [
+      41,
+      49,
+      50,
+      61
+     ],
+     "2": [
+      12,
+      41,
+      44,
+      47,
+      49,
+      50,
+      52,
+      61,
+      62
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  },
+  {
+   "seed": 251,
+   "run": 0,
+   "family": "cycle_chords",
+   "scheme": "small",
+   "stmode": "random",
+   "n": 22,
+   "m": 27,
+   "flags": {
+    "impl_no_seed": 1
+   },
+   "notes": [
+    "('impl_no_seed', (611, 'r'))"
+   ],
+   "info": {
+    "mincut": 0,
+    "P_len": 4,
+    "e0_same": false,
+    "eps": {
+     "v": 5,
+     "ci": 0,
+     "mode": "L",
+     "e0": 5
+    },
+    "ept": {
+     "v": 11,
+     "ci": 1,
+     "mode": "L",
+     "e0": 12
+    },
+    "Pedges": [
+     3,
+     11,
+     18
+    ],
+    "pf": [
+     0,
+     1,
+     3,
+     4
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      11,
+      18
+     ],
+     "2": [
+      3,
+      6,
+      11,
+      18
+     ]
+    },
+    "levels": 2,
+    "n_results": 5,
+    "overlap": 1,
+    "i12_outside": 1,
+    "reported": 0,
+    "cut_value": 0,
+    "ncross": 0
+   }
+  }
+ ]
+}
