@@ -42,8 +42,9 @@ Status (2026-10-29):
   fixes are in, and an adversarial pass, which broke nothing.
 - **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. No human has
   checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
-  holds in the region form of §9, which adds one black box: [8, Thm 4.4] run on region
-  graphs.
+  holds in the region form of §9, with no black box beyond those of §1: the separator is
+  Lemma B5 (§9.6), which is deterministic. So Theorem A is deterministic, given a
+  deterministic planar embedding.
 
 ## 1. What we take from [1]
 
@@ -1052,14 +1053,13 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   nothing in §3. This fixes (S4) and (S7).
 - **The round count** (S9). Property 6 is false for induced bags, so the parallel schedule
   of [1] needed a new argument. §9 gives one with region bags: Lemma B1, proved, refereed
-  and attacked once, with the separator of [8, Thm 4.4] on region graphs as a new black box.
+  and attacked once, with the separator of Lemma B5, which is deterministic.
 - **Black boxes.**
   - (G1) in the form (G1′), read off [8]'s construction, with T_X in place of [1]'s
     Property 4.
   - (G3), which is [10, Thm 1] (refereed). The centres search for K exhaustively, which
     CONGEST allows.
   - (G4), (G5) and (G6).
-  - For the rounds: [8, Thm 4.4] on (R_X, T_X), using edges of R_X only (§9.6).
 - **Consequence.** Given the black boxes, Theorem A, and through it Theorems B, C and C′,
   are correct algorithms with the stated round bounds, in the region form of §9. No human
   has checked the proofs. [1, Thm 4] is in the same position: its proof goes through
@@ -1114,8 +1114,8 @@ three of them.
 
 ### 9.2 The construction
 
-Let X be a non-leaf. S_X is the separator of [8, Thm 4.4] for R_X and T_X: a path q_X of T_X
-plus a closing edge yz. The closing edge is real (an edge of R_X) or virtual (drawn in a face
+Let X be a non-leaf. S_X is the separator of Lemma B5 (§9.6) for R_X and T_X: a path q_X of
+T_X plus a closing edge yz. The closing edge is real (an edge of R_X) or virtual (drawn in a face
 of R_X). S_X is a simple closed curve with an inside D_in and an outside D_out. The sides of
 E_X go to the children as follows, and each side goes to exactly one child.
 - **Inside parts.** The inside sides are:
@@ -1227,8 +1227,8 @@ components of T ∩ R_X. Hence c(Y) ≤ c(X) + a_Y. ∎
 **Lemma B3.** a_Y ≤ max(1, ν(X)) + 1. The +1 occurs only when the closing edge is virtual.
 
 *Setting.*
-- **The closing curve.** A virtual closing edge comes from [8, Thm 4.4] with a face Φ of R_X
-  and a corner of Φ at y and at z, where the curve leaves y and enters z. We choose its drawing.
+- **The closing curve.** A virtual closing edge comes from Lemma B5 with a face Φ of R_X and a
+  corner of Φ at y and at z, where the curve leaves y and enters z. We choose its drawing.
   - **Fans.** R_X is connected, so Φ is an open disk; lift it to a closed disk D_Φ along its
     boundary walk. The corners at y and z become two boundary points.
     - The triangles of E_X in Φ fall into *fans*: maximal runs of consecutive triangles of one
@@ -1384,7 +1384,8 @@ Read R_X for G[X] throughout, and "e ∈ R_X" for "e ∈ E(G[X])".
 
 ### 9.6 Rounds
 
-All bags of one depth run in parallel. A bag communicates over R_X only, through T_X.
+All bags of one depth run in parallel. A bag communicates over edges of R_X only, mostly
+through T_X.
 - By Lemma B1(a), every edge carries the traffic of at most two bags per depth.
 - By Lemma B1(e), T_X has diameter at most c(X)(2D + 1) = O(D log² n).
 - So each per-level step costs Õ(D/ε′) rounds. The steps are:
@@ -1397,18 +1398,152 @@ All bags of one depth run in parallel. A bag communicates over R_X only, through
 This gives back the Õ(D/ε) of [1, Thm 4] (with Lemmas 14′ to 16′ in place of [1]'s) and the
 Õ(D) of Theorem A.
 
-Building the decomposition is also local to R_X, with one exception. Every step below except
-the separator is flooding, BFS or aggregation on R_Y over T_Y, and T_Y has diameter at most
-c(Y)(2D + 1):
-- the inside parts and the auxiliary components;
+Building the decomposition is local to R_X as well. Every step is flooding, BFS or aggregation
+on R_Y over T_Y, whose diameter is at most c(Y)(2D + 1), or the separator of Lemma B5 below:
+- the separator S_X, by Lemma B5 on (R_X, T_X), with h at most the diameter of T_X;
+- the inside parts and the auxiliary components. A virtual closing edge is not an edge of G.
+  Flooding skips it, and the outside children are components of real edges anyway;
 - the split at z_s and the components of real edges;
-- the connectors, by O(log c(X)) rounds of merging over trees of diameter O(D log² n).
+- the connectors, by O(log c(X)) phases of merging over trees of diameter O(D log² n). In each
+  phase every part adds the edge of R_Y of smallest ID that leaves it.
 
-The one black box is [8, Thm 4.4], the separator, run on (R_X, T_X) with edges of R_X only.
-[8]'s variants that route over low-congestion shortcuts of G (footnote 13, App. B.2) use edges
-outside R_X and would break congestion 2, so the plain version is the one needed. By Lemma
-B1(a) all bags of one depth then run with congestion 2. We have not checked [8]'s separator
-algorithm line by line for the region setting.
+Each bag's algorithm sends O(1) messages per edge and round. Lemma B1(a), at depths d and
+d + 1, bounds the number of bags that use an edge, so running all bags of one depth in
+lockstep costs a constant factor. A level of the decomposition takes O(D log² n log log n)
+rounds, the last factor from the connectors.
+
+**Lemma B5 (separator).** Let R be a connected plane graph with n vertices, and T a spanning
+tree of R with root r and depth h. Every vertex knows its rotation, its parent and its
+children. A deterministic algorithm that uses only edges of R finds, in O(h) rounds and with
+O(h) words per edge, vertices y ≠ z and a closing edge yz with these properties:
+- yz is an edge of R, or a curve drawn in one face of R from a corner at y to a corner at z;
+- the closed curve S = T[y, z] ∪ yz (a cycle, or a digon when yz runs beside a tree edge) has
+  at most 2n/3 vertices strictly on each side, and |S| ≤ 2h + 1;
+- every vertex knows whether it lies on S or on which side. A vertex of S also knows, for
+  each of its corners, edge ends and sides of path edges, the side it faces.
+
+*The tour.* Let N be a thin closed neighbourhood of T. It is a disk, and its boundary γ is a
+circle.
+- Going once around γ from a point o inside the arc of a corner of r passes every corner of
+  R (each along one arc of γ), every end of a non-tree edge, and both sides of every tree
+  edge. The two sides of the edge from w to its parent are the *marks* of w, and there are
+  2(n − 1) marks.
+- Each non-tree edge leaves N at both ends, so outside N it is an arc between two points of
+  γ: a *chord*. Chords do not cross. The faces of R are the regions into which the chords cut
+  S² ∖ N. A face meets γ in the arcs of its corners and the tree-edge sides between them, and
+  it is bounded by these and its chords. So walking around a face visits its corners in
+  their order along γ.
+- **Marks lemma.** Let κ be a real chord, or a curve drawn in a face from a corner at y to a
+  corner at z ≠ y. Let P = T[y, z], C = P ∪ κ, and let α be one of the two arcs of γ between
+  the ends of κ. Then exactly (m(α) − |P| + 1)/2 vertices lie strictly on the side of C that
+  contains α, where m(α) is the number of marks on α.
+
+  *Proof.* γ meets and crosses C only at the two ends of κ, so the two arcs lie on opposite
+  sides of C. Let ℓ be the top vertex of P.
+  - A vertex off P has its parent edge off C, so both of its marks lie on its own side.
+  - A vertex of P other than ℓ has its parent edge on P, so its two marks lie on the two
+    sides.
+  - If ℓ ≠ r, the tree path from ℓ to r meets C only at ℓ. So the two marks of ℓ and the
+    vertex r, which has no marks, lie on the same side. On that side they contribute 2
+    marks for one vertex off P, as every other vertex off P does.
+
+  So m(α) = 2k + |P| − 1, where k is the number of vertices strictly on the side of α. ∎
+
+  The proof also shows which vertices: a vertex w ≠ r off P lies on the side of α exactly
+  when its marks lie on α, and r ∉ P lies on the side whose arc contains o.
+
+*Weights.* For such a κ and arc α, let in_α(κ) be the count of the marks lemma and
+out_α(κ) := n − |P| − in_α(κ), the count on the other side. For a real chord e, let far(e)
+be the arc between its ends that does not contain o, and write in(e), out(e) for the counts
+of far(e). Call e *balanced* if in(e) ≤ 2n/3 and out(e) ≤ 2n/3, *heavy* if in(e) > 2n/3, and
+*light* if out(e) > 2n/3. A light chord has W(e) := in(e) + |T[e]| < n/3 vertices in the
+closed region on its far side. By the remark after the marks lemma, the vertices strictly on
+the far side of e are those whose marks lie on far(e); r is never among them.
+
+*The algorithm.*
+1. If some chord is balanced, then S is its fundamental cycle, with yz real.
+2. Otherwise every chord is heavy or light. If two heavy chords had disjoint far arcs, their
+   far sides would have disjoint sets of marks, hence disjoint vertex sets with more than
+   4n/3 vertices in total. So the heavy chords are nested. Let e₀ be the innermost one and
+   F the face just inside it, or, if there is no heavy chord, F the face of the corner at o.
+3. Let y be a vertex with exactly one corner c₀ in F. Walk once around F from c₀ through
+   its corners c₁, …, c_m, and let w_j be the vertex of c_j. For c_j with w_j ≠ y, let κ_j be
+   a curve in F from c₀ to c_j, and α_j the arc of γ from c₀ to c_j along the walk. Take the
+   first j with out_{α_j}(κ_j) ≤ 2n/3, and set z := w_j and yz := κ_j.
+
+*Correctness.* Write in_j and out_j for the counts of κ_j and α_j, P_j := T[y, w_j], and
+W_j := in_j + |P_j|.
+- **y exists.** Let B be the graph of the edges on the boundary walk of F. If the walk passes
+  a vertex v twice, a curve in F between two of its corners at v separates two parts of the
+  walk, so v is a cut vertex of B. A connected graph with at least one edge has a vertex that
+  is not a cut vertex, and that vertex has one corner in F.
+- **No loops.** y has only one corner in F, so w_j ≠ y for every j ≥ 1. Each κ_j joins two
+  corners of F and can be drawn inside F.
+- **The chords on F.** A chord e ≠ e₀ on the boundary of F has both ends on far(e₀), or
+  anywhere if there is no heavy chord, and F lies on its near side. So far(e) is nested in
+  far(e₀). Since e₀ is the innermost heavy chord and step 1 found no balanced chord, e is
+  light.
+- **One step.** Between c_{j−1} and c_j the walk passes one side of a tree edge, or a chord e
+  on the boundary of F. In the second case it skips the arc of γ on the side of e away from F.
+  That side holds W′ < n/3 vertices in its closed region: W(e) for a light chord, and
+  n − in(e₀) for e₀, since in(e₀) > 2n/3. By the marks lemma,
+  2 in_j = 2 in_{j−1} + |P_{j−1}| − 1 + m(step) − |P_j| + 1.
+  - A side of a tree edge carries one mark, and |P_j| ≥ |P_{j−1}| − 1, so in_j ≤
+    in_{j−1} + 1 ≤ W_{j−1}.
+  - For a skipped chord e, let d₁ = |P_{j−1}| − 1, d₂ = |T[e]| − 1 and d₃ = |P_j| − 1. By the
+    marks lemma m(step) = 2(W′ − |T[e]|) + |T[e]| − 1, so
+    2 in_j = 2 in_{j−1} + 2(W′ − d₂ − 1) + d₁ + d₂ − d₃. The triangle inequality d₁ ≤ d₂ + d₃
+    in T gives in_j ≤ in_{j−1} + W′ − 1 < W_{j−1} + W′.
+
+  For j = 1 the same computation gives in₁ = 0 or in₁ = W′ − |T[e]| < n/3.
+- **Balance.** For the chosen j, out_j ≤ 2n/3. If j = 1 then in₁ < n/3. Otherwise
+  out_{j−1} > 2n/3, so W_{j−1} = n − out_{j−1} < n/3, and in_j < W_{j−1} + n/3 < 2n/3.
+- **Some j qualifies.** For the last corner c_m, the other side of κ_m is the strict region
+  beyond the last step, so out_m = 0 or out_m = W′ − |P_m| < n/3.
+- **Size.** S is a path of T plus one edge, so |S| ≤ 2h + 1. ∎
+
+*Rounds.* Each item below is a constant number of convergecasts and broadcasts of O(h) words
+over T, or an exchange of O(h) words across a chord. So the algorithm takes O(h) rounds and
+carries O(h) words per edge.
+- **Tree data.** n, depths, subtree sizes, and every vertex's list of ancestors, of h IDs.
+- **Positions.** The tour enters w at a mark and then passes w's corners, non-tree ends and
+  child subtrees in rotation order. With the subtree counts, every vertex computes, top down,
+  the position on γ of each of its items and the number of marks before it.
+- **Chords.** The two ends of a chord exchange positions and ancestor lists, and compute |P|,
+  in(e) and out(e).
+- **Steps 1 and 2.** One aggregation finds a balanced chord. Otherwise the innermost heavy
+  chord is the heavy chord with the largest start. The number of chords whose far arc contains
+  a corner is a prefix sum of chord starts and ends along γ, again computed by subtree sums
+  and top-down offsets. So every corner knows whether it lies in F.
+- **Step 3.**
+  - Every vertex counts its corners in F, and an aggregation picks the vertex y of smallest
+    ID with exactly one.
+  - y broadcasts its position and ancestor list, and every corner of F computes
+    |P_j|, m(α_j) and out_j.
+  - A minimum over (position − position of c₀) mod |γ| picks j.
+- **Output.** Tokens sent up from y and z mark T[y, z], and y and z broadcast the positions of
+  the ends of yz. A vertex w ≠ r off S reads its side off the positions of its marks, and r
+  takes the side whose arc contains o. A vertex of S reads the side of each of its items off
+  its position relative to the two ends of yz.
+
+*Why not [8, Thm 4.4].* [8, Thm 4.4] rests on [14], which is randomized ([9] says so), so
+it would not give determinism. There is also a gap in [8]'s write-up. [8, App. B.1] adds
+virtual edges A so that the graph becomes biconnected, and then recomputes an embedding of
+G ∪ A with [15]. G ∪ A need not be 3-connected, so [8] does not show that this embedding
+extends the given one. A separator found in another embedding may be unbalanced, or not
+drawable, in the embedding that the regions refer to. A local rule would fix this, since each
+A-edge u₁u₂ lies in the corner of its cut vertex u between uu₁ and uu₂. Lemma B5 needs only a
+shallow tree, which region bags have by Lemma B1(e), and works in the given embedding.
+Deterministic separators for trees of any depth are in [16] and [17]. They would replace
+Lemma B5 only if they return a fundamental cycle of the given tree T_X in the given
+embedding, which Lemma B2 needs.
+
+**Determinism.** With Lemma B5 every step of the region decomposition is deterministic, given
+the embedding and the BFS tree T. The other steps of (L) are deterministic: the Γ step of
+§3.5, the oracles and transfers of §5 and §6, and the gathering at leaves. So are Lemma V and
+the reduction of [3]. So Theorem A is deterministic, given a deterministic planar embedding.
+[17] cites the embedding algorithm of [15] as deterministic; we have not checked this in [15]
+itself.
 
 ### 9.7 Numerical checks (`sim/s9/`)
 
@@ -1453,6 +1588,21 @@ through a hole; the adversarial pass below does.
   - With T_X a DFS or random spanning tree of R_X, c(X) reached 41 on grids.
   - With random z_s, a_Y reached 7 with no hole at all.
   - Correctness still held in these runs; only the bound needs [8]'s choices.
+- **Lemma B5** (`b5.py`). The algorithm as written, on 4,000 connected plane graphs from all
+  sixteen families of this section and of the adversarial pass, n up to 1,842, no failure.
+  - *Inputs.* Spanning subgraphs with 0% to 100% of the non-tree edges, so trees and cacti
+    occur. BFS, DFS and random spanning trees, with random roots and start corners.
+  - *Checks.* Each separator against an independent count: the closing edge inserted into
+    the rotations, and each component of R − S given a side by its attachments, which must
+    agree. Also the marks lemma on 66,599 real chords, and that the corners of step 3 form one
+    whole face.
+  - *Results.* Step 3 ran in 2,427 instances and step 1 sufficed in 1,573. The larger side
+    never exceeded 2n/3, and |S| ≤ 2h + 1 always.
+  - *Negative controls* (160 instances each). Without step 2, so that step 3 always walks
+    the face of the corner at o, 31 gave an unbalanced chord. With y allowed several corners
+    in F, 1 gave a loop.
+  - B5's closing edges are curves between two corners of one face of R_X. The adversarial
+    pass below used 68,323 closings of this kind, so Lemmas B1 to B4 were tested on them.
 - **Negative controls** (`neg.py`, 70 instances each):
   - [1]'s rule 3 (separator edges to X_in) in the region form put an owned edge outside its
     bag's region, or broke Claim 1, in 64 of 70 instances;
@@ -1485,15 +1635,19 @@ through a hole; the adversarial pass below does.
 ### 9.8 Status of (S9)
 
 - **Proved here.**
-  - Lemma B1, the parallel schedule (§9.6), and the changes of §9.5.
-  - So the Õ(D/ε) labels and the Õ(D) of Theorem A follow, given the black boxes of §1 and
-    the distributed construction of §9.6.
+  - Lemma B1, the separator of Lemma B5, the parallel schedule (§9.6), and the changes of
+    §9.5.
+  - So the Õ(D/ε) labels and the Õ(D) of Theorem A follow, given the black boxes of §1.
+  - The decomposition is deterministic, and so is Theorem A, given a deterministic planar
+    embedding (§9.6).
 - **Checked.**
   - A referee pass (2026-10-29) found nothing fatal. Its one serious point, the drawing of a
     virtual closing curve, is now proved in the setting of Lemma B3. Its minor points are in
     (the deviations from [8] in §9.2, the black box in §9.6, the wording in Lemmas B3 and B4).
   - An adversarial pass (2026-10-29) broke no lemma (§9.7). It met Lemmas B2, B3 and B4 with
     equality and found four defects in the test engine, now fixed.
+  - Lemma B5 had its own referee pass (2026-10-29): correct as written, with minor gaps and
+    wording, now fixed. Its adversarial pass is running.
   - No human has checked §9.
 - **Rating: modest.** It restores the round bounds that (S9) removed. The tools are the
   standard ones: sides of edges, a crosscut argument and a non-crossing count. The

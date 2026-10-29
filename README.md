@@ -23,7 +23,7 @@ Please read this before relying on anything here.
   proved in `notes/LEMMA15.md` §3. A referee pass found it correct given its assumptions,
   and its one serious point is fixed. Two adversarial passes, the second on the fixed text,
   found nothing wrong in it.
-- **Round counts: repaired, with one more black box.** [1, Lemma 9 (6)] states that at
+- **Round counts: repaired.** [1, Lemma 9 (6)] states that at
   every depth of the decomposition each edge lies in at most two induced subgraphs G[X]. The
   second adversarial pass showed that this is false on $K_{2,m}$ plus one edge, for every
   decomposition with the other properties (`notes/LEMMA15.md`, (S9)). [1] runs all bags of
@@ -33,13 +33,16 @@ Please read this before relying on anything here.
     graphs per depth, and the tree components that [8] bounds by $O(\log n)$ are proved to
     be $O(\log^2 n)$.
   - This restores the $\tilde O(D/\varepsilon)$ bound of [1] for the labels and the
-    $\tilde O(D)$ of Theorem A. It adds one black box: the separator of [8, Thm 4.4], run on
-    region graphs.
+    $\tilde O(D)$ of Theorem A. The separator is our Lemma B5, a fundamental cycle found
+    with prefix sums along an Euler tour of the shallow tree $T_X$, in $O(D\log^2 n)$ rounds.
+    It is deterministic and adds no black box.
   - §9 has had a referee pass, whose fixes are in, and an adversarial pass on 10,400
     instances (about a million bags) that broke no lemma. It found four defects in our test
     engine, all fixed.
-- All results hold with high probability. They would be deterministic if the bounded-diameter
-  decomposition (BDD) of [8] could be built deterministically, which is open.
+- **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
+  given a deterministic planar embedding; [17] cites the embedding algorithm of [15] as
+  deterministic. Theorems B and C use [6] and hold with high probability. For Theorem C′ we
+  have not checked the other steps of [9].
 - Some steps use published results as black boxes; see [What is assumed](#what-is-assumed).
 
 ## Background
@@ -88,12 +91,11 @@ directed SSSP problem (even with non-negative weights)".
 | Lemma D: the face-disjoint graph of [9], weighted, realizes dual distances | | | minor |
 | [1, Lemma 14] is false | | | modest |
 | Property 6 of [1, Lemma 9] is false for induced bags | | | modest |
-| Region bags: Property 6 for region graphs, $O(\log^2 n)$ tree components | | | modest |
+| Region bags: Property 6 for region graphs, $O(\log^2 n)$ tree components, a deterministic separator | | | modest |
 | Lemmas 14′, 15′, 16′: the repair of [1, Lemmas 14 to 16] | | | minor |
 
 All four theorems are conditional (see [Status](#status)): their correctness on Lemma 14′,
-and their round bounds also on the region bags of `notes/LEMMA15.md` §9 and the separator
-of [8, Thm 4.4] on region graphs. The ratings in short:
+and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ratings in short:
 - **Theorem A** closes the planar exact-SSSP gap up to polylogarithmic factors and answers
   the second question of [9]. The proof is short, though: the reduction of [3], the labels of
   [1], and Lemma V. Since [3, §3.1] already says its boosting works in any model that can run
@@ -117,7 +119,8 @@ of [8, Thm 4.4] on region graphs. The ratings in short:
 
 **Theorem A.** Let $G$ be a planar digraph with nonnegative integer weights in
 $\lbrace 0,\dots,n^{O(1)}\rbrace$, hop diameter $D$ and source $s$. A CONGEST algorithm computes
-exact distances from $s$ and a shortest-path tree in $\tilde O(D)$ rounds with high probability.
+exact distances from $s$ and a shortest-path tree in $\tilde O(D)$ rounds. The algorithm is
+deterministic, given a deterministic planar embedding (`notes/LEMMA15.md` §9.6).
 
 The proof has three ingredients.
 1. **Reduction.** By [3, Lemma 3.1, Thm 1.7, App. C.1], exact SSSP needs $O(\log^2 n)$ calls to
@@ -205,8 +208,15 @@ are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_c
     $O(D\log^2 n)$. The proof counts how often a child meets the separator, against the
     holes of the parent's region. [8, Claim 4.6] claims one new component per level, which is
     false (`notes/LEMMA15.md` §1).
-  - The one new black box is [8, Thm 4.4] run on $(R_X,T_X)$ with edges of $R_X$ only. Every
-    other step is flooding or BFS inside $R_X$.
+  - The separator is Lemma B5. A thin neighbourhood of $T_X$ has a circle as boundary, and
+    non-tree edges are non-crossing chords of the outside. The number of vertices on one side
+    of a fundamental cycle is read off the number of tree-edge sides along one arc of that
+    circle, so all counts are prefix sums along an Euler tour, computed in $O(\text{depth})$
+    rounds. If no real fundamental cycle is balanced, a fan of virtual chords inside one face
+    finds one, as in the classical planar
+    separator theorem. Every other step is flooding or BFS inside $R_X$. We use
+    this instead of [8, Thm 4.4], whose proof re-embeds an augmented graph with [15], which
+    need not keep the embedding the regions refer to.
 - **Analytic layer (§4 to §7).** Lemma 15 of [1] has further gaps, all fixed here:
   - with the witness suggested in the text, the error exponent doubles at every level;
   - the linear program has no triangle constraints;
@@ -391,12 +401,10 @@ plain-text extractions of [1] (arXiv v2) and [9].
 - Weighted girth of planar digraphs, also at $\tilde O(D^2)$.
 - Can the $n^{o(1)}$ in Theorem C be removed? That needs a reduction for negative weights with
   polylogarithmic overhead.
-- Does [8]'s separator algorithm (Thm 4.4) run on region graphs as it does on induced
-  bags? §9 assumes so; we have not checked it line by line.
 - Is the component bound of Lemma B1(e) really $\Theta(\log^2 n)$? All runs stayed at
   depth + 1.
-- Is there a deterministic decomposition with the properties of [1, Lemma 9]? It would make
-  all four theorems deterministic.
+- Theorem A is deterministic with region bags. Are Theorems B, C and C′? That needs
+  deterministic versions of [6] and of the remaining steps of [9].
 - Can the realization step run in polynomial local time?
 
 ## Use of AI
@@ -433,6 +441,13 @@ The numbers match those in `notes/`.
 12. R. Hassin. Maximum flow in (s,t) planar networks. Inform. Process. Lett. 13(3), 1981.
 13. M. Thorup. Compact oracles for reachability and approximate distances in planar digraphs.
     J. ACM 51(6), 2004.
+14. M. Ghaffari, M. Parter. Near-Optimal Distributed DFS in Planar Graphs. DISC 2017.
+15. M. Ghaffari, B. Haeupler. Distributed Algorithms for Planar Networks I: Planar Embedding.
+    PODC 2016.
+16. B. Jauregui, P. Montealegre, I. Rapaport. Deterministic Distributed DFS and Other Problems
+    via Cycle Separators in Planar Graphs. PODC 2025, arXiv:2504.21620.
+17. Y. Abd-Elhaleem, M. Dory, O. Weimann. A Simple Distributed Deterministic Planar Separator.
+    SIROCCO 2026, arXiv:2602.22916.
 
 ## License
 

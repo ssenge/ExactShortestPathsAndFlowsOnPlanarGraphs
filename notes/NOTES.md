@@ -72,7 +72,9 @@ approaches, is as hard as reachability up to n^{o(1)} [6]. **Odds: low.**
 
 **Theorem A.** Let G be a planar digraph with nonnegative integer weights in
 {0, …, n^{O(1)}}, hop diameter D, and source s. A CONGEST algorithm computes exact
-distances from s and a shortest path tree in Õ(D) rounds w.h.p.
+distances from s and a shortest path tree in Õ(D) rounds. With the region decomposition of
+LEMMA15.md §9 the algorithm is deterministic, given a deterministic planar embedding
+(LEMMA15.md §9.6, Determinism).
 
 **Status: the algorithm is correct given Lemma 14′; the Õ(D) bound holds with region bags**
 (`LEMMA15.md`, §9).
@@ -83,16 +85,17 @@ wrong in it; no human has checked it. The second adversarial pass found that Pro
 [1, Lemma 9] is false for induced bags (LEMMA15.md, (S9)). Correctness does not use it, but
 [1]'s Õ(D/ε) bound for the labels does, since it runs all bags of one depth in parallel.
 LEMMA15.md §9 restores the schedule: bags carry the sides of the edges they were cut from,
-and each edge lies in at most two of these region graphs per depth. This adds one black
-box, the separator of [8, Thm 4.4] run on region graphs. Theorems B, C and C′ inherit both
-points.
+and each edge lies in at most two of these region graphs per depth. The separator is
+LEMMA15.md Lemma B5, which is deterministic, so no black box is added. Theorems B, C and C′
+inherit both points.
 
 It is deterministic if the BDD is built deterministically. [1] calls itself deterministic,
 but its BDD comes from Li-Parter, whose only random step is the Ghaffari-Parter separator
 ([9], adpw.txt 111-113 and 1417-1443). [1] cites deterministic separators (Jauregui-
 Montealegre-Rapaport; Abd-Elhaleem-Dory-Weimann 2026) but never shows that they give a BDD
 with Properties 1-7. The face identification needed for Ĝ is already deterministic
-([9], App. A).
+([9], App. A). The region decomposition of LEMMA15.md §9 is deterministic (Lemma B5), so
+Theorem A is deterministic given a deterministic planar embedding, which [17] says [15] is.
 
 The previous bound was Õ(D²) [8]. The lower bound is Ω(D).
 
@@ -220,7 +223,8 @@ hierarchy and of the labels ([1, Lemma 16]), or the counterexample (that one is 
 
   `c1_negative` gives the one-arc instance where C.1's base ℓ_i yields −η.
 - **Round count.** O(log² n) calls × Õ(D/ε₀) = Õ(D). (R) and Lemma V are deterministic; (L) is
-  deterministic except for the BDD (see the remark under Theorem A).
+  deterministic except for the BDD (see the remark under Theorem A), and the region BDD of
+  LEMMA15.md §9 is deterministic (Lemma B5).
 - **Tree.** Run the algorithm on w'(e) = n²·w(e) + 1. All weights are positive, so any
   tight in-edge per vertex gives a tree, and d(v) = ⌊d'(v)/n²⌋.
 
@@ -238,7 +242,7 @@ model that can run the oracle.
   3. [1, Lemma 14] is false as stated, so (L) is conditional on Lemma 14′ (LEMMA15.md).
   4. Property 6 of [1, Lemma 9] is false for induced bags, so the Õ(D/ε) round bound of (L)
      needed a new parallel schedule (LEMMA15.md, (S9)). The region bags of LEMMA15.md §9
-     give it, with [8, Thm 4.4] on region graphs as a black box.
+     give it, with the deterministic separator of Lemma B5.
 
 ### Still to verify before anything goes public
 
