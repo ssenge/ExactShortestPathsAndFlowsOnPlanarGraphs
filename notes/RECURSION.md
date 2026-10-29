@@ -8,7 +8,8 @@ of an incision each copy of P lands on. The other is the exact form of [18, Clai
 revision changes four things:
 - Lemma S1 now runs in A_1 and needs neither of the two gaps. Its separation step (S_1) is
   proved here by a parity argument.
-- The level-ℓ facts are collected as Lemma O. Its proof is in progress.
+- The level-ℓ facts are collected as Lemma O. Its proof is now written (LEMMA_O.md), with
+  five changes to the statement; it has had no referee pass yet.
 - The minor points are fixed.
 - The test counts are corrected.
 
@@ -17,7 +18,7 @@ proof said that the minimum over the computed P_t is the minimum cut. As written
 can miss it. This note gives:
 - an instance;
 - a repair that costs two more SSSP calls per level;
-- a proof that the repaired recursion finds the minimum cut, given Lemma O.
+- a proof that the repaired recursion finds the minimum cut, given Lemma O (LEMMA_O.md).
 
 Lemma R and Lemma N (GHAT_REPAIR.md) are not affected.
 
@@ -153,36 +154,58 @@ Lemma S1 below proves that too.
   - So the two closed curves cross exactly once. Two closed curves on the sphere in general
     position cross an even number of times, a contradiction. ∎
 
-## Lemma O (sides of one incision; proof in progress)
+## Lemma O (sides of one incision)
 
 The level-ℓ facts below are what the recursion needs beyond A_1. The exact exchange of
 NOTES §5 already used them for [18, Lemma 2.7]. In the first version they were taken from
 [18, Remark 2.5] and the planar picture; the referee found them true in substance, but not
-proved from Lemma N and F1 to F5, which are local. A proof by a curve model for level-ℓ pieces
-is being written.
+proved from Lemma N and F1 to F5, which are local. LEMMA_O.md proves them by an induction over
+the levels, in a curve model: each incision is drawn as an arc C_Q, closed by a part of γ into a
+simple closed curve J_Q, and "side" means a side of J_Q. Four standard facts of plane topology
+are used (Jordan, θ-curve, parity of crossings, one transversal crossing switches sides).
 
-Let A be a level-ℓ annulus with range [j_A, k_A] that satisfies (INV) below. Let P_i be its
-path, and Q = P_i′ its incised part from a piece of p_x^0 to a piece of p_y^1.
-- **(O1)** Every subgraph obtained by incising Q lies on one side of Q. The pieces of p_t^0
-  for t < x and of p_t^1 for t < y lie on the low side; those with t > x and t > y lie on the
-  high side. An end of Q whose edge on Q is new splits into one piece on each side. An end
-  whose edge is old lies on a bounding path and does not split; then the side of that path
-  overlaps and gets no call, and the called side holds the whole piece. (The first version said that both ends
-  always split, which is false for old end edges.)
+Along with Lemma O the induction proves an invariant (I) of every live annulus (LEMMA_O.md §3):
+it is a component of G*_ℓ (I0); the slots of its pieces and the curves of its bounding paths
+have a fixed shape (I1); its bounding paths P_a and P_b run from a piece of p^0 to a piece of
+p^1 at the low or high ends (I2); it has at most one piece of each face, and pieces of p_t^0
+and p_t^1 exactly on two index intervals that contain its range (I3); its old pairs are copies
+of P or lie on P_a or P_b (I4); and (I5) below. A_1 satisfies (I), and so does every called
+child.
+
+Let A be a live annulus of level ℓ that is not a leaf and satisfies (I). Let P_i be its path,
+and Q = P_i′ its incised part from a piece g_x of p_x^0 to a piece g_y of p_y^1.
+- **(O1)** Every subgraph obtained by incising Q lies on one side of J_Q. A's pieces of p_t^0
+  for t < x and of p_t^1 for t < y lie on the low side; those with t > x and t > y on the high
+  side. If Q's edge at g_x is new, g_x splits into its part below the cut, on the low side, and
+  its part above it, on the high side. If that edge is old, it is the first edge of P_a or of
+  P_b; g_x does not split, and it lies on the high side if the edge is on P_a and on the low
+  side if it is on P_b. Then P_i meets that path at g_x, so its side gets no call, and the
+  called side, if any, holds all of g_x. The same holds at g_y with the last edge. For t
+  strictly between x and y, every walk in A from A's piece of p_t^0 to its piece of p_t^1
+  meets a node of Q. (The first version said that both ends always split, which is false for
+  old end edges.)
 - **(O2)** A side on which P_i does not meet the bounding path is one subgraph. It has no bad
-  edge, and it holds one copy of each edge of Q. A bad edge in a subgraph of the j-side lies on
-  the bounding path of the j-side.
-- **(O3)** Every annulus holds at most one piece of p_t^σ for each t and σ.
-- **(INV)** For a level-ℓ annulus A and t ∈ [j_A, k_A], A contains a piece of p_t^0 and a
-  piece of p_t^1, and their distance in A is λ_t. It holds at level 1 by definition. For a
-  called child it follows from (O1), (O2) and the exchange: replace the part of a shortest path
-  between its first and last node on Q by the part of Q in between. This includes t = i2 at a
-  junction, where the path starts or ends with Q's edge there.
-- **(C23)** If P_i meets the bounding path of the j-side at a node z, then
-  d_A(p_m^0, z) + d_A(z, p_m^1) = λ_m for every m ∈ [j_A, i1]. The k-side is symmetric. This is
-  [18, Claim 2.3] in the form used here. In [18] the annulus holds exactly the copies of its
-  range and is bounded by full paths P_k. Here P_i has parts along P, and the bounding path is
-  an incised part whose ends sit at different indices.
+  edge, and it holds exactly one copy of each edge of Q. A bad edge in a subgraph of the j-side
+  is an edge of P_a; on the k-side, of P_b.
+- **(O3)** Every live annulus has at most one piece of each p_t^σ and of each face off P.
+- **(INV)** For every live annulus A and every t such that A has pieces of p_t^0 and p_t^1, in
+  particular every t ∈ [j_A, k_A], their distance in A is λ_t. The proof for a called child
+  replaces the part of a shortest walk between its first and last node on Q by the part of Q in
+  between, lifted to the called side; this works because that side holds exactly one part of
+  each node of Q. It covers t = i2 at a junction and walks that touch Q in one node.
+- **(C23)** If P_i meets P_a in a node z, then d_A(g_m^0, z) + d_A(z, g_m^1) = λ_m for every
+  m ∈ [max(x_a, y_a), i], where x_a and y_a are the indices of the ends of P_a. By (I3) this
+  interval contains [j_A, i]. So any common node serves as the source of the overlap rule, which
+  then computes λ_m exactly for every m ∈ [j_A, i]. The k-side is symmetric. Beyond i the
+  equality fails in general (1,669 of 12,044 test checks on (i, i2]). This replaces
+  [18, Claim 2.3], which is stated for annuli that hold exactly the copies of their range and are
+  bounded by full paths P_k. The proof is a parity argument in the style of (S_1).
+
+What is taken from [18]: the structure of the recursion [18, Alg. 3] (which path, the overlap
+rule, which sides get a call with which range), and incision as a split of nodes
+[18, Def. 2.2, Remark 2.5] in the token form of Lemma N. Matching [18]'s two sides to the low and
+high sides is a reading, the same one Lemma N and the driver make. [18, Claim 2.3] is not used,
+nor F2, F4 or F5 of GHAT_REPAIR.md, nor the converse of [18, Claim 5.8].
 
 ## Lemma S1 (interval form of [18, Claim 2.4])
 
@@ -239,7 +262,7 @@ recursion of [18] misses exactly this: the end it needs can lie outside [j_A, k_
 
 ## Lemma S2 (the repaired recursion is exact)
 
-Given Lemma O, the least computed length is Λ, so its ⌊·/K⌋ is the minimum cut.
+By Lemma O, the least computed length is Λ, so its ⌊·/K⌋ is the minimum cut.
 
 *Proof.* Soundness first. Every computed length is the length of one of two things:
 - a path in an annulus between its pieces of p_t^0 and p_t^1, which are unique by (O3); or
@@ -286,6 +309,12 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   dropped index in range (logs/c24_*.json, logs/sep_*.json). hull_i12 and sep_fail held in
   the 210,000 instances of logs/sep_*.json, 23,910 of them with an index strictly between x
   and y in range.
+- **lemmaO/.** patchO.py adds checks of every part of (I) and of Lemma O at every incision and
+  every child to a copy of the driver. 342,000 instances with 232,868 incisions, no failed check
+  (lane?.json). Among them: 72,697 incisions with x = y; 14,230 linear internal nodes of Q that
+  split; 72,194 end pieces with an old end token, each on the predicted side; 417,577 sides
+  without overlap, each one subgraph; 818,830 checks of (INV) at children; (I5) in the strong
+  form for 205,947 indices, 10,829 outside the range; (C23) on [j_A, i] in 320,774 checks.
 - **refereeS/.** This is the referee's instrumented copy of the driver, thmD_refS.py. It ran
   162,000 instances with no failure (r_*.txt). It checked:
   - Lemma S1 with w-lengths for every t in (i1, i2): 51,401 checks, 11,101 of them outside the
@@ -300,5 +329,8 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
 
 ## Points of doubt
 
-- Lemma O is not yet proved; see its section.
+- Lemma O (LEMMA_O.md) has had no referee pass yet. Its own points of doubt are in its §11:
+  the four topology facts are used without proof; matching [18]'s sides to the low and high
+  sides is a reading; the invariant (I) has many parts; an end piece of one token with an old end
+  token never occurred in the tests.
 - (S_1) is proved with the curve drawing of the Reif reduction, in words, as there.

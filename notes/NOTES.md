@@ -508,7 +508,7 @@ as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim
   P_{i2} ([18, Claim 2.4, Lemma 5.6]). That witness can lie outside the range [j, k] of the
   annulus and be dropped elsewhere, so two drops can rest on each other. Smallest instance
   found: a simple graph with 11 vertices, minimum cut 15, reported 37. Repair: every annulus
-  that is not a leaf also computes P_a and P_b for a = max(i1, j) and b = min(i2, k), two more
+  that is not a leaf also computes P_{i⁻} and P_{i⁺} for i⁻ = max(i1, j) and i⁺ = min(i2, k), two more
   SSSP calls per level. Lemma S proves an interval form of [18, Claim 2.4] (a dropped t is
   dominated by every index between t and i1, or by every index between t and i2), and from it
   that the least computed length is the minimum.
@@ -639,7 +639,9 @@ the repaired driver gives the right value on all 25 failing instances and on 1,4
 instances (6 wrong values in 1,200,000 of them without the repair). Referee pass on Lemma S
 (2026-10-29): correct with gaps, nothing fatal. Its two serious points are older gaps of the
 proof above, the side fact behind the exact exchange and the exact form of [18, Claim 2.3].
-They are now stated as Lemma O, whose proof is in progress; Lemma S1 no longer needs them. Negative
+They are now stated as Lemma O (notes/LEMMA_O.md), proved by an induction over the levels in a
+curve model, with five changes to the statement; no referee pass yet. 342,000 test instances
+(232,868 incisions) checked every part of it with no failure. Lemma S1 no longer needs it. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.
