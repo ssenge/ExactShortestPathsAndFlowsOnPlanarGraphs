@@ -1542,8 +1542,8 @@ embedding, which Lemma B2 needs.
 the embedding and the BFS tree T. The other steps of (L) are deterministic: the Γ step of
 §3.5, the oracles and transfers of §5 and §6, and the gathering at leaves. So are Lemma V and
 the reduction of [3]. So Theorem A is deterministic, given a deterministic planar embedding.
-[17] cites the embedding algorithm of [15] as deterministic; we have not checked this in [15]
-itself.
+[17] and [18] use the embedding algorithm of [15] as deterministic; the full text of [15] was
+not accessible to us.
 
 ### 9.7 Numerical checks (`sim/s9/`)
 

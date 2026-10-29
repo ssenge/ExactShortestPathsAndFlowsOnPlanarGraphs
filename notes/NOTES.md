@@ -95,7 +95,8 @@ but its BDD comes from Li-Parter, whose only random step is the Ghaffari-Parter 
 Montealegre-Rapaport; Abd-Elhaleem-Dory-Weimann 2026) but never shows that they give a BDD
 with Properties 1-7. The face identification needed for Ĝ is already deterministic
 ([9], App. A). The region decomposition of LEMMA15.md §9 is deterministic (Lemma B5), so
-Theorem A is deterministic given a deterministic planar embedding, which [17] says [15] is.
+Theorem A is deterministic given a deterministic planar embedding. [17] and [18] use [15]
+as deterministic; the full text of [15] was not accessible to us.
 
 The previous bound was Õ(D²) [8]. The lower bound is Ω(D).
 

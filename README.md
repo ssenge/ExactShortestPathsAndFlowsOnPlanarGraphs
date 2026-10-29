@@ -43,8 +43,8 @@ Please read this before relying on anything here.
     about 20.8 million instances, among them every instance with at most 7 vertices, with no
     counterexample.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
-  given a deterministic planar embedding; [17] cites the embedding algorithm of [15] as
-  deterministic. Theorems B and C use [6] and hold with high probability. For Theorem C′ we
+  given a deterministic planar embedding. [17] and [18] use the embedding algorithm of [15]
+  as deterministic; the full text of [15] was not accessible to us. Theorems B and C use [6] and hold with high probability. For Theorem C′ we
   have not checked the other steps of [9].
 - Some steps use published results as black boxes; see [What is assumed](#what-is-assumed).
 
@@ -76,6 +76,7 @@ cross the network. On general graphs, $\tilde\Omega(\sqrt n + D)$ rounds are nee
 | Exact maximum st-flow, directed | $\tilde O(D^2)$ [9] |
 | SSSP in the dual graph, negative weights | $\tilde O(D^2)$ [9] |
 | Maximum st-flow with $s$, $t$ on a common face | $(1-o(1))$-approximate, undirected, $D\cdot n^{o(1)}$ [9] |
+| Maximum st-flow value and minimum st-cut, undirected | $(1-o(1))$-approximate, $\tilde O(D)$, deterministic [18] |
 
 Two open questions are stated at the end of [9]. The first asks for better primal SSSP, which
 is called "the bottleneck to overcome in order to obtain better distributed planar
@@ -89,7 +90,7 @@ directed SSSP problem (even with non-negative weights)".
 | Theorem A: exact SSSP, directed, $w\ge0$ | $\tilde O(D)$ | $\tilde O(D^2)$ [8] | modest to solid |
 | Theorem B: exact SSSP with negative weights, or a negative cycle | $D\cdot n^{o(1)}$ | $(\sqrt n+D)\cdot n^{o(1)}$ on general graphs [6] | modest |
 | Theorem C: exact maximum st-flow, directed | $\min\lbrace\tilde O(D^2),\ D\cdot n^{o(1)}\rbrace$ | $\tilde O(D^2)$ [9] | significant |
-| Theorem C′: the same with $s$, $t$ on a common face | $\tilde O(D)$ | approximate and undirected only [9] | modest |
+| Theorem C′: the same with $s$, $t$ on a common face | $\tilde O(D)$ | approximate and undirected only [9], [18] | modest |
 | Lemma V: distances from a virtual source, and a fix of the query of [1] | $\tilde O(D/\varepsilon)$ | | minor |
 | Lemma D: the face-disjoint graph of [9], weighted, realizes dual distances | | | minor |
 | [1, Lemma 14] is false | | | modest |
@@ -100,7 +101,8 @@ directed SSSP problem (even with non-negative weights)".
 All four theorems are conditional (see [Status](#status)): their correctness on Lemma 14′,
 and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ratings in short:
 - **Theorem A** closes the planar exact-SSSP gap up to polylogarithmic factors and answers
-  the second question of [9]. The proof is short, though: the reduction of [3], the labels of
+  the second question of [9]. [18] (2026) still uses approximate SSSP "for the lack of
+  almost-D-rounds exact distributed SSSP". The proof is short, though: the reduction of [3], the labels of
   [1], and Lemma V. Since [3, §3.1] already says its boosting works in any model that can run
   its oracle, the theorem is close to folklore once the labels of [1] are available.
 - **Theorem B** is a white-box substitution into [6].
@@ -278,7 +280,7 @@ cut follows from reachability in the residual graph, in $\tilde O(D)$.
 $\tilde O(D)$ rounds with high probability, for directed networks. This is the method of [12]:
 add a chord between $s$ and $t$ inside the face and compute one dual SSSP with nonnegative
 lengths. [9, Thm 1.3] gives a $(1-o(1))$-approximation for undirected networks in
-$D\cdot n^{o(1)}$ rounds.
+$D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $t$.
 
 ## What is assumed
 
@@ -416,6 +418,11 @@ plain-text extractions of [1] (arXiv v2) and [9].
 - Theorem A is deterministic with region bags. Are Theorems B, C and C′? That needs
   deterministic versions of [6] and of the remaining steps of [9].
 - Can the realization step run in polynomial local time?
+- Does Theorem A make [18] exact, giving the minimum st-cut of undirected planar networks in
+  $\tilde O(D)$? [18] runs SSSP on pieces of the dual whose diameter can be large, through
+  minor aggregation, and Theorem A is not a minor-aggregation algorithm. Running it on the
+  whole graph of [18, Lemmas 3.4, 3.5, 3.16], with large weights between pieces, may avoid
+  this; we have not checked it.
 
 ## Use of AI
 
@@ -458,6 +465,8 @@ The numbers match those in `notes/`.
     via Cycle Separators in Planar Graphs. PODC 2025, arXiv:2504.21620.
 17. Y. Abd-Elhaleem, M. Dory, O. Weimann. A Simple Distributed Deterministic Planar Separator.
     SIROCCO 2026, arXiv:2602.22916.
+18. Y. Abd-Elhaleem, M. Dory, O. Weimann. Õptimal Distributed Maximum Flow Approximation in
+    Undirected Planar Graphs. DISC 2026, arXiv:2608.09500.
 
 ## License
 
