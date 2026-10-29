@@ -492,12 +492,15 @@ loss per level in [18, Lemma 2.7], the division by 1+ε in [18, Sec. 5.2], and t
 makes P_m simple. With exact trees all three losses are zero, and the cut value is reported
 as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim A.2]:
 - Let P′ be a shortest p_j0-to-p_j1 path in the parent annulus, and a, b its first and last
-  vertices on P_i. P_i is a tree path, so P_i[a..b] is a shortest a-to-b path, and replacing
-  P′[a..b] by it does not increase the weight. p_j0 and p_j1 lie on one side of P_i, so the
-  new path touches P_i without crossing it and lies in the child annulus.
-- By induction over the levels, restricting to an annulus loses nothing, and [18, Claim 2.3]
-  holds with "without loss of generality" in place of "forbidden". Ties do no harm: only the
-  existence of an equally short non-crossing path is used. The incised parts P_i′ ([18, Remark 2.5]) do not cross by
+  nodes on the incised part P_i′. P_i is a tree path, so P_i′[a..b] is a shortest path, and
+  replacing P′[a..b] by its copy on the called side does not increase the weight. That the new
+  path lies in the called child is Lemma O (notes/LEMMA_O.md, Claim 13): the called side holds
+  exactly one part of every node of P_i′, and the parts of P′ off P_i′ stay on their side.
+- By induction over the levels, restricting to an annulus loses nothing (Lemma O, (INV)).
+  [18, Claim 2.3] is replaced by Lemma O, Claim 15: on a side where P_i meets the bound, the
+  overlap rule computes the exact distance for every index from the bottom of the range up to i,
+  from any common node. Ties do no harm: only the existence of an equally short path is used.
+  The incised parts P_i′ ([18, Remark 2.5]) do not cross by
   construction, since each lies inside its own annulus, whose boundaries are earlier incised
   parts, and sibling annuli are disjoint ([18, Claim 2.12]). Whole paths P_i can cross along
   parts that are not incised (equal-cost ties; 17 and 630 of 30,000 test instances under the
@@ -640,7 +643,8 @@ instances (6 wrong values in 1,200,000 of them without the repair). Referee pass
 (2026-10-29): correct with gaps, nothing fatal. Its two serious points are older gaps of the
 proof above, the side fact behind the exact exchange and the exact form of [18, Claim 2.3].
 They are now stated as Lemma O (notes/LEMMA_O.md), proved by an induction over the levels in a
-curve model, with five changes to the statement; no referee pass yet. 342,000 test instances
+curve model, with five changes to the statement. Referee pass on Lemma O (2026-10-29): correct
+with minor gaps, all fixed; the bound in the overlap test is read as the incised copy. 342,000 test instances
 (232,868 incisions) checked every part of it with no failure. Lemma S1 no longer needs it. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],

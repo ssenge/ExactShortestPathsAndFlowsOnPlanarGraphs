@@ -1,6 +1,8 @@
 # Lemma O: the sides of one incision
 
-*Status (2026-10-29).* Proof written; no referee pass yet. This note proves the level-ℓ facts
+*Status (2026-10-29).* Referee pass (2026-10-29): correct with minor gaps, no fatal or serious
+error; Lemma O supplies what Lemma S2 uses, in the form S2 uses it. The thirteen minor points are
+fixed in this version (§12). This note proves the level-ℓ facts
 that Lemma S2 (RECURSION.md) takes from Lemma O. The proof is an induction over the levels. Together with Lemma O it proves an
 invariant (I) of the live annuli (§3), and Lemma O is stated for annuli that satisfy (I). The
 model is a drawing of the token graph on the sphere, in which every incision is a curve and
@@ -30,7 +32,7 @@ every side is a side of a simple closed curve. §0 lists what is proved and what
    annulus has a piece of p_t^0 and a piece of p_t^1, their distance is λ_t, also for t
    outside the range. The range form suffices for Lemma S2; the strong form is used only for
    the extra range in item 4.
-4. *(C23)* holds for every node z of P_i ∩ P_a and every m ∈ [max(x_a, y_a), i], where x_a and
+4. *(C23)* holds for every node z of P_i ∩ P_a and every μ ∈ [max(x_a, y_a), i], where x_a and
    y_a are the indices of the ends of P_a. This interval contains [j_A, i] ⊇ [j_A, i1]. So any
    common node serves as the source of the overlap rule. Beyond i the equality is false in
    general (§10).
@@ -61,7 +63,9 @@ Lemma N).
   The child on the low side (the j-side, range [j_A, i1]) has the j-bound of A and, as its
   k-bound, the copy of Q on the low side. The child on the high side (the k-side, range
   [i2, k_A]) has the copy of Q on the high side as its j-bound and the k-bound of A. We write
-  P_a and P_b for the j-bound and the k-bound of A; either may be absent. The ends of P_a are
+  P_a and P_b for the j-bound and the k-bound of A; either may be absent. A bound is the copy
+  in A of the *incised part* of an ancestor's path, not of its whole path. [18] writes P_j and
+  P_k for whole paths (Alg. 3, lines 9 to 12; Claim 2.3; Def. 2.8), so this is a reading (§9). The ends of P_a are
   a piece of p_{x_a}^0 and a piece of p_{y_a}^1 (Claim 14); those of P_b are a piece of
   p_{x_b}^0 and one of p_{y_b}^1. If P_a is absent, set x_a = y_a = 0; if P_b is absent, set
   x_b = y_b = m.
@@ -70,23 +74,29 @@ Lemma N).
   are unique by (I3)), computed exactly and read from the 0-end. x is the index of the last
   0-piece on P_i and y the index of the first 1-piece after it. Q = P_i′ is the part of P_i
   between them, from a piece g_x of p_x^0 to a piece g_y of p_y^1. i1 and i2 are the least
-  and greatest index of a P-piece on P_i; by Lemma S1(b) they are min(i, x, y) and
-  max(i, x, y).
+  and greatest index of a P-piece on P_i. Since g_x and g_y are P-pieces on P_i,
+  i1 ≤ min(x, y) and max(x, y) ≤ i2; this is all Lemma O uses. (Lemma S1(b) gives
+  i1 = min(i, x, y) and i2 = max(i, x, y), but Lemma O does not need it.)
 - *Q.* Q is a subpath of a shortest path, so it is a simple path and a shortest path between
   any two of its nodes. Its internal nodes are off P, by the choice of x and y. None of its
   edges is a copy of an edge of P: such a copy joins two pieces on the same side of γ, while
   an edge of Q has an end off P or joins a 0-piece to a 1-piece.
-- *Incision in token form.* The level-(ℓ+1) cuts in the faces of A are its level-ℓ cuts and
-  one cut inside each dart of each new edge of Q. A^Q is the graph whose nodes are the
+- *Incision in token form.* The level-(ℓ+1) cuts in the pieces of A are its level-ℓ cuts and
+  one cut inside each dart of each new edge of Q. Another annulus A″ of the same level cuts only
+  darts in its own pieces: a new edge of its incised part has its only pair in A″, and A″ is a
+  component (I0), so no piece of A holds such a dart. A^Q is the graph whose nodes are the
   level-(ℓ+1) pieces that refine pieces of A and whose edges are the level-(ℓ+1) pairs of the
   edges that have a pair in A. The *subgraphs obtained by incising Q* are the components of
   A^Q. Nodes of A off Q do not change, and old pairs do not change. A new edge of Q gets two
   pairs, {(δ,1), (rev δ,2)} and {(δ,2), (rev δ,1)}. This is the incision of
   [18, Remark 2.5] in the reading of Lemma N and of sim/thmD.
 - *Calls.* Following [18, Alg. 3] as read in RECURSION.md: if P_i meets P_a (shares a node with
-  it), the j-side gets no call and the overlap rule of [18, Alg. 3, lines 9 to 14] computes,
+  it; by (I4) the nodes of P_a ∪ P_b are exactly the nodes of A that carry an old token of an edge
+  off P, so each node knows locally whether it lies on a bound), the j-side gets no call and the overlap rule of [18, Alg. 3, lines 9 to 14] computes,
   from a common node, a path for every t ∈ [j_A, i]. The k-side and P_b are symmetric. A side
-  without overlap is called if its range is not empty. Claim 11 shows that such a side is one
+  without overlap is called if its range is not empty. Overlap is tested directly, as P_i ∩ P_a ≠
+  ∅, and not through the bad edges of [18, Claim 5.8], whose converse fails (GHAT_REPAIR.md, F3).
+  Both rules, no call on an overlap side and no call on an empty range, are readings (§9). Claim 11 shows that such a side is one
   subgraph, so the call is well defined.
 
 ## 2. The curve model
@@ -127,7 +137,8 @@ edges. ∂h° follows the walk of h: one *side segment* of ∂S_e for each dart 
   and the pair {(δ,2), (rev δ,1)} of the two halves at head(δ). So the two pairs of an incised
   edge lie in the two halves of S_e \ cl(e).
 - The *arc* arc(g) of a piece g is the closed sub-arc of ∂h° made of the segments and halves
-  of its tokens; for a cyclic piece it is ∂h°. Its ends are cut points. Arcs of distinct
+  of its tokens, the corner arcs between consecutive tokens, and, for a piece next to c*_s or
+  c*_t, the part of the corner arc up to that corner cut; for a cyclic piece it is ∂h°. Its ends are cut points. Arcs of distinct
   pieces meet at most in their ends.
 
 ### 2.3 The arc γ
@@ -166,8 +177,7 @@ Every incision of a path Q in a live annulus adds a curve C_Q (Claim 3). K_ℓ i
   collar of the first node to any point of the collar of the last node. The drawing of a
   subgraph is defined the same way.
 
-**Claim 1.** Let W and W′ be walks in a live annulus A that have no common node, and assume
-(I3) for A. Then Γ(W) ∩ Γ(W′) = ∅.
+**Claim 1.** Let W and W′ be walks in a live annulus A that have no common node. Then Γ(W) ∩ Γ(W′) = ∅.
 
 *Proof.* Collars of distinct pieces are disjoint: in distinct faces they lie in distinct
 discs, and in one face they lie along arcs that meet at most in their ends, which collars
@@ -228,7 +238,9 @@ tokens on Q.
 - for each internal node g of Q, a chord ch(g) from c(u) to c(w) with interior in Δ(g);
 - a chord ch(g_x) from c(ε_0) to a point q_0 inside the γ-part of g_x, with interior in
   Δ(g_x), and ch(g_y) from c(ε_1) to a point q_1 inside the γ-part of g_y, with interior in
-  Δ(g_y). The points q_0 and q_1 are distinct and differ from the ends of all chords of K_ℓ.
+  Δ(g_y). The last piece of ch(g_x) and of ch(g_y) is a straight segment perpendicular to γ.
+  The points q_0 and q_1 are distinct and differ from the ends of all chords of K_ℓ, and the
+  points q chosen by all annuli of one level are pairwise distinct.
 
 Let C_Q be the union of these chords and of the cut lines of all edges of Q, and
 J = J_Q = C_Q ∪ γ[q_0, q_1]. Then:
@@ -236,8 +248,8 @@ J = J_Q = C_Q ∪ γ[q_0, q_1]. Then:
 is a simple closed curve;
 (b) C_Q lies in the closure of Ω_A;
 (c) J meets a strip S_e only in cl(e), and only if e is an edge of Q or an edge of P whose cut
-line lies in γ[q_0, q_1]. J meets the closed disc of a face h only in the chord of C_Q in h,
-if Q has a node in h, and in γ[q_0, q_1].
+line lies in γ[q_0, q_1]. J meets the closed disc of a face h only in the chords of C_Q in h
+(two if x = y and h = p_x, at most one otherwise), and in γ[q_0, q_1].
 
 *Proof.* (a) For an internal node g, u ≠ w, and c(u), c(w) are distinct points of arc(g): the
 midpoint of the segment of a new token lies inside arc(g), and the cut point of an old token,
@@ -274,9 +286,11 @@ J crosses ∂N exactly twice, transversally: once on the 0-bank, by ch(g_x), and
 the end arc at c*_t, and by T4 they lie on different sides of J. Points of γ before
 min(q_0, q_1) join E_s by short arcs inside N that miss J, and points of γ after
 max(q_0, q_1) join E_t in the same way. This gives (a) and shows that E_s lies in Lo(J). For
-(b), a point near r on the 0-side joins the 0-bank by a short segment on the 0-side; the
-segment misses γ, misses the segment of ch(g_y), and misses the segment of ch(g_x) because
-r ≠ q_0. The part of the 0-bank before the crossing with ch(g_x) lies in E_s and the part
+(b), fix r and shrink N, if needed, so that its width is less than half the distance from r to
+q_0 and to q_1; the sides of J do not depend on N. The final segments of ch(g_x) and ch(g_y)
+are perpendicular to γ (Claim 3), so inside N they lie within the width of N from q_0 and q_1.
+A point near r on the 0-side joins the 0-bank by a segment perpendicular to γ, which lies
+within the width of N from r. So the segment misses γ and both final segments. The part of the 0-bank before the crossing with ch(g_x) lies in E_s and the part
 after it in E_t. The 1-side is the same with q_1. ∎
 
 The low side is the j-side and the high side the k-side. Claims 6 and 11 justify this name:
@@ -317,9 +331,10 @@ The 1-pieces are the same with y and q_1.
 (b) Write ∂Δ(g_x) as in (I1b): the arc-part from its low end to its high end, then the chord
 to r_hi (or nothing), then γ_x back from r_hi to r_lo, then the chord to the low end (or
 nothing). ch(g_x) joins c(ε_0) on the arc-part to q_0 inside the γ-part. By T2, Δ(g_x) \
-ch(g_x) has two components: Δ_lo, bounded by ch(g_x), the arc-part from its low end to c(ε_0)
-and the γ-part from r_lo to q_0; and Δ_hi, bounded by ch(g_x), the arc-part from c(ε_0) to its
-high end and the γ-part from q_0 to r_hi. Both miss J (Claim 3c) and are connected. Δ_lo
+ch(g_x) has two components: Δ_lo, bounded by ch(g_x), the arc-part from its low end to c(ε_0),
+the old chord from the low end to r_lo if present, and the γ-part from r_lo to q_0; and Δ_hi,
+bounded by ch(g_x), the arc-part from c(ε_0) to its high end, the old chord from the high end to
+r_hi if present, and the γ-part from q_0 to r_hi. Both miss J (Claim 3c) and are connected. Δ_lo
 contains points on the 0-side near points of γ_x before q_0, so it lies in Lo(J); Δ_hi lies in
 Hi(J) for the same reason. If ε_0 is new, the collar of each part of g_x lies in the component
 along its arc. If ε_0 is old, c(ε_0) is an end of arc(g_x), and all of arc(g_x) is on the
@@ -526,17 +541,17 @@ old edge off P, since A has.
 (I5) is Claim 13. ∎
 
 **Claim 15 ((C23)).** Suppose P_a exists and P_i meets P_a in a node z. Then for every
-m ∈ [max(x_a, y_a), i],
+μ ∈ [max(x_a, y_a), i],
 
-  d_A(g_m^0, z) + d_A(z, g_m^1) = λ_m.
+  d_A(g_μ^0, z) + d_A(z, g_μ^1) = λ_μ.
 
 By (I3), [max(x_a, y_a), i] ⊇ [j_A, i] ⊇ [j_A, i1]. Every common node z works. Symmetrically,
-if P_i meets P_b in z, the equality holds for every m ∈ [i, min(x_b, y_b)].
+if P_i meets P_b in z, the equality holds for every μ ∈ [i, min(x_b, y_b)].
 
-*Proof.* For m ∈ [max(x_a, y_a), i], A has g_m^0 and g_m^1 (I3), and their distance in A is λ_m
-(I5). The left side is at least λ_m, since the two shortest paths form a walk from g_m^0 to
-g_m^1. For m = i, z lies on P_i, which has length λ_i, so equality holds. Let m < i, and let W
-be a shortest walk in A from g_m^0 to g_m^1, of length λ_m.
+*Proof.* For μ ∈ [max(x_a, y_a), i], A has g_μ^0 and g_μ^1 (I3), and their distance in A is λ_μ
+(I5). The left side is at least λ_μ, since the two shortest paths form a walk from g_μ^0 to
+g_μ^1. For μ = i, z lies on P_i, which has length λ_i, so equality holds. Let μ < i, and let W
+be a shortest walk in A from g_μ^0 to g_μ^1, of length λ_μ.
 
 *Step 1: W meets P_i[g_i^0 .. z].* Suppose not. Build a closed curve Z^0 from four parts.
 - ζ: a curve in the drawing of P_i[g_i^0 .. z], from col(g_i^0) to col(z).
@@ -546,13 +561,13 @@ be a shortest walk in A from g_m^0 to g_m^1, of length λ_m.
 - The 0-run: from q_0^a forward along γ on the 0-side, at small distance, to a point r_i
   inside the γ-part of g_i^0, then into Δ(g_i^0) and to the start of ζ in col(g_i^0). The
   γ-part of g_i^0 follows q_0^a, because Δ(g_i^0) ⊂ Hi(J_a) (Claim 4b for J_a).
-Build a second closed curve: a curve ω in Γ(W) from col(g_m^0) to col(g_m^1), closed by an arc
-β in the face p_m. β runs inside the half H_m^0 from col(g_m^0) to a point near γ_m on the
-0-side, crosses γ_m once at a point q, and runs inside H_m^1 to col(g_m^1). Choose q inside
-γ_m after q_0^a if m = x_a and after q_1^a if m = y_a. This is possible: if m = x_a, the
-chord of C_a in H_m^0 splits it (T2) into a part before and a part after q_0^a, and Δ(g_m^0)
-lies in the part after, since g_m^0 lies in Hi(J_a); so β avoids that chord. The same holds in
-H_m^1 if m = y_a. The parts of β outside a thin neighbourhood of γ avoid it.
+Build a second closed curve: a curve ω in Γ(W) from col(g_μ^0) to col(g_μ^1), closed by an arc
+β in the face p_μ. β runs inside the half H_μ^0 from col(g_μ^0) to a point near γ_μ on the
+0-side, crosses γ_μ once at a point q, and runs inside H_μ^1 to col(g_μ^1). Choose q inside
+γ_μ after q_0^a if μ = x_a and after q_1^a if μ = y_a. This is possible: if μ = x_a, the
+chord of C_a in H_μ^0 splits it (T2) into a part before and a part after q_0^a, and Δ(g_μ^0)
+lies in the part after, since g_μ^0 lies in Hi(J_a); so β avoids that chord. The same holds in
+H_μ^1 if μ = y_a. The parts of β outside a thin neighbourhood of γ avoid it.
 
 Now count crossings.
 - ω and ζ: W and P_i[g_i^0 .. z] have no common node, so their drawings are disjoint
@@ -563,28 +578,28 @@ Now count crossings.
 - ω and the 0-run: collars avoid small neighbourhoods of cut points, and pair curves of edges
   of P cross their strips away from γ, so ω misses a thin neighbourhood of γ. In Δ(g_i^0),
   the run meets only the collar of g_i^0, which W does not visit.
-- β and ζ, β and the connector: inside p_m, A has only the pieces g_m^0 and g_m^1 (I3), and
+- β and ζ, β and the connector: inside p_μ, A has only the pieces g_μ^0 and g_μ^1 (I3), and
   P_i[g_i^0 .. z] visits neither, since W would meet it; z is neither, for the same reason.
-- β and C_a: the parts of C_a in p_m are its chords at the ends of P_a, if m = x_a or m = y_a,
+- β and C_a: the parts of C_a in p_μ are its chords at the ends of P_a, if μ = x_a or μ = y_a,
   and β avoids them.
 - β and the 0-run: β crosses γ once, at q, and the run passes q on the 0-side, because
-  q_0^a precedes q (m > x_a, or the choice of q if m = x_a) and q precedes r_i (m < i). So β
+  q_0^a precedes q (μ > x_a, or the choice of q if μ = x_a) and q precedes r_i (μ < i). So β
   crosses the run exactly once.
 So the closed curves ω ∪ β and Z^0 cross exactly once, against T3.
 
 *Step 2: W meets P_i[z .. g_i^1].* Build Z^1 in the same way from the drawing of
 P_i[z .. g_i^1], the 1-run on the 1-side from q_1^a forward to the γ-part of g_i^1, C_a from
 q_1^a backwards to cl(e), and the connector at z. The same count, with q after q_1^a if
-m = y_a, gives exactly one crossing.
+μ = y_a, gives exactly one crossing.
 
 *Step 3: exchange.* Let v1 be a node of W on P_i[g_i^0 .. z] and v2 one on P_i[z .. g_i^1].
 Replace the part of W between its visits to v1 and v2 (in whichever order W makes them) by the
 part of P_i between v1 and v2, read in the same direction. That part passes through z, and,
 as a subpath of the shortest path P_i, it is no longer than the part it replaces. So there is
-a walk from g_m^0 to g_m^1 through z of length at most λ_m, and the left side is at most λ_m.
+a walk from g_μ^0 to g_μ^1 through z of length at most λ_μ, and the left side is at most λ_μ.
 
 For P_b, mirror the construction: the runs go from the face p_i forward to q_0^b and q_1^b, and
-need m ≤ x_b and m ≤ y_b. ∎
+need μ ≤ x_b and μ ≤ y_b. ∎
 
 *Use in the overlap rule.* Lines 9 to 14 of [18, Alg. 3] grow a tree in A from a common node z
 and read, for every t ∈ [j_A, i], the tree path between g_t^0 and g_t^1. It is a walk in A
@@ -613,12 +628,12 @@ every called child does, Claim 14). Let P_i, x, y, Q, i1, i2 and J = J_Q be as a
   ((I3), Claims 2, 12, 14).
 - **(INV)** For every live annulus A and every t such that A has pieces of p_t^0 and p_t^1, in
   particular every t ∈ [j_A, k_A], their distance in A is λ_t ((I5), Claims 2, 13).
-- **(C23)** If P_i meets P_a in z, then d_A(g_m^0, z) + d_A(z, g_m^1) = λ_m for every
-  m ∈ [max(x_a, y_a), i] ⊇ [j_A, i]. Symmetrically for P_b and m ∈ [i, min(x_b, y_b)]
+- **(C23)** If P_i meets P_a in z, then d_A(g_μ^0, z) + d_A(z, g_μ^1) = λ_μ for every
+  μ ∈ [max(x_a, y_a), i] ⊇ [j_A, i]. Symmetrically for P_b and μ ∈ [i, min(x_b, y_b)]
   (Claim 15).
 
-The facts (P), (B), (W), (S_1) and Lemma S1 of RECURSION.md are not used, except Lemma S1(b)
-for i1 = min(i, x, y) and i2 = max(i, x, y), which needs only (I5) for A.
+The facts (P), (B), (W), (S_1) and Lemma S1 of RECURSION.md are not used, so Lemma O does not
+depend on RECURSION.md.
 
 ## 6. Degenerate cases
 
@@ -646,6 +661,12 @@ for i1 = min(i, x, y) and i2 = max(i, x, y), which needs only (I5) for A.
 - *Bridges, loops, deg(s) = 1, parallel edges.* The thickened drawing gives every dart its own
   side segment, so a bridge with one face on both sides has two segments in that face, and a
   corner arc of a vertex of degree 1 runs around the end of its strip. Nothing else changes.
+- *An end piece of one old token.* It cannot occur in a non-leaf annulus. A cut lies inside an
+  incised dart or at c*_s or c*_t, so a piece made of one old token has c*_s or c*_t as an end of
+  its arc and lies in p_0 or p_m. In p_0, c*_s is the entry of γ_0, so the token's cut point is
+  the high end, and by Claim 6c, (I2) and (I4) its pair lies on P_b with this piece as an end.
+  Then x_b = 0 or y_b = 0, so k_A ≤ 0 by (I3), and A is a leaf. In p_m the mirror argument puts
+  the pair on P_a, so j_A ≥ m. The referee's flag for this case never fired in 177,000 runs.
 - *A without P_a or P_b.* The claims about the missing path are empty; with x_a = y_a = 0 or
   x_b = y_b = m, (I3) still holds. At level 1 all internal nodes of Q are cyclic and both ends
   split.
@@ -686,9 +707,29 @@ the Jordan curve J_Q in place of a parity count.
 *Taken from [18].*
 - [18, Alg. 3]: in a live annulus that is not a leaf, P_i is computed for the middle index, its
   part P_i′ is incised, the overlap rule of lines 9 to 14 runs on a side where P_i meets the
-  bounding path, and the two sides are called with the ranges [j, i1] and [i2, k] unless they
-  overlap or have an empty range. The reading of which sides are called is that of
-  RECURSION.md and of F3 in GHAT_REPAIR.md.
+  bounding path, and the two sides are called with the ranges [j, i1] and [i2, k].
+
+*Readings and choices.* Three points are ours, not [18]'s.
+- *The bounding path is the incised copy.* [18] tests P_i ∩ P_j ≠ ∅ for the whole path P_j
+  (Alg. 3, lines 9 to 12; Claim 2.3; Def. 2.8). We read P_j as the copy in A of the parent's
+  incised part P_i′, which is the bound P_a. Two reasons: only under this reading does the
+  bad-edge rule of [18, Claim 5.8] make sense, since with whole paths the copies of edges of P on
+  the parts outside P_i′ would count as bad edges; and the test is local, since by (I4) the nodes
+  of P_a ∪ P_b are exactly those that carry an old token of an edge off P. The two readings
+  differ: the parent's whole path U·Q·V often has U and V inside the child, and P_i can meet
+  them off the copy. In the referee's runs (§12), 1,561 sides of 162,000 instances overlapped
+  only under the whole-path reading. A driver with the whole-path test (sim/thmD/refereeO,
+  thmD_F.py) gave the right value on all 84,000 of its instances, and (C23) held at all 108,059
+  checks at common nodes off the copy, but Claim 15 does not cover those nodes, so the
+  whole-path reading is unproved.
+- *No call on an overlap side.* This follows [18, Def. 2.8]. [18]'s implementation decides by
+  bad edges instead ([18, Claim 5.8]), and the converse of Claim 5.8 fails (GHAT_REPAIR.md, F3),
+  so Theorem D tests overlap directly. A called overlap side could break (I2), since P_a and Q^Lo
+  would meet.
+- *No call on an empty range.* [18, Alg. 3, line 18] calls the side with range [j, i1] even when
+  i1 < j; its leaf branch would then look for a piece of p_j^0 that the side need not have
+  (Claim 12).
+Both call rules only remove calls, so Lemma S2 is unaffected by them.
 - [18, Def. 2.2, Remark 2.5]: incising a path splits its nodes and doubles its new edges. We
   use this in the token form of Definition R and Lemma N, in which the level-(ℓ+1) pieces are
   the runs between cuts, and we identify the two sides A_l and A_r of [18] with the low and the
@@ -761,7 +802,7 @@ lanes:
 overlap. The equality was tested against λ_m and against d_A(g_m^0, g_m^1), with the same
 counts, since the two agree by (I5).
 
-| m in (j-side; the k-side is the mirror) | checks | equality fails |
+| μ in (j-side; the k-side is the mirror) | checks | equality fails |
 |---|---|---|
 | [max(x_a, y_a), j_A) | 95,047 | 0 |
 | [j_A, i] | 320,774 | 0 |
@@ -781,6 +822,34 @@ So the range of Claim 15 cannot be extended past i in general. Lemma S2 needs [j
   curves, (I2) for the end rule, (I3) for disjoint slots and (O3), (I4) for old edges and
   linear nodes, (I5) for (INV) and (C23). An error in one would break the induction; the tests
   check each part at every incision.
-- No single-token end piece with an old end token occurred in the tests, so the cut-position
-  form of the end rule was exercised only through pieces with two or more tokens. The proof
-  does not distinguish the two.
+- The bounding path is read as the incised copy (§9); the whole-path reading of [18] passed
+  the tests but is not proved.
+
+## 12. Referee pass (2026-10-29)
+
+Verdict: correct with minor gaps; no fatal or serious error. The referee checked Claims 1 to 15,
+(I) for A_1 and its passage to called children (also when several annuli of one level incise at
+once), and that Lemma O supplies what Lemma S2 uses. The minor points, all fixed above:
+- M1, M2: the bounding path as the incised copy, and the two call rules, are readings, not taken
+  from [18] (§1, §9).
+- M3: Claim 4(b) chose N before r; now the final chord segments are perpendicular to γ and N is
+  shrunk for each r (Claims 3, 4).
+- M4: arc(g) includes the corner arcs (§2.2).
+- M5: Claim 6(b) listed the old chords on the boundaries of Δ_lo and Δ_hi.
+- M6: Claim 3(c) has two chords in p_x when x = y.
+- M7: incision in token form speaks of the pieces of A, not its faces, and says why another
+  annulus of the same level does not cut them (§1).
+- M8: the points q of one level are pairwise distinct (Claim 3).
+- M9: Lemma O no longer cites Lemma S1(b) (§1, §5).
+- M10: the end piece of one old token cannot occur (§6), replacing a point of doubt.
+- M11: the running index of Claim 15 is μ, since m is the last index of P; Claim 1 does not need
+  (I3).
+- M12, M13: NOTES.md §5 and Lemma S2 in RECURSION.md.
+
+Referee tests (sim/thmD/refereeO; patchR.py turns lemmaO/thmD_O.py into thmD_R.py; lanesR.sh,
+lanesF.sh, runHits.py): 162,000 instances in seven lanes R1 to R7 with 118,856 incisions, among
+them three lanes with every legal corner and mode of R0 (anycorner), and the 25 saved instances of
+the adversarial search in 15,000 runs. No failed check. Totals: 420,268 checks of (INV) at
+children, 172,652 of (C23) on [j_A, i], 39,976 linear internal nodes of Q (717 split into three),
+4,515 incisions with both bounds. F1 to F3 (84,000 instances) ran the whole-path overlap test of
+§9 and gave no wrong value.

@@ -8,8 +8,9 @@ of an incision each copy of P lands on. The other is the exact form of [18, Clai
 revision changes four things:
 - Lemma S1 now runs in A_1 and needs neither of the two gaps. Its separation step (S_1) is
   proved here by a parity argument.
-- The level-ℓ facts are collected as Lemma O. Its proof is now written (LEMMA_O.md), with
-  five changes to the statement; it has had no referee pass yet.
+- The level-ℓ facts are collected as Lemma O. Its proof is in LEMMA_O.md, with five changes to
+  the statement. Referee pass on Lemma O (2026-10-29): correct with minor gaps, all fixed; it
+  supplies what Lemma S2 uses, in the form S2 uses it (LEMMA_O.md §12).
 - The minor points are fixed.
 - The test counts are corrected.
 
@@ -203,7 +204,11 @@ and Q = P_i′ its incised part from a piece g_x of p_x^0 to a piece g_y of p_y^
 
 What is taken from [18]: the structure of the recursion [18, Alg. 3] (which path, the overlap
 rule, which sides get a call with which range), and incision as a split of nodes
-[18, Def. 2.2, Remark 2.5] in the token form of Lemma N. Matching [18]'s two sides to the low and
+[18, Def. 2.2, Remark 2.5] in the token form of Lemma N. Three points are readings (LEMMA_O.md
+§9): the bound in the overlap test is the copy of the parent's incised part, not its whole path
+as [18] writes; a side with overlap gets no call, and overlap is tested directly, not through
+the bad edges of [18, Claim 5.8]; a side with an empty range gets no call. The whole-path test
+gave the right value in 84,000 test instances but is not proved. Matching [18]'s two sides to the low and
 high sides is a reading, the same one Lemma N and the driver make. [18, Claim 2.3] is not used,
 nor F2, F4 or F5 of GHAT_REPAIR.md, nor the converse of [18, Claim 5.8].
 
@@ -281,7 +286,8 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   computes λ_{i⁻} and λ_{i⁺} by (INV), and one of them is Λ.
 - *t ≤ i1.* Suppose the j-side has an overlap. Then lines 9 to 14 compute a length for every
   m ∈ [j_A, i] through a common node, and it is λ_m for m ∈ [j_A, i1] by (C23). Otherwise the
-  j-side is the called child with range [j_A, i1], by (O2), and it is good by (INV).
+  j-side is the called child with range [j_A, i1], by (O2). This range is not empty and holds t,
+  so the child is good.
 - *t ≥ i2.* Symmetric. ∎
 
 ## Tests (sim/thmD)
@@ -329,8 +335,9 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
 
 ## Points of doubt
 
-- Lemma O (LEMMA_O.md) has had no referee pass yet. Its own points of doubt are in its §11:
-  the four topology facts are used without proof; matching [18]'s sides to the low and high
-  sides is a reading; the invariant (I) has many parts; an end piece of one token with an old end
-  token never occurred in the tests.
+- Lemma O (LEMMA_O.md) has had one referee pass. Its points of doubt are in its §11: the four
+  topology facts are used without proof; matching [18]'s sides to the low and high sides, and
+  the bound as the incised copy, are readings; the invariant (I) has many parts.
+- Lemma S2 does not use the separation part of (O1) (Claim 10 of LEMMA_O.md), since Lemma S1
+  uses (S_1) in A_1.
 - (S_1) is proved with the curve drawing of the Reif reduction, in words, as there.

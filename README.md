@@ -11,7 +11,7 @@ model. The main claims are:
   $\tilde O(D)$. It needs two repairs of [18]: of its auxiliary graph at $s$ and $t$ (Lemma R,
   one referee pass, one adversarial pass) and of its recursion, which as written can miss the
   minimum cut (Lemma S, one referee pass, correct with gaps; the side lemma it needs, Lemma O,
-  is now proved, not yet refereed).
+  is proved and has had one referee pass, correct with minor gaps, all fixed).
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
@@ -56,7 +56,8 @@ Please read this before relying on anything here.
   Lemma R or Lemma N, but found that the recursion of [18] itself can miss the minimum cut
   (11 vertices: minimum 15, computed 37). Lemma S repairs this with two more shortest-path
   calls per level. A referee pass found it correct with gaps; the side lemma it needs (Lemma O)
-  is now proved and passed 342,000 test instances, but has had no referee pass.
+  is proved, passed 342,000 test instances, and had one referee pass (correct with minor gaps,
+  all fixed; no adversarial pass yet).
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -319,8 +320,8 @@ the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side
 edges. It is deterministic given the embedding algorithm of [15], as in [18], and
 deterministic face identifiers (G6). The proof has had
 one referee pass (correct with gaps, all fixed) and one adversarial pass (below). The
-recursion repair of Lemma S is newer: one referee pass; its side lemma (Lemma O) is proved but
-not yet refereed.
+recursion repair of Lemma S is newer: one referee pass each on Lemma S and on its side lemma
+(Lemma O), both fixed; no adversarial pass yet.
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
@@ -388,7 +389,10 @@ A referee pass found Lemma S correct with gaps. The gaps are a side lemma (Lemma
 incision, which the earlier proof of Theorem D also used without proof, and the exact form of
 [18, Claim 2.3]. `notes/LEMMA_O.md` now proves both, by an induction over the levels in which
 each incision is a simple closed curve and the sides are its two sides; the overlap rule turns
-out to be exact on all of $[j,i]$, from any common node. Lemma O has had no referee pass yet. As
+out to be exact on all of $[j,i]$, from any common node. A referee pass found Lemma O correct
+with minor gaps, all fixed. Two of its points are readings of [18]: the bound in the overlap test
+is the copy of the parent's incised part, not its whole path, and a side with overlap or an empty
+range gets no call (`notes/LEMMA_O.md` §9). As
 we read [18], its own approximate recursion has the same defect; we have not checked whether
 another reading avoids it.
 
@@ -518,7 +522,10 @@ test round counts.
   into `thmD_refS.py`), which checks Lemma S1 with exact weights, the separation facts and the
   invariant of Lemma S on 162,000 instances. `lemmaO/` checks every part of Lemma O and of its
   invariant at every incision (`patchO.py` turns `thmD.py` into `thmD_O.py`; `lanes*.sh`):
-  342,000 instances, 232,868 incisions, no failed check.
+  342,000 instances, 232,868 incisions, no failed check. `refereeO/` is the referee's copy
+  (`patchR.py` turns `thmD_O.py` into `thmD_R.py`; `thmD_F.py` tests the whole-path overlap
+  reading): 162,000 instances, the 25 saved instances in 15,000 runs, and 84,000 instances of the
+  whole-path reading, with no failure.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine

@@ -1,0 +1,22 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "minid",
+  "pairs": 1,
+  "pcommon": 0.15,
+  "pfar": 0.7,
+  "e0rule": "formal",
+  "ends": 1,
+  "lemO": 0
+ },
+ "flags": {
+  "runs": 12000,
+  "dev_mirrored_endpoint": 3683,
+  "xb_cross_nonincised_part": 4,
+  "xa_cross_same_annulus": 2
+ },
+ "wrong": [],
+ "nwrong": 0,
+ "secs": 62.57852506637573
+}
