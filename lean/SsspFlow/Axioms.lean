@@ -13,6 +13,9 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.Boost.c1_negative
 #print axioms SsspFlow.Boost.Run.len_nonneg
 #print axioms SsspFlow.Boost.Run.exact
+#print axioms SsspFlow.Boost.Run.contract
+#print axioms SsspFlow.Boost.Run.decay
+#print axioms SsspFlow.Boost.Run.sum_bounds
 #print axioms SsspFlow.Tools.glue
 #print axioms SsspFlow.Tools.decomp
 #print axioms SsspFlow.Tools.rounding

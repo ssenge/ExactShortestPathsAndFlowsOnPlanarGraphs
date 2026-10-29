@@ -9,6 +9,9 @@ from scipy.sparse.csgraph import connected_components
 from core import PG, Fail, between, pip, TAU, tree_diam, monge_check, sp_matrix, add_arc, seg_cross
 
 
+# NOSPLIT=1: never split a separator vertex at z_s (the paper's form of the construction).
+NOSPLIT = os.environ.get('NOSPLIT') == '1'
+
 class Engine:
     def __init__(self, g, vcand, rng, cfg):
         self.g = g; self.rng = rng
@@ -185,7 +188,9 @@ class Engine:
             elif zmode and self.rng.random() < zmode:
                 z[s] = os_ + ((oe - os_) % TAU) * self.rng.uniform(0.05, 0.95)
         def node(s, th):
-            if s in z:
+            if s in z and NOSPLIT:
+                self.st['split_suppressed'] += 1
+            if s in z and not NOSPLIT:
                 os_ = W[s][0]
                 return ('s', s, 0 if ((th - os_) % TAU) <= ((z[s] - os_) % TAU) else 1)
             return ('s', s, 0)

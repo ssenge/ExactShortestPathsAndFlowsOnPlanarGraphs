@@ -1144,7 +1144,11 @@ E_X go to the children as follows, and each side goes to exactly one child.
 
 Two choices are [8]'s and are needed below: T_X ⊇ T ∩ R_X, and a separator vertex, if split
 at all, is split at a direction outside Ω_X. No bound needs the split itself: without it,
-(F1) below is trivial and s lies in at most one outside child. Runs with T_X unrelated to T
+(F1) below is trivial and s lies in at most one outside child. The construction without any
+split passed the same checks: `NOSPLIT=1 python3 -I rsweep.py CONF 0:350` for CONF in
+faithful, mixB, ch and advb, 1,400 instances, 70,538 bags, 47,359 to 99,185 suppressed
+splits per sweep, no failure, Lemmas B2 to B4 at every bag where they apply
+(`sim/s9/logs/ns_*.txt`). Runs with T_X unrelated to T
 (DFS or random spanning trees) reached c(Y) = 41 at small depth, and runs with random z_s
 reached a_Y = 7 with no hole (§9.7).
 

@@ -528,8 +528,9 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
   most two copies. With D3's rule, the repaired Ĝ_ℓ passed 79,000 runs on 64,000 instances
   with no failure of Thm 3.1 (1), (2), the distances, the trees or the final cut. All 1,848
   graphs built over 700 further instances were planar with hop diameter at most 4D + 4. The
-  literal Ĝ_ℓ failed in 10,673 of 30,000. A written proof of Thm 3.1 (1), (2) and planarity for
-  the repaired graph is still missing. These failures may come from a misreading of [18] on our
+  literal Ĝ_ℓ failed in 10,673 of 30,000. A written proof for the repaired graph is still
+  missing: of Thm 3.1 (1), (2), of planarity ([18, Lemma 3.5]), and of the local phase of
+  [18, Lemma 3.17], which must also place the fresh copies X in their node-parts. These failures may come from a misreading of [18] on our
   side; [18]'s own approximate algorithm may be affected in the same way, which we have not
   checked.
 - **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), its hop diameter is at most 4D + 4 ([18,
@@ -592,8 +593,9 @@ of [18] (minor aggregation through [18, Thm 3.26], Lemmas 5.2 and 5.4 to 5.7, th
 are unchanged and take Õ(D) rounds. ∎
 
 *Determinism.* [18] is deterministic given the embedding ([18, Thm 1.1]). Theorem A is
-deterministic given an embedding of its input network, here Ĝ_ℓ, whose embedding is computed
-locally from that of G. So Theorem D is deterministic given a deterministic embedding of G.
+deterministic given an embedding of its input network and deterministic face identifiers
+(G6), here for Ĝ_ℓ, whose embedding is computed locally from that of G. So Theorem D is
+deterministic given a deterministic embedding of G and deterministic face identifiers.
 
 *Why [18] did not do this.* [18] runs approximate SSSP of its [34] on the annuli themselves,
 which may have large diameter, so it needs minor aggregation. Running one exact SSSP on all of

@@ -142,7 +142,7 @@ if __name__ == '__main__':
             mx[fam][k] = max(mx[fam][k], v)
     keys = ('instances', 'FAILED', 'bags', 'REGION_DISCONNECTED', 'isolated', 'R_side_lost', 'rule3_to_outside_child',
             'rule3_no_holder', 'S_vertices_without_inside_edge', 'inside_parts', 'allS_child_with_edges_kept',
-            'tiles_checked', 'monge_ineqs', 'G1_checks', 'hub_checks', 'L16_checks', 'e2e_gluings', 'R1_pairs', 'HX_planar_checks', 'LV_checked', 'LV_BAD', 'aY_checks', 'B2_checks', 'aY_gt_max1_holes', 'aY_gt_max1_holes_REALCLOSING', 'aY_gt_bound', 'B34_checks', 'closing_crosses_nonregion_edge')
+            'tiles_checked', 'monge_ineqs', 'G1_checks', 'hub_checks', 'L16_checks', 'e2e_gluings', 'R1_pairs', 'HX_planar_checks', 'LV_checked', 'LV_BAD', 'aY_checks', 'B2_checks', 'aY_gt_max1_holes', 'aY_gt_max1_holes_REALCLOSING', 'aY_gt_bound', 'B34_checks', 'closing_crosses_nonregion_edge', 'split_suppressed')
     mk = ('mult_region', 'mult_induced', 'Tcomp', 'Tcomp_minus_depth', 'regiondiam_over_D', 'regiondiam_over_induced',
           'TXdiam_over_D', 'inside_parts_max', 'L_per_vertex_max', 'lp47_comp_growth', 'depth_max', 'aY_max', 'aY_minus_holesX', 'holesX_minus_depth', 'holesY_minus_holesX')
     for fam in tot:

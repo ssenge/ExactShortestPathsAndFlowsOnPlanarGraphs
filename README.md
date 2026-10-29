@@ -309,7 +309,8 @@ $D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $
 **Theorem D.** Let $G$ be an undirected planar network with integer capacities of polynomial
 size and terminals $s,t$. A CONGEST algorithm computes the value of a minimum st-cut, which is
 the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side and its cut
-edges. It is deterministic given the embedding algorithm of [15], as in [18]. The proof has had
+edges. It is deterministic given the embedding algorithm of [15], as in [18], and
+deterministic face identifiers (G6). The proof has had
 one referee pass (correct with gaps, all fixed) and one adversarial pass (below).
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
@@ -317,7 +318,8 @@ levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per
 [18, Lemma 2.7] holds unchanged with exact shortest paths, so only the SSSP step needs
 replacing. [18] runs approximate SSSP on each annulus through minor aggregation, because
 annuli can have large diameter. We instead run Theorem A on the whole graph $\hat G_\ell$ of
-[18, Thm 3.1], which is planar, has hop diameter at most $4D+4$ and is simulated on $G$ with
+[18, Thm 3.1], which is planar, has hop diameter at most $4D+4$ (from the bound $4D$ between
+star centres of [18, Lemma 3.4]) and is simulated on $G$ with
 four rounds per round. Its weights are 0 on the paths that represent dual nodes,
 $K\cdot c(e)+1$ on the edges that represent dual edges of live annuli, and a large $M$ on all
 other dual edges and on the star edges between copies of a vertex, from a virtual source with
@@ -346,7 +348,8 @@ attach to. It is local at $s$ and $t$ and adds at most two vertices. The repaire
 79,000 runs on 64,000 instances with exact distances, trees and cut values; every one of 1,848
 graphs built for a planarity check was planar with hop diameter at most $4D+4$. The literal
 graph failed in about a third of the instances. A written proof for the repaired graph is the
-remaining gap in Theorem D. These failures may come from a misreading of [18] on our side.
+remaining gap in Theorem D: of [18, Thm 3.1 (1), (2)], of planarity, and of the local phase of
+[18, Lemma 3.17], which must also place the new copies in their dual nodes. These failures may come from a misreading of [18] on our side.
 We have not checked whether they affect the approximate algorithm of [18].
 
 ## What is assumed
@@ -444,7 +447,8 @@ test round counts.
 - `sim/s9/`: the region bags of §9. `engine_r.py` is the region form of the engine,
   `post_r.py` its Lemma 15′ and 16′ checks, `rsweep.py` the driver, `big.py` larger
   instances, and `neg.py` the negative controls. 2,450 correctness instances had no failure,
-  and every edge lay in at most two region graphs per depth. After the fixes from the
+  and every edge lay in at most two region graphs per depth. With `NOSPLIT=1` the engine never
+  splits a separator vertex; 1,400 instances of that form also had no failure. After the fixes from the
   adversarial pass, 1,750 instances checked Lemmas B2 to B4 with exact hole counts at 86,905
   children without a violation (`logs/e_*.txt`); `logs/` holds all output. `b5.py` runs
   Lemma B5 and checks each separator against an independent side count (4,000 instances, n
