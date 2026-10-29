@@ -1,0 +1,132 @@
+    def side_inside(self, e, q, swap):
+        """which side (0 = left of dart lo->hi, 1 = right) of the S-cycle edge e faces the inside of q."""
+        g = self.g; a, c = g.ends[e]; P = g.pos
+        mid = (P[a] + P[c]) / 2; d = P[c] - P[a]; nrm = np.array([-d[1], d[0]]) / np.linalg.norm(d)
+        pt = (mid + 1e-6 * np.linalg.norm(d) * nrm)[None, :]
+        inn = bool(pip(pt, P[q])[0]) != bool(swap)
+        return 0 if inn else 1
+
+    def children(self, b, q, closing_real, swap, zmode):
+        """Region form of [8]'s children: every side of every region edge of X goes to exactly one
+        child. X_in parts: inside of q; outside parts: components of the auxiliary graph built from
+        region edges only (split at z), then split by region-graph components."""
+        g = self.g; B = self.bags[b]; X = B['X']; Xl = sorted(X); E = B['E']
+        r = self.analyse(X, Xl, q, swap)
+        if r is None:
+            return None
+        S, ins, out = r
+        if not ins or not out:
+            return None
+        W = self.wedges(q, swap)
+        L = len(q)
+        cyc = {}
+        for i, s in enumerate(q):
+            cyc[s] = {q[i - 1], q[(i + 1) % L]}
+        zold = B['z']
+        z = {}
+        for s in q:
+            os_, oe = W[s]
+            if s in zold and between(os_, zold[s], oe):
+                z[s] = zold[s]
+            elif s in zold:
+                self.st['z_inherited_in_inside_wedge'] += 1
+            elif zmode and self.rng.random() < zmode:
+                z[s] = os_ + ((oe - os_) % TAU) * self.rng.uniform(0.05, 0.95)
+        def node(s, th):
+            if s in z:
+                os_ = W[s][0]
+                return ('s', s, 0 if ((th - os_) % TAU) <= ((z[s] - os_) % TAU) else 1)
+            return ('s', s, 0)
+        aux = nx.Graph()
+        aux.add_nodes_from(('v', x) for x in out)
+        Ein = {}; auxE = []          # auxE: (aux-node, aux-node, e, sides)
+        chords = collections.Counter()
+        for e, sides in E.items():
+            a, c = g.ends[e]
+            if a in ins or c in ins:
+                Ein[e] = sides
+            elif a in out and c in out:
+                auxE.append((('v', a), ('v', c), e, sides))
+            elif a in S and c in out:
+                auxE.append((node(a, g.ang[(a, c)]), ('v', c), e, sides))
+            elif c in S and a in out:
+                auxE.append((node(c, g.ang[(c, a)]), ('v', a), e, sides))
+            else:
+                is_s = c in cyc[a] and (closing_real or {a, c} != {q[0], q[-1]})
+                if is_s:
+                    si = self.side_inside(e, q, swap)
+                    if si in sides:
+                        Ein[e] = Ein.get(e, frozenset()) | {si}
+                    so = 1 - si
+                    if so in sides:
+                        auxE.append((node(a, g.ang[(a, c)]), node(c, g.ang[(c, a)]), e, frozenset({so})))
+                else:
+                    os_, oe = W[a]
+                    if between(os_, g.ang[(a, c)], oe):
+                        auxE.append((node(a, g.ang[(a, c)]), node(c, g.ang[(c, a)]), e, sides))
+                        chords[a] += 1; chords[c] += 1
+                    else:
+                        Ein[e] = sides
+        for u_, v_, e, sd in auxE:
+            aux.add_edge(u_, v_)
+        if not closing_real:
+            y, zz = q[0], q[-1]
+            aux.add_edge(node(y, g.angle(y, zz)), node(zz, g.angle(zz, y)))
+        def split(Y, EY):
+            H = nx.Graph(); H.add_edges_from(g.ends[e] for e in EY)
+            out_ = []
+            for part in nx.connected_components(H):
+                out_.append((set(part), {e: sd for e, sd in EY.items() if g.ends[e][0] in part}))
+            return out_
+        kids = []; kidsE = []; kinds = []; ndeg = 0
+        for Y, EY in split(S | ins, Ein):
+            if not (Y & ins):
+                self.st['inside_part_without_inside_vertex'] += 1
+            kids.append(Y); kidsE.append(EY); kinds.append('in')
+        if kids:
+            k0 = max(range(len(kids)), key=lambda i: len(kids[i] & ins))
+            for lst in (kids, kidsE, kinds):
+                lst.insert(0, lst.pop(k0))
+        self.st['inside_parts'] += len(kids); self.mx['inside_parts_max'] = max(self.mx['inside_parts_max'], len(kids))
+        lost = (S | ins) - set().union(*kids) if kids else (S | ins)
+        self.st['S_vertices_without_inside_edge'] += len(lost)
+        nodeE = collections.defaultdict(dict)
+        cid = {}
+        for k, comp in enumerate(nx.connected_components(aux)):
+            for nd in comp:
+                cid[nd] = k
+        for u_, v_, e, sd in auxE:
+            k = cid[u_]
+            nodeE[k][e] = nodeE[k].get(e, frozenset()) | sd
+        ncomp = max(cid.values()) + 1 if cid else 0
+        comps = collections.defaultdict(set)
+        for nd, k in cid.items():
+            comps[k].add(nd)
+        for k in range(ncomp):
+            comp = comps[k]
+            hasv = any(nd[0] == 'v' for nd in comp)
+            if not hasv and not self.cfg['degenerate']:
+                if nodeE[k]:
+                    self.st['dropped_allS_child_with_edges'] += 1
+                continue
+            for Y, EY in split({nd[1] for nd in comp}, nodeE[k]):
+                if any(x in out for x in Y) or self.cfg['degenerate']:
+                    kids.append(Y); kidsE.append(EY); kinds.append('out')
+                    if not any(x in out for x in Y):
+                        ndeg += 1
+        # every side of every region edge of X lands in exactly one child (dropped all-S children excepted)
+        got = collections.Counter()
+        for EY in kidsE:
+            for e, sd in EY.items():
+                for t in sd:
+                    got[(e, t)] += 1
+        for e, sides in E.items():
+            for t in sides:
+                if got[(e, t)] > 1:
+                    self.fail('R: side in two children', e)
+                if got[(e, t)] == 0:
+                    self.st['R_side_lost'] += 1
+        if not kids or kinds[0] != 'in' or any(len(Y) >= len(X) for Y in kids):
+            return None
+        return dict(S=S, ins=ins, out=out, W=W, z=z, kids=kids, kidsE=kidsE, kinds=kinds, chords=chords, ndeg=ndeg, cyc=cyc)
+

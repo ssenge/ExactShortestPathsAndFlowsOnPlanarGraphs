@@ -1,0 +1,6 @@
+faithful grid {'k': 10, 'drop': 0.15} 3 {'mult_induced': 4, 'mult_comm': 2, 'vmult_all': 5, 'vmult_phantom': 3, 'commdiam_over_GXdiam': 1.73, 'depth': 15, 'n': 540}
+faithful grid {'k': 16, 'drop': 0.15} 3 {'mult_induced': 3, 'mult_comm': 2, 'vmult_all': 5, 'vmult_phantom': 3, 'commdiam_over_GXdiam': 1.71, 'depth': 19, 'n': 1516}
+faithful grid {'k': 22, 'drop': 0.15} 3 {'mult_induced': 3, 'mult_comm': 2, 'vmult_all': 5, 'vmult_phantom': 2, 'commdiam_over_GXdiam': 1.83, 'depth': 21, 'n': 2966}
+mixB grid {'k': 10, 'drop': 0.15} 3 {'mult_induced': 6, 'mult_comm': 2, 'vmult_all': 9, 'vmult_phantom': 7, 'commdiam_over_GXdiam': 1.86, 'depth': 10, 'n': 540}
+mixB grid {'k': 16, 'drop': 0.15} 3 {'mult_induced': 6, 'mult_comm': 2, 'vmult_all': 9, 'vmult_phantom': 8, 'commdiam_over_GXdiam': 1.75, 'depth': 12, 'n': 1516}
+mixB grid {'k': 22, 'drop': 0.15} 3 {'mult_induced': 8, 'mult_comm': 2, 'vmult_all': 10, 'vmult_phantom': 9, 'commdiam_over_GXdiam': 1.93, 'depth': 22, 'n': 2966}

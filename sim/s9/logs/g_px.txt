@@ -1,0 +1,14 @@
+k2m {'bags': 467, 'phantoms': 4057, 'bags_with_phantom': 350, 'comm_disconnected': 47, 'owned_disconnected': 102, 'n': 1744}
+    {'commdiam_over_GXdiam': 1.77, 'owneddiam_over_GXdiam': 2.75, 'commdiam_over_D': 3.92, 'owneddiam_over_D': 3.92, 'GXdiam_over_D': 3.92, 'mult_induced': 5, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 6, 'vmult_phantom': 4}
+fan {'bags': 404, 'phantoms': 2558, 'bags_with_phantom': 311, 'comm_disconnected': 68, 'owned_disconnected': 99, 'n': 1240}
+    {'commdiam_over_GXdiam': 1.7, 'owneddiam_over_GXdiam': 2.1, 'commdiam_over_D': 1.83, 'owneddiam_over_D': 1.92, 'GXdiam_over_D': 2.04, 'mult_induced': 4, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 4, 'vmult_phantom': 3}
+nested {'bags': 301, 'phantoms': 2860, 'bags_with_phantom': 242, 'comm_disconnected': 70, 'owned_disconnected': 78, 'n': 886}
+    {'commdiam_over_GXdiam': 1.6, 'owneddiam_over_GXdiam': 1.68, 'commdiam_over_D': 2.15, 'owneddiam_over_D': 2.15, 'GXdiam_over_D': 2.7, 'mult_induced': 6, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 6, 'vmult_phantom': 6}
+pend {'engine_fail': 2, 'bags': 838, 'phantoms': 6221, 'bags_with_phantom': 715, 'comm_disconnected': 290, 'owned_disconnected': 359, 'n': 3481}
+    {'commdiam_over_GXdiam': 1.54, 'owneddiam_over_GXdiam': 1.62, 'commdiam_over_D': 2.09, 'owneddiam_over_D': 2.09, 'GXdiam_over_D': 2.12, 'mult_induced': 6, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 7, 'vmult_phantom': 6}
+flower {'bags': 368, 'phantoms': 2525, 'bags_with_phantom': 291, 'comm_disconnected': 64, 'owned_disconnected': 94, 'n': 1016}
+    {'commdiam_over_GXdiam': 1.67, 'owneddiam_over_GXdiam': 1.67, 'commdiam_over_D': 1.89, 'owneddiam_over_D': 1.89, 'GXdiam_over_D': 1.95, 'mult_induced': 5, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 6, 'vmult_phantom': 4}
+dl {'engine_fail': 2, 'bags': 872, 'phantoms': 10858, 'bags_with_phantom': 780, 'comm_disconnected': 225, 'owned_disconnected': 260, 'n': 3125}
+    {'commdiam_over_GXdiam': 1.81, 'owneddiam_over_GXdiam': 2.0, 'commdiam_over_D': 1.51, 'owneddiam_over_D': 1.51, 'GXdiam_over_D': 2.14, 'mult_induced': 5, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 6, 'vmult_phantom': 5}
+grid {'bags': 922, 'phantoms': 10130, 'bags_with_phantom': 803, 'comm_disconnected': 182, 'owned_disconnected': 218, 'n': 3360}
+    {'commdiam_over_GXdiam': 1.83, 'owneddiam_over_GXdiam': 2.0, 'commdiam_over_D': 1.72, 'owneddiam_over_D': 1.72, 'GXdiam_over_D': 1.74, 'mult_induced': 5, 'mult_comm': 2, 'maxdeg': 3, 'vmult_all': 6, 'vmult_phantom': 5}

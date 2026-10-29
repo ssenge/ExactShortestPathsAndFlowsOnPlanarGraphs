@@ -1,0 +1,6 @@
+faithful dl {'n': 100, 'drop': 0.2} 3 {'mult_induced': 5, 'mult_comm': 2, 'vmult_all': 6, 'vmult_phantom': 5, 'commdiam_over_GXdiam': 1.67, 'depth': 15, 'n': 738}
+faithful dl {'n': 250, 'drop': 0.2} 0 {'fail': 2.0}
+faithful dl {'n': 500, 'drop': 0.2} 0 {'fail': 2.0}
+mixB dl {'n': 100, 'drop': 0.2} 3 {'mult_induced': 10, 'mult_comm': 2, 'vmult_all': 13, 'vmult_phantom': 12, 'commdiam_over_GXdiam': 1.8, 'depth': 12, 'n': 738}
+mixB dl {'n': 250, 'drop': 0.2} 1 {'mult_induced': 7, 'mult_comm': 2, 'vmult_all': 8, 'vmult_phantom': 7, 'commdiam_over_GXdiam': 1.83, 'depth': 12, 'n': 1932, 'fail': 1.0}
+mixB dl {'n': 500, 'drop': 0.2} 2 {'mult_induced': 10, 'mult_comm': 2, 'vmult_all': 13, 'vmult_phantom': 11, 'commdiam_over_GXdiam': 1.88, 'depth': 16, 'n': 4108}

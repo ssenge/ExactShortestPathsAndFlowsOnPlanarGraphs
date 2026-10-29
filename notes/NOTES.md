@@ -74,15 +74,18 @@ approaches, is as hard as reachability up to n^{o(1)} [6]. **Odds: low.**
 {0, …, n^{O(1)}}, hop diameter D, and source s. A CONGEST algorithm computes exact
 distances from s and a shortest path tree in Õ(D) rounds w.h.p.
 
-**Status: the algorithm is correct given Lemma 14′; the Õ(D) bound is open** (`LEMMA15.md`).
+**Status: the algorithm is correct given Lemma 14′; the Õ(D) bound holds with region bags**
+(`LEMMA15.md`, §9).
 The labels (L) come from [1, Lemmas 15 and 16], whose topological core, [1, Lemma 14], is
 false as stated (LEMMA15.md, (S7)). LEMMA15.md §3 proves Lemma 14′ with a new construction
 (tiles). After the referee's fixes, a referee pass and two adversarial passes found nothing
 wrong in it; no human has checked it. The second adversarial pass found that Property 6 of
 [1, Lemma 9] is false for induced bags (LEMMA15.md, (S9)). Correctness does not use it, but
 [1]'s Õ(D/ε) bound for the labels does, since it runs all bags of one depth in parallel.
-Until that schedule is repaired, Theorem A is an exact algorithm whose Õ(D) round bound is
-not proved. Theorems B, C and C′ inherit both points.
+LEMMA15.md §9 restores the schedule: bags carry the sides of the edges they were cut from,
+and each edge lies in at most two of these region graphs per depth. This adds one black
+box, the separator of [8, Thm 4.4] run on region graphs. Theorems B, C and C′ inherit both
+points.
 
 It is deterministic if the BDD is built deterministically. [1] calls itself deterministic,
 but its BDD comes from Li-Parter, whose only random step is the Ghaffari-Parter separator
@@ -112,6 +115,10 @@ The previous bound was Õ(D²) [8]. The lower bound is Ω(D).
   dist_{G[X]} for all h ∈ ∂S⁺_X. Hubs get these values from the oracle that is broadcast in
   X, and non-hubs from Lemma 16. Emulators never contract distances, so the estimates never
   underestimate.
+  - **Region form** (LEMMA15.md §9). Read the region graph R_X for G[X]. T_X spans R_X with
+    diameter O(D log² n), every edge lies in at most two R_X per depth (Lemma B1(a)),
+    leaves have size O(D log² n), and Lemma B1(c) is Property 7(b) for R_X. The estimates
+    are of dist_{R_X}.
 - **Infinite distances.** The quasimetrics in [1] may contain ∞, but its Thm 1 and its LP
   handle only finite values. Directed G[X] has unreachable pairs. Fix: on every network edge,
   add each missing direction as an arc of weight M₂. The edge set and planarity stay the same,
@@ -125,8 +132,9 @@ Given (L), (1+ε)-approximate distances from a virtual source with offsets φ ta
 1. For every bag X and h ∈ ∂S⁺_X, compute A_X(h) = min_{u∈X} φ(u) + d̃_X(u,h). This is a
    min-convergecast of |∂S⁺_X| = Õ(D) values over T_X, pipelined in Õ(D) rounds and
    broadcast back down. All bags of one depth run in parallel because edge congestion is
-   at most 2 by Property 6, which is false for induced bags (LEMMA15.md, (S9)); this round
-   count is open with it. Over all O(log n) depths this takes Õ(D) rounds.
+   at most 2. [1] takes this from Property 6, which is false for induced bags (LEMMA15.md,
+   (S9)); for region bags it is Lemma B1(a) (LEMMA15.md §9.6). Over all O(log n) depths
+   this takes Õ(D) rounds.
 2. Each leaf bag L gathers G[L] and φ|_L, as in the base case of [1, Lemma 16], and computes
    loc_L(v) = min_{u∈L} φ(u) + dist_{G[L]}(u,v) exactly.
 3. Each v outputs d̃(v) = min( min_{leaves L ∋ v} loc_L(v), min_{X ∋ v, h ∈ ∂S⁺_X} A_X(h) + d̃_X(h,v) ).
@@ -176,6 +184,10 @@ and depends only on the standard axioms (propext, Classical.choice, Quot.sound).
 - **Leaves.** A leaf has no children, so the hypotheses make all of its vertices hubs. The
   leaf-local term is then the hub term with exact estimates.
 - **Generality.** No finiteness is assumed.
+- **Region form.** `lean/SsspFlow/LemmaVRegion.lean`, theorem `SsspFlow.RHierarchy.lemmaV`,
+  proves the same for region bags, again with standard axioms only. Bags carry arc sets, and
+  the hypothesis is that an arc of a bag between two non-hubs lies in a common child, which
+  is Lemma B1(b) and (c).
 
 The formalization does not cover the CONGEST algorithm or its round count, the construction of the
 hierarchy and of the labels ([1, Lemma 16]), or the counterexample (that one is checked by
@@ -225,7 +237,8 @@ model that can run the oracle.
   2. The authors of [1] can be expected to notice this soon.
   3. [1, Lemma 14] is false as stated, so (L) is conditional on Lemma 14′ (LEMMA15.md).
   4. Property 6 of [1, Lemma 9] is false for induced bags, so the Õ(D/ε) round bound of (L)
-     needs a new parallel schedule (LEMMA15.md, (S9)).
+     needed a new parallel schedule (LEMMA15.md, (S9)). The region bags of LEMMA15.md §9
+     give it, with [8, Thm 4.4] on region graphs as a black box.
 
 ### Still to verify before anything goes public
 
@@ -255,6 +268,13 @@ as a composition of the sources. Its points are folded into this file. Still ope
     every gluing planar, and the adversarial harness 1.55·10⁹ (M) inequalities on 24,850
     instances, with no failures (§3.7). The second adversarial pass added 14,500 instances
     with no failure in §3, and found (S9) in the assumptions.
+  - **Round count: repaired with region bags, refereed once with the fixes in, and attacked
+    once** (LEMMA15.md §9, 2026-10-29). Bags carry edge sides, every edge lies in at most two
+    region graphs per depth, and T_X has O(log² n) components. The referee found one gap,
+    the drawing of a virtual closing curve, now proved. The adversarial pass ran 10,400
+    instances with 1.06 million bags, exact hole counts and closings through holes; it broke
+    no lemma, met Lemmas B2 to B4 with equality, and found four defects in the test engine,
+    now fixed.
   - **Realization: no longer needed from [1].** [10, Thm 1] (SODA 2025, refereed) proves
     that every quasimetric that is Monge for a prescribed circular order σ is realized by a
     plane digraph with O(|T|⁶) vertices and the terminals on the boundary in order σ. CONGEST
@@ -434,8 +454,8 @@ D·n^{o(1)}.
 - **C′: modest.** It is [9]'s own proof with an exact oracle plugged in.
 - **Lemma D: minor**, but it is the enabling observation.
 
-Dependency chain (correctness of A, B, C, C′ rests on Lemma 14′; their round bounds also on a
-repair of LEMMA15.md (S9)): [1] Thm 9 → Lemma V → (R) [3] → Theorem A → [6] + planar shortcuts →
+Dependency chain (correctness of A, B, C, C′ rests on Lemma 14′; their round bounds also on
+the region bags of LEMMA15.md §9): [1] Thm 9 → Lemma V → (R) [3] → Theorem A → [6] + planar shortcuts →
 Theorem B → Lemma D → Miller-Naor ([9, Sec. 6.1]).
 
 ### Numerical checks (`sim/check.py`)

@@ -9,8 +9,8 @@ model. The two main claims are:
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
-the decomposition that [1] uses for its round count (Property 6) is also false, and that
-gap is still open; see [Status](#status).
+the decomposition that [1] uses for its round count (Property 6) is also false. We repair
+that too, with bags that carry the region they were cut from; see [Status](#status).
 
 ## Status
 
@@ -23,13 +23,21 @@ Please read this before relying on anything here.
   proved in `notes/LEMMA15.md` §3. A referee pass found it correct given its assumptions,
   and its one serious point is fixed. Two adversarial passes, the second on the fixed text,
   found nothing wrong in it.
-- **Round counts: open.** [1, Lemma 9 (6)] states that at every depth of the decomposition
-  each edge lies in at most two induced subgraphs G[X]. The second adversarial pass showed
-  that this is false on $K_{2,m}$ plus one edge, for every decomposition with the other
-  properties (`notes/LEMMA15.md`, (S9)). [1] runs all bags of one depth in parallel because
-  of this property, and so do our notes. So the $\tilde O(D/\varepsilon)$ bound of [1] for the
-  labels, and the $\tilde O(D)$ of Theorem A, are not proved until the schedule is repaired.
-  Theorems B, C and C′ inherit this. Correctness does not depend on the property.
+- **Round counts: repaired, with one more black box.** [1, Lemma 9 (6)] states that at
+  every depth of the decomposition each edge lies in at most two induced subgraphs G[X]. The
+  second adversarial pass showed that this is false on $K_{2,m}$ plus one edge, for every
+  decomposition with the other properties (`notes/LEMMA15.md`, (S9)). [1] runs all bags of
+  one depth in parallel because of this property. Correctness does not depend on it.
+  - `notes/LEMMA15.md` §9 replaces $G[X]$ by a *region graph* $R_X$: the edges drawn in the
+    part of the plane that bag $X$ was cut from. Every edge then lies in at most two region
+    graphs per depth, and the tree components that [8] bounds by $O(\log n)$ are proved to
+    be $O(\log^2 n)$.
+  - This restores the $\tilde O(D/\varepsilon)$ bound of [1] for the labels and the
+    $\tilde O(D)$ of Theorem A. It adds one black box: the separator of [8, Thm 4.4], run on
+    region graphs.
+  - §9 has had a referee pass, whose fixes are in, and an adversarial pass on 10,400
+    instances (about a million bags) that broke no lemma. It found four defects in our test
+    engine, all fixed.
 - All results hold with high probability. They would be deterministic if the bounded-diameter
   decomposition (BDD) of [8] could be built deterministically, which is open.
 - Some steps use published results as black boxes; see [What is assumed](#what-is-assumed).
@@ -80,10 +88,12 @@ directed SSSP problem (even with non-negative weights)".
 | Lemma D: the face-disjoint graph of [9], weighted, realizes dual distances | | | minor |
 | [1, Lemma 14] is false | | | modest |
 | Property 6 of [1, Lemma 9] is false for induced bags | | | modest |
+| Region bags: Property 6 for region graphs, $O(\log^2 n)$ tree components | | | modest |
 | Lemmas 14′, 15′, 16′: the repair of [1, Lemmas 14 to 16] | | | minor |
 
 All four theorems are conditional (see [Status](#status)): their correctness on Lemma 14′,
-and their round bounds also on a repair of Property 6. The ratings in short:
+and their round bounds also on the region bags of `notes/LEMMA15.md` §9 and the separator
+of [8, Thm 4.4] on region graphs. The ratings in short:
 - **Theorem A** closes the planar exact-SSSP gap up to polylogarithmic factors and answers
   the second question of [9]. The proof is short, though: the reduction of [3], the labels of
   [1], and Lemma V. Since [3, §3.1] already says its boosting works in any model that can run
@@ -99,6 +109,9 @@ and their round bounds also on a repair of Property 6. The ratings in short:
   written. It also shows that [8, Def. 4.1] together with [8, Lemma 4.3 (8′)] cannot hold on
   a simple family of graphs; [8] describes the intended property for the edges a bag owns,
   which is not refuted.
+- **The region bags** restore that bound. The tools are standard (sides of edges, a crosscut
+  argument, a non-crossing count), and the component bound is one log factor weaker than
+  [8] claims.
 
 ### Theorem A (exact SSSP)
 
@@ -181,9 +194,19 @@ are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_c
 - **Round count: Property 6.** On $G_m=K_{2,m}$ plus the edge $uw$, every child that receives
   a petal must contain both $u$ and $w$. With separators and leaves of size $O(\log n)$, about
   $n/\log^2 n$ bags of one depth then contain the edge $uw$, not two. Correctness never uses
-  this property, but the parallel schedule of [1] does. A repair would need, for each bag, a
-  communication subgraph of diameter $\tilde O(D)$ that shares edges between hubs with only
-  polylog many bags of the same depth. This is open.
+  this property, but the parallel schedule of [1] does.
+- **Region bags (§9).** Every edge has two sides, and each bag $X$ keeps a set $E_X$ of
+  sides: the part of the plane it was cut from. Its region graph $R_X$ has the edges with a
+  side in $E_X$. The children of $X$ split $E_X$, so every edge lies in at most two region
+  graphs per depth (Lemma B1(a)). The separation properties carry over (Lemma B1(b) to
+  (d)), and so do §3 to §6 and Lemma V, with sizes one log factor larger.
+  - The spanning tree $T_X$ is the BFS tree restricted to $R_X$ plus connectors. Lemma B1(e)
+    bounds its components by $3+(d-1)(d+2)/2$ at depth $d$, so its diameter is
+    $O(D\log^2 n)$. The proof counts how often a child meets the separator, against the
+    holes of the parent's region. [8, Claim 4.6] claims one new component per level, which is
+    false (`notes/LEMMA15.md` §1).
+  - The one new black box is [8, Thm 4.4] run on $(R_X,T_X)$ with edges of $R_X$ only. Every
+    other step is flooding or BFS inside $R_X$.
 - **Analytic layer (§4 to §7).** Lemma 15 of [1] has further gaps, all fixed here:
   - with the witness suggested in the text, the error exponent doubles at every level;
   - the linear program has no triangle constraints;
@@ -293,6 +316,9 @@ Lean 4 (`leanprover/lean4:v4.36.0-rc1`) with Mathlib; the exact Mathlib revision
   exact once the stated bounds hold. `c1_negative` is the one-arc instance where base $\ell_i$
   gives $-\eta$.
 
+- `lean/SsspFlow/LemmaVRegion.lean`, theorem `SsspFlow.RHierarchy.lemmaV`: Lemma V for region
+  bags. Bags carry arc sets, and an arc of a bag between two non-hubs lies in a common child.
+
 Not formalized: the CONGEST algorithms and their round counts, planarity and the diameter
 bound of $\hat G$, the decomposition, Lemma 14′ and everything else in the repair that uses
 planarity (Lemmas R3, R5, R7, and the Monge condition).
@@ -326,6 +352,17 @@ test round counts.
   controls. `p6.py` builds the family on which Property 6 fails
   (`python3 -I p6.py 100 u 8 nopost`), and `lp46_demo.py` a step of [8] that adds more than
   one tree component. `sweep.py` and `run.py` drive the sweeps; `logs/` holds their output.
+- `sim/s9/`: the region bags of §9. `engine_r.py` is the region form of the engine,
+  `post_r.py` its Lemma 15′ and 16′ checks, `rsweep.py` the driver, `big.py` larger
+  instances, and `neg.py` the negative controls. 2,450 correctness instances had no failure,
+  and every edge lay in at most two region graphs per depth. After the fixes from the
+  adversarial pass, 1,750 instances checked Lemmas B2 to B4 with exact hole counts at 86,905
+  children without a violation (`logs/e_*.txt`); `logs/` holds all output.
+- `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
+  closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
+  other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
+  families (Delaunay with holes, sparse Delaunay, cacti, wheels of wheels and others). Run
+  `python3 -I adv.py CONF A:B fam1,fam2 SCALE`. `tight.py` finds the equality cases.
 - `sim/attack/`: the counterexamples to [1, Lemma 14], and checks of the analytic layer:
   gluing (`r1_glue.py`), rounding (`r6_round.py`), the error recursion (`l16.py`), the squaring
   in [1, Thm 2] (`s1_square.py`), and the first adversarial runs on Lemma V and Lemma D
@@ -340,7 +377,8 @@ test round counts.
 - `notes/NOTES.md`: the state of the art, Theorems A, B, C and C′, Lemmas V and D, the ratings,
   and the review history.
 - `notes/LEMMA15.md`: the gaps in [1, Lemmas 14 to 16] and their repair, with Lemma 14′ (§3),
-  the analytic layer (§4 to §7), and what is settled (§8).
+  the analytic layer (§4 to §7), what is settled (§8), and the region bags that repair the
+  round count (§9).
 
 These are working notes. References such as "lty 1762" or "adpw 2166" point to line numbers in
 plain-text extractions of [1] (arXiv v2) and [9].
@@ -353,8 +391,10 @@ plain-text extractions of [1] (arXiv v2) and [9].
 - Weighted girth of planar digraphs, also at $\tilde O(D^2)$.
 - Can the $n^{o(1)}$ in Theorem C be removed? That needs a reduction for negative weights with
   polylogarithmic overhead.
-- Can the bags of one depth be processed in parallel in $\tilde O(D)$ rounds without
-  Property 6? This decides whether the round bounds of [1] and of Theorem A hold.
+- Does [8]'s separator algorithm (Thm 4.4) run on region graphs as it does on induced
+  bags? §9 assumes so; we have not checked it line by line.
+- Is the component bound of Lemma B1(e) really $\Theta(\log^2 n)$? All runs stayed at
+  depth + 1.
 - Is there a deterministic decomposition with the properties of [1, Lemma 9]? It would make
   all four theorems deterministic.
 - Can the realization step run in polynomial local time?

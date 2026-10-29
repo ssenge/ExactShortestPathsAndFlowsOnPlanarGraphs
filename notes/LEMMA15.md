@@ -13,7 +13,7 @@ This file splits the repair into two layers:
 - **The analytic layer (§4 to §7).** Error recursion, LP, rounding, gluing and labels, proved
   from Lemma 14′.
 
-Status (2026-10-28):
+Status (2026-10-29):
 - The first draft was refereed and attacked. Both passes confirmed the analytic layer, and
   both found that its topological black box, [1, Lemma 14], fails.
 - §3 is new in this revision and is checked numerically (§3.7).
@@ -36,9 +36,14 @@ Status (2026-10-28):
   serious problem in the assumptions, (S9): Property 6 is false for induced bags. That
   breaks the round count, not correctness. It also corrected four details of our reading of
   [8], and showed that one step of [8] can add more than one component to T[X] (§1).
+- **§9 (new)** repairs (S9). Bags carry the sides of the edges they were cut from, and every
+  edge lies in at most two of these region graphs per depth. §9 also proves the component
+  bound for T_X that [8] states, with one more log factor. §9 has had a referee pass, whose
+  fixes are in, and an adversarial pass, which broke nothing.
 - **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. No human has
   checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
-  needs a replacement for Property 6, which is open (S9).
+  holds in the region form of §9, which adds one black box: [8, Thm 4.4] run on region
+  graphs.
 
 ## 1. What we take from [1]
 
@@ -54,7 +59,8 @@ Notation is that of [1, Sec. 5]:
     per level. That step is false: a child met S_X in two arcs and went from 1 to 3
     components in one step (second adversarial pass, `sim/attack3/lp46_demo.py`). In all
     faithful runs the total stayed at most depth + 1, and with adversarial z_s at most
-    depth + 3. If the total were Θ(log² n), sizes and rounds would lose one more log factor.
+    depth + 3. In the region form of §9 the bound is proved: c(X) = O(log² n) (Lemma B1(e)),
+    so T_X has diameter O(D log² n), and sizes gain one more log factor (§9.5).
   - S_X: the separator, a simple cycle made of a path q_X of T_X with at least one edge and
     one closing edge, which may be virtual and is then drawn inside a face of G[X]
     [8, Thm 4.4]. |S_X| = O(D log n).
@@ -237,13 +243,9 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
     and §6, and the convergecast of Lemma V (NOTES). On G_m with T rooted at u, Ω(n/log² n)
     bags of one depth each send Õ(D) words across uw. So the Õ(D/ε) bound of [1, Thm 4], and
     the Õ(D) of Theorem A, are not proved as written.
-  - **Repair: open.** Two observations, not yet written out in full. A vertex that lies in no
-    separator of depth < d lies in exactly one bag of depth d, and the edges at such a vertex
-    are used by that bag only. And Lemma V and Lemma 16′ only need the labels of v for the
-    bags in which v is not an ancestor hub: in Lemma V take the deepest bag in which both u*
-    and v are of this kind and that contains P*. What is missing is a communication subgraph
-    per bag, of diameter Õ(D), that uses each edge between two hubs for at most polylog many
-    bags of one depth.
+  - **Repair: §9.** Bags carry sets of edge sides, and region graphs R_X replace G[X]. Each
+    edge then lies in at most two region graphs per depth (Lemma B1(a)), and §3 to §6 and
+    Lemma V carry over (§9.5).
 - **(S8) Smaller gaps.**
   - Def. 6 step 3 is undefined when P_X ∪ ∂S*_X = ∅, which is the case for the root's
     children.
@@ -584,8 +586,8 @@ most 3|∂S*_X| of them. ∎
 ### 3.5 Locality, (T5)
 
 **Building Γ_{d+1}.** All of this runs for all bags of depth d in parallel. [1] bounds the
-congestion of such steps by 2 through Property 6, which is false for induced bags (S9), so
-the Õ(D) rounds per level are open with (S9).
+congestion of such steps by 2 through Property 6, which is false for induced bags (S9). In
+the region form, Lemma B1(a) gives congestion 2 (§9.6).
 - **Labels.** Each end of e knows its bags (Property 2) and whether it lies in S_X. Once
   every centre has broadcast its parent's ID within its bag, it also knows which of its bags
   is the parent of which. So λ_{d+1} is computed locally.
@@ -962,8 +964,9 @@ C. This is exact, which is (I2) at height 0.
    exist.
 
 The rounds are those of [1]: one broadcast of Õ(D/ε′) words per level, levels in sequence,
-and Õ(D) rounds per level for Γ (T5). Steps 2 to 6 are local. ∎ (The round count assumes
-[1]'s parallel schedule for the bags of one level, which rests on Property 6; see (S9).)
+and Õ(D) rounds per level for Γ (T5). Steps 2 to 6 are local. ∎ (The round count needs the
+bags of one level to run in parallel. [1] uses Property 6, which fails (S9); the region form
+of §9 gives it, §9.6.)
 
 Bookkeeping: the leaf oracle's error is paid at the parent, in step 2. A query to the oracle
 of H_X costs one more factor 1+ε′, so labels built from H_X are within (1+ε′)^{3h(X)+1}
@@ -987,8 +990,8 @@ leaf term. The rounds are Õ(D/ε′) per level, so Õ(D/ε′) in total.
 *Construction.*
 - **Leaves.** All of G[L] is broadcast inside L, as in [1].
 - **Broadcast for non-leaf X.** The oracle labels of H_X on ∂S⁺_X go to every vertex of X, as
-  in [1]: Õ(D/ε′) words per bag, all bags of one level in parallel by Property 6, which is
-  false for induced bags (S9). Let δ^H be
+  in [1]: Õ(D/ε′) words per bag, all bags of one level in parallel. Property 6 is false for
+  induced bags (S9); the region form of §9.6 gives the parallel schedule. Let δ^H be
   the answers. By Lemma 15′ and (G5), dist_{G[X]} ≤ δ^H ≤ (1+ε′)^{3h(X)+1}·dist_{G[X]} on
   ∂S⁺_X.
 - **Hubs.** For v ∈ ∂S⁺_X, set d̃_X(v,h) := δ^H(v,h).
@@ -1047,18 +1050,20 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
 - **Proved here, refereed, and attacked twice.** Lemma 14′ (§3), with Lemmas R3 (restated)
   and R7. The referee's fixes are in, and the second adversarial pass, on this text, found
   nothing in §3. This fixes (S4) and (S7).
-- **Open: the round count** (S9). Property 6 is false for induced bags, so the parallel
-  schedule of [1], and with it the Õ(D/ε) bound for the labels, needs a new argument.
+- **The round count** (S9). Property 6 is false for induced bags, so the parallel schedule
+  of [1] needed a new argument. §9 gives one with region bags: Lemma B1, proved, refereed
+  and attacked once, with the separator of [8, Thm 4.4] on region graphs as a new black box.
 - **Black boxes.**
   - (G1) in the form (G1′), read off [8]'s construction, with T_X in place of [1]'s
     Property 4.
   - (G3), which is [10, Thm 1] (refereed). The centres search for K exhaustively, which
     CONGEST allows.
   - (G4), (G5) and (G6).
+  - For the rounds: [8, Thm 4.4] on (R_X, T_X), using edges of R_X only (§9.6).
 - **Consequence.** Given the black boxes, Theorem A, and through it Theorems B, C and C′,
-  are correct algorithms. Their round bounds are conditional on a repair of (S9). No human
+  are correct algorithms with the stated round bounds, in the region form of §9. No human
   has checked the proofs. [1, Thm 4] is in the same position: its proof goes through
-  [1, Lemma 14], which §3 with §5 repairs, and through Property 6.
+  [1, Lemma 14], which §3 with §5 repairs, and through Property 6, which §9 replaces.
 
 **Ratings.**
 - **The repair: minor.** It changes no bound. The tile construction is simpler than [1]'s hub
@@ -1070,3 +1075,427 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   shows that [8, Def. 4.1] together with [8, Lemma 4.3 (8′)] has no model on a simple
   family. Whether results of [8] are affected depends on how its algorithms use the bags;
   its overview describes the version for owned edges, which is not refuted.
+- **The region repair (§9): modest.** See §9.8.
+
+## 9. Region bags: the round count (repair of (S9))
+
+(S9) comes from the induced subgraphs. On G_m the edge uw lies in G[X] for Ω(n/log² n) bags of
+one depth, although none of them was cut along it. The repair gives every bag the part of the
+plane it was cut from, and the edges drawn there, instead of G[X]. This is what [8]'s proof of
+Lemma 4.3 (8′) uses. That proof is topological: an edge that lies in the closure of O(X) for
+more than two disjoint regions O(X) of one depth would have to run along the boundary of
+three of them.
+- **Tame regions only.** That last step needs regions that are unions of faces or triangles,
+  as [8]'s are; comb-shaped open sets let one arc lie on the boundary of many.
+- **(8a) fails for induced bags.** [8, Def. 4.1 (8a)] asserts the containment for the induced
+  G[X]. For tame regions it then implies (8′), which G_m refutes for every decomposition with
+  the other properties. [8]'s own X⁺ already breaks (8a) when S has an outside chord.
+- **Region graphs.** With region graphs in place of G[X], (8′) becomes Lemma B1(a). The
+  interior of Ω_X (below) can be disconnected, at pinches, so region bags satisfy (8′) but not
+  Def. 4.1 (8) literally. Nothing below uses (8) itself.
+
+### 9.1 Sides, regions, holes
+
+- **Sides.** Every edge e of G has two sides, one on each side of e (a bridge has the same face
+  on both). In the radial
+  graph R of §3.1, the side (e, σ) is the triangle t(e, σ) spanned by the two ends of e and the
+  face node on side σ. These triangles tile S². Two triangles are *adjacent* if they share a
+  side, which is either an edge of G or an R-edge (a *spoke*).
+- **Region bags.** Every bag X carries a set E_X of sides.
+  - Its *region graph* R_X consists of the edges with at least one side in E_X and their ends;
+    from now on V(X) := V(R_X).
+  - Its *region* is Ω_X, the union of the triangles of E_X. So R_X is the set of edges whose
+    curves lie in Ω_X.
+  - The root has every side, so R_root = G and Ω_root = S².
+- **Holes.** A hole of X is a component of S² ∖ Ω_X, and ν(X) is the number of holes.
+- **Trees.** T is a BFS tree of G of height at most D. T_X is T ∩ R_X plus connectors (edges of
+  R_X that join two components) until it spans R_X. This is [8, Sec. 4.2, Step 1] with T[X]
+  replaced by T ∩ R_X. c(X) is the number of components of T ∩ R_X.
+
+### 9.2 The construction
+
+Let X be a non-leaf. S_X is the separator of [8, Thm 4.4] for R_X and T_X: a path q_X of T_X
+plus a closing edge yz. The closing edge is real (an edge of R_X) or virtual (drawn in a face
+of R_X). S_X is a simple closed curve with an inside D_in and an outside D_out. The sides of
+E_X go to the children as follows, and each side goes to exactly one child.
+- **Inside parts.** The inside sides are:
+  - all sides of edges with an end inside S_X;
+  - both sides of edges between separator vertices drawn inside (inside chords);
+  - the inside side of each edge of S_X.
+
+  The inside parts are the components of the graph of these edges. Each is a child and keeps
+  the sides it contains.
+- **Outside children.** [8]'s auxiliary graph, built from the remaining sides only. These are
+  the edges with an end outside, the outside chords, and the outside sides of the edges of
+  S_X.
+  - As in [8], a separator vertex s is split into two copies at a direction z_s, and the sides
+    on either side of z_s go to different copies. If s has no recorded direction, or if it lies
+    in the inside wedge of S_X, s is not split (`engine_r.py` counts the latter as
+    `z_inherited_in_inside_wedge`).
+  - A virtual closing edge joins its two ends.
+  - The outside children are the components of this graph, split further into components of
+    real edges.
+- **Directions z_s.** When s lies on S_A, every child Y of A records at s a direction into the
+  wedge of S_A on the other side, which lies outside Ω_Y, and descendants inherit it. So z_s
+  always points into a sector of s outside the region. This is [8]'s "out of the region".
+- **Labels.** Rules 1 and 2 of §3.2 stay. Rule 3 becomes:
+  - 3_R. If both ends of e lie on S_X, then λ_{d+1}(e) is the inside part that holds a side of
+    e if there is one, and otherwise the outside child that holds a side of e.
+
+Two choices are [8]'s and are needed below: T_X ⊇ T ∩ R_X, and a separator vertex, if split
+at all, is split at a direction outside Ω_X. No bound needs the split itself: without it,
+(F1) below is trivial and s lies in at most one outside child. Runs with T_X unrelated to T
+(DFS or random spanning trees) reached c(Y) = 41 at small depth, and runs with random z_s
+reached a_Y = 7 with no hole (§9.7).
+
+Three things differ from [8]:
+- there can be several inside parts, where [8] has one X_in ⊇ S_X;
+- only sides of E_X are handed down, so an edge of S_X whose inside side lies in a hole of X
+  lies in no inside part;
+- outside children that consist only of chords, or only of edges of S_X, are kept.
+
+### 9.3 Properties
+
+**Lemma B1 (region bags).** Let X be a non-leaf at depth d. Then:
+- **(a) Property 6_R.** Every side of E_X lies in exactly one child. Hence for each depth, the
+  sets E_X of the bags of that depth are disjoint, and every edge lies in at most two region
+  graphs R_X of that depth.
+- **(b) (7a_R) and (7c′_R).** A vertex x ∉ S_X lies in exactly one child, and that child holds
+  every side of every edge of R_X at x. A vertex s ∈ S_X lies in at most one inside part and in
+  at most two outside children.
+- **(c) (7b_R).** Every R_Y is connected. A path in R_X that avoids S_X lies in one child's
+  region graph.
+- **(d) Claim 1_R.** λ_d(e) = X implies e ∈ R_X, and λ_{d+1}(e) is λ_d(e) or a child of it.
+- **(e) Components.** c(Y) ≤ c(X) + max(1, ν(X)) + 1 and ν(Y) ≤ ν(X) + 1 for every child Y.
+  So ν ≤ d at depth d, c(X) ≤ 3 + (d − 1)(d + 2)/2 for d ≥ 1, and with d = O(log n):
+  c(X) = O(log² n) and diam(T_X) ≤ c(X)·(2D + 1) = O(D log² n).
+
+*Proof of (a) to (d).*
+- **(a)** holds by construction. Induction over the depth gives the disjointness, and an edge
+  has two sides.
+- **(b).** Take x inside S_X. Every edge at x has an end inside, so all of its sides in E_X
+  are inside sides. These edges share x, so they lie in one inside part. Take x outside. All of its
+  edges meet at the single auxiliary node x, so they lie in one auxiliary component, and they
+  share x, so they lie in one real component. For s ∈ S_X, all inside sides at s belong to
+  edges at s, which share s, so they lie in one inside part. On the outside there are two
+  copies of s.
+- **(c).** The first part holds by construction. For the second, let x, x′ be consecutive
+  vertices off S_X on the path; by (b), the edge xx′ lies in the child of x and in the child
+  of x′.
+- **(d).** Let e = uw ∈ R_X. If u ∉ S_X, then rule 1 picks u's child, which holds all sides of
+  e by (b), and the same holds for w. If u, w ∈ S_X, a side of e lies in E_X and goes to some
+  child, and rule 3_R picks a child that holds one. ∎
+
+(e) is proved in §9.4. The value of (a) is that it is a statement about sides, which stay
+disjoint, and not about vertex sets. A vertex may lie in many bags of one depth (on G_m, u
+does), but CONGEST charges edges, and every edge carries the traffic of at most two bags per
+depth.
+
+### 9.4 Proof of Lemma B1(e)
+
+Let Y be a child of X on side s ∈ {in, out}, and let D := D_s.
+- **The arc graph** A_Y has the vertices of S_X that lie in V(Y), and the real edges of S_X
+  whose side s lies in E_Y. a_Y is its number of components.
+- The proof has three steps: c(Y) ≤ c(X) + a_Y (Lemma B2), a_Y ≤ max(1, ν(X)) + 1
+  (Lemma B3), and ν(Y) ≤ ν(X) + 1 (Lemma B4).
+
+**Lemma B2.** c(Y) ≤ c(X) + a_Y.
+
+*Proof.* Let K be a component of T ∩ R_X.
+- **One segment per component.** T_X contains K. Contracting the components of T ∩ R_X turns
+  T_X into a tree, so the path q_X meets K in one subpath σ_K, which may be empty or a single
+  vertex.
+- **K is σ_K plus hanging subtrees.** σ_K is a path in the tree K. So K consists of σ_K and
+  subtrees H, each attached by one edge e_H at a vertex of σ_K. An edge of K with both ends on
+  σ_K is an edge of σ_K, since K has no cycle.
+- **A hanging subtree goes to one child.** H avoids S_X, so it lies inside or outside. By
+  Lemma B1(b), H and e_H go to a single child, and that child contains the attachment vertex.
+- **Edges of σ_K.** These are edges of S_X, and their side s goes to a child on side s.
+
+So every component of K ∩ R_Y contains a vertex of σ_K. Two vertices of σ_K in one component of
+σ_K ∩ A_Y are joined by T-edges of R_Y. Hence K contributes at most the number of components
+of σ_K ∩ A_Y to c(Y). A component K with σ_K = ∅ lies in one child and contributes at most 1.
+
+Now count. The σ_K are disjoint subpaths of q_X. Cutting the cycle S_X at the closing edge
+leaves at most a_Y + 1 disjoint subpaths of q_X; only an arc through a real closing edge is
+cut. For two families of disjoint subpaths of a path, the intersection graph is a forest. So
+the number of intersecting pairs is at most the number of subpaths involved minus one, which
+gives Σ_K #comp(σ_K ∩ A_Y) ≤ k_Y + a_Y. Here k_Y is the number of components K with
+σ_K ∩ A_Y ≠ ∅. These K, together with the K that have σ_K = ∅ and lie in Y, are distinct
+components of T ∩ R_X. Hence c(Y) ≤ c(X) + a_Y. ∎
+
+**Lemma B3.** a_Y ≤ max(1, ν(X)) + 1. The +1 occurs only when the closing edge is virtual.
+
+*Setting.*
+- **The closing curve.** A virtual closing edge comes from [8, Thm 4.4] with a face Φ of R_X
+  and a corner of Φ at y and at z, where the curve leaves y and enters z. We choose its drawing.
+  - **Fans.** R_X is connected, so Φ is an open disk; lift it to a closed disk D_Φ along its
+    boundary walk. The corners at y and z become two boundary points.
+    - The triangles of E_X in Φ fall into *fans*: maximal runs of consecutive triangles of one
+      face f of G, around its face node.
+    - A fan is a closed disk. It meets ∂D_Φ in one boundary segment, its edges, and its apex
+      f lies inside. Fans with different apexes meet at most in boundary points.
+    - Every other point of int(D_Φ) lies in a hole of X, and the holes of X inside Φ are the
+      components of int(D_Φ) minus the fans.
+  - **Connectivity.** Let U be the union of the open fans. Then int(D_Φ) ∖ U is
+    path-connected: a path that enters an open fan can go around it along its inner boundary
+    (its two outer spokes and its apex), which lies in no other open fan. Two holes meet only at
+    apexes.
+  - **The drawing.**
+    - Leave y through the hole sector of its corner. If the corner is covered by two triangles
+      of one fan, leave instead along their shared spoke to the apex, and treat z the same way.
+    - Then follow a shortest path in the incidence graph of holes and apexes, which is
+      connected by the previous point. Join consecutive apexes by simple arcs inside the hole
+      between them.
+  - **Result.** The curve crosses no open triangle of E_X: it runs along spokes at y and z and
+    through apexes. It meets every hole of X in at most one arc.
+  - **Independence of the drawing.** With the corners fixed, a triangle of E_X in Φ goes in or
+    out according to the arc of ∂D_Φ that its edge lies on. So the drawing changes no side of
+    E_X, and the engine's straight segment inside a face of G gives the same sides.
+  - **Consequence.** Every triangle of E_X lies in the closure of D_in or of D_out.
+- **Regions of side s.** These are the children on side s and the components of
+  (S² ∖ Ω_X) ∩ D.
+  - A hole of X is a complement component of the connected set Ω_X (connected since R_X is),
+    hence simply connected. It meets S_X in at most one arc of the closing curve, and a crosscut
+    splits a simply connected domain into two, so it has at most one component on side s.
+  - So there are at most ν(X) hole regions.
+- **(F1) Adjacent triangles of E_X on side s lie in the same child.**
+  - Shared edge: an edge e ∉ S_X has all its sides in one child.
+  - Shared spoke at v: the two triangles cover the corner of v between their edges, so that
+    corner lies in Ω_X.
+    - If v ∉ S_X, use Lemma B1(b).
+    - If v ∈ S_X and s = in, both triangles lie in the inside part at v.
+    - If s = out, z_v points out of Ω_X, so it does not separate the two triangles. Both go
+      to the same copy of v, hence to the same auxiliary and real-edge component.
+  - Likewise, two adjacent triangles on side s that are not in E_X lie in one hole region.
+
+*Pieces.* Let D′ be closure(D) minus small open disks around the vertices of S_X and around the
+face nodes on the closing curve; it is a closed disk. Remove also small open disks around the
+other face nodes of R. A *piece* is a component of what remains of a child Y on side s.
+- A child is connected through real edges and vertices, never through a face node alone. So
+  its pieces are glued only at vertices of S_X.
+- Pieces of different children are disjoint: a vertex off S_X has all its triangles in one
+  child by Lemma B1(b), and an open side shared by two triangles of E_X on side s stays in one
+  child by (F1).
+- **Every piece meets ∂D′.** Every child contains a vertex of S_X. Otherwise, by Lemma B1(b),
+  it would be closed under adjacency in R_X, which is connected and meets S_X. So a child with
+  one piece touches ∂D′ near that vertex. When a child has several pieces, each contains a
+  triangle at a vertex where it is glued. Hence runs(P) ≥ 1 below.
+
+*Boundary sequence.* Walk once around ∂D′ and list the triangles of side s that touch it. At
+each vertex of S_X, and at each face node on a virtual closing curve, take its triangles on
+side s in rotation order. Each entry belongs to one region; for a child, to one piece.
+- **(i) Consecutive entries are adjacent.** At a vertex they share a spoke or an edge e ∉ S_X.
+  Between two vertices they are the same triangle t(e, s) of an edge e of S_X, or the same
+  triangle along a spoke that the closing curve runs on. So by (F1), consecutive entries of
+  different regions are a piece and a hole region.
+- **(ii) No crossing.** There are no entries p₁, p₂, p₃, p₄ in cyclic order with p₁, p₃ in a
+  piece or hole region A and p₂, p₄ in a different one B.
+  - Suppose there were. A and B are disjoint and path-connected.
+  - A path in A from p₁ to p₃, closed up by an arc outside D′, is a Jordan curve that
+    separates p₂ from p₄.
+  - But B joins p₂ to p₄ without meeting it.
+
+*Counting.* A *run* of a region is a maximal cyclic interval of its entries.
+- **Claim.** If some hole region has an entry, then Σ (runs(P) − 1) ≤ (number of hole
+  regions) − 1, summed over all pieces P.
+- **Proof.**
+  - Fix an entry p₀ of a hole region H₀. Every piece P has runs(P) − 1 gaps between its runs
+    that do not contain p₀. Map each such gap to the region of its first entry, a hole region
+    by (i).
+  - **The map avoids H₀.** H₀ appears at p₀, outside the gap, and inside the gap. Together
+    with P, which appears just before and just after the gap, this is a crossing.
+  - **The map is injective.** Suppose two gaps map to the same H. If they are gaps of the same
+    P, H appears in both, and P lies between them, which is a crossing. If they are gaps of
+    different pieces, then by (ii) the gaps are nested or disjoint. If disjoint, H appears in
+    both, which crosses the piece of either gap. If nested, say the gap of P lies inside the gap
+    of P′. They start at the same entry only if P = P′. Otherwise H appears at the start of the
+    outer gap and again at the start of the inner one, with entries of P between them and after
+    the inner gap, which crosses P.
+- **No hole region with an entry.** Then by (i) all entries belong to one piece, which has one
+  run, and since every piece has an entry it is the only piece on side s.
+
+*Arcs.*
+- **One piece.** Each run of a piece maps to a connected part of A_Y. Inside a run, entries at
+  one vertex share that vertex, and the step from v to w across an edge e of S_X is the entry
+  t(e, s), which makes e an edge of A_Y.
+- **The exception.** It is the one run, if any, that runs along a virtual closing curve. A_Y
+  has no edge for the virtual edge, so that run may split into two components.
+- **A child with m pieces.** Pieces glued at a vertex of S_X share that vertex in A_Y, and the
+  pieces of a child are connected through such gluings. So
+  a_Y ≤ Σ_k runs(P_k) − (m − 1) + 1 ≤ Σ_P (runs(P) − 1) + 2, summed over all pieces of side s.
+- **Result.** By the claim, a_Y ≤ ν(X) + 1 if some hole region has an entry, and a_Y ≤ 2
+  otherwise. The final +1 is the exception, so it needs a virtual closing edge. ∎
+
+**Lemma B4.** ν(Y) ≤ ν(X) + 1.
+
+*Proof.* Let C be a component of S² ∖ Ω_Y.
+- **C meets a hole of X or D_other.** Suppose C meets neither. C contains no point of S_X: C
+  is open, and points of D_other near such a point lie outside Ω_Y ⊆ closure(D_s). So C consists of
+  triangles of E_X on side s that are not in Y, together with points they share. The frontier
+  of C lies in Ω_Y.
+  - An open side on the frontier would be shared by a triangle of C and a triangle of Y. Both
+    are in E_X on side s, so by (F1) they lie in the same child, which is a contradiction.
+  - So the frontier is finite. But a nonempty open subset of S² with finite frontier is S²
+    minus finitely many points, and Ω_Y has triangles. This is a contradiction.
+- **Counting.** D_other and every hole of X are connected and miss Ω_Y, so each lies in one
+  component C. So there are at most ν(X) + 1 components C. ∎
+
+*Proof of Lemma B1(e).*
+- Lemmas B2 and B3 give c(Y) ≤ c(X) + max(1, ν(X)) + 1. With c(root) = 1, ν(root) = 0 and
+  Lemma B4, ν ≤ d at depth d, c ≤ 3 at depth 1, and c(X) ≤ 3 + Σ_{i=1}^{d−1} (i + 1) for
+  d ≥ 1.
+- Every component of T ∩ R_X is a subtree of T, so its diameter is at most 2D.
+- A path in T_X meets each component in one subpath, so diam(T_X) ≤ c(X)·2D + c(X) − 1. ∎
+
+### 9.5 What changes in §3 to §6 and Lemma V
+
+Read R_X for G[X] throughout, and "e ∈ R_X" for "e ∈ E(G[X])".
+- **Claim 1** is Lemma B1(d). (G1′)'s X_in ⊇ S_X was used only for rule 3, which 3_R replaces.
+  There may now be several inside parts, and a separator vertex need not lie in one.
+- **Claim 2.** The proof is unchanged, with Lemma B1(b) in place of (7c′).
+- **Claim 5.** E^out_X := E(R_X) ∖ λ_d^{-1}(X). In the proof, if u ∉ S_A, then u's child holds
+  every side of uw. Since uw ∈ R_X ⊆ R_{A′}, that child is A′.
+- **Claim 6(a).** The glued graph is R_X. Every vertex of X has an edge in R_X by definition.
+- **Claim 7.** Fix s ∈ S_A and the edges at s labelled A.
+  - The inside wedge goes to the one inside part at s.
+  - W₁ and W₂ go to O₁ and O₂. Outside chords now follow their half, since 3_R sends them to
+    the outside child that holds them.
+  - The edges a and b of S_A at s go to the inside part if their inside side is in E_A, and
+    otherwise to the adjacent half.
+  - So the new labels form at most three cyclic blocks, there are at most 3 label changes at s,
+    and |L_A| ≤ 3|S_A|. This improves 8|S_A|.
+- **Lemma 15′.** H_X approximates dist_{R_X} on ∂S⁺_X, and leaves gather R_L.
+- **Lemma 16′.** The statement is for dist_{R_X}. In the upper bound, the edge from a vertex
+  x ∉ S_X lies in x's child by Lemma B1(b), so the prefix of P up to its first vertex of S_X
+  lies in R_{X_i}.
+- **Lemma V** (NOTES). Let Y be the deepest bag with P* ⊆ R_Y. If Y is not a leaf, then by
+  Lemma B1(c) P* meets S_Y. The lower bound uses dist_{R_X} ≥ dist_G. The combinatorial core
+  of this form is checked in Lean (`lean/SsspFlow/LemmaVRegion.lean`, no `sorry`, standard
+  axioms only): bags with arcs, hubs and kids, and the hypothesis that an arc avoiding the
+  hubs lies in one kid.
+- **Sizes.** The bounds pick up one more log factor from Lemma B1(e):
+  - |S_X| = O(D log² n) and |∂S⁺_X| = O(D log³ n);
+  - |N_A| = O(D log² n) and |J_X| = O(D log³ n).
+
+  Labels stay Õ(D/ε).
+- **Height.** A child has at most (2/3)|X| + |S_X| vertices, so the height stays O(log n),
+  with leaves of size O(D log² n).
+
+### 9.6 Rounds
+
+All bags of one depth run in parallel. A bag communicates over R_X only, through T_X.
+- By Lemma B1(a), every edge carries the traffic of at most two bags per depth.
+- By Lemma B1(e), T_X has diameter at most c(X)(2D + 1) = O(D log² n).
+- So each per-level step costs Õ(D/ε′) rounds. The steps are:
+  - the Γ step of §3.5, including the aggregation and the BFS in T_X for P_X;
+  - the transfers of §5 step 1 and of §6;
+  - the gathering of R_L at a leaf L;
+  - the convergecast of Lemma V.
+- The whole tree costs Õ(D/ε′) rounds.
+
+This gives back the Õ(D/ε) of [1, Thm 4] (with Lemmas 14′ to 16′ in place of [1]'s) and the
+Õ(D) of Theorem A.
+
+Building the decomposition is also local to R_X, with one exception. Every step below except
+the separator is flooding, BFS or aggregation on R_Y over T_Y, and T_Y has diameter at most
+c(Y)(2D + 1):
+- the inside parts and the auxiliary components;
+- the split at z_s and the components of real edges;
+- the connectors, by O(log c(X)) rounds of merging over trees of diameter O(D log² n).
+
+The one black box is [8, Thm 4.4], the separator, run on (R_X, T_X) with edges of R_X only.
+[8]'s variants that route over low-congestion shortcuts of G (footnote 13, App. B.2) use edges
+outside R_X and would break congestion 2, so the plain version is the one needed. By Lemma
+B1(a) all bags of one depth then run with congestion 2. We have not checked [8]'s separator
+algorithm line by line for the region setting.
+
+### 9.7 Numerical checks (`sim/s9/`)
+
+`engine_r.py` is the region form of the engine of §3.7, `post_r.py` its Lemma 15′ and 16′
+checks, and `rsweep.py` the driver. The families and separator modes are those of §3.7.
+Closings are straight segments inside one face of G, so these runs never draw a separator
+through a hole; the adversarial pass below does.
+- **Correctness.** 2,450 instances in seven sweeps, 133,525 bags, no failure:
+  - Claims 1 to 7 and (T2) to (T4), including 2.9·10⁸ Monge inequalities;
+  - (7a_R), (7c′_R) and contiguity at 47,887 separators;
+  - Lemma 16′: 4.95·10⁷ checks;
+  - Lemma 15′: 297,798 end-to-end gluings and 3.65 million R1 pairs, with H_X planar in all
+    47,887 cases;
+  - Lemma V: exact, against Dijkstra from a virtual source with random offsets, at 235,571
+    vertices.
+- **Property 6_R.** Every edge lay in at most 2 region graphs per depth in every run. In the
+  same runs it lay in up to 37 induced subgraphs G[X] per depth (K_{2,m}).
+- **Engine fixes.** The adversarial pass found four defects in `engine_r.py`, none in the
+  lemmas. All are fixed, and the runs marked *fixed* below use the fixed engine.
+  - The crossing test of the virtual candidates had an absolute tolerance, and tiny
+    segments between pendant leaves that cross an edge got through. One was used as a
+    closing (pend, seed 1328, a bag at depth 5). Candidates are now rechecked exactly.
+  - The Jordan check ran over all edges of G, so a closing through a hole would raise a
+    false alarm. It now runs over R_X.
+  - The hole count merged holes that lie in one face of G, so it could undercount. It now
+    counts the components of the missing triangles, adjacent across an edge or a spoke.
+  - Claim 7 was checked against the old bound 4 + 2c_s. It now fails above 3 label changes
+    per vertex, and Lemmas B3 and B4 now fail a run instead of being counted.
+- **Lemma B1(e).** All runs use T_X ⊇ T ∩ R_X and z_s out of the region (faithful, and
+  adversarial separators, swaps and degenerate bags).
+  - Before the fixes: 3,150 instances, 167,606 child checks. Lemma B2 never failed, and
+    a_Y ≤ max(1, ν(X)) + 1 always held with the old hole count, which can only undercount.
+  - *Fixed*: 1,750 instances, 88,655 bags, 86,905 child checks with exact ν. Lemmas B2, B3
+    and B4 never failed, ν(X) ≤ depth always held, and Claim 7 never had more than 3 label
+    changes at a vertex. a_Y exceeded max(1, ν(X)) in 8,230 cases, all with a virtual
+    closing edge.
+  - *Fixed*, with the full checks of Lemmas 15′, 16′ and V: 140 instances, 7,532 bags, no
+    failure.
+  - Observed: c(X) ≤ depth + 1 throughout, also on 80 larger instances with n up to 700
+    (`big.py`).
+- **What the hypotheses do.**
+  - With T_X a DFS or random spanning tree of R_X, c(X) reached 41 on grids.
+  - With random z_s, a_Y reached 7 with no hole at all.
+  - Correctness still held in these runs; only the bound needs [8]'s choices.
+- **Negative controls** (`neg.py`, 70 instances each):
+  - [1]'s rule 3 (separator edges to X_in) in the region form put an owned edge outside its
+    bag's region, or broke Claim 1, in 64 of 70 instances;
+  - a corrupted Lemma 16′ recursion was detected in 70 of 70;
+  - shuffled port orders broke (M) in 70 of 70.
+- **Adversarial pass** (`sim/attack4/`). 10,400 instances with 1.7 million vertices,
+  1,058,107 bags (391,145 at depth ≥ 8), no violation.
+  - *What it adds.* Nine new families (Delaunay with disks removed, sparse Delaunay, rings
+    with chords, stacked K_{2,m}, cacti, subdivided Delaunay, grids with holes, spirals,
+    wheels of wheels). Greedy separators that aim at the slack of Lemmas B2, B3 and B4 or
+    maximize ν or c. Closings through holes: 24,383 straight segments that cross only edges
+    outside R_X, and 68,323 combinatorial closings through two corners of one face of R_X.
+    Global trees T from DFS and random spanning trees, which Lemma B2 allows. Exact ν,
+    computed both as 2 − χ(Ω_X) and as components of the missing triangles; the two always
+    agreed.
+  - *Checks.* 1,047,707 child checks of Lemmas B2, B3 and B4, 4.59 million vertex checks of
+    Claim 7 (label changes and cyclic blocks), and the claims, (T2) to (T4) and (M) on
+    341,722 tiles.
+  - *Maxima.* Every edge in at most 2 region graphs per depth; at most 3 label changes and
+    3 blocks at a vertex; a_Y − max(1, ν(X)) ≤ 1, and = 1 only with a virtual closing;
+    ν(X) ≤ depth; ν(Y) ≤ ν(X) + 1; c(Y) ≤ c(X) + a_Y; c(X) ≤ depth + 1; at most 2 outside
+    children per separator vertex.
+  - *Tightness.* Lemmas B2, B3 and B4 are each met with equality. For example
+    a_Y = 4 = ν(X) + 1 at ν(X) = 3 (swiss, seed 55), ν(Y) = ν(X) + 1 up to ν(X) = 10 (flower,
+    seed 6), and c(Y) = c(X) + a_Y with a_Y = 3 (dl, seed 112, c from 2 to 5).
+  - *Observed beyond the lemmas.* c(X) ≤ depth + 1 held in every run, even against greedy
+    c-maximizers, while c(X) − ν(X) − 1 reached 27, so there is no law c ≤ ν + 1. So the d²
+    of Lemma B1(e) is a worst case we never met.
+
+### 9.8 Status of (S9)
+
+- **Proved here.**
+  - Lemma B1, the parallel schedule (§9.6), and the changes of §9.5.
+  - So the Õ(D/ε) labels and the Õ(D) of Theorem A follow, given the black boxes of §1 and
+    the distributed construction of §9.6.
+- **Checked.**
+  - A referee pass (2026-10-29) found nothing fatal. Its one serious point, the drawing of a
+    virtual closing curve, is now proved in the setting of Lemma B3. Its minor points are in
+    (the deviations from [8] in §9.2, the black box in §9.6, the wording in Lemmas B3 and B4).
+  - An adversarial pass (2026-10-29) broke no lemma (§9.7). It met Lemmas B2, B3 and B4 with
+    equality and found four defects in the test engine, now fixed.
+  - No human has checked §9.
+- **Rating: modest.** It restores the round bounds that (S9) removed. The tools are the
+  standard ones: sides of edges, a crosscut argument and a non-crossing count. The
+  component bound O(log² n) is weaker than the O(log n) that [8, Def. 4.1 (6)] claims, by one
+  log factor, which Õ hides.

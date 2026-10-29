@@ -1,0 +1,6 @@
+faithful k2m {'m': 40, 'sub': 2} 3 {'mult_induced': 4, 'mult_comm': 2, 'vmult_all': 5, 'vmult_phantom': 3, 'commdiam_over_GXdiam': 1.8, 'depth': 9, 'n': 242}
+faithful k2m {'m': 100, 'sub': 2} 3 {'mult_induced': 5, 'mult_comm': 2, 'vmult_all': 6, 'vmult_phantom': 4, 'commdiam_over_GXdiam': 2.12, 'depth': 11, 'n': 602}
+faithful k2m {'m': 200, 'sub': 2} 0 {'fail': 3.0}
+mixB k2m {'m': 40, 'sub': 2} 3 {'mult_induced': 6, 'mult_comm': 2, 'vmult_all': 7, 'vmult_phantom': 5, 'commdiam_over_GXdiam': 1.88, 'depth': 10, 'n': 242}
+mixB k2m {'m': 100, 'sub': 2} 3 {'mult_induced': 9, 'mult_comm': 2, 'vmult_all': 11, 'vmult_phantom': 9, 'commdiam_over_GXdiam': 1.91, 'depth': 12, 'n': 602}
+mixB k2m {'m': 200, 'sub': 2} 0 {'fail': 3.0}

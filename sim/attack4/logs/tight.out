@@ -1,0 +1,15 @@
+== gB3
+B4 (9, {'where': (('gB3', 'flower', 6, '{"k": 11, "L": 4}'), 18, 1, 9, True, 'out'), 'hX': 9, 'hY': 10})
+aYmax (4, {'where': (('gB3', 'swiss', 55, '{"n": 385, "k": 10, "rad": 0.08, "drop": 0.0}'), 51, 1, 6, False, 'out'), 'aY': 4, 'hX': 3})
+B2 (2, {'where': (('gB3', 'dl', 0, '{"n": 122, "drop": 0.0}'), 13, 1, 3, True, 'out'), 'cX': 1, 'cY': 3, 'aY': 2})
+B3 (3, {'where': (('gB3', 'swiss', 55, '{"n": 385, "k": 10, "rad": 0.08, "drop": 0.0}'), 51, 1, 6, False, 'out'), 'aY': 4, 'hX': 3})
+== gB4
+B4 (9, {'where': (('gB4', 'flower', 6, '{"k": 11, "L": 4}'), 18, 1, 9, True, 'out'), 'hX': 9, 'hY': 10})
+aYmax (4, {'where': (('gB4', 'pend', 101, '{"n": 19, "k": 4}'), 34, 0, 6, False, 'in'), 'aY': 4, 'hX': 6})
+B2 (3, {'where': (('gB4', 'dl', 112, '{"n": 96, "drop": 0.4}'), 14, 0, 4, True, 'in'), 'cX': 2, 'cY': 5, 'aY': 3})
+B3 (2, {'where': (('gB4', 'nested', 4, '{"R": 5, "K": 13, "p": 0.6}'), 9, 0, 3, False, 'in'), 'aY': 3, 'hX': 2})
+== gM
+B4 (10, {'where': (('gM', 'flower', 6, '{"k": 11, "L": 4}'), 19, 1, 10, True, 'out'), 'hX': 10, 'hY': 11})
+aYmax (4, {'where': (('gM', 'pend', 101, '{"n": 19, "k": 4}'), 36, 1, 5, False, 'out'), 'aY': 4, 'hX': 3})
+B2 (3, {'where': (('gM', 'swiss', 55, '{"n": 385, "k": 10, "rad": 0.08, "drop": 0.0}'), 46, 1, 6, True, 'out'), 'cX': 4, 'cY': 7, 'aY': 3})
+B3 (3, {'where': (('gM', 'pend', 101, '{"n": 19, "k": 4}'), 36, 1, 5, False, 'out'), 'aY': 4, 'hX': 3})
