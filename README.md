@@ -8,7 +8,7 @@ model. The main claims are:
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
   $\tilde O(D)$ rounds (Theorem D, new, one referee pass and one adversarial pass; it needs a
-  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, not yet refereed), where only a
+  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, one referee pass with one gap being closed), where only a
   $(1-o(1))$-approximation was known in $\tilde O(D)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
@@ -49,8 +49,8 @@ Please read this before relying on anything here.
 - **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed.
   The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
   Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
-  computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; its
-  referee pass is pending.
+  computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; a referee
+  pass found it correct in substance with one gap, which is being closed.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -352,7 +352,9 @@ graph failed in about a third of the instances. Lemma R (`notes/GHAT_REPAIR.md`,
 defines the repaired graph formally and proves what Theorem D needs from it: the properties
 [18, Thm 3.1 (1), (2)], planarity with an explicit rotation at every copy, the diameter bound,
 and the local phase of [18, Lemma 3.17]. An independent implementation of its definition
-matched the tested graph on 98,000 instances. Lemma R has not had a referee pass yet. These failures may come from a misreading of [18] on our side.
+matched the tested graph on 98,000 instances. A referee pass found Lemma R correct in
+substance, with one serious gap: a description of the dual nodes that it cites from [18] is not
+stated there and needs its own proof. A revision is in progress. These failures may come from a misreading of [18] on our side.
 We have not checked whether they affect the approximate algorithm of [18].
 
 ## What is assumed

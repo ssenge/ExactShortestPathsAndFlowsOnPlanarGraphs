@@ -544,16 +544,19 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
   3 deg(v) + 1 copies of each vertex v and 3 deg + 2 at s and t, so O(n) vertices in all, and
   it is built in O(1) rounds once the incisions are stored. A CONGEST round on Ĝ_ℓ takes four
   rounds on G. Each level-ℓ node-part f is a path p̂(f) of E_R edges, these paths are
-  vertex-disjoint, and there is exactly one E_C edge for each edge of a level-ℓ annulus
-  (Lemma R (1), (2), replacing [18, Thm 3.1 (1), (2), Lemma 3.13] at s and t). Ĝ_ℓ has further E_C
+  vertex-disjoint, and, before the clean-up below, there is exactly one E_C edge for each edge
+  of a level-ℓ annulus (Lemma R (1), (2), replacing [18, Thm 3.1 (1), (2), Lemma 3.13] at s
+  and t). Ĝ_ℓ has further E_C
   edges, for dual edges outside every annulus ([18], adw26 1673-1675). The E_S edges join
   copies of one vertex.
 - **Embedding.** Table R of Lemma R gives the rotation at every copy. Each vertex computes
   the rotations of its copies in O(1) rounds from its own rotation, its incised edges, its
   neighbours' IDs and the endpoint data of s and t. Alternatively, run [15] on Ĝ_ℓ.
-- **Multigraph.** Ĝ_ℓ can have parallel E_C edges (at vertices of degree 2) and E_C self-loops
-  (at vertices of degree 1). Each host drops its self-loops and keeps the lighter of two
-  parallel E_C edges. This is local and keeps planarity, the diameter bound and all distances.
+- **Multigraph.** Ĝ_ℓ can have parallel E_C edges (at vertices of degree 2), E_C self-loops
+  (at vertices of degree 1), and, at a terminal of degree 1, an E_C edge D(c*)X(c*) parallel
+  to the E_S edge D(c*)X(c*) (Lemma R). Each host drops its self-loops and, of parallel edges
+  of any type, keeps the lightest. This is local and keeps planarity, the diameter bound and
+  all distances. A dropped E_C edge is a parallel dual edge and is in no tree.
 - **Weights.** 0 on both arcs of each E_R edge. On the E_C edge of an edge fg of a live
   level-ℓ annulus, K·c(e) + 1 in both directions, where e is the primal edge of fg and c(e) its
   capacity. M on both arcs of every other E_C edge (those outside the live annuli, including
@@ -610,7 +613,9 @@ SSSP step. The other steps still use [18]'s minor-aggregation simulation.
 load-bearing points (the bound on M, and E_C edges outside the annuli) and its minor points
 are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on the repaired
 Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above).
-Lemma R proves the needed properties of the repaired graph; its referee pass is pending. Negative
+Lemma R proves the needed properties of the repaired graph. Its referee pass (2026-10-29)
+found it correct in substance, with one serious gap: Fact N, the description of node-parts as
+pieces, is not stated in [18] and needs its own proof. A revision is in progress. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.

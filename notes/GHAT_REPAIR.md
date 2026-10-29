@@ -1,7 +1,10 @@
 # Lemma R: the repaired Ĝ_ℓ of Theorem D
 
-*Status (2026-10-29).* Proof written; no referee pass yet. Theorem D (NOTES.md §5) rests on
-it.
+*Status (2026-10-29).* Referee pass: correct in substance, no fatal finding. One serious gap:
+Fact N below is not stated in [18] and needs its own proof. Minor points: I_ℓ should be
+monotone; the host of an incised pair is not free; Table R wording at a degree-1 terminal; Rule
+M for edges that leave I_ℓ; R0 against the proof of (5). A revision is in progress. Theorem D
+(NOTES.md §5) rests on this lemma.
 
 Theorem D runs Theorem A on the graph Ĝ_ℓ of [18, Thm 3.1]. Read literally, the endpoint
 adjustment of [18, Remark 3.3] breaks [18, Thm 3.1 (1), (2)] at s and t (D1 to D3 under
