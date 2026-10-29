@@ -430,7 +430,7 @@ wins once D ≥ n^{o(1)}, i.e. beyond (log n)^{O(√log n)}.
 Directed min st-cut: run reachability in the residual graph, which is Theorem A with 0/1
 weights, in Õ(D). ∎
 
-### Theorem C′ (s, t on a common face: exact, Õ(D), w.h.p.)
+### Theorem C′ (s, t on a common face: exact, Õ(D))
 
 This is the proof of [9, Thm 1.3] with an exact directed dual SSSP plugged in. [9] already
 notes that Hassin works for directed graphs (adpw 2424-2427) and that exact distances give the
@@ -451,73 +451,126 @@ add a chord e = (t, s) with infinite capacity. It splits f into f₁ and f₂.
 This improves [9, Thm 1.3], which is (1−o(1))-approximate, undirected only, and runs in
 D·n^{o(1)}.
 
+*Determinism.* Every step is deterministic given a deterministic embedding of G. Ĝ needs face
+identifiers, which [18, Lemma 3.17] computes deterministically ([9, App. A] derandomizes its
+version through a cited result, adpw footnote 20). Ĝ has a local rotation ([9, App. A]), so
+Theorem A runs on it deterministically. The chord and the flow are local.
+
 ### Theorem D (exact minimum st-cut, undirected planar, Õ(D))
 
 Let G be an undirected planar network with integer capacities in {0, …, poly(n)} and terminals
 s, t. A CONGEST algorithm computes the value of a minimum st-cut, which is the maximum st-flow
 value, in Õ(D) rounds. Every vertex learns the value, its side of a minimum cut, and which of
-its edges cross it. The algorithm is deterministic, given the embedding algorithm of [15] (which
-[18] also uses). Before: exact Õ(D²) [9, Thm 1.2] (directed, so also undirected),
-min{Õ(D²), D·n^{o(1)}} by Theorem C, and (1−o(1))-approximate in Õ(D) [18, Thm 1.1].
-The flow assignment is not computed; for it, Theorem C remains the best bound.
+its edges cross it. The algorithm is deterministic, given a deterministic planar embedding of G
+([15], which [18] also uses; we could not read its full text).
+
+Before: exact Õ(D²) [9, Thm 1.2] (directed, so also undirected; randomized),
+min{Õ(D²), D·n^{o(1)}} by Theorem C, and (1−o(1))-approximate in Õ(D) [18, Thm 1.1]. [18]
+says three times that it is approximate only because no exact SSSP with Õ(D) rounds was
+available (adw26 271, 349, 664), so the implication is anticipated there. What is new is an
+exact SSSP that runs on all annuli of a level at once, which Theorem A does not do out of the
+box, since it is not a minor-aggregation algorithm. The flow assignment is not computed; for
+it, Theorem C remains the best bound.
 
 *Proof.* [18] implements Reif's algorithm: O(log n) levels of incisions in the dual, and on
-each level one SSSP computation per annulus, all annuli of the level at once. Its only access
-to SSSP is [18, Thm 4.1]: given a source node-part f_i in every level-ℓ annulus A_i, compute
-an SSSP tree T_i of A_i rooted at f_i such that
+each level O(1) rounds of SSSP computations with one source per annulus, all annuli of the
+level at once (Alg. 3, lines 2, 7, 8, 11). Its only access to SSSP is [18, Thm 4.1]: given a
+source node-part f_i in every level-ℓ annulus A_i, compute an SSSP tree T_i of A_i rooted at
+f_i such that
 1. every subpath of a tree path is approximately shortest (the approximate triangle
    inequality, [18, Def. A.1]);
 2. every vertex v ∈ p(g) knows the length of the f_i-to-g tree path;
 3. every vertex knows, for each incident edge e, which trees contain a copy of e* and the IDs
    of its ends there.
 
-[18] proves this with (1+ε)-approximate trees, through the minor-aggregation algorithm of its
-[34] simulated on annuli. Everything else in [18] is exact. Lemma 2.7 of [18] and its proof
-(Claim A.2) hold with ε = δ = 0: the uncrossing replaces subpaths by subpaths of exact
-shortest paths, so the P_i do not cross and are exact shortest p_i0-to-p_i1 paths. The cut
-read off in [18, Sec. 5.2] then has the minimum value, and the step that makes P_m simple
-loses nothing. So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do
-this on the graph Ĝ_ℓ of [18, Thm 3.1], as Lemma D does on Ĝ:
-- **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), has hop diameter at most 4D ([18, Lemma 3.4]),
-  has at most 3 deg(v) + 1 copies of each vertex v, and is built in O(1) rounds once the
-  incisions are stored ([18, Lemma 3.15]). A CONGEST round on Ĝ_ℓ takes four rounds on G
-  ([18, Lemma 3.16]). Each level-ℓ node-part f is a path p̂(f) of E_R edges, these paths are
-  vertex-disjoint, and there is one E_C edge between p̂(f) and p̂(g) for each edge fg of a
-  level-ℓ annulus and no other E_C edge ([18, Thm 3.1 (1)–(3)]). The E_S edges join copies of
-  one vertex.
-- **Embedding.** The proof of [18, Lemma 3.5] turns Ĝ_0 into Ĝ_ℓ by four steps that are local
-  at the copies of each incised edge, and Ĝ_0 inherits the embedding of G. So every vertex
-  of G computes the rotations of its copies. Alternatively, run [15] on Ĝ_ℓ.
-- **Weights.** 0 on both arcs of each E_R edge. On the E_C edge for the annulus edge fg,
-  K·c(e) + 1 in both directions, where e is the primal edge of fg, c(e) its capacity and
-  K = |V(Ĝ_ℓ)| + 1. M on both arcs of each E_S edge, with M > K·Σ_e c(e) + K. All weights
-  are integers of polynomial size.
-- **Distances.** Let x ∈ p̂(f) and y ∈ p̂(g) with f, g in one annulus A. Then
-  dist_{Ĝ_ℓ}(x, y) = min over f-to-g paths Q in A of K·c(Q) + |Q|. For ≤, lift Q: its edges
-  are E_C edges, and consecutive ones are joined along the zero-weight paths p̂(·). For ≥, a
-  walk shorter than M uses no E_S edge, so it stays in Ĝ_ℓ[E_R ∪ E_C]. Its E_R steps stay in
-  one p̂(·) at a time and its E_C steps are annulus edges, so it projects to a walk in A of the
-  same weight. Every candidate on the right is below M, so the bound M is never reached.
-  Writing d_K for this distance, the exact dual distance is ⌊d_K / K⌋, since |Q| < K.
-- **SSSP.** Add a virtual source σ with an arc of weight 0 to one copy on p̂(f_i), for every
-  annulus A_i. Every vertex y of Â_i has a candidate below M from its own source, and every
-  walk from another source uses an E_S edge, so dist(σ, y) = d_K(f_i, g) for y ∈ p̂(g).
-  Theorem A with a virtual source (Lemma V) computes these distances exactly in Õ(D) rounds on
-  Ĝ_ℓ, so in Õ(D) rounds on G.
+[18] proves this with (1+ε)-approximate trees. Outside Thm 4.1, ε enters only as slack: the
+loss per level in [18, Lemma 2.7], the division by 1+ε in [18, Sec. 5.2], and the step that
+makes P_m simple. With exact trees all three losses are zero, and the cut value is reported
+as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim A.2]:
+- Let P′ be a shortest p_j0-to-p_j1 path in the parent annulus, and a, b its first and last
+  vertices on P_i. P_i is a tree path, so P_i[a..b] is a shortest a-to-b path, and replacing
+  P′[a..b] by it does not increase the weight. p_j0 and p_j1 lie on one side of P_i, so the
+  new path touches P_i without crossing it and lies in the child annulus.
+- By induction over the levels, restricting to an annulus loses nothing, Claims 2.3 and 2.4
+  of [18] hold with "without loss of generality" in place of "forbidden", and the minimum over
+  the computed P_t is the minimum cut. Ties do no harm: only the existence of an equally short
+  non-crossing path is used. The computed P_i do not cross by construction, since each is a
+  tree path inside its own annulus, whose boundaries are earlier paths, and sibling annuli are
+  disjoint ([18, Claim 2.12]).
+
+So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do this on the graph
+Ĝ_ℓ of [18, Thm 3.1], as Lemma D does on Ĝ:
+- **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), its hop diameter is at most 4D + 4 ([18,
+  Lemma 3.4] bounds the distances between star centres; other copies are at most two hops from
+  their centre), it has at most 3 deg(v) + 1 copies of each vertex v, so O(n) vertices in all,
+  and it is built in O(1) rounds once the incisions are stored ([18, Lemma 3.15]). A CONGEST
+  round on Ĝ_ℓ takes four rounds on G ([18, Lemma 3.16]). Each level-ℓ node-part f is a path
+  p̂(f) of E_R edges, these paths are vertex-disjoint, and there is exactly one E_C edge for
+  each edge of a level-ℓ annulus ([18, Thm 3.1 (1), (2), Lemma 3.13]). Ĝ_ℓ has further E_C
+  edges, for dual edges outside every annulus ([18], adw26 1673-1675). The E_S edges join
+  copies of one vertex.
+- **Embedding.** Ĝ_0 has an explicit rotation at each copy, computed locally from the
+  embedding of G ([9], App. A). The proof of [18, Lemma 3.5] turns Ĝ_0 into Ĝ_ℓ by four steps,
+  each local at the copies of an incised edge or at s and t. In steps 2 and 3, the two
+  parallel subdivided E_R paths of an incised edge are placed in a fixed mirrored order at its
+  two ends, so every vertex of G computes the rotations of its copies. Alternatively, run [15]
+  on Ĝ_ℓ.
+- **Multigraph.** Ĝ_ℓ can have parallel E_C edges (at vertices of degree 2) and E_C self-loops
+  (at vertices of degree 1). Each host drops its self-loops and keeps the lighter of two
+  parallel E_C edges. This is local and keeps planarity, the diameter bound and all distances.
+- **Weights.** 0 on both arcs of each E_R edge. On the E_C edge of an edge fg of a live
+  level-ℓ annulus, K·c(e) + 1 in both directions, where e is the primal edge of fg and c(e) its
+  capacity. M on both arcs of every other E_C edge (those outside the live annuli, including
+  discarded parts) and of each E_S edge. Here K = 19n + 1 > |V(Ĝ_ℓ)| (since
+  Σ_v (3 deg(v) + 1) ≤ 6·(3n − 6) + n) and M = K·(2·Σ_e c(e) + 1) + 1. Σ_e c(e) is aggregated in
+  O(D) rounds. All weights are integers of polynomial size. A vertex knows which annulus each
+  of its copies lies in ([18, Lemma 3.17]) and whether that annulus is live ([18], the test
+  after Claim 5.8), so it sets these weights locally.
+- **Distances.** Let x ∈ p̂(f) and y ∈ p̂(g) with f, g in one live annulus A. Then
+  dist_{Ĝ_ℓ}(x, y) = d_K(f, g) := min over f-to-g paths Q in A of K·c(Q) + |Q|.
+  - Upper bound: lift Q. Its edges are E_C edges of A, and consecutive ones are joined along
+    the zero-weight paths p̂(·).
+  - The minimizer is simple, since every E_C weight is at least 1. Each primal edge has at most
+    two dual copies on one level ([18, Lemma 2.6]), so a simple Q has c(Q) ≤ 2·Σ_e c(e) and
+    |Q| < K, hence K·c(Q) + |Q| < M.
+  - Lower bound: a walk of weight below M uses only E_R edges and the E_C edges of live
+    annuli, so it stays inside one live annulus. Its E_R steps stay in one p̂(·) at a time and
+    its E_C steps are annulus edges, so it projects to a walk in A of the same weight.
+  - Since |Q| < K for the minimizer, ⌊d_K(f, g) / K⌋ is the exact dual distance, and Q is a
+    shortest path for c.
+- **SSSP.** Add a virtual source σ with offset 0 at the leader copy of p̂(f_i) ([18,
+  Lemma 3.17]) for every annulus A_i that has a source in this call, and offset M everywhere
+  else. By the distance bullet, every vertex y on p̂(g), with g in such an annulus, has
+  dist(σ, y) = d_K(f_i, g) < M. Every walk from another source, or from a vertex with offset M,
+  weighs at least M. Theorem A with a virtual source (Lemma V) computes these distances exactly
+  in Õ(D) rounds on Ĝ_ℓ, so in Õ(D) rounds on G. Copies in annuli without a source in this
+  call, and in parts outside the live annuli, see distances of at least M and take no part in
+  the next step.
 - **Tree.** All copies on p̂(g) have the same distance. Each node-part g ≠ f_i picks as parent
   the E_C edge into p̂(g) with d(x) + w(x, y) = d(y) and the smallest ID, by part-wise
-  aggregation over the paths p̂(·) ([18, Claim 3.30, Cor. 3.23], Õ(D)). Every E_C weight is
-  positive, so parents have strictly smaller distance and the choice is a tree. Tree paths are
-  shortest for the weights K·c + 1, hence shortest for c, so (1) holds with ratio 1. (2) is the
-  distance read on p̂(g), and (3) is the parent choice, known at the ends of each E_C edge.
+  aggregation over the paths p̂(·) ([18, Claim 3.30, Cor. 3.23], Õ(D)). Such an edge exists for
+  every g in A_i, since d(y) < M. Every E_C weight is positive, so parents have strictly
+  smaller distance and the choice is a tree. Tree paths are shortest for the weights K·c + 1,
+  hence shortest for c, so (1) holds with ratio 1. For (2), every v ∈ p(g) reads ⌊d / K⌋ on its
+  copy on p̂(g). For (3), the E_C edge is hosted by one vertex of G, which tells the other end
+  of the primal edge in one round; the node-part IDs come from [18, Lemma 3.17].
 
-Each level costs Õ(D), and there are O(log n) levels. ∎
+Each level makes O(1) calls of Õ(D) rounds, and there are O(log n) levels. All other steps
+of [18] (minor aggregation through [18, Thm 3.26], Lemmas 5.2 and 5.4 to 5.7, the bisection)
+are unchanged and take Õ(D) rounds. ∎
+
+*Determinism.* [18] is deterministic given the embedding ([18, Thm 1.1]). Theorem A is
+deterministic given an embedding of its input network, here Ĝ_ℓ, whose embedding is computed
+locally from that of G. So Theorem D is deterministic given a deterministic embedding of G.
 
 *Why [18] did not do this.* [18] runs approximate SSSP of its [34] on the annuli themselves,
 which may have large diameter, so it needs minor aggregation. Running one exact SSSP on all of
-Ĝ_ℓ with the weights above needs only CONGEST on a planar graph of diameter O(D).
+Ĝ_ℓ, with the weights above, needs only CONGEST on a planar graph of diameter O(D) for the
+SSSP step. The other steps still use [18]'s minor-aggregation simulation.
 
-*Status.* Unreviewed (2026-10-29). It rests on Theorem A and on [18].
+*Status.* Referee pass (2026-10-29): correct with gaps, no fatal or serious issue. Its two
+load-bearing points (the bound on M, and E_C edges outside the annuli) and its minor points
+are fixed above. An adversarial pass is running. It rests on Theorem A and on [18].
 
 ### Ratings and dependencies
 

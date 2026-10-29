@@ -7,7 +7,7 @@ model. The main claims are:
 - exact maximum st-flow in directed planar networks in $\min\lbrace\tilde O(D^2),\ D\cdot n^{o(1)}\rbrace$
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
-  $\tilde O(D)$ rounds (Theorem D, not yet reviewed), where only a $(1-o(1))$-approximation was
+  $\tilde O(D)$ rounds (Theorem D, new, one referee pass), where only a $(1-o(1))$-approximation was
   known in $\tilde O(D)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
@@ -45,11 +45,14 @@ Please read this before relying on anything here.
   - Lemma B5 has had its own referee pass, correct as written, and an adversarial pass on
     about 20.8 million instances, among them every instance with at most 7 vertices, with no
     counterexample.
-- **Theorem D** (2026-10-29) is new and has had no referee or adversarial pass yet.
+- **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed;
+  its adversarial pass is running.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding. [17] and [18] use the embedding algorithm of [15]
-  as deterministic; the full text of [15] was not accessible to us. Theorems B and C use [6] and hold with high probability. For Theorem C′ we
-  have not checked the other steps of [9].
+  as deterministic; the full text of [15] was not accessible to us. Theorems C′ and D are
+  deterministic in the same sense: their other steps are local, use face identifiers computed
+  deterministically in [18, Lemma 3.17], or are the deterministic algorithm of [18]. Theorems
+  B and C use [6] and hold with high probability.
 - Some steps use published results as black boxes; see [What is assumed](#what-is-assumed).
 
 ## Background
@@ -95,7 +98,7 @@ directed SSSP problem (even with non-negative weights)".
 | Theorem B: exact SSSP with negative weights, or a negative cycle | $D\cdot n^{o(1)}$ | $(\sqrt n+D+n^{2/5}D^{2/5})\cdot n^{o(1)}$ on general graphs [6] | modest |
 | Theorem C: exact maximum st-flow, directed | $\min\lbrace\tilde O(D^2),\ D\cdot n^{o(1)}\rbrace$ | $\tilde O(D^2)$ [9] | significant |
 | Theorem C′: the same with $s$, $t$ on a common face | $\tilde O(D)$ | approximate and undirected only [9], [18] | modest |
-| Theorem D: exact minimum st-cut (max-flow value), undirected; not yet reviewed | $\tilde O(D)$ | exact $\tilde O(D^2)$ [9]; $(1-o(1))$-approximate $\tilde O(D)$ [18] | modest to solid |
+| Theorem D: exact minimum st-cut (max-flow value), undirected; new | $\tilde O(D)$ | exact $\tilde O(D^2)$ [9]; $(1-o(1))$-approximate $\tilde O(D)$ [18] | modest to solid |
 | Lemma V: distances from a virtual source, and a fix of the query of [1] | $\tilde O(D/\varepsilon)$ | | minor |
 | Lemma D: the face-disjoint graph of [9], weighted, realizes dual distances | | | minor |
 | [1, Lemma 14] is false | | | modest |
@@ -117,7 +120,7 @@ and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ra
 - **Theorem C′** is the proof of [9, Thm 1.3] with an exact oracle plugged in.
 - **Theorem D** is optimal up to polylogarithmic factors for exact minimum st-cuts in
   undirected planar networks, which [18] leaves open for lack of exact SSSP. The proof puts
-  Theorem A into [18], with the weighting of Lemma D. It has not been reviewed yet.
+  Theorem A into [18], with the weighting of Lemma D. It has had one referee pass so far.
 - **The finding about [1, Lemma 14]** is a correctness gap in the main CONGEST result of an
   unrefereed preprint. The repair changes no bound.
 - **The finding about Property 6** removes the round bound of the main theorem of [1] as
@@ -285,7 +288,8 @@ where each step is a dual negative-cycle test, now done with Lemma D and Theorem
 cut follows from reachability in the residual graph, in $\tilde O(D)$.
 
 **Theorem C′.** If $s$ and $t$ lie on a common face, the maximum st-flow is computed exactly in
-$\tilde O(D)$ rounds with high probability, for directed networks. This is the method of [12]:
+$\tilde O(D)$ rounds for directed networks, deterministically given a planar embedding. This
+is the method of [12]:
 add a chord between $s$ and $t$ inside the face and compute one dual SSSP with nonnegative
 lengths. [9, Thm 1.3] gives a $(1-o(1))$-approximation for undirected networks in
 $D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $t$.
@@ -295,18 +299,19 @@ $D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $
 **Theorem D.** Let $G$ be an undirected planar network with integer capacities of polynomial
 size and terminals $s,t$. A CONGEST algorithm computes the value of a minimum st-cut, which is
 the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side and its cut
-edges. It is deterministic given the embedding algorithm of [15], as in [18]. This proof has
-not been reviewed yet.
+edges. It is deterministic given the embedding algorithm of [15], as in [18]. The proof has had
+one referee pass (correct with gaps, all fixed); its adversarial pass is running.
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
-levels of incisions in the dual, each with one SSSP per annulus. Its correctness argument
+levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
 [18, Lemma 2.7] holds unchanged with exact shortest paths, so only the SSSP step needs
 replacing. [18] runs approximate SSSP on each annulus through minor aggregation, because
-annuli can have large diameter. We instead run Theorem A once per level on the whole graph
-$\hat G_\ell$ of [18, Thm 3.1], which is planar, has hop diameter at most $4D$ and is simulated
-on $G$ with four rounds per round. Its weights are 0 on the paths that represent dual nodes,
-$K\cdot c(e)+1$ on the edges that represent dual edges, and a large $M$ on the star edges
-between copies of a vertex, from a virtual source with one zero-weight arc per annulus. As in
+annuli can have large diameter. We instead run Theorem A on the whole graph $\hat G_\ell$ of
+[18, Thm 3.1], which is planar, has hop diameter at most $4D+4$ and is simulated on $G$ with
+four rounds per round. Its weights are 0 on the paths that represent dual nodes,
+$K\cdot c(e)+1$ on the edges that represent dual edges of live annuli, and a large $M$ on all
+other dual edges and on the star edges between copies of a vertex, from a virtual source with
+one zero-weight arc per annulus. As in
 Lemma D, distances below $M$ are exact annulus distances, and the $+1$ breaks ties so that
 the parent choices form shortest-path trees. Details are in `notes/NOTES.md` §5.
 
@@ -443,8 +448,8 @@ plain-text extractions of [1] (arXiv v2) and [9].
   polylogarithmic overhead.
 - Is the component bound of Lemma B1(e) really $\Theta(\log^2 n)$? All runs stayed at
   depth + 1.
-- Theorem A is deterministic with region bags. Are Theorems B, C and C′? That needs
-  deterministic versions of [6] and of the remaining steps of [9].
+- Theorems A, C′ and D are deterministic given an embedding. Are Theorems B and C? That
+  needs a deterministic version of [6].
 - Can the realization step run in polynomial local time?
 - A maximum st-flow assignment in undirected planar networks in $\tilde O(D)$. Theorem D
   gives the value and a minimum cut; [18] asks for the assignment as well.
