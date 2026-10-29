@@ -1,0 +1,298 @@
+{
+ "args": [
+  "0",
+  "1500",
+  "11",
+  "touch_c",
+  "",
+  "grid,sparse",
+  "unit,zeros"
+ ],
+ "secs": 3,
+ "counts": {
+  "BAD_Pi_unreachable": 8,
+  "BAD_e2e_value": 8,
+  "BAD_exception": 1,
+  "BAD_leaf_unreachable": 4,
+  "LV_orphan_component": 7,
+  "LV_residual_components": 26,
+  "LV_residual_with_bad": 26,
+  "N3_pieces_refined": 33919,
+  "N_annuli_checked": 3190,
+  "N_nodeparts_checked": 32958,
+  "N_orphans_checked": 7,
+  "P_len_0": 279,
+  "P_len_1": 469,
+  "P_len_2": 409,
+  "P_len_3": 186,
+  "P_len_4": 79,
+  "P_len_5": 28,
+  "P_len_6": 24,
+  "P_len_7": 12,
+  "P_len_8": 4,
+  "P_len_9": 9,
+  "Pi_computed": 917,
+  "Qedges_new": 1203,
+  "Qedges_old": 175,
+  "case_ii_nodes": 396,
+  "case_iv_new_old": 8,
+  "case_iv_nodes": 65,
+  "case_iv_old_new": 6,
+  "case_iv_old_old": 51,
+  "child_discarded_overlap": 136,
+  "child_range_empty": 7,
+  "children": 1691,
+  "cov_X_deg3": 572,
+  "cov_e0_eq_elast_incised_RR": 1,
+  "cov_endpoint_edge_in_I_deg1": 93,
+  "cov_endpoint_edge_in_I_deg2": 235,
+  "cov_endpoint_edge_in_I_deg3": 209,
+  "cov_endpoint_edge_in_I_modeL": 277,
+  "cov_endpoint_edge_in_I_modeR": 260,
+  "cov_endpoint_edge_incised_anew": 452,
+  "defR_levels": 2412,
+  "e2e_checked": 1499,
+  "instances": 1499,
+  "leaf": 2265,
+  "levels": 2412,
+  "max_level_1": 756,
+  "max_level_2": 582,
+  "max_level_3": 153,
+  "max_level_4": 7,
+  "max_level_5": 1,
+  "orphan_side": 7,
+  "orphan_side_with_Pt_pair": 3,
+  "overlap": 136,
+  "policy_touch_c": 1500
+ },
+ "notes": [
+  [
+   "Pi_unreachable",
+   "(2, 3)",
+   {
+    "seed": 137,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 0)",
+   {
+    "seed": 137,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "exception",
+   "Traceback (most recent call last):\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 721, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 164, in run\n    pf = [M.np[x].face for x in pn]\n                                ^^\nTypeError: 'NoneType' object is not iterable\n",
+   {
+    "seed": 190,
+    "pol": "touch_c"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(76, 2)",
+   {
+    "seed": 310,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 1)",
+   {
+    "seed": 310,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(86, 2)",
+   {
+    "seed": 534,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 0)",
+   {
+    "seed": 534,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(198, 1)",
+   {
+    "seed": 793,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 1)",
+   {
+    "seed": 793,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "leaf_unreachable",
+   "(250, 1)",
+   {
+    "seed": 974,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "leaf_unreachable",
+   "(250, 2)",
+   {
+    "seed": 974,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "leaf_unreachable",
+   "(246, 0)",
+   {
+    "seed": 1033,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(277, 2)",
+   {
+    "seed": 1167,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 1)",
+   {
+    "seed": 1167,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "leaf_unreachable",
+   "(305, 2)",
+   {
+    "seed": 1292,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(338, 4)",
+   {
+    "seed": 1496,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 0)",
+   {
+    "seed": 1496,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(363, 2)",
+   {
+    "seed": 1373,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 0)",
+   {
+    "seed": 1373,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "Pi_unreachable",
+   "(336, 1)",
+   {
+    "seed": 1459,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "e2e_value",
+   "(inf, 0)",
+   {
+    "seed": 1459,
+    "pol": "touch_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ]
+ ]
+}

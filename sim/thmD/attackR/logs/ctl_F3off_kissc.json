@@ -1,0 +1,745 @@
+{
+ "args": [
+  "0",
+  "4000",
+  "8",
+  "kiss_c",
+  "F3off",
+  "grid,sparse,rand",
+  "unit,zeros,small"
+ ],
+ "secs": 6,
+ "counts": {
+  "BAD_F3_f_overlap_vs_bad": 1,
+  "BAD_N1_multi_seam_node_in_live_annulus": 6,
+  "BAD_N1_node_not_piece": 6,
+  "BAD_N2_annulus_spans_components": 8,
+  "BAD_child_not_one_component": 47,
+  "BAD_leaf_missing_piece": 18,
+  "BAD_leaf_unreachable": 2,
+  "F3_mismatch_c_ov1": 2,
+  "F3_mismatch_f_ov1": 1,
+  "F3off_child": 5685,
+  "F3off_child_would_be_discarded": 61,
+  "LV_orphan_component": 22,
+  "LV_residual_components": 80,
+  "LV_residual_with_bad": 80,
+  "N3_pieces_refined": 142488,
+  "N_annuli_checked": 9685,
+  "N_nodeparts_checked": 135838,
+  "N_orphans_checked": 22,
+  "P_len_0": 694,
+  "P_len_1": 1104,
+  "P_len_2": 1031,
+  "P_len_3": 511,
+  "P_len_4": 290,
+  "P_len_5": 137,
+  "P_len_6": 86,
+  "P_len_7": 58,
+  "P_len_8": 27,
+  "P_len_9": 62,
+  "Pi_computed": 3168,
+  "Qedges_new": 4870,
+  "Qedges_old": 1288,
+  "RuleM_X_tokens": 14117,
+  "RuleM_endpoint_edge_incised_anew": 5420,
+  "RuleM_tokens_incised_anew": 52940,
+  "case_ii_nodes": 2242,
+  "case_iv_new_new": 6,
+  "case_iv_new_old": 40,
+  "case_iv_nodes": 748,
+  "case_iv_old_new": 41,
+  "case_iv_old_old": 661,
+  "child_range_empty": 604,
+  "children": 5685,
+  "chord_copy_partial": 18,
+  "cov_X_deg3": 1820,
+  "cov_e0_eq_elast_incised_LL": 3,
+  "cov_e0_eq_elast_incised_RR": 5,
+  "cov_endpoint_edge_in_I_deg1": 394,
+  "cov_endpoint_edge_in_I_deg2": 490,
+  "cov_endpoint_edge_in_I_deg3": 865,
+  "cov_endpoint_edge_in_I_modeL": 886,
+  "cov_endpoint_edge_in_I_modeR": 863,
+  "cov_endpoint_edge_incised_anew": 1355,
+  "defR_levels": 7070,
+  "e2e_checked": 4000,
+  "inst_with_BAD": 62,
+  "instances": 4000,
+  "leaf": 6517,
+  "levels": 7070,
+  "max_level_1": 1798,
+  "max_level_2": 1485,
+  "max_level_3": 579,
+  "max_level_4": 125,
+  "max_level_5": 13,
+  "orphan_range": 22,
+  "orphan_range_with_Pt_pair": 17,
+  "overlap": 692,
+  "overlap_full_only": 44,
+  "pick_fallback_bfs": 305,
+  "policy_kiss_c": 4000
+ },
+ "notes": [
+  [
+   "child_not_one_component",
+   "(120, 'l', 0)",
+   {
+    "seed": 112,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N2_annulus_spans_components",
+   "(3, 151, 2)",
+   {
+    "seed": 58,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_unreachable",
+   "(151, 2)",
+   {
+    "seed": 58,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(59, 2)",
+   {
+    "seed": 267,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "N1_multi_seam_node_in_live_annulus",
+   "(3, 208, [('H', 81), ('H', 72), ('S', frozenset({('Q', 205)})), ('H', 71), ('H', 82), ('S', frozenset({('Q', 207)}))])",
+   {
+    "seed": 522,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N1_node_not_piece",
+   "(3, 208, 0, ((49, 2), (47, 1), (4, 2), (8, 1)), False)",
+   {
+    "seed": 522,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N2_annulus_spans_components",
+   "(3, 208, 2)",
+   {
+    "seed": 522,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N1_multi_seam_node_in_live_annulus",
+   "(3, 234, [('H', 111), ('H', 17), ('H', 23), ('H', 27), ('H', 29), ('H', 30), ('H', 64), ('H', 24), ('H', 21), ('H', 22), ('H', 18), ('H', 106), ('S', frozenset({('Q', 231)})), ('H', 105), ('H', 26), ('H', 112), ('S', frozenset({('Q', 233)}))])",
+   {
+    "seed": 532,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N1_node_not_piece",
+   "(3, 234, 3, ((39, 2), (25, 0), (4, 1), (8, 2), (16, 0), (22, 0), (26, 0), (28, 0), (29, 0), (63, 0), (23, 0), (20, 0), (21, 0), (17, 0), (34, 1)), False)",
+   {
+    "seed": 532,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N2_annulus_spans_components",
+   "(3, 234, 2)",
+   {
+    "seed": 532,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(234, 1)",
+   {
+    "seed": 532,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(72, 'l', 0)",
+   {
+    "seed": 337,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(135, 'l', 0)",
+   {
+    "seed": 359,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(201, 'l', 0)",
+   {
+    "seed": 580,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(203, 2)",
+   {
+    "seed": 580,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(121, 4)",
+   {
+    "seed": 427,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(171, 'r', 0)",
+   {
+    "seed": 635,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(344, 1)",
+   {
+    "seed": 835,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "rand"
+   }
+  ],
+  [
+   "info_F3_c_mismatch",
+   "(360, 'l', True, False)",
+   {
+    "seed": 842,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(22, 1)",
+   {
+    "seed": 442,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(133, 'r', 0)",
+   {
+    "seed": 481,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far1"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(135, 'l', 0)",
+   {
+    "seed": 481,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far1"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(300, 'r', 0)",
+   {
+    "seed": 1430,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(444, 2)",
+   {
+    "seed": 1556,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(601, 1)",
+   {
+    "seed": 1680,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(466, 'l', 0)",
+   {
+    "seed": 1623,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(521, 2)",
+   {
+    "seed": 1960,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(535, 'r', 0)",
+   {
+    "seed": 1809,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(656, 2)",
+   {
+    "seed": 1852,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(676, 5)",
+   {
+    "seed": 1858,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N1_multi_seam_node_in_live_annulus",
+   "(3, 562, [('H', 133), ('H', 7), ('H', 8), ('H', 29), ('H', 30), ('H', 128), ('S', frozenset({('Q', 559)})), ('H', 127), ('H', 134), ('S', frozenset({('Q', 561)}))])",
+   {
+    "seed": 1889,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N1_node_not_piece",
+   "(3, 562, 0, ((42, 2), (60, 1), (3, 2), (6, 0), (7, 0), (28, 0), (29, 0), (0, 1)), False)",
+   {
+    "seed": 1889,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N2_annulus_spans_components",
+   "(3, 562, 2)",
+   {
+    "seed": 1889,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(352, 'l', 0)",
+   {
+    "seed": 2061,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(410, 'l', 0)",
+   {
+    "seed": 2083,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N1_multi_seam_node_in_live_annulus",
+   "(3, 739, [('H', 93), ('H', 58), ('H', 56), ('H', 40), ('H', 80), ('S', frozenset({('Q', 736)})), ('H', 79), ('H', 9), ('H', 94), ('S', frozenset({('Q', 738)}))])",
+   {
+    "seed": 2108,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "N1_node_not_piece",
+   "(3, 739, 0, ((4, 2), (8, 0), (12, 1), (59, 2), (57, 0), (55, 0), (39, 0), (21, 1)), False)",
+   {
+    "seed": 2108,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "N2_annulus_spans_components",
+   "(3, 739, 2)",
+   {
+    "seed": 2108,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(817, 'r', 0)",
+   {
+    "seed": 2141,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(818, 'l', 0)",
+   {
+    "seed": 2141,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(574, 'r', 0)",
+   {
+    "seed": 2171,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(575, 'l', 0)",
+   {
+    "seed": 2171,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(597, 'l', 0)",
+   {
+    "seed": 2177,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(722, 'r', 0)",
+   {
+    "seed": 2226,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(728, 'r', 0)",
+   {
+    "seed": 2227,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(609, 'r', 0)",
+   {
+    "seed": 2310,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(661, 'l', 0)",
+   {
+    "seed": 2333,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(875, 'l', 0)",
+   {
+    "seed": 2290,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(728, 'l', 0)",
+   {
+    "seed": 2425,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(734, 'r', 0)",
+   {
+    "seed": 2426,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(741, 'l', 0)",
+   {
+    "seed": 2427,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "leaf_missing_piece",
+   "(866, 3)",
+   {
+    "seed": 2477,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(524, 'r', 0)",
+   {
+    "seed": 2563,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(525, 'l', 0)",
+   {
+    "seed": 2563,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(936, 'r', 0)",
+   {
+    "seed": 2628,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(937, 'l', 0)",
+   {
+    "seed": 2628,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(954, 'r', 0)",
+   {
+    "seed": 2633,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(955, 'l', 0)",
+   {
+    "seed": 2633,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(983, 'l', 0)",
+   {
+    "seed": 2644,
+    "pol": "kiss_c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(999, 'l', 0)",
+   {
+    "seed": 2648,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "rand"
+   }
+  ]
+ ]
+}

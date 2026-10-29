@@ -1,0 +1,25 @@
+{"seed": 453407, "n": 5, "m": 18, "lam": 2126990, "mine": 3148041, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 12}, "first_iv_value": null}
+{"seed": 183997, "n": 6, "m": 21, "lam": 1355794, "mine": 2680535, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 12}, "first_iv_value": null}
+{"seed": 522628, "n": 6, "m": 21, "lam": 1074449, "mine": 1674093, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 12}, "first_iv_value": null}
+{"seed": 407155, "n": 10, "m": 25, "lam": 716737, "mine": 719281, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 2}, "first_iv_value": null}
+{"seed": 884688, "n": 10, "m": 25, "lam": 1943853, "mine": 1998160, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 3}, "first_iv_value": null}
+{"seed": 615392, "n": 11, "m": 27, "lam": 722070, "mine": 726304, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 9}, "first_iv_value": null}
+{"seed": 316434, "n": 8, "m": 29, "lam": 974166, "mine": 1146844, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 3}, "first_iv_value": null}
+{"seed": 600149, "n": 8, "m": 29, "lam": 2926040, "mine": 2930347, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 6}, "first_iv_value": null}
+{"seed": 304061, "n": 10, "m": 29, "lam": 1797851, "mine": 2051728, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 10}, "first_iv_value": null}
+{"seed": 908334, "n": 10, "m": 29, "lam": 940762, "mine": 1248738, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 4}, "first_iv_value": null}
+{"seed": 111934, "n": 11, "m": 32, "lam": 2802191, "mine": 3793499, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 2}, "first_iv_value": null}
+{"seed": 784040, "n": 11, "m": 32, "lam": 2425645, "mine": 3036395, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 10}, "first_iv_value": null}
+{"seed": 152616, "n": 9, "m": 33, "lam": 2184258, "mine": 2740090, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 10}, "first_iv_value": null}
+{"seed": 707594, "n": 9, "m": 33, "lam": 2486816, "mine": 2754551, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 9}, "first_iv_value": null}
+{"seed": 157796, "n": 12, "m": 35, "lam": 846293, "mine": 1065765, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 10}, "first_iv_value": null}
+{"seed": 400421, "n": 12, "m": 35, "lam": 2926992, "mine": 2998860, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 3}, "first_iv_value": null}
+{"seed": 426880, "n": 12, "m": 35, "lam": 1901756, "mine": 2356866, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 8}, "first_iv_value": null}
+{"seed": 900584, "n": 12, "m": 35, "lam": 2761251, "mine": 3778616, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 11}, "first_iv_value": null}
+{"seed": 39132, "n": 10, "m": 37, "lam": 2250305, "mine": 2703673, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 9}, "first_iv_value": null}
+{"seed": 76234, "n": 10, "m": 37, "lam": 1975545, "mine": 2998327, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 10}, "first_iv_value": null}
+{"seed": 482726, "n": 13, "m": 29, "lam": 2288127, "mine": 2640387, "author_flags": {"runs": 12}, "first_iv_value": null}
+{"seed": 641981, "n": 22, "m": 42, "lam": 1424594, "mine": 1577813, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 3}, "first_iv_value": null}
+{"seed": 821116, "n": 20, "m": 43, "lam": 2218290, "mine": 2275429, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 2}, "first_iv_value": null}
+{"seed": 726193, "n": 22, "m": 44, "lam": 2313878, "mine": 2590473, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 9}, "first_iv_value": null}
+{"seed": 977856, "n": 22, "m": 48, "lam": 3384766, "mine": 3442184, "author_flags": {"runs": 12, "dev_mirrored_endpoint": 4}, "first_iv_value": null}

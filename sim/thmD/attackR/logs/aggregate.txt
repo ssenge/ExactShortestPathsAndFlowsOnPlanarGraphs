@@ -1,0 +1,73 @@
+deep_A_mix_default {'args': ['100000', '60000', '10', 'mix', '', '', ''], 'secs': 37, 'instances': 60000, 'levels': 120437, 'bad': {'BAD_e2e_value': 2}}
+deep_B_big_default {'args': ['200000', '30000', '10', 'mix', '', 'big,biggrid', ''], 'secs': 45, 'instances': 30000, 'levels': 63348, 'bad': {'BAD_e2e_value': 1}}
+deep_C_litchord {'args': ['300000', '40000', '10', 'mix', 'lit_chord', '', ''], 'secs': 30, 'instances': 40000, 'levels': 80119, 'bad': {'BAD_F3_f_overlap_vs_bad': 1}}
+deep_D_litfull {'args': ['400000', '40000', '10', 'mix', 'lit_full', '', ''], 'secs': 28, 'instances': 40000, 'levels': 79462, 'bad': {'BAD_e2e_value': 1}}
+deep_E_kissc {'args': ['500000', '40000', '10', 'kiss_c', '', 'grid,sparse,rand,biggrid', 'unit,zeros,small'], 'secs': 24, 'instances': 40000, 'levels': 72015, 'bad': {}}
+deep_F_kissc_lit {'args': ['600000', '30000', '10', 'kiss_c', 'lit_chord', 'grid,sparse,rand,biggrid', 'unit,zeros,small'], 'secs': 18, 'instances': 30000, 'levels': 54173, 'bad': {}}
+e2e_gen_kiss {'args': ['1000000', '150000', '10', 'kiss', '', '', 'generic,generic0'], 'secs': 96, 'instances': 150000, 'levels': 305604, 'bad': {'BAD_e2e_value': 1, 'BAD_e2e_value_unique_paths': 1}}
+e2e_gen_touch {'args': ['1000000', '150000', '10', 'touch', '', '', 'generic,generic0'], 'secs': 91, 'instances': 150000, 'levels': 305599, 'bad': {'BAD_e2e_value': 1, 'BAD_e2e_value_unique_paths': 1}}
+e2e_gen_random {'args': ['1000000', '150000', '10', 'random', '', '', 'generic,generic0'], 'secs': 113, 'instances': 150000, 'levels': 305611, 'bad': {'BAD_e2e_value': 1, 'BAD_e2e_value_unique_paths': 1}}
+e2e_gen_avoid {'args': ['1000000', '150000', '10', 'avoid', '', '', 'generic,generic0'], 'secs': 114, 'instances': 150000, 'levels': 305623, 'bad': {'BAD_e2e_value': 1, 'BAD_e2e_value_unique_paths': 1}}
+e2e_tie_kiss {'args': ['2000000', '150000', '10', 'kiss', '', '', 'unit,small,zeros'], 'secs': 111, 'instances': 150000, 'levels': 295715, 'bad': {'BAD_e2e_value': 1, 'BAD_e2e_value_unique_paths': 1}}
+search_e2e_n4_12 {'args': ['0', '1000000', '11', '4', '12'], 'secs': 544, 'instances': 1000000, 'levels': 2491059, 'bad': {'BAD_e2e_value': 40, 'BAD_e2e_value_unique_paths': 40}}
+search_simple {'args': ['0', '1500000', '10', '4', '22'], 'secs': 819, 'instances': 1500000, 'levels': 3132819, 'bad': {'BAD_e2e_value': 5, 'BAD_e2e_value_unique_paths': 5}}
+sssp_mix {'args': ['3000000', '30000', '8', 'mix', ''], 'secs': 32, 'instances': 30000, 'levels': 60112, 'bad': {}}
+ctl_none {'args': ['0', '2000', '8', 'mix', ''], 'secs': 4, 'instances': 2000, 'levels': 3973, 'bad': {}}
+TOTAL
+  instances 3522000
+  levels 7675669
+  defR_levels 7675669
+  N_annuli_checked 10689980
+  N_nodeparts_checked 163263969
+  N_orphans_checked 41201
+  N3_pieces_refined 174776779
+  RuleM_tokens_incised_anew 68296880
+  RuleM_endpoint_edge_incised_anew 8400492
+  RuleM_X_tokens 15330451
+  Pi_computed 4284343
+  leaf 6405637
+  children 7167980
+  overlap 1358269
+  overlap_full_only 83941
+  child_discarded_overlap 1327552
+  child_range_empty 41395
+  orphan_range 41395
+  orphan_ov 3
+  orphan_range_with_Pt_pair 29991
+  i12_outside_range 0
+  case_ii_nodes 3564742
+  case_iv_nodes 1443222
+  case_iv_old_old 1290440
+  case_iv_old_new 73818
+  case_iv_new_old 73933
+  case_iv_new_new 5031
+  Qedges_new 6713921
+  Qedges_old 2578386
+  cov_endpoint_edge_in_I_modeL 1561344
+  cov_endpoint_edge_in_I_modeR 1545296
+  cov_endpoint_edge_in_I_deg1 675927
+  cov_endpoint_edge_in_I_deg2 679447
+  cov_endpoint_edge_in_I_deg3 1751266
+  cov_endpoint_edge_incised_anew 2100131
+  cov_e0_eq_elast_incised_LL 2999
+  cov_e0_eq_elast_incised_RR 2994
+  cov_X_deg3 3164523
+  LV_residual_components 222800
+  LV_residual_with_bad 222215
+  LV_residual_with_full_bad_only 585
+  LV_orphan_component 41201
+  F3_mismatch_c_ov1 4
+  F3_mismatch_f_ov1 1
+  e2e_checked 3522000
+  e2e_all_paths_unique 3017733
+  sssp_levels 60112
+  sssp_nodeparts_checked 1505354
+  pick_fallback_bfs 11626
+  max_level_1 1001170
+  max_level_2 1240150
+  max_level_3 961000
+  max_level_4 287666
+  max_level_5 31551
+  max_level_6 461
+  max_level_7 2
+  BAD {'BAD_e2e_value': 54, 'BAD_F3_f_overlap_vs_bad': 1, 'BAD_e2e_value_unique_paths': 50}

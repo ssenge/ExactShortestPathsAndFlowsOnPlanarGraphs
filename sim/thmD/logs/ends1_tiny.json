@@ -1,0 +1,45 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "random",
+  "pairs": 1,
+  "pcommon": 0.5,
+  "pfar": 0.5,
+  "e0rule": "formal",
+  "ends": 1
+ },
+ "start": 500000,
+ "count": 300000,
+ "runs": 1,
+ "families": {
+  "delaunay": 37520,
+  "wheel": 37247,
+  "rings": 37470,
+  "messy": 37407,
+  "tree_plus": 37884,
+  "nested": 37344,
+  "grid": 37446,
+  "cycle_chords": 37682
+ },
+ "family_fail": {},
+ "flag_instances": {
+  "levels=1": 200479,
+  "levels=2": 71246,
+  "stat_end_computed": 91896,
+  "dev_mirrored_endpoint": 59866,
+  "levels=3": 26096,
+  "stat_overlap": 16025,
+  "stat_i12_outside": 11809,
+  "stat_e0_same": 8471,
+  "xa_cross_same_annulus": 824,
+  "stat_Plen>=8": 642,
+  "levels=4": 2166,
+  "xb_cross_nonincised_part": 590,
+  "stat_child_range_empty": 319,
+  "levels=5": 13
+ },
+ "nfail": 0,
+ "secs": 636.2936718463898,
+ "fails": []
+}

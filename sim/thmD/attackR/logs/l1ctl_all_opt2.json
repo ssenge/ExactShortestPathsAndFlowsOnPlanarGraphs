@@ -1,0 +1,38 @@
+{
+ "args": [
+  "9",
+  "5",
+  "3",
+  "8",
+  "9",
+  "all_opt2"
+ ],
+ "secs": 2,
+ "maps": 71,
+ "counts": {
+  "N_level1_checked": 15786,
+  "P3_checked": 45430,
+  "P_paths": 10794,
+  "abs_level1_compared": 15786,
+  "corner_pairs": 15786,
+  "cov_EC_selfloop": 28424,
+  "cov_X_deg3": 7072,
+  "cov_deg1_terminal": 4428,
+  "cov_e0_both_darts_p0": 22912,
+  "cov_e0_eq_elast": 7072,
+  "cov_m0": 3894,
+  "cov_maps_with_2gon": 39,
+  "cov_maps_with_bridge": 56,
+  "cov_several_corners_s": 1888,
+  "cov_st_common_face": 2976,
+  "defR_built": 45430,
+  "dist_checked": 45430,
+  "maps": 71,
+  "mode_LL": 11850,
+  "mode_LR": 10863,
+  "mode_RL": 10863,
+  "mode_RR": 11854,
+  "reduction_checked": 15786
+ },
+ "notes": []
+}

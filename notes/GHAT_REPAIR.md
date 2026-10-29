@@ -1,7 +1,12 @@
 # Lemma R: the repaired Ĝ_ℓ of Theorem D
 
 *Status (2026-10-29).* Referee pass (2026-10-29): correct in substance; one serious gap (Fact N)
-and the minor points, all addressed in this revision; adversarial pass pending.
+and the minor points, all addressed in this revision. Adversarial pass (2026-10-29,
+sim/thmD/attackR, an independent implementation): no counterexample to Lemma R or Lemma N in
+6.9 million exhaustive level-1 corner pairs, 1.3 million Table R builds and 3.5 million
+recursion instances (7.7 million levels). It found two wording faults, fixed below (F3 and the
+residual sides in (2)), and a defect in the recursion of [18] one step after this lemma, which
+RECURSION.md repairs.
 
 Theorem D (NOTES.md §5) rests on this lemma. It runs Theorem A on the graph Ĝ_ℓ of [18, Thm
 3.1]. Read literally, the endpoint adjustment of [18, Remark 3.3] breaks [18, Thm 3.1 (1), (2)]
@@ -156,10 +161,14 @@ resulting subgraphs are discarded.
   edge gets one copy on each side. An endpoint of P_i′ whose edge on P_i′ is newly incised
   splits into two runs that share only that edge; any other endpoint does not change. An
   internal node of P_i′ that an earlier incision split lies on P_a or on P_b.
-- **F3** ([18, Claim 5.8]). A resulting subgraph is discarded if and only if it contains an
-  edge of P_a (or P_b) that is not on P_i and is incident to a node of P_i ∩ P_a (or
-  P_i ∩ P_b). The other resulting subgraphs are the annuli of level ℓ. Discarded subgraphs
-  are never incised again.
+- **F3** ([18, Claim 5.8; Alg. 3, lines 9 to 19]). A resulting subgraph is discarded if it
+  contains an edge of P_a (or P_b) that is not on P_i and is incident to a node of P_i ∩ P_a
+  (or P_i ∩ P_b), a bad edge. Two kinds of side get no call either: a side on which P_i meets
+  P_a or P_b (the overlap rule of lines 9 to 14), and a side whose index range is empty. The
+  remaining subgraphs are the annuli of level ℓ. None of these others is incised again.
+  [18, Claim 5.8] states the first sentence as "if and only if", but the converse fails: a side
+  can overlap P_a without a bad edge (sim/thmD/attackR, seed 308940). Only the direction stated
+  here is used below.
 - **F4** ([18, Claim 2.12]). Every annulus is connected.
 - **F5** ([18, Lemma 2.6]). An edge is incised at most once. So R1 gives at most four tokens
   per edge.
@@ -290,10 +299,10 @@ The repaired Ĝ_ℓ of Definition R has the following properties.
    each dual edge of a level-ℓ annulus has exactly one E_C edge, and it joins the paths of its
    two ends. *Outside the annuli:* every other E_C edge belongs to a pair whose two tokens lie
    in residual pieces, that is, to an edge of a residual component of G*_ℓ. The residual
-   components are the leaves and discarded subgraphs of earlier levels and the subgraphs
-   discarded at this level ([18, Claim 5.8, Cor. 2.11]). A discarded node-part of [18] can
-   consist of two pieces (S_out in case (iv) of Lemma N). No E_C edge joins an annulus to a
-   residual piece or to another annulus. An E_C edge is a self-loop only if its host has
+   components are the leaves and discarded subgraphs of earlier levels, the subgraphs
+   discarded at this level ([18, Claim 5.8, Cor. 2.11]), and the sides that get no call (F3).
+   A discarded node-part of [18] can consist of two pieces (S_out in case (iv) of Lemma N).
+   No E_C edge joins an annulus to a residual piece or to another annulus. An E_C edge is a self-loop only if its host has
    degree 1 and neither token of its pair moved there. It is then a dual self-loop.
 3. *([18, Lemma 3.5].)* Ĝ_ℓ is planar. Table R below gives a planar rotation at every copy.
    X(c*) sits in the corner c* that it cuts. Each vertex v of G computes the rotations of its
@@ -668,8 +677,8 @@ local rule M was checked.
 #### Points of doubt
 
 - Lemma N rests on F1 to F5. F2 is taken from the proof of [18, Claim 2.10], not from a
-  numbered statement, and F3 is [18, Claim 5.8] as stated. Both concern one generic incision
-  step inside an annulus, away from the endpoint cut. Level 1, the token translation, and the
+  numbered statement, and F3 is one direction of [18, Claim 5.8]. Both concern one generic
+  incision step inside an annulus, away from the endpoint cut. Level 1, the token translation, and the
   cases at linear nodes are proved here.
 - The planarity proof of H⁺ (step A) describes the drawing in words, sector by sector, not in
   coordinates. Table R was read off that drawing. Its correctness is also checked by Euler's

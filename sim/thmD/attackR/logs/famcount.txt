@@ -1,0 +1,11 @@
+deep_A_mix_default {'rand': 30239, 'grid': 9890, 'dense': 9964, 'sparse': 9907}
+deep_B_big_default {'big': 15022, 'biggrid': 14978}
+deep_C_litchord {'dense': 6752, 'rand': 19895, 'grid': 6723, 'sparse': 6630}
+deep_D_litfull {'rand': 19977, 'grid': 6765, 'sparse': 6674, 'dense': 6584}
+deep_E_kissc {'grid': 10011, 'biggrid': 10017, 'rand': 10082, 'sparse': 9890}
+deep_F_kissc_lit {'rand': 7559, 'biggrid': 7548, 'sparse': 7415, 'grid': 7478}
+e2e_gen (x4 policies) {'rand': 75061, 'sparse': 25054, 'grid': 24865, 'dense': 25020}
+e2e_tie_kiss {'sparse': 24956, 'rand': 74724, 'dense': 25116, 'grid': 25204}
+sssp_mix {'grid': 4951, 'rand': 15070, 'dense': 4968, 'sparse': 5011}
+search_simple {'simple_map': 1199792, 'grid (simple)': 300208}
+TOTAL {'rand': 477790, 'grid': 170482, 'dense': 153464, 'sparse': 170699, 'big': 15022, 'biggrid': 32543, 'simple_map': 1199792, 'grid (simple)': 300208, 'random_map (multigraph search, n 4..12)': 1000000}

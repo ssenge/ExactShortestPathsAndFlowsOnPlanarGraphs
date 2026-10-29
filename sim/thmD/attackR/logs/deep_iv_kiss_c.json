@@ -1,0 +1,93 @@
+{
+ "args": [
+  "0",
+  "1500",
+  "11",
+  "kiss_c",
+  "",
+  "grid,sparse,rand",
+  "unit,zeros,small"
+ ],
+ "secs": 4,
+ "counts": {
+  "BAD_F3_overlap_vs_bad": 1,
+  "BAD_LV_residual_without_bad_edge": 1,
+  "LV_orphan_component": 8,
+  "LV_residual_components": 56,
+  "LV_residual_with_bad": 55,
+  "N3_pieces_refined": 53958,
+  "N_annuli_checked": 3623,
+  "N_nodeparts_checked": 51254,
+  "N_orphans_checked": 8,
+  "P_len_0": 224,
+  "P_len_1": 435,
+  "P_len_2": 394,
+  "P_len_3": 205,
+  "P_len_4": 106,
+  "P_len_5": 48,
+  "P_len_6": 24,
+  "P_len_7": 28,
+  "P_len_8": 8,
+  "P_len_9": 28,
+  "Pi_computed": 1182,
+  "Qedges_new": 1854,
+  "Qedges_old": 433,
+  "case_ii_nodes": 848,
+  "case_iv_new_new": 2,
+  "case_iv_new_old": 18,
+  "case_iv_nodes": 257,
+  "case_iv_old_new": 14,
+  "case_iv_old_old": 223,
+  "child_discarded_overlap": 233,
+  "child_range_empty": 8,
+  "children": 2123,
+  "cov_X_deg3": 695,
+  "cov_e0_eq_elast_incised_LL": 1,
+  "cov_e0_eq_elast_incised_RR": 1,
+  "cov_endpoint_edge_in_I_deg1": 137,
+  "cov_endpoint_edge_in_I_deg2": 186,
+  "cov_endpoint_edge_in_I_deg3": 343,
+  "cov_endpoint_edge_in_I_modeL": 337,
+  "cov_endpoint_edge_in_I_modeR": 329,
+  "cov_endpoint_edge_incised_anew": 525,
+  "defR_levels": 2652,
+  "e2e_checked": 1500,
+  "instances": 1500,
+  "leaf": 2441,
+  "levels": 2652,
+  "max_level_1": 659,
+  "max_level_2": 582,
+  "max_level_3": 210,
+  "max_level_4": 46,
+  "max_level_5": 3,
+  "orphan_side": 8,
+  "orphan_side_with_Pt_pair": 5,
+  "overlap": 233,
+  "pick_fallback_bfs": 111,
+  "policy_kiss_c": 1500
+ },
+ "notes": [
+  [
+   "F3_overlap_vs_bad",
+   "(172, 'l', True, False)",
+   {
+    "seed": 842,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(3, 172, 1, 3, 10, [('f', 3), ('f', 4), ('p', 0, 0), ('p', 0, 1), ('p', 1, 0), ('p', 1, 1)], True)",
+   {
+    "seed": 842,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ]
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "args": [
+  "9",
+  "8",
+  "3",
+  "9",
+  "4",
+  ""
+ ],
+ "secs": 882,
+ "maps": 9140,
+ "counts": {
+  "N_level1_checked": 6947350,
+  "P3_checked": 19211301,
+  "P_paths": 4560651,
+  "abs_level1_compared": 6947350,
+  "corner_pairs": 6947350,
+  "cov_EC_selfloop": 15353892,
+  "cov_X_deg3": 1531472,
+  "cov_deg1_terminal": 1705787,
+  "cov_e0_both_darts_p0": 8483902,
+  "cov_e0_eq_elast": 1531472,
+  "cov_m0": 1063554,
+  "cov_maps_with_2gon": 6301,
+  "cov_maps_with_bridge": 8601,
+  "cov_several_corners_s": 878388,
+  "cov_st_common_face": 811566,
+  "defR_built": 19211301,
+  "dist_checked": 19211301,
+  "maps": 9140,
+  "mode_LL": 4930513,
+  "mode_LR": 4675184,
+  "mode_RL": 4675252,
+  "mode_RR": 4930352,
+  "reduction_checked": 6947350
+ },
+ "notes": []
+}

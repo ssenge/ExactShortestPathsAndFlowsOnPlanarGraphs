@@ -1,0 +1,5 @@
+{"seed": 482726, "n": 13, "m": 29, "choices": 76, "failing": 8, "variants": {"clamp:miss": 8, "driver:miss": 8, "lit_chord:miss": 8, "lit_full:miss": 8}}
+{"seed": 641981, "n": 22, "m": 42, "choices": 30, "failing": 8, "variants": {"clamp:miss": 8, "driver:miss": 8, "lit_chord:miss": 8, "lit_full:miss": 8}}
+{"seed": 821116, "n": 20, "m": 43, "choices": 63, "failing": 2, "variants": {"clamp:miss": 2, "driver:miss": 2, "lit_chord:miss": 2, "lit_full:miss": 2}}
+{"seed": 726193, "n": 22, "m": 44, "choices": 123, "failing": 3, "variants": {"clamp:miss": 3, "driver:miss": 3, "lit_chord:miss": 3, "lit_full:miss": 3}}
+{"seed": 977856, "n": 22, "m": 48, "choices": 123, "failing": 2, "variants": {"clamp:miss": 2, "driver:miss": 2, "lit_chord:miss": 2, "lit_full:miss": 2}}

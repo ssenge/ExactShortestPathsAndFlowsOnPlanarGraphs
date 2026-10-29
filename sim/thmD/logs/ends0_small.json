@@ -1,0 +1,175 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "random",
+  "pairs": 1,
+  "pcommon": 0.5,
+  "pfar": 0.3,
+  "e0rule": "formal",
+  "ends": 0
+ },
+ "start": 200000,
+ "count": 300000,
+ "runs": 1,
+ "families": {
+  "wheel": 37508,
+  "tree_plus": 37248,
+  "delaunay": 37502,
+  "cycle_chords": 37506,
+  "messy": 37742,
+  "nested": 37564,
+  "grid": 37543,
+  "rings": 37387
+ },
+ "family_fail": {
+  "rings": 1
+ },
+ "flag_instances": {
+  "levels=1": 190145,
+  "dev_mirrored_endpoint": 56244,
+  "levels=3": 34086,
+  "levels=2": 69018,
+  "stat_e0_same": 6260,
+  "stat_overlap": 24415,
+  "stat_i12_outside": 17675,
+  "levels=4": 6617,
+  "stat_Plen>=8": 3092,
+  "xa_cross_same_annulus": 1112,
+  "xb_cross_nonincised_part": 845,
+  "stat_child_range_empty": 529,
+  "levels=5": 134,
+  "iv_value": 1,
+  "iv_cut_value": 1,
+  "rc_other": 1,
+  "rc_wrong_or_no_answer": 1
+ },
+ "nfail": 1,
+ "secs": 873.1017878055573,
+ "fails": [
+  {
+   "seed": 307338,
+   "run": 0,
+   "family": "rings",
+   "scheme": "small",
+   "stmode": "deep",
+   "n": 43,
+   "m": 68,
+   "flags": {
+    "iv_value": 1,
+    "iv_cut_value": 1
+   },
+   "notes": [
+    "('iv_value', (3, 2, 0, 'leaf'))",
+    "('iv_cut_value', (3, 2))"
+   ],
+   "info": {
+    "mincut": 2,
+    "P_len": 9,
+    "e0_same": false,
+    "eps": {
+     "v": 40,
+     "ci": 2,
+     "mode": "L",
+     "e0": 58
+    },
+    "ept": {
+     "v": 42,
+     "ci": 2,
+     "mode": "L",
+     "e0": 6
+    },
+    "Pedges": [
+     7,
+     12,
+     36,
+     47,
+     49,
+     56,
+     61,
+     65
+    ],
+    "pf": [
+     24,
+     23,
+     26,
+     21,
+     18,
+     16,
+     8,
+     6,
+     5
+    ],
+    "incised_per_level": {
+     "1": [
+      7,
+      12,
+      36,
+      47,
+      49,
+      56,
+      61,
+      65
+     ],
+     "2": [
+      7,
+      12,
+      36,
+      44,
+      46,
+      47,
+      48,
+      49,
+      56,
+      61,
+      63,
+      65
+     ],
+     "3": [
+      7,
+      12,
+      19,
+      21,
+      31,
+      33,
+      35,
+      36,
+      44,
+      46,
+      47,
+      48,
+      49,
+      56,
+      58,
+      60,
+      61,
+      63,
+      65
+     ],
+     "4": [
+      2,
+      5,
+      7,
+      8,
+      12,
+      18,
+      36,
+      47,
+      49,
+      56,
+      61,
+      65
+     ]
+    },
+    "levels": 4,
+    "n_results": 11,
+    "i12_outside": 1,
+    "child_range_empty": 1,
+    "overlap": 1,
+    "reported": 3,
+    "cut_value": 3,
+    "ncross": 0
+   }
+  }
+ ]
+}

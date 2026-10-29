@@ -1,0 +1,236 @@
+{
+ "args": [
+  "0",
+  "400",
+  "9",
+  "mix",
+  "F3off"
+ ],
+ "secs": 7,
+ "counts": {
+  "BAD_child_not_one_component": 11,
+  "BAD_chord_copy_incomplete": 4,
+  "F3off_child": 682,
+  "F3off_child_would_be_discarded": 8,
+  "LV_orphan_component": 1,
+  "LV_residual_components": 12,
+  "LV_residual_with_bad": 12,
+  "N3_pieces_refined": 20500,
+  "N_annuli_checked": 1078,
+  "N_nodeparts_checked": 19288,
+  "N_orphans_checked": 1,
+  "P_len_0": 63,
+  "P_len_1": 97,
+  "P_len_2": 93,
+  "P_len_3": 49,
+  "P_len_4": 31,
+  "P_len_5": 21,
+  "P_len_6": 14,
+  "P_len_7": 10,
+  "P_len_8": 8,
+  "P_len_9": 14,
+  "Pi_computed": 402,
+  "Qedges_new": 566,
+  "Qedges_old": 243,
+  "case_ii_nodes": 277,
+  "case_iv_new_old": 2,
+  "case_iv_nodes": 130,
+  "case_iv_old_new": 4,
+  "case_iv_old_old": 124,
+  "child_range_empty": 111,
+  "children": 678,
+  "cov_X_deg3": 234,
+  "cov_e0_eq_elast_incised_RR": 1,
+  "cov_endpoint_edge_in_I_deg1": 67,
+  "cov_endpoint_edge_in_I_deg2": 53,
+  "cov_endpoint_edge_in_I_deg3": 108,
+  "cov_endpoint_edge_in_I_modeL": 119,
+  "cov_endpoint_edge_in_I_modeR": 109,
+  "cov_endpoint_edge_incised_anew": 164,
+  "defR_levels": 782,
+  "e2e_checked": 400,
+  "instances": 400,
+  "leaf": 676,
+  "levels": 782,
+  "max_level_1": 160,
+  "max_level_2": 136,
+  "max_level_3": 72,
+  "max_level_4": 26,
+  "max_level_5": 6,
+  "orphan_side": 1,
+  "overlap": 129,
+  "policy_avoid": 85,
+  "policy_c": 83,
+  "policy_random": 81,
+  "policy_touch": 83,
+  "policy_touch_c": 68,
+  "range_empty_side_bad_or_split": 8
+ },
+ "notes": [
+  [
+   "chord_copy_incomplete",
+   "(11, 'r')",
+   {
+    "seed": 8,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(8, 'l', 0)",
+   {
+    "seed": 21,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(54, 'r', 0)",
+   {
+    "seed": 180,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(93, 'l', 0)",
+   {
+    "seed": 265,
+    "pol": "avoid",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "chord_copy_incomplete",
+   "(107, 'l')",
+   {
+    "seed": 268,
+    "pol": "touch",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(111, 'l', 0)",
+   {
+    "seed": 269,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(120, 'l', 0)",
+   {
+    "seed": 303,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(138, 'r', 0)",
+   {
+    "seed": 290,
+    "pol": "touch",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "chord_copy_incomplete",
+   "(139, 'l')",
+   {
+    "seed": 290,
+    "pol": "touch",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(107, 'r', 0)",
+   {
+    "seed": 281,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(108, 'l', 0)",
+   {
+    "seed": 281,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "far"
+   }
+  ],
+  [
+   "chord_copy_incomplete",
+   "(112, 'r')",
+   {
+    "seed": 298,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(120, 'l', 0)",
+   {
+    "seed": 360,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(178, 'r', 0)",
+   {
+    "seed": 384,
+    "pol": "touch_c",
+    "fam": "dense",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "child_not_one_component",
+   "(179, 'l', 0)",
+   {
+    "seed": 384,
+    "pol": "touch_c",
+    "fam": "dense",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ]
+ ]
+}

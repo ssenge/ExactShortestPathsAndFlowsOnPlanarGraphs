@@ -1,0 +1,739 @@
+{
+ "args": [
+  "0",
+  "2000",
+  "8",
+  "mix",
+  "xswap"
+ ],
+ "secs": 6,
+ "counts": {
+  "BAD_P3_euler": 1122,
+  "LV_orphan_component": 10,
+  "LV_residual_components": 100,
+  "LV_residual_with_bad": 100,
+  "N3_pieces_refined": 106675,
+  "N_annuli_checked": 5483,
+  "N_nodeparts_checked": 100030,
+  "N_orphans_checked": 10,
+  "P_len_0": 289,
+  "P_len_1": 484,
+  "P_len_2": 437,
+  "P_len_3": 257,
+  "P_len_4": 187,
+  "P_len_5": 107,
+  "P_len_6": 87,
+  "P_len_7": 49,
+  "P_len_8": 30,
+  "P_len_9": 73,
+  "Pi_computed": 2065,
+  "Qedges_new": 3087,
+  "Qedges_old": 1392,
+  "RuleM_X_tokens": 7934,
+  "RuleM_endpoint_edge_incised_anew": 3264,
+  "RuleM_tokens_incised_anew": 33668,
+  "case_ii_nodes": 1559,
+  "case_iv_new_new": 1,
+  "case_iv_new_old": 32,
+  "case_iv_nodes": 855,
+  "case_iv_old_new": 29,
+  "case_iv_old_old": 793,
+  "child_discarded_overlap": 637,
+  "child_range_empty": 10,
+  "children": 3483,
+  "cov_X_deg3": 1216,
+  "cov_e0_eq_elast_incised_RR": 1,
+  "cov_endpoint_edge_in_I_deg1": 330,
+  "cov_endpoint_edge_in_I_deg2": 263,
+  "cov_endpoint_edge_in_I_deg3": 592,
+  "cov_endpoint_edge_in_I_modeL": 593,
+  "cov_endpoint_edge_in_I_modeR": 592,
+  "cov_endpoint_edge_incised_anew": 816,
+  "defR_levels": 3973,
+  "e2e_all_paths_unique": 459,
+  "e2e_checked": 2000,
+  "inst_with_BAD": 760,
+  "instances": 2000,
+  "leaf": 3418,
+  "levels": 3973,
+  "max_level_1": 773,
+  "max_level_2": 662,
+  "max_level_3": 405,
+  "max_level_4": 139,
+  "max_level_5": 21,
+  "orphan_range": 10,
+  "orphan_range_with_Pt_pair": 5,
+  "overlap": 637,
+  "overlap_full_only": 23,
+  "pick_fallback_bfs": 33,
+  "policy_avoid": 281,
+  "policy_c": 284,
+  "policy_kiss": 313,
+  "policy_kiss_c": 283,
+  "policy_random": 288,
+  "policy_touch": 269,
+  "policy_touch_c": 282
+ },
+ "notes": [
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 33,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 42,
+    "pol": "touch",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 49,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 52,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 52,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 55,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 55,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 59,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 59,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 61,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "zeros",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 6,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 12,
+    "pol": "kiss",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 18,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 23,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 26,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 27,
+    "pol": "random",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 27,
+    "pol": "random",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 28,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 29,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 67,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 68,
+    "pol": "touch_c",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 68,
+    "pol": "touch_c",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 68,
+    "pol": "touch_c",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "face"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 71,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 73,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 73,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 75,
+    "pol": "c",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 78,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 83,
+    "pol": "avoid",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 91,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 91,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 93,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 94,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 96,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "-2",
+   {
+    "seed": 96,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P3_euler",
+   "0",
+   {
+    "seed": 102,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "face"
+   }
+  ]
+ ]
+}

@@ -495,14 +495,23 @@ as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim
   vertices on P_i. P_i is a tree path, so P_i[a..b] is a shortest a-to-b path, and replacing
   P′[a..b] by it does not increase the weight. p_j0 and p_j1 lie on one side of P_i, so the
   new path touches P_i without crossing it and lies in the child annulus.
-- By induction over the levels, restricting to an annulus loses nothing, Claims 2.3 and 2.4
-  of [18] hold with "without loss of generality" in place of "forbidden", and the minimum over
-  the computed P_t is the minimum cut. Ties do no harm: only the existence of an equally short
-  non-crossing path is used. The incised parts P_i′ ([18, Remark 2.5]) do not cross by
+- By induction over the levels, restricting to an annulus loses nothing, and [18, Claim 2.3]
+  holds with "without loss of generality" in place of "forbidden". Ties do no harm: only the
+  existence of an equally short non-crossing path is used. The incised parts P_i′ ([18, Remark 2.5]) do not cross by
   construction, since each lies inside its own annulus, whose boundaries are earlier incised
   parts, and sibling annuli are disjoint ([18, Claim 2.12]). Whole paths P_i can cross along
   parts that are not incised (equal-cost ties; 17 and 630 of 30,000 test instances under the
   two tie-breaks). This does no harm, since only the incised parts bound annuli.
+- **Recursion (Lemma S, `notes/RECURSION.md`).** As written, the recursion of [18, Alg. 3]
+  can miss the minimum, with exact trees and unique shortest paths. It drops the indices
+  strictly between i1 and i2, the extreme indices of P on P_i, on the strength of P_{i1} or
+  P_{i2} ([18, Claim 2.4, Lemma 5.6]). That witness can lie outside the range [j, k] of the
+  annulus and be dropped elsewhere, so two drops can rest on each other. Smallest instance
+  found: a simple graph with 11 vertices, minimum cut 15, reported 37. Repair: every annulus
+  that is not a leaf also computes P_a and P_b for a = max(i1, j) and b = min(i2, k), two more
+  SSSP calls per level. Lemma S proves an interval form of [18, Claim 2.4] (a dropped t is
+  dominated by every index between t and i1, or by every index between t and i2), and from it
+  that the least computed length is the minimum.
 
 So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do this on the graph
 Ĝ_ℓ of [18, Thm 3.1], with the endpoint repair below, as Lemma D does on Ĝ:
@@ -622,7 +631,12 @@ are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on
 Lemma R proves the needed properties of the repaired graph. Its referee pass (2026-10-29)
 found it correct in substance, with one serious gap: Fact N, the description of node-parts as
 pieces, is not stated in [18]. The revision proves it as Lemma N and fixes the minor points.
-An adversarial pass on Lemma R is pending. Negative
+Adversarial pass on Lemma R and Lemma N (2026-10-29, sim/thmD/attackR, an independent
+implementation): no counterexample in 6.9 million level-1 corner pairs, 1.3 million Table R
+builds and 3.5 million recursion instances; two wording faults in F3 and Lemma R (2), fixed.
+It found the recursion defect above, in 54 of the 3.5 million instances. Lemma S repairs it;
+the repaired driver gives the right value on all 25 instances it was tried on, and Lemma S
+has had no referee pass yet. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.

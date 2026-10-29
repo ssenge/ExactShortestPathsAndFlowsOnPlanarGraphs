@@ -1,0 +1,696 @@
+{
+ "args": [
+  "0",
+  "400",
+  "9",
+  "mix",
+  "literal_D1"
+ ],
+ "secs": 1,
+ "counts": {
+  "BAD_P1_copy_off_paths": 154,
+  "BAD_P1_shared_copy": 154,
+  "BAD_P2_selfloop_not_dual_loop": 42,
+  "BAD_P2_wrong_paths": 153,
+  "BAD_claim1_ER_degree": 308,
+  "BAD_exception": 147,
+  "LV_residual_components": 7,
+  "LV_residual_with_bad": 7,
+  "N3_pieces_refined": 14146,
+  "N_annuli_checked": 700,
+  "N_nodeparts_checked": 13510,
+  "P_len_0": 63,
+  "P_len_1": 97,
+  "P_len_2": 93,
+  "P_len_3": 49,
+  "P_len_4": 31,
+  "P_len_5": 21,
+  "P_len_6": 14,
+  "P_len_7": 10,
+  "P_len_8": 8,
+  "P_len_9": 14,
+  "Pi_computed": 339,
+  "Qedges_new": 528,
+  "Qedges_old": 142,
+  "case_ii_nodes": 261,
+  "case_iv_new_old": 1,
+  "case_iv_nodes": 70,
+  "case_iv_old_new": 4,
+  "case_iv_old_old": 65,
+  "child_discarded_overlap": 83,
+  "children": 595,
+  "cov_X_deg3": 6,
+  "cov_endpoint_edge_incised_anew": 153,
+  "defR_levels": 573,
+  "e2e_checked": 253,
+  "instances": 400,
+  "leaf": 361,
+  "levels": 573,
+  "max_level_1": 160,
+  "max_level_2": 48,
+  "max_level_3": 33,
+  "max_level_4": 8,
+  "max_level_5": 4,
+  "overlap": 83,
+  "policy_avoid": 85,
+  "policy_c": 83,
+  "policy_random": 81,
+  "policy_touch": 83,
+  "policy_touch_c": 68
+ },
+ "notes": [
+  [
+   "claim1_ER_degree",
+   "(('D', 22, 4), 2, 1)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 22, 4), 0, 1)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 22, 4), 37, 38)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 22, 4)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((70, 1), (71, 2)), ('D', 22, 3), ('D', 22, 4))",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "exception",
+   "9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (22, 4)\n",
+   {
+    "seed": 3,
+    "pol": "c"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 2, 0), 2, 1)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 2, 0), 0, 1)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 2, 0), 1, 2)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 2, 0)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((2, 2), (3, 1)), ('D', 2, 0), ('D', 2, 0))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_not_dual_loop",
+   "((2, 2), (3, 1))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (2, 0)\n",
+   {
+    "seed": 15,
+    "pol": "avoid"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 5, 3), 2, 1)",
+   {
+    "seed": 18,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 5, 3), 0, 1)",
+   {
+    "seed": 18,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 5, 3), 20, 21)",
+   {
+    "seed": 18,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 5, 3)",
+   {
+    "seed": 18,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((32, 1), (33, 2)), ('D', 5, 2), ('D', 5, 3))",
+   {
+    "seed": 18,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (5, 3)\n",
+   {
+    "seed": 18,
+    "pol": "random"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 7, 1), 2, 1)",
+   {
+    "seed": 6,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 7, 1), 0, 1)",
+   {
+    "seed": 6,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 7, 1), 12, 13)",
+   {
+    "seed": 6,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 7, 1)",
+   {
+    "seed": 6,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((18, 1), (19, 2)), ('D', 7, 0), ('D', 7, 1))",
+   {
+    "seed": 6,
+    "pol": "touch_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (7, 1)\n",
+   {
+    "seed": 6,
+    "pol": "touch_c"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 5, 0), 2, 1)",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 5, 0), 0, 1)",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 5, 0), 6, 7)",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 5, 0)",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((8, 2), (9, 1)), ('D', 5, 0), ('D', 5, 1))",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (5, 0)\n",
+   {
+    "seed": 7,
+    "pol": "touch_c"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 24, 0), 2, 1)",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 24, 0), 0, 1)",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 24, 0), 19, 20)",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 24, 0)",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((78, 2), (79, 1)), ('D', 24, 0), ('D', 24, 1))",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "exception",
+   "9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (24, 0)\n",
+   {
+    "seed": 9,
+    "pol": "touch"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 4, 1), 2, 1)",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 4, 1), 0, 1)",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 4, 1), 7, 8)",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 4, 1)",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((42, 2), (43, 1)), ('D', 4, 1), ('D', 4, 0))",
+   {
+    "seed": 48,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "face"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (4, 1)\n",
+   {
+    "seed": 48,
+    "pol": "avoid"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 2, 0), 2, 1)",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 2, 0), 0, 1)",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 2, 0), 4, 5)",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 2, 0)",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((2, 2), (3, 1)), ('D', 2, 0), ('D', 2, 4))",
+   {
+    "seed": 30,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "face"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (2, 0)\n",
+   {
+    "seed": 30,
+    "pol": "avoid"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 4, 0), 2, 1)",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 4, 0), 0, 1)",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 4, 0), 5, 6)",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 4, 0)",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((6, 2), (7, 1)), ('D', 4, 0), ('D', 4, 0))",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_not_dual_loop",
+   "((6, 2), (7, 1))",
+   {
+    "seed": 32,
+    "pol": "random",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "exception",
+   "b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 713, in work\n    R.run()\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 211, in run\n    self.check_level(G, prevG, active, level, Ib)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/deep.py\", line 485, in check_level\n    defr.check_planar(G, bad)\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 474, in check_planar\n    rot = table_r(G)\n          ^^^^^^^^^^\n  File \"/private/tmp/claude-501/-Users-sebastian-senge-src-Algos/5c9ffac5-eb4b-481a-8d6b-9b9da4ff0151/scratchpad/thmD/attackR/defr.py\", line 297, in table_r\n    x, which = G.moved[c]\n               ~~~~~~~^^^\nKeyError: (4, 0)\n",
+   {
+    "seed": 32,
+    "pol": "random"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('D', 6, 0), 2, 1)",
+   {
+    "seed": 33,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "claim1_ER_degree",
+   "(('X', 6, 0), 0, 1)",
+   {
+    "seed": 33,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_shared_copy",
+   "(('D', 6, 0), 6, 7)",
+   {
+    "seed": 33,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P1_copy_off_paths",
+   "('X', 6, 0)",
+   {
+    "seed": 33,
+    "pol": "avoid",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "rand"
+   }
+  ]
+ ]
+}

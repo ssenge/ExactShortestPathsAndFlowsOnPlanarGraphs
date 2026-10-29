@@ -1,0 +1,732 @@
+{
+ "args": [
+  "0",
+  "60",
+  "1",
+  "mix",
+  "no_reroute"
+ ],
+ "secs": 62,
+ "counts": {
+  "BAD_P2_selfloop_condition": 6,
+  "BAD_P2_selfloop_not_dual_loop": 6,
+  "BAD_P2_wrong_paths": 39,
+  "BAD_sssp_distance": 64,
+  "LV_residual_components": 2,
+  "LV_residual_with_bad": 2,
+  "N3_pieces_refined": 2710,
+  "N_annuli_checked": 153,
+  "N_nodeparts_checked": 2494,
+  "P_len_0": 11,
+  "P_len_1": 17,
+  "P_len_2": 10,
+  "P_len_3": 4,
+  "P_len_4": 6,
+  "P_len_5": 3,
+  "P_len_6": 6,
+  "P_len_8": 1,
+  "P_len_9": 2,
+  "Pi_computed": 59,
+  "Qedges_new": 69,
+  "Qedges_old": 50,
+  "RuleM_X_tokens": 230,
+  "RuleM_endpoint_edge_incised_anew": 96,
+  "RuleM_tokens_incised_anew": 892,
+  "case_ii_nodes": 33,
+  "case_iv_new_old": 1,
+  "case_iv_nodes": 27,
+  "case_iv_old_old": 26,
+  "child_discarded_overlap": 25,
+  "children": 93,
+  "cov_endpoint_edge_in_I_deg1": 6,
+  "cov_endpoint_edge_in_I_deg2": 9,
+  "cov_endpoint_edge_in_I_deg3": 23,
+  "cov_endpoint_edge_in_I_modeL": 28,
+  "cov_endpoint_edge_in_I_modeR": 10,
+  "cov_endpoint_edge_incised_anew": 24,
+  "defR_levels": 115,
+  "e2e_all_paths_unique": 14,
+  "e2e_checked": 60,
+  "inst_with_BAD": 25,
+  "instances": 60,
+  "leaf": 94,
+  "levels": 115,
+  "max_level_1": 28,
+  "max_level_2": 16,
+  "max_level_3": 10,
+  "max_level_4": 5,
+  "max_level_5": 1,
+  "overlap": 25,
+  "policy_avoid": 14,
+  "policy_c": 11,
+  "policy_kiss": 7,
+  "policy_kiss_c": 5,
+  "policy_random": 7,
+  "policy_touch": 11,
+  "policy_touch_c": 5,
+  "sssp_levels": 115,
+  "sssp_nodeparts_checked": 2494
+ },
+ "notes": [
+  [
+   "P2_wrong_paths",
+   "(((70, 1), (71, 2)), ('D', 22, 3), ('D', 22, 4))",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 19, [3], 189)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 22, [2], 190)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 38, [1], 191)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 37, [16556], 1)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 30, [5], 187)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 8, 29, [4], 188)",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((70, 1), (71, 2)), ('D', 22, 3), ('D', 22, 4))",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((70, 1), (71, 2)), ('D', 22, 3), ('D', 22, 4))",
+   {
+    "seed": 3,
+    "pol": "c",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "far1"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((12, 2), (13, 1)), ('D', 7, 0), ('D', 7, 1))",
+   {
+    "seed": 6,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(3, 17, 13, [857], 1)",
+   {
+    "seed": 6,
+    "pol": "kiss_c",
+    "fam": "sparse",
+    "scheme": "zeros",
+    "stm": "far"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((8, 2), (9, 1)), ('D', 5, 0), ('D', 5, 1))",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 21, 6, [2434], 65)",
+   {
+    "seed": 7,
+    "pol": "touch_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((8, 1), (9, 2)), ('D', 1, 0), ('D', 1, 1))",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 23, 5, [8736], 248)",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 23, 6, [248], 496)",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((8, 1), (9, 2)), ('D', 1, 0), ('D', 1, 1))",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((8, 1), (9, 2)), ('D', 1, 0), ('D', 1, 1))",
+   {
+    "seed": 8,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((70, 2), (71, 1)), ('D', 24, 1), ('D', 24, 0))",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 29, 20, [9842], 121)",
+   {
+    "seed": 9,
+    "pol": "touch",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((0, 1), (1, 2)), ('D', 0, 1), ('D', 0, 0))",
+   {
+    "seed": 12,
+    "pol": "kiss",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 34, 3, [9842], 121)",
+   {
+    "seed": 12,
+    "pol": "kiss",
+    "fam": "grid",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((2, 2), (3, 1)), ('D', 2, 0), ('D', 2, 0))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_condition",
+   "(((2, 2), (3, 1)), 2)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_not_dual_loop",
+   "((2, 2), (3, 1))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 47, 2, [38845], 261)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((2, 2), (3, 1)), ('D', 2, 0), ('D', 2, 0))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_condition",
+   "(((2, 2), (3, 1)), 2)",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_selfloop_not_dual_loop",
+   "((2, 2), (3, 1))",
+   {
+    "seed": 15,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((30, 2), (31, 1)), ('D', 5, 4), ('D', 5, 3))",
+   {
+    "seed": 18,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 53, 21, [97407], 8783)",
+   {
+    "seed": 18,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((92, 1), (93, 2)), ('D', 0, 2), ('D', 0, 3))",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 57, 8, [462], 616)",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 57, 35, [308], 770)",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 57, 43, [14690], 924)",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((92, 1), (93, 2)), ('D', 0, 2), ('D', 0, 3))",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((92, 1), (93, 2)), ('D', 0, 2), ('D', 0, 3))",
+   {
+    "seed": 20,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((28, 1), (29, 2)), ('D', 0, 2), ('D', 0, 3))",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 71, 11, [3368], 735)",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 71, 14, [1], 734)",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 71, 15, [184], 551)",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 71, 3, [367], 368)",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((28, 1), (29, 2)), ('D', 0, 2), ('D', 0, 3))",
+   {
+    "seed": 22,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "zeros",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((2, 2), (3, 1)), ('D', 2, 0), ('D', 2, 0))",
+   {
+    "seed": 23,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P2_selfloop_condition",
+   "(((2, 2), (3, 1)), 2)",
+   {
+    "seed": 23,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P2_selfloop_not_dual_loop",
+   "((2, 2), (3, 1))",
+   {
+    "seed": 23,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 74, 3, [2421], 45)",
+   {
+    "seed": 23,
+    "pol": "avoid",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((62, 2), (63, 1)), ('D', 2, 2), ('D', 2, 1))",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 33, [193722], 16462)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 14, [194934], 15250)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 1, [195540], 14644)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 4, [196265], 2543)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 35, [193844], 122)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 77, 29, [194328], 15856)",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((62, 2), (63, 1)), ('D', 2, 2), ('D', 2, 1))",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((62, 2), (63, 1)), ('D', 2, 2), ('D', 2, 1))",
+   {
+    "seed": 24,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "P2_wrong_paths",
+   "(((78, 2), (79, 1)), ('D', 10, 3), ('D', 10, 2))",
+   {
+    "seed": 26,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 83, 39, [20112], 1020)",
+   {
+    "seed": 26,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 83, 28, [340], 680)",
+   {
+    "seed": 26,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ],
+  [
+   "sssp_distance",
+   "(2, 83, 43, [170], 850)",
+   {
+    "seed": 26,
+    "pol": "avoid",
+    "fam": "dense",
+    "scheme": "unit",
+    "stm": "face"
+   }
+  ]
+ ]
+}

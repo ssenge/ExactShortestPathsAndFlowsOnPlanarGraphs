@@ -7,9 +7,10 @@ model. The main claims are:
 - exact maximum st-flow in directed planar networks in $\min\lbrace\tilde O(D^2),\ D\cdot n^{o(1)}\rbrace$
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
-  $\tilde O(D)$ rounds (Theorem D, new, one referee pass and one adversarial pass; it needs a
-  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, one referee pass, adversarial pass pending), where only a
-  $(1-o(1))$-approximation was known in $\tilde O(D)$.
+  $\tilde O(D)$ rounds (Theorem D, new), where only a $(1-o(1))$-approximation was known in
+  $\tilde O(D)$. It needs two repairs of [18]: of its auxiliary graph at $s$ and $t$ (Lemma R,
+  one referee pass, one adversarial pass) and of its recursion, which as written can miss the
+  minimum cut (Lemma S, new, not yet refereed).
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
@@ -50,7 +51,10 @@ Please read this before relying on anything here.
   The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
   Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
   computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; a referee
-  pass found one gap, now closed by Lemma N. Its adversarial pass is pending.
+  pass found one gap, now closed by Lemma N. An adversarial pass found no counterexample to
+  Lemma R or Lemma N, but found that the recursion of [18] itself can miss the minimum cut
+  (11 vertices: minimum 15, computed 37). Lemma S repairs this with two more shortest-path
+  calls per level; it has had no referee pass yet.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -312,12 +316,13 @@ size and terminals $s,t$. A CONGEST algorithm computes the value of a minimum st
 the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side and its cut
 edges. It is deterministic given the embedding algorithm of [15], as in [18], and
 deterministic face identifiers (G6). The proof has had
-one referee pass (correct with gaps, all fixed) and one adversarial pass (below).
+one referee pass (correct with gaps, all fixed) and one adversarial pass (below). The
+recursion repair of Lemma S is newer and has had neither yet.
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
-[18, Lemma 2.7] holds unchanged with exact shortest paths, so only the SSSP step needs
-replacing. [18] runs approximate SSSP on each annulus through minor aggregation, because
+[18, Lemma 2.7] holds unchanged with exact shortest paths. Its recursion needs one repair
+(Lemma S below), and the SSSP step needs replacing. [18] runs approximate SSSP on each annulus through minor aggregation, because
 annuli can have large diameter. We instead run Theorem A on the whole graph $\hat G_\ell$ of
 [18, Thm 3.1], which is planar, has hop diameter at most $4D+4$ (from the bound $4D$ between
 star centres of [18, Lemma 3.4]) and is simulated on $G$ with
@@ -356,8 +361,27 @@ matched the tested graph on 98,000 instances. A referee pass found Lemma R corre
 substance, with one serious gap: a description of the dual nodes that it cited from [18] is
 not stated there. The revision proves it (Lemma N, by induction over the levels) and also
 shows that the reduction is correct for every legal choice at $s$ and $t$. An adversarial
-pass on Lemma R is pending. These failures may come from a misreading of [18] on our side.
-We have not checked whether they affect the approximate algorithm of [18].
+pass, by an independent implementation, found no counterexample to Lemma R or Lemma N in
+3.5 million recursion instances. These failures may come from a misreading of [18] on our
+side. We have not checked whether they affect the approximate algorithm of [18].
+
+**The recursion repair (Lemma S).** Reif's recursion in [18, Alg. 3] computes the shortest
+cycle $P_i$ through the middle index $i$ of an annulus with index range $[j,k]$, and then
+drops every index strictly between $i_1$ and $i_2$, the least and greatest index of the first
+cut path on $P_i$ ([18, Claim 2.4, Lemma 5.6]). The reason given is that $P_{i_1}$ or $P_{i_2}$
+is no longer. But an annulus can hold copies of the first cut path outside $[j,k]$, so $i_1$ or
+$i_2$ can lie outside the range and be dropped by another annulus. The adversarial pass found
+instances where two drops rest on each other and no computed cycle is minimum, with exact
+shortest paths that are all unique. Smallest: a simple graph with 11 vertices and 22 edges,
+minimum cut 15, computed 37 (`sim/thmD/attackR/logs/trace_min_simple0.txt`). The repository's
+own driver gives 37 as well. The repair computes two more cycles in every annulus that is not
+a leaf, at $a=\max(i_1,j)$ and $b=\min(i_2,k)$. That is two more SSSP calls per level, so the
+round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form of
+[18, Claim 2.4]: a dropped index is dominated by every index between it and $i_1$, or by every
+index between it and $i_2$. So one of $a$, $b$ carries the minimum. With the repair the driver
+is right on all 25 failing instances of the search (161 of 300 runs were wrong without it). As
+we read [18], its own approximate recursion has the same defect; we have not checked whether
+another reading avoids it.
 
 ## What is assumed
 
@@ -473,6 +497,15 @@ test round counts.
   the repaired graph from its written definition, and `test_repair.py` and `witness.py`
   compare it with `thmD.py` and check its properties; `test_mono.py`, `witness_mono.py` and
   `run_mono.sh` rerun them with the monotone I_ℓ of the revision and also check Lemma N.
+  `attackR/` is the adversarial pass on Lemma R and Lemma N, written independently of
+  `thmD.py`: `emb.py` enumerates maps, `defr.py` builds Definition R, `abstract18.py` models
+  the incisions of [18], `level1.py`, `planar_sweep.py`, `deep.py` and `deep2.py` run the
+  checks, `search_e2e.py` and `minimize_e2e.py` found the recursion defect, and
+  `confirm_author.py` reruns it on `thmD.py`. `thmD.py --ends 1` adds the repair of Lemma S and
+  checks its interval claim (`c24_interval`), the hull of part (b) (`hull_i12`) and the
+  separation fact (`sep_fail`). `fix/` checks the smallest instance and reruns the 25 failing
+  instances with and without the repair; `lane_ends.sh`, `lane_c24.sh` and `lane_sep.sh` give
+  the sweeps.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
@@ -492,6 +525,7 @@ test round counts.
 - `notes/NOTES.md`: the state of the art, Theorems A, B, C, C′ and D, Lemmas V and D, the
   ratings, and the review history.
 - `notes/GHAT_REPAIR.md`: Lemma R, the repaired auxiliary graph of [18] that Theorem D runs on.
+- `notes/RECURSION.md`: Lemma S, the repaired recursion of [18, Alg. 3].
 - `notes/LEMMA15.md`: the gaps in [1, Lemmas 14 to 16] and their repair, with Lemma 14′ (§3),
   the analytic layer (§4 to §7), what is settled (§8), and the region bags that repair the
   round count (§9).

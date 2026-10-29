@@ -1194,6 +1194,42 @@ def run_reif(emb, s, t, opts, rng, chk, info):
             computed_paths.append(cpe)
             if not leaf:
                 Pi_of[A.aid] = (i, nodes, edges, cpe)
+        # drop-end repair (opts['ends']): [18, Claim 2.4] drops i1 < t < i2, but i1 or i2 can lie outside
+        # [A.j, A.k] and be dropped elsewhere. Compute P_a, P_b in A for a = max(i1, A.j), b = min(i2, A.k).
+        if opts.get('ends'):
+            bE, metaE = [[], []], [[], []]
+            for A in active:
+                if A.aid not in Pi_of:
+                    continue
+                i, Pn_, _, _ = Pi_of[A.aid]
+                tidx = [ctx.store[x].anc[1] for x in Pn_ if ctx.store[x].anc[0] == 'p']
+                for q, tt in enumerate((max(min(tidx), A.j), min(max(tidx), A.k))):
+                    if tt == i:
+                        continue
+                    if (tt, 0) not in A.piece or (tt, 1) not in A.piece:
+                        chk.flag('impl_end_missing_piece', (A.aid, tt))
+                        continue
+                    bb = rng.randrange(2)
+                    bE[q].append((A, A.piece[(tt, bb)]))
+                    metaE[q].append((A, tt, bb))
+            for q in range(2):
+                outE = sssp_batch(ctx, G, bE[q], mode, tieb, rng, chk, where + ('end%d' % q,), 0) if bE[q] else []
+                for (A, tt, bb), (dc, par, ok, dC) in zip(metaE[q], outE):
+                    tgt = A.piece[(tt, 1 - bb)]
+                    if not ok and tgt not in par:
+                        raise Fail('tree broken')
+                    nodes, edges = tree_path(par, A.piece[(tt, bb)], tgt)
+                    if bb == 1:
+                        nodes = nodes[::-1]
+                        edges = [(y, x) for (x, y) in reversed(edges)]
+                    L = dc[tgt]
+                    stats['end_computed'] += 1
+                    if L > true_t[tt]:
+                        stats['end_gt_trueA1'] += 1
+                    if L < true_t[tt]:
+                        chk.flag('len_lt_trueA1', (where, tt, L, true_t[tt]))
+                    results.append(dict(t=tt, length=L, nodes=nodes, edges=edges, kind='end',
+                                        level=level, aid=A.aid))
         # overlaps (Alg 3 lines 9-14)
         b3, meta3 = [], []
         ov = {}
@@ -1254,6 +1290,13 @@ def run_reif(emb, s, t, opts, rng, chk, info):
             i1, i2 = min(tidx), max(tidx)
             if i1 < A.j or i2 > A.k:
                 stats['i12_outside'] += 1
+            if opts.get('ends'):
+                # interval form of [18, Claim 2.4]: every dropped t is dominated on [i1, t] or on [t, i2]
+                for tt in range(max(i1 + 1, A.j), min(i2 - 1, A.k) + 1):
+                    stats['c24_checked'] += 1
+                    if not (all(true_t[q] <= true_t[tt] for q in range(i1, tt + 1)) or
+                            all(true_t[q] <= true_t[tt] for q in range(tt, i2 + 1))):
+                        chk.flag('c24_interval', (A.aid, i1, i2, tt, A.j, A.k))
             last0 = max(k for k, a in enumerate(ancs) if a[0] == 'p' and a[2] == 0)
             first1 = min(k for k, a in enumerate(ancs) if k > last0 and a[0] == 'p' and a[2] == 1)
             Qn = Pn_[last0:first1 + 1]
@@ -1275,6 +1318,18 @@ def run_reif(emb, s, t, opts, rng, chk, info):
             lx, hx = lowhigh(X0)
             ly, hy = lowhigh(Y1)
             xt, yt = ctx.store[X0].anc[1], ctx.store[Y1].anc[1]
+            if opts.get('ends'):
+                # (S): for x < t < y (or y < t < x) in range, incising Q leaves p_t^0 and p_t^1 apart;
+                # and [i1, i2] is the hull of {i, x, y}
+                if (i1, i2) != (min(i, xt, yt), max(i, xt, yt)):
+                    chk.flag('hull_i12', (A.aid, i, xt, yt, i1, i2))
+                for tt in range(max(min(xt, yt) + 1, A.j), min(max(xt, yt) - 1, A.k) + 1):
+                    z0, z1 = A.piece.get((tt, 0)), A.piece.get((tt, 1))
+                    stats['sep_checked'] += 1
+                    if z0 in newnodes and z1 in newnodes and comp[z0] == comp[z1]:
+                        chk.flag('sep_fail', (A.aid, tt, xt, yt))
+                    elif z0 not in newnodes or z1 not in newnodes:
+                        chk.flag('sep_piece_moved', (A.aid, tt))
             chain_l, chain_r = [], []
             for z in newnodes:
                 an = newnodes[z].anc
@@ -1755,10 +1810,12 @@ def main():
     ap.add_argument('--pcommon', type=float, default=0.5)
     ap.add_argument('--pfar', type=float, default=0.5)
     ap.add_argument('--e0rule', default='formal')
+    ap.add_argument('--ends', type=int, default=0)
     a = ap.parse_args()
     global SIZE_MAX, GRID_MAX
     SIZE_MAX, GRID_MAX = a.size, a.grid
-    opts = dict(mode=a.mode, variant=a.variant, tiebreak=a.tiebreak, pairs=1, pcommon=a.pcommon, pfar=a.pfar, e0rule=a.e0rule)
+    opts = dict(mode=a.mode, variant=a.variant, tiebreak=a.tiebreak, pairs=1, pcommon=a.pcommon, pfar=a.pfar, e0rule=a.e0rule,
+                ends=a.ends)
     tot = collections.Counter()
     fam = collections.Counter()
     famfail = collections.Counter()
@@ -1770,7 +1827,8 @@ def main():
             chk, info = run_one(I, opts, sd * 1000 + r)
             fam[I['family']] += 1
             tot['levels=%s' % info.get('levels')] += 1
-            for kk in ('overlap', 'i12_outside', 'child_range_empty', 'len_gt_trueA1'):
+            for kk in ('overlap', 'i12_outside', 'child_range_empty', 'len_gt_trueA1', 'end_computed',
+                       'end_gt_trueA1', 'c24_checked', 'sep_checked'):
                 if info.get(kk):
                     tot['stat_' + kk] += 1
             if info.get('P_len', 0) >= 8:

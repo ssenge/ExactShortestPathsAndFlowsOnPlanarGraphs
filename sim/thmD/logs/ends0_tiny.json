@@ -1,0 +1,174 @@
+{
+ "opts": {
+  "mode": "claimed",
+  "variant": "fixed",
+  "tiebreak": "random",
+  "pairs": 1,
+  "pcommon": 0.5,
+  "pfar": 0.5,
+  "e0rule": "formal",
+  "ends": 0
+ },
+ "start": 500000,
+ "count": 300000,
+ "runs": 1,
+ "families": {
+  "delaunay": 37520,
+  "wheel": 37247,
+  "rings": 37470,
+  "messy": 37407,
+  "tree_plus": 37884,
+  "nested": 37344,
+  "grid": 37446,
+  "cycle_chords": 37682
+ },
+ "family_fail": {
+  "rings": 1
+ },
+ "flag_instances": {
+  "levels=1": 200479,
+  "levels=2": 71246,
+  "dev_mirrored_endpoint": 59866,
+  "levels=3": 26093,
+  "stat_overlap": 16047,
+  "stat_i12_outside": 11831,
+  "stat_e0_same": 8471,
+  "stat_Plen>=8": 642,
+  "levels=4": 2168,
+  "xa_cross_same_annulus": 791,
+  "xb_cross_nonincised_part": 560,
+  "stat_child_range_empty": 324,
+  "levels=5": 14,
+  "iv_value": 1,
+  "iv_cut_value": 1,
+  "rc_other": 1,
+  "rc_wrong_or_no_answer": 1
+ },
+ "nfail": 1,
+ "secs": 609.8557419776917,
+ "fails": [
+  {
+   "seed": 750231,
+   "run": 0,
+   "family": "rings",
+   "scheme": "huge",
+   "stmode": "deep",
+   "n": 29,
+   "m": 49,
+   "flags": {
+    "dev_mirrored_endpoint": 1,
+    "iv_value": 1,
+    "iv_cut_value": 1,
+    "xa_cross_same_annulus": 1
+   },
+   "notes": [
+    "('iv_value', (15, 9, 1, 'Pi'))",
+    "('iv_cut_value', (15, 9))",
+    "('xa_cross_same_annulus', ('leaf', 0, 'leaf', 1))"
+   ],
+   "info": {
+    "mincut": 9,
+    "P_len": 9,
+    "e0_same": false,
+    "eps": {
+     "v": 22,
+     "ci": 1,
+     "mode": "L",
+     "e0": 40
+    },
+    "ept": {
+     "v": 0,
+     "ci": 1,
+     "mode": "R",
+     "e0": 1
+    },
+    "Pedges": [
+     3,
+     6,
+     7,
+     9,
+     21,
+     22,
+     28,
+     36
+    ],
+    "pf": [
+     21,
+     16,
+     14,
+     15,
+     7,
+     5,
+     6,
+     1,
+     2
+    ],
+    "incised_per_level": {
+     "1": [
+      3,
+      6,
+      7,
+      9,
+      21,
+      22,
+      28,
+      36
+     ],
+     "2": [
+      3,
+      6,
+      7,
+      9,
+      12,
+      14,
+      15,
+      19,
+      21,
+      22,
+      28,
+      36
+     ],
+     "3": [
+      3,
+      6,
+      7,
+      9,
+      12,
+      14,
+      15,
+      19,
+      21,
+      22,
+      27,
+      28,
+      33,
+      35,
+      36
+     ],
+     "4": [
+      3,
+      6,
+      7,
+      9,
+      12,
+      14,
+      15,
+      19,
+      21,
+      22,
+      28,
+      36
+     ]
+    },
+    "levels": 4,
+    "n_results": 13,
+    "overlap": 2,
+    "i12_outside": 3,
+    "child_range_empty": 1,
+    "reported": 15,
+    "cut_value": 15,
+    "ncross": 1
+   }
+  }
+ ]
+}

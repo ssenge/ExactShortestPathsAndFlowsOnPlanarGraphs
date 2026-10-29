@@ -1,0 +1,744 @@
+{
+ "args": [
+  "0",
+  "2000",
+  "8",
+  "mix",
+  "nonmono"
+ ],
+ "secs": 4,
+ "counts": {
+  "BAD_LV_residual_without_bad_edge": 69,
+  "BAD_N1_node_not_piece": 38,
+  "BAD_N2_annulus_not_whole_component": 10,
+  "BAD_N3_parent_token_missing": 362,
+  "BAD_N3_piece_refines_several": 210,
+  "LV_orphan_component": 10,
+  "LV_residual_components": 98,
+  "LV_residual_with_bad": 25,
+  "LV_residual_with_full_bad_only": 4,
+  "N3_pieces_refined": 106128,
+  "N_annuli_checked": 5483,
+  "N_nodeparts_checked": 100030,
+  "N_orphans_checked": 10,
+  "P_len_0": 289,
+  "P_len_1": 484,
+  "P_len_2": 437,
+  "P_len_3": 257,
+  "P_len_4": 187,
+  "P_len_5": 107,
+  "P_len_6": 87,
+  "P_len_7": 49,
+  "P_len_8": 30,
+  "P_len_9": 73,
+  "Pi_computed": 2065,
+  "Qedges_new": 3087,
+  "Qedges_old": 1392,
+  "RuleM_X_tokens": 7907,
+  "RuleM_endpoint_edge_incised_anew": 3264,
+  "RuleM_tokens_incised_anew": 33668,
+  "case_ii_nodes": 1559,
+  "case_iv_new_new": 1,
+  "case_iv_new_old": 32,
+  "case_iv_nodes": 855,
+  "case_iv_old_new": 29,
+  "case_iv_old_old": 793,
+  "child_discarded_overlap": 637,
+  "child_range_empty": 10,
+  "children": 3483,
+  "cov_X_deg3": 1185,
+  "cov_e0_eq_elast_incised_RR": 1,
+  "cov_endpoint_edge_in_I_deg1": 322,
+  "cov_endpoint_edge_in_I_deg2": 256,
+  "cov_endpoint_edge_in_I_deg3": 576,
+  "cov_endpoint_edge_in_I_modeL": 574,
+  "cov_endpoint_edge_in_I_modeR": 580,
+  "cov_endpoint_edge_incised_anew": 816,
+  "defR_levels": 3973,
+  "e2e_all_paths_unique": 459,
+  "e2e_checked": 2000,
+  "inst_with_BAD": 90,
+  "instances": 2000,
+  "leaf": 3418,
+  "levels": 3973,
+  "max_level_1": 773,
+  "max_level_2": 662,
+  "max_level_3": 405,
+  "max_level_4": 139,
+  "max_level_5": 21,
+  "orphan_range": 10,
+  "orphan_range_with_Pt_pair": 5,
+  "overlap": 637,
+  "overlap_full_only": 23,
+  "pick_fallback_bfs": 33,
+  "policy_avoid": 281,
+  "policy_c": 284,
+  "policy_kiss": 313,
+  "policy_kiss_c": 283,
+  "policy_random": 288,
+  "policy_touch": 269,
+  "policy_touch_c": 282
+ },
+ "notes": [
+  [
+   "N3_parent_token_missing",
+   "(3, (6, 0))",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 0, {0, 2})",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (7, 0))",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(3, 12, 1, 3, 1, [('p', 1, 1)], True)",
+   {
+    "seed": 36,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "rand"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (1, 0))",
+   {
+    "seed": 21,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 0, {1, 2})",
+   {
+    "seed": 21,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (0, 0))",
+   {
+    "seed": 21,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 3, {0, 5})",
+   {
+    "seed": 21,
+    "pol": "touch",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (28, 0))",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 0, {0, 1})",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (29, 0))",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (57, 0))",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 13, set())",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (56, 0))",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 14, {14, 15})",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(4, 23, 0, 2, 15, [('f', 6), ('f', 10), ('f', 11), ('f', 14), ('f', 15), ('f', 19)], True)",
+   {
+    "seed": 70,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "wide",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (0, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 1, {0, 2})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (1, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (6, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 2, {3, 4})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (61, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 4, {6, 7})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (7, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (60, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 8, {11, 12})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (2, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 4, {3, 5})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (3, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (114, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 5, set())",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (124, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 22, {24, 22})",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (115, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(5, (125, 0))",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(5, 57, set())",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(5, 28, 8, 10, 18, [('f', 5), ('f', 7), ('f', 16), ('f', 17), ('f', 21), ('f', 22)], True)",
+   {
+    "seed": 166,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "small",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (11, 0))",
+   {
+    "seed": 125,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 6, {5, 6})",
+   {
+    "seed": 125,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (10, 0))",
+   {
+    "seed": 125,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(3, 6, 1, 3, 3, [('p', 0, 1), ('p', 1, 1), ('p', 2, 1)], True)",
+   {
+    "seed": 125,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "deg1"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (49, 0))",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 5, {4, 5})",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (54, 0))",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 8, {8, 7})",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (48, 0))",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (55, 0))",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 16, {16, 17})",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(3, 133, 1, 3, 4, [('f', 3), ('f', 9), ('p', 2, 0), ('p', 3, 0)], True)",
+   {
+    "seed": 268,
+    "pol": "kiss",
+    "fam": "sparse",
+    "scheme": "small",
+    "stm": "adj"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (25, 0))",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 3, {3, 4})",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (24, 0))",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (41, 0))",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(4, (40, 0))",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(4, 19, {19, 20})",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(4, 112, 1, 3, 17, [('f', 3), ('f', 4), ('f', 6), ('f', 7), ('f', 15), ('f', 16)], True)",
+   {
+    "seed": 357,
+    "pol": "kiss_c",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (8, 0))",
+   {
+    "seed": 363,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_piece_refines_several",
+   "(3, 5, {5, 7})",
+   {
+    "seed": 363,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "N3_parent_token_missing",
+   "(3, (9, 0))",
+   {
+    "seed": 363,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ],
+  [
+   "LV_residual_without_bad_edge",
+   "(3, 131, 2, 5, 1, [('p', 1, 1)], False)",
+   {
+    "seed": 363,
+    "pol": "kiss",
+    "fam": "rand",
+    "scheme": "unit",
+    "stm": "far"
+   }
+  ]
+ ]
+}
