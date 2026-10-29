@@ -73,8 +73,10 @@ approaches, is as hard as reachability up to n^{o(1)} [6]. **Odds: low.**
 **Theorem A.** Let G be a planar digraph with nonnegative integer weights in
 {0, …, n^{O(1)}}, hop diameter D, and source s. A CONGEST algorithm computes exact
 distances from s and a shortest path tree in Õ(D) rounds. With the region decomposition of
-LEMMA15.md §9 the algorithm is deterministic, given a deterministic planar embedding
-(LEMMA15.md §9.6, Determinism).
+LEMMA15.md §9 the algorithm is deterministic, given a deterministic planar embedding and
+deterministic face identifiers (LEMMA15.md §9.6, Determinism). Local computation is not
+polynomial: the realization step [10] gives existence only, so a centre searches exhaustively.
+[1, Thm 1] would make it polynomial (unchecked).
 
 **Status: the algorithm is correct given Lemma 14′; the Õ(D) bound holds with region bags**
 (`LEMMA15.md`, §9).
@@ -93,9 +95,11 @@ It is deterministic if the BDD is built deterministically. [1] calls itself dete
 but its BDD comes from Li-Parter, whose only random step is the Ghaffari-Parter separator
 ([9], adpw.txt 111-113 and 1417-1443). [1] cites deterministic separators (Jauregui-
 Montealegre-Rapaport; Abd-Elhaleem-Dory-Weimann 2026) but never shows that they give a BDD
-with Properties 1-7. The face identification needed for Ĝ is already deterministic
-([9], App. A). The region decomposition of LEMMA15.md §9 is deterministic (Lemma B5), so
-Theorem A is deterministic given a deterministic planar embedding. [17] and [18] use [15]
+with Properties 1-7. The face identification of [9] is randomized as written; [9, fn. 20]
+claims in one sentence that it derandomizes, and [18, Lemma 3.17] states a deterministic
+version. The region decomposition of LEMMA15.md §9 is deterministic (Lemma B5), so
+Theorem A is deterministic given a deterministic planar embedding and deterministic face
+identifiers. [17] and [18] use [15]
 as deterministic; the full text of [15] was not accessible to us.
 
 The previous bound was Õ(D²) [8]. The lower bound is Ω(D).

@@ -48,8 +48,11 @@ Please read this before relying on anything here.
 - **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed;
   its adversarial pass is running.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
-  given a deterministic planar embedding. [17] and [18] use the embedding algorithm of [15]
-  as deterministic; the full text of [15] was not accessible to us. Theorems C′ and D are
+  given a deterministic planar embedding and deterministic face identifiers (G6). Both are
+  claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
+  deterministic (the full text of [15] was not accessible to us), and the face identification
+  of [9] is randomized as written, with a one-sentence claim that it derandomizes [9, fn. 20],
+  while [18, Lemma 3.17] states a deterministic version. Theorems C′ and D are
   deterministic in the same sense: their other steps are local, use face identifiers computed
   deterministically in [18, Lemma 3.17], or are the deterministic algorithm of [18]. Theorems
   B and C use [6] and hold with high probability.
@@ -85,10 +88,10 @@ cross the network. On general graphs, $\tilde\Omega(\sqrt n + D)$ rounds are nee
 | Maximum st-flow with $s$, $t$ on a common face | $(1-o(1))$-approximate, undirected, $D\cdot n^{o(1)}$ [9] |
 | Maximum st-flow value and minimum st-cut, undirected | $(1-o(1))$-approximate, $\tilde O(D)$, deterministic [18] |
 
-Two open questions are stated at the end of [9]. The first asks for better primal SSSP, which
-is called "the bottleneck to overcome in order to obtain better distributed planar
-algorithms". The second asks to "first improve the $\tilde O(D^2)$ bound of the (easier)
-directed SSSP problem (even with non-negative weights)".
+The open question at the end of [9] asks for better primal SSSP, called "the bottleneck to
+overcome in order to obtain better distributed planar algorithms", and suggests to "first
+improve the $\tilde O(D^2)$ bound of the (easier) directed SSSP problem (even with
+non-negative weights)".
 
 ## Results
 
@@ -109,7 +112,7 @@ directed SSSP problem (even with non-negative weights)".
 All five theorems are conditional (see [Status](#status)): their correctness on Lemma 14′,
 and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ratings in short:
 - **Theorem A** closes the planar exact-SSSP gap up to polylogarithmic factors and answers
-  the second question of [9]. [18] (2026) still uses approximate SSSP "for the lack of
+  the open question of [9]. [18] (2026) still uses approximate SSSP "for the lack of
   almost-D-rounds exact distributed SSSP". The proof is short, though: the reduction of [3], the labels of
   [1], and Lemma V. Since [3, §3.1] already says its boosting works in any model that can run
   its oracle, the theorem is close to folklore once the labels of [1] are available.
@@ -136,7 +139,11 @@ and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ra
 **Theorem A.** Let $G$ be a planar digraph with nonnegative integer weights in
 $\lbrace 0,\dots,n^{O(1)}\rbrace$, hop diameter $D$ and source $s$. A CONGEST algorithm computes
 exact distances from $s$ and a shortest-path tree in $\tilde O(D)$ rounds. The algorithm is
-deterministic, given a deterministic planar embedding (`notes/LEMMA15.md` §9.6).
+deterministic, given a deterministic planar embedding and deterministic face identifiers
+(`notes/LEMMA15.md` §9.6; see [Status](#status)). Local computation is not polynomial: with
+the realization theorem [10], which gives existence only, a bag centre finds a realization by
+exhaustive search. [1, Thm 1] constructs one in polynomial time, which would make local
+computation polynomial; we have not checked that theorem.
 
 The proof has three ingredients.
 1. **Reduction.** By [3, Lemma 3.1, Thm 1.7, App. C.1], exact SSSP needs $O(\log^2 n)$ calls to
@@ -321,7 +328,11 @@ Beyond the results cited in the proofs, these enter as black boxes:
 - **(G1) The decomposition** of [1, Lemma 9], as built in [8, Sec. 4.2]. We use the shape of
   its child bags as we read it off [8], and spanning trees of diameter $O(D\log n)$ per bag.
   [1] states height $O(D)$, which [8] does not give; the difference costs one log factor.
-- **(G3) Realization**, [10, Thm 1].
+  This is needed only for the induced form of the labels (`notes/LEMMA15.md` §3 to §6). The
+  final theorems use the region decomposition of §9, which is constructed and analysed there;
+  its height bound and bag identifiers are only sketched.
+- **(G3) Realization**, [10, Thm 1]. It gives existence only, so a bag centre searches
+  exhaustively, which takes exponential local time (CONGEST does not count it).
 - **(G4)** Distances in a graph drawn in a disk satisfy the Monge condition in boundary order.
   This is standard, and the notes give the proof.
 - **(G5) Distance oracles** for planar digraphs [13], as used in [1, Lemma 11].
@@ -356,8 +367,9 @@ Lean 4 (`leanprover/lean4:v4.36.0-rc1`) with Mathlib; the exact Mathlib revision
   - `level_step`: the factor $(1+\varepsilon')^3$ per level of Lemma 15′.
   - `params`: $(1+\varepsilon/(2(3H+1)))^{3H+1}\le 1+\varepsilon$ for $\varepsilon\in[0,1]$.
 - `lean/SsspFlow/Labels.lean`, theorems `SsspFlow.labelOut` and `SsspFlow.labelIn`: one level
-  of Lemma 16′ in both directions. The separation property of the child bags enters as a
-  closure hypothesis on arcs.
+  of Lemma 16′ in both directions, for induced bags (distances inside vertex sets). The
+  separation property of the child bags enters as a closure hypothesis on arcs. The region
+  form of Lemma 16′ is not formalized.
 - `lean/SsspFlow/Boost.lean`, theorem `SsspFlow.Boost.Run.exact`: the discretized boosting of
   [3] with base $\ell_i+\eta$. Lengths stay nonnegative (`Run.len_nonneg`), every vertex
   contracts by a factor $1-1/\alpha$ up to an additive $(n-1)\eta$, and the final rounding is
@@ -443,14 +455,16 @@ plain-text extractions of [1] (arXiv v2) and [9].
 - Directed planar global minimum cut is at $\tilde O(D^2)$ [9, Thm 1.5]. It needs the shortest
   cycle of simple darts in the dual. $\hat G$ has cycles of weight 0, so the girth of
   $\hat G$ does not give it.
-- Weighted girth of planar digraphs, also at $\tilde O(D^2)$.
+- Weighted girth of planar digraphs, also at $\tilde O(D^2)$ [19]. If its algorithm uses
+  polylogarithmically many exact SSSP calls, Theorem A may improve it; we have not checked.
 - Can the $n^{o(1)}$ in Theorem C be removed? That needs a reduction for negative weights with
   polylogarithmic overhead.
 - Is the component bound of Lemma B1(e) really $\Theta(\log^2 n)$? All runs stayed at
   depth + 1.
 - Theorems A, C′ and D are deterministic given an embedding. Are Theorems B and C? That
   needs a deterministic version of [6].
-- Can the realization step run in polynomial local time?
+- Can the realization step run in polynomial local time? [1, Thm 1] claims a polynomial-time
+  construction; we have not checked it.
 - A maximum st-flow assignment in undirected planar networks in $\tilde O(D)$. Theorem D
   gives the value and a minimum cut; [18] asks for the assignment as well.
 
@@ -496,7 +510,8 @@ The numbers match those in `notes/`.
 17. Y. Abd-Elhaleem, M. Dory, O. Weimann. A Simple Distributed Deterministic Planar Separator.
     SIROCCO 2026, arXiv:2602.22916.
 18. Y. Abd-Elhaleem, M. Dory, O. Weimann. Õptimal Distributed Maximum Flow Approximation in
-    Undirected Planar Graphs. DISC 2026, arXiv:2608.09500.
+    Undirected Planar Graphs. arXiv:2608.09500, to appear in DISC 2026.
+19. M. Parter. Distributed Planar Reachability in Nearly Optimal Time. DISC 2020.
 
 ## License
 

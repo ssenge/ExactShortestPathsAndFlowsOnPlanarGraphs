@@ -44,7 +44,7 @@ Status (2026-10-29):
   checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
   holds in the region form of §9, with no black box beyond those of §1: the separator is
   Lemma B5 (§9.6), which is deterministic. So Theorem A is deterministic, given a
-  deterministic planar embedding.
+  deterministic planar embedding and deterministic face identifiers.
 
 ## 1. What we take from [1]
 
@@ -707,7 +707,7 @@ Two prototypes in `sim/tiles/` build the construction literally:
 | tiles, plain | 4 | 409,644 | 1,600 | 472 | 78 | 1,385 | 856 | 688 |
 | tiles, virtual (61 virtual closings) | 8 | 891,812 | 3,304 | 941 | 171 | 3,051 | 1,921 | 1,341 |
 
-- **tiles2.** |L_X| ≤ 2|S_X| in every bag, ports per child at most 3.3·|S_parent|, and 7(a)
+- **tiles2.** |L_X| ≤ 2|S_X| in every bag, ports per child at most 3.33·|S_parent|, and 7(a)
   held throughout. The pendant family stays within these bounds once children are grouped
   as in [8].
 - **P_X.** It never fired in tiles2, so Claim 3, step 3, rests on the proof. tiles.py used it
@@ -1541,8 +1541,9 @@ embedding, which Lemma B2 needs.
 **Determinism.** With Lemma B5 every step of the region decomposition is deterministic, given
 the embedding and the BFS tree T. The other steps of (L) are deterministic: the Γ step of
 §3.5, the oracles and transfers of §5 and §6, and the gathering at leaves. So are Lemma V and
-the reduction of [3]. So Theorem A is deterministic, given a deterministic planar embedding.
-[17] and [18] use the embedding algorithm of [15] as deterministic; the full text of [15] was
+the reduction of [3]. So Theorem A is deterministic, given a deterministic planar embedding
+and deterministic face identifiers ((G6); [9, fn. 20] claims a derandomization, [18,
+Lemma 3.17] a deterministic version). [17] and [18] use the embedding algorithm of [15] as deterministic; the full text of [15] was
 not accessible to us.
 
 ### 9.7 Numerical checks (`sim/s9/`)
@@ -1635,6 +1636,10 @@ through a hole; the adversarial pass below does.
     Global trees T from DFS and random spanning trees, which Lemma B2 allows. Exact ν,
     computed both as 2 − χ(Ω_X) and as components of the missing triangles; the two always
     agreed.
+  - *One aborted instance.* In the run `c1_cb`, one instance (family pend, seed 69) stopped
+    on an internal check of the combinatorial closing generator of an earlier engine version,
+    before any lemma was checked on it. The same 400 instances, rerun with the published
+    engine (`logs/c1r_cb.txt`), pass with no failure and no violation.
   - *Checks.* 1,047,707 child checks of Lemmas B2, B3 and B4, 4.59 million vertex checks of
     Claim 7 (label changes and cyclic blocks), and the claims, (T2) to (T4) and (M) on
     341,722 tiles.
