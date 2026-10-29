@@ -635,8 +635,9 @@ Adversarial pass on Lemma R and Lemma N (2026-10-29, sim/thmD/attackR, an indepe
 implementation): no counterexample in 6.9 million level-1 corner pairs, 1.3 million Table R
 builds and 3.5 million recursion instances; two wording faults in F3 and Lemma R (2), fixed.
 It found the recursion defect above, in 54 of the 3.5 million instances. Lemma S repairs it;
-the repaired driver gives the right value on all 25 instances it was tried on, and Lemma S
-has had no referee pass yet. Negative
+the repaired driver gives the right value on all 25 failing instances and on 1,740,000 sweep
+instances (6 wrong values in 1,200,000 of them without the repair). Lemma S has had no
+referee pass yet. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.

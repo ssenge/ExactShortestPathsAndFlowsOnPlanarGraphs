@@ -193,15 +193,16 @@ so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   with λ from A_1), hull_i12 (part (b)) and sep_fail (fact (S) after the incision).
   lane_ends.sh runs the driver's families with and without the repair on the same seeds;
   lane_c24.sh and lane_sep.sh run the checks.
-- Without the repair the driver's own families hit the defect too: one wrong value in 300,000
-  small instances (logs/ends0_small.json) and one in 300,000 tiny ones (logs/ends0_tiny.json).
-- With the repair, no check failed in 1,140,000 instances: 300,000 small, 300,000 tiny, 40,000
-  with up to 160 vertices and 200,000 with many equal capacities (logs/ends1_*.json). The
-  computed lengths at a and b always equal λ_a and λ_b, as (INV) says.
-- The conclusion of Lemma S1 held in 250,000 further instances, 51,139 of them with a dropped
-  index in range (logs/c24_*.json).
-- Still running: 300,000 instances each with up to 70 vertices under both tie-breaks, with and
-  without the repair, and the checks of (S) and part (b).
+- Without the repair the driver's own families hit the defect too: 6 wrong values in
+  1,200,000 instances (1 in 300,000 small, 1 in 300,000 tiny, 2 in 300,000 with up to 70
+  vertices under each tie-break; logs/ends0_*.json).
+- With the repair, no check failed in 1,740,000 instances on the same seeds and more: 300,000
+  small, 300,000 tiny, 600,000 with up to 70 vertices under two tie-breaks, 40,000 with up to
+  160 vertices and 200,000 with many equal capacities (logs/ends1_*.json). The computed
+  lengths at a and b always equal λ_a and λ_b, as (INV) says.
+- The conclusion of Lemma S1 held in 460,000 further instances, 89,951 of them with a dropped
+  index in range (logs/c24_*.json, logs/sep_*.json). Fact (S) and part (b) held in the 210,000
+  of logs/sep_*.json, 23,910 of them with an index strictly between x and y in range.
 
 ## Points of doubt
 

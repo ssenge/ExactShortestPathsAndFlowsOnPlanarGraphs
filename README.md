@@ -379,7 +379,8 @@ a leaf, at $a=\max(i_1,j)$ and $b=\min(i_2,k)$. That is two more SSSP calls per 
 round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form of
 [18, Claim 2.4]: a dropped index is dominated by every index between it and $i_1$, or by every
 index between it and $i_2$. So one of $a$, $b$ carries the minimum. With the repair the driver
-is right on all 25 failing instances of the search (161 of 300 runs were wrong without it). As
+is right on all 25 failing instances of the search (161 of 300 runs were wrong without it)
+and on 1,740,000 sweep instances, where it made 6 errors in 1,200,000 without the repair. As
 we read [18], its own approximate recursion has the same defect; we have not checked whether
 another reading avoids it.
 
