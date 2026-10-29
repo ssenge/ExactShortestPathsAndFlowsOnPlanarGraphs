@@ -1,0 +1,2 @@
+{'chord_checks': 33869, 'walk_checks': 1219, 'instances': 2000, 'kind_virt': 1219, 'mode_bfs': 1014, 'vertices': 337572, 'kind_real': 781, 'mode_dfs': 485, 'mode_rand': 501}
+{'step_slack': 0.992, 'n': 1842, 'side_over_n': 0.667, 'S_over_2h1': 1.0}

@@ -1,0 +1,3 @@
+trees n 10 trees 106 embeddings 13335 instances 240030 time 41.0
+{'tree_steps': 4080510, 'inst': 240030, 'kind_virt': 240030, 'ref_cmp': 240030, 'virt_marks_checks': 816102}
+{'tree_step_ratio': 0.8, 'in1_over_n': 0.0, 'outm_over_n': 0.0, 'virt_in_over_n_j>1': 0.1, 'Wjm1_over_n': 0.3, 'virt_side_over_n': 0.6, 'side_over_n': 0.6, 'side_over_n_n>=10': 0.6, 'S_over_2h1': 1.0, 'max_chord_steps_one_walk': 0, 'max_e0_steps': 0}

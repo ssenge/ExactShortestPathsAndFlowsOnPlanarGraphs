@@ -1,0 +1,3 @@
+n 6 part 0 graphs 99 time 74.7
+{'virt_marks_checks': 3510, 'tree_steps': 3510, 'inst': 481198, 'kind_virt': 390, 'ref_cmp': 481198, 'chord_marks_checks': 4447488, 'kind_real': 480808}
+{'tree_step_ratio': 0.6667, 'in1_over_n': 0.0, 'outm_over_n': 0.0, 'side_over_n': 0.6667, 'side_over_n_small': 0.6667, 'S_over_2h1': 1.0}

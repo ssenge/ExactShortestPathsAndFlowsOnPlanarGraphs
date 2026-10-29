@@ -1,0 +1,3 @@
+geo seeds 8000 9200 time 73.8
+{'chord_marks_checks': 114640, 'inst': 4800, 'kind_real': 1904, 'ref_cmp': 4800, 'tree_steps': 629252, 'kind_virt': 2896, 'virt_marks_checks': 205200, 'chord_steps': 26096, 'e0_steps': 709}
+{'side_over_n': 0.6667, 'side_over_n_n>=10': 0.6667, 'S_over_2h1': 1.0, 'max_chord_steps_one_walk': 162, 'max_e0_steps': 1, 'n_max': 1848, 'tree_step_ratio': 0.9989, 'in1_over_n': 0.2784, 'outm_over_n': 0.2321, 'virt_in_over_n_j>1': 0.5477, 'Wjm1_over_n': 0.3329, 'virt_side_over_n': 0.6667, 'chord_step_ratio': 0.9971, 'chord_step_min_slack': 4, 'fine_bound_min_slack': 0, 'gain_over_Wp_j>1': 0.9924, 'Wp_over_n': 0.3317, 'side_over_n_small': 0.6667}

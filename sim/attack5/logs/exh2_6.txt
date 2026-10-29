@@ -1,0 +1,1 @@
+n 6 part 0 inst 481198 steps 22494620 fails 0 time 454.4

@@ -39,6 +39,9 @@ Please read this before relying on anything here.
   - §9 has had a referee pass, whose fixes are in, and an adversarial pass on 10,400
     instances (about a million bags) that broke no lemma. It found four defects in our test
     engine, all fixed.
+  - Lemma B5 has had its own referee pass, correct as written, and an adversarial pass on
+    about 20.8 million instances, among them every instance with at most 7 vertices, with no
+    counterexample.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding; [17] cites the embedding algorithm of [15] as
   deterministic. Theorems B and C use [6] and hold with high probability. For Theorem C′ we
@@ -367,7 +370,14 @@ test round counts.
   instances, and `neg.py` the negative controls. 2,450 correctness instances had no failure,
   and every edge lay in at most two region graphs per depth. After the fixes from the
   adversarial pass, 1,750 instances checked Lemmas B2 to B4 with exact hole counts at 86,905
-  children without a violation (`logs/e_*.txt`); `logs/` holds all output.
+  children without a violation (`logs/e_*.txt`); `logs/` holds all output. `b5.py` runs
+  Lemma B5 and checks each separator against an independent side count (4,000 instances, n
+  up to 1,842, no failure; `python3 -I b5.py START END`).
+- `sim/attack5/`: the adversarial pass on Lemma B5. `mine.py` is an independent
+  implementation with its own side count, and `harness.py` compares it with `b5.py`.
+  `exh.py` and `exh_trees.py` enumerate all instances for small n, `rand.py`, `fams.py` and
+  `geo_cmp.py` run larger ones, `hill.py` climbs towards the step bounds, and `negctl.py`
+  runs the negative controls.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine

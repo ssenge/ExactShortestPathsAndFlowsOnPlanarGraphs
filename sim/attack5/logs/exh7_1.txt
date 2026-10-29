@@ -1,0 +1,3 @@
+n 7 part 1 graphs 646 time 884.8
+{'tree_steps': 5016, 'inst': 9163242, 'kind_virt': 456, 'ref_cmp': 9163242, 'virt_marks_checks': 495, 'kind_real': 9162786, 'chord_marks_checks': 10517250}
+{'tree_step_ratio': 0.7143, 'in1_over_n': 0.0, 'outm_over_n': 0.0, 'virt_in_over_n_j>1': 0.0, 'Wjm1_over_n': 0.2857, 'virt_side_over_n': 0.5714, 'side_over_n': 0.5714, 'side_over_n_small': 0.5714, 'S_over_2h1': 1.0, 'max_chord_steps_one_walk': 0, 'max_e0_steps': 0}

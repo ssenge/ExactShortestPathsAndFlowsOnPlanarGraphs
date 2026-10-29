@@ -1594,13 +1594,30 @@ through a hole; the adversarial pass below does.
     occur. BFS, DFS and random spanning trees, with random roots and start corners.
   - *Checks.* Each separator against an independent count: the closing edge inserted into
     the rotations, and each component of R − S given a side by its attachments, which must
-    agree. Also the marks lemma on 66,599 real chords, and that the corners of step 3 form one
-    whole face.
+    agree. The marks lemma on 66,599 real chords, as ordered sides: the vertices it puts on
+    the side of an arc, with the root rule, must be the vertices the count puts there. In
+    step 3, that the corners form one whole face, that the walk by face successors is the
+    tour order, j = 1 for the first corner, and each step within its bound.
   - *Results.* Step 3 ran in 2,427 instances and step 1 sufficed in 1,573. The larger side
-    never exceeded 2n/3, and |S| ≤ 2h + 1 always.
+    never exceeded 2n/3, and |S| ≤ 2h + 1 always. A chord step raised in_j by at most
+    0.993 W′, so the bound in_j ≤ in_{j−1} + W′ − 1 is nearly tight.
   - *Negative controls* (160 instances each). Without step 2, so that step 3 always walks
     the face of the corner at o, 31 gave an unbalanced chord. With y allowed several corners
     in F, 1 gave a loop.
+  - *Adversarial pass* (`sim/attack5/`, 2026-10-29). About 20.8 million instances, with
+    an independent implementation of the algorithm and of the side count, compared with
+    `b5.py` on every instance. No failure and no disagreement.
+    - Exhaustive for n = 4 to 7: every connected planar graph, every planar rotation
+      system, every spanning tree, root and start corner (19.4 million instances).
+    - All plane trees for n = 7 to 10 (335,000), where step 3 always runs.
+    - 1.02 million structured and random instances with n from 10 to 400, in 19 families
+      aimed at step 3 (hubs, onions, ears, nested faces, cacti), and 14,400 geometric ones
+      with n up to 1,910. Hill climbing on the slack of each step bound.
+    - The bounds are reached: the larger side 2n/3 and |S| = 2h + 1.
+    - Negative controls (400 each): without step 2, 37 caught; without step 1, 117 caught,
+      since the bound W′ < n/3 uses that step 1 found no balanced chord. With y allowed
+      several corners in F, none caught; such loops are rare, and `b5.py`'s control found
+      1 in 160.
   - B5's closing edges are curves between two corners of one face of R_X. The adversarial
     pass below used 68,323 closings of this kind, so Lemmas B1 to B4 were tested on them.
 - **Negative controls** (`neg.py`, 70 instances each):
@@ -1647,7 +1664,8 @@ through a hole; the adversarial pass below does.
   - An adversarial pass (2026-10-29) broke no lemma (§9.7). It met Lemmas B2, B3 and B4 with
     equality and found four defects in the test engine, now fixed.
   - Lemma B5 had its own referee pass (2026-10-29): correct as written, with minor gaps and
-    wording, now fixed. Its adversarial pass is running.
+    wording, now fixed. Its adversarial pass (2026-10-29, §9.7) found no counterexample in
+    about 20.8 million instances, among them all instances with n ≤ 7.
   - No human has checked §9.
 - **Rating: modest.** It restores the round bounds that (S9) removed. The tools are the
   standard ones: sides of edges, a crosscut argument and a non-crossing count. The
