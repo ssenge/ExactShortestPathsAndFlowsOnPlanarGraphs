@@ -1,0 +1,28 @@
+{
+ "rule": "anylegal",
+ "start": 400000,
+ "count": 4000,
+ "thmD_bad": 0,
+ "secs": 42,
+ "counts": {
+  "DEF_match": 11564,
+  "P3_euler_ok": 11564,
+  "P6_X_copy_matched": 15216,
+  "P6_checked_nodeparts": 212426,
+  "X_deg2": 13199,
+  "X_deg3": 1929,
+  "cut_mode_L": 7381,
+  "cut_mode_R": 7747,
+  "e0_eq_elast": 160,
+  "e0_eq_elast_incised": 6,
+  "e0_incised_L": 828,
+  "e0_incised_R": 941,
+  "ec_selfloop_level": 3536,
+  "instances": 4000,
+  "levels_checked": 11564,
+  "max_copies_minus_3deg": 2,
+  "terminal_deg1": 1487,
+  "terminal_deg2": 4240
+ },
+ "notes": []
+}

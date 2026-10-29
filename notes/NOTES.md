@@ -528,34 +528,38 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
   most two copies. With D3's rule, the repaired Ĝ_ℓ passed 79,000 runs on 64,000 instances
   with no failure of Thm 3.1 (1), (2), the distances, the trees or the final cut. All 1,848
   graphs built over 700 further instances were planar with hop diameter at most 4D + 4. The
-  literal Ĝ_ℓ failed in 10,673 of 30,000. A written proof for the repaired graph is still
-  missing: of Thm 3.1 (1), (2), of planarity ([18, Lemma 3.5]), and of the local phase of
-  [18, Lemma 3.17], which must also place the fresh copies X in their node-parts. These failures may come from a misreading of [18] on our
-  side; [18]'s own approximate algorithm may be affected in the same way, which we have not
-  checked.
-- **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), its hop diameter is at most 4D + 4 ([18,
-  Lemma 3.4] bounds the distances between star centres; other copies are at most two hops from
-  their centre), it has at most 3 deg(v) + 1 copies of each vertex v, so O(n) vertices in all,
-  and it is built in O(1) rounds once the incisions are stored ([18, Lemma 3.15]). A CONGEST
-  round on Ĝ_ℓ takes four rounds on G ([18, Lemma 3.16]). Each level-ℓ node-part f is a path
-  p̂(f) of E_R edges, these paths are vertex-disjoint, and there is exactly one E_C edge for
-  each edge of a level-ℓ annulus ([18, Thm 3.1 (1), (2), Lemma 3.13]). Ĝ_ℓ has further E_C
+  literal Ĝ_ℓ failed in 10,673 of 30,000. These failures may come from a misreading of [18]
+  on our side; [18]'s own approximate algorithm may be affected in the same way, which we have
+  not checked.
+
+  **Lemma R** (`notes/GHAT_REPAIR.md`) defines the repaired graph formally and proves what
+  Theorem D needs: [18, Thm 3.1 (1), (2)], planarity with an explicit rotation at every copy,
+  the diameter and size bounds, that the D3 rule always has a legal choice, and the local
+  phase of [18, Lemma 3.17], with copies matched across levels by their E_R edges instead of
+  by name. The rotation needs one more fixed choice: the two E_R copies of an incised e0 in
+  mode R are ordered the other way round. An independent builder of the definition matched
+  sim/thmD on 98,000 instances (255,476 levels). Lemma R has had no referee pass yet.
+- **Ĝ_ℓ** (repaired, Lemma R). It is planar (Lemma R (3)), its hop diameter is at most
+  4D + 4 (Lemma R (4); [18, Lemma 3.4] gives 4D between star centres), it has at most
+  3 deg(v) + 1 copies of each vertex v and 3 deg + 2 at s and t, so O(n) vertices in all, and
+  it is built in O(1) rounds once the incisions are stored. A CONGEST round on Ĝ_ℓ takes four
+  rounds on G. Each level-ℓ node-part f is a path p̂(f) of E_R edges, these paths are
+  vertex-disjoint, and there is exactly one E_C edge for each edge of a level-ℓ annulus
+  (Lemma R (1), (2), replacing [18, Thm 3.1 (1), (2), Lemma 3.13] at s and t). Ĝ_ℓ has further E_C
   edges, for dual edges outside every annulus ([18], adw26 1673-1675). The E_S edges join
   copies of one vertex.
-- **Embedding.** Ĝ_0 has an explicit rotation at each copy, computed locally from the
-  embedding of G ([9], App. A). The proof of [18, Lemma 3.5] turns Ĝ_0 into Ĝ_ℓ by four steps,
-  each local at the copies of an incised edge or at s and t. In steps 2 and 3, the two
-  parallel subdivided E_R paths of an incised edge are placed in a fixed mirrored order at its
-  two ends, so every vertex of G computes the rotations of its copies. Alternatively, run [15]
-  on Ĝ_ℓ.
+- **Embedding.** Table R of Lemma R gives the rotation at every copy. Each vertex computes
+  the rotations of its copies in O(1) rounds from its own rotation, its incised edges, its
+  neighbours' IDs and the endpoint data of s and t. Alternatively, run [15] on Ĝ_ℓ.
 - **Multigraph.** Ĝ_ℓ can have parallel E_C edges (at vertices of degree 2) and E_C self-loops
   (at vertices of degree 1). Each host drops its self-loops and keeps the lighter of two
   parallel E_C edges. This is local and keeps planarity, the diameter bound and all distances.
 - **Weights.** 0 on both arcs of each E_R edge. On the E_C edge of an edge fg of a live
   level-ℓ annulus, K·c(e) + 1 in both directions, where e is the primal edge of fg and c(e) its
   capacity. M on both arcs of every other E_C edge (those outside the live annuli, including
-  discarded parts) and of each E_S edge. Here K = 19n + 1 > |V(Ĝ_ℓ)| (since
-  Σ_v (3 deg(v) + 1) ≤ 6·(3n − 6) + n) and M = K·(2·Σ_e c(e) + 1) + 1. Σ_e c(e) is aggregated in
+  discarded parts) and of each E_S edge. Parallel edges of G are merged first, adding their
+  capacities, and loops are deleted. Then K = 19n + 1 > |V(Ĝ_ℓ)|, since |V(Ĝ_ℓ)| ≤
+  6|E| + n + 2 ≤ 19n − 34 for n ≥ 3 (Lemma R (4)), and M = K·(2·Σ_e c(e) + 1) + 1. Σ_e c(e) is aggregated in
   O(D) rounds. All weights are integers of polynomial size. A vertex knows which annulus each
   of its copies lies in ([18, Lemma 3.17]) and whether that annulus is live ([18], the test
   after Claim 5.8), so it sets these weights locally.
@@ -605,8 +609,8 @@ SSSP step. The other steps still use [18]'s minor-aggregation simulation.
 *Status.* Referee pass (2026-10-29): correct with gaps, no fatal or serious issue. Its two
 load-bearing points (the bound on M, and E_C edges outside the annuli) and its minor points
 are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on the repaired
-Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above), so the
-proof now needs Thm 3.1 (1), (2) for the repaired graph, which is not yet written. Negative
+Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above).
+Lemma R proves the needed properties of the repaired graph; its referee pass is pending. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.

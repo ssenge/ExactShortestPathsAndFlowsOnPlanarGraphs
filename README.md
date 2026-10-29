@@ -8,7 +8,7 @@ model. The main claims are:
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
   $\tilde O(D)$ rounds (Theorem D, new, one referee pass and one adversarial pass; it needs a
-  repair at $s$ and $t$ of a construction of [18], tested but not yet proved), where only a
+  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, not yet refereed), where only a
   $(1-o(1))$-approximation was known in $\tilde O(D)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
@@ -49,7 +49,8 @@ Please read this before relying on anything here.
 - **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed.
   The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
   Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
-  computed 0). A local repair passed 79,000 runs with no failure; its proof is not written yet.
+  computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; its
+  referee pass is pending.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -347,9 +348,11 @@ $e_{\text{last}}$ at $t$), and each dual edge joins the copies its two path edge
 attach to. It is local at $s$ and $t$ and adds at most two vertices. The repaired graph passed
 79,000 runs on 64,000 instances with exact distances, trees and cut values; every one of 1,848
 graphs built for a planarity check was planar with hop diameter at most $4D+4$. The literal
-graph failed in about a third of the instances. A written proof for the repaired graph is the
-remaining gap in Theorem D: of [18, Thm 3.1 (1), (2)], of planarity, and of the local phase of
-[18, Lemma 3.17], which must also place the new copies in their dual nodes. These failures may come from a misreading of [18] on our side.
+graph failed in about a third of the instances. Lemma R (`notes/GHAT_REPAIR.md`, 2026-10-29)
+defines the repaired graph formally and proves what Theorem D needs from it: the properties
+[18, Thm 3.1 (1), (2)], planarity with an explicit rotation at every copy, the diameter bound,
+and the local phase of [18, Lemma 3.17]. An independent implementation of its definition
+matched the tested graph on 98,000 instances. Lemma R has not had a referee pass yet. These failures may come from a misreading of [18] on our side.
 We have not checked whether they affect the approximate algorithm of [18].
 
 ## What is assumed
@@ -462,7 +465,9 @@ test round counts.
   driven only by the exact trees of Theorem D, on the literal and the repaired $\hat G_\ell$,
   and checks every distance, tree and final cut against networkx. `minimize.py` shrinks
   failures, `planar_check.py` tests planarity and diameter, and `lane1.sh`/`lane2.sh` give the
-  runs. `logs/summary.txt` sums them up.
+  runs. `logs/summary.txt` sums them up. `repair/` checks Lemma R: `formal_ghat.py` builds
+  the repaired graph from its written definition, and `test_repair.py` and `witness.py`
+  compare it with `thmD.py` and check its properties.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
@@ -479,14 +484,15 @@ test round counts.
 
 ## Notes (`notes/`)
 
-- `notes/NOTES.md`: the state of the art, Theorems A, B, C and C′, Lemmas V and D, the ratings,
-  and the review history.
+- `notes/NOTES.md`: the state of the art, Theorems A, B, C, C′ and D, Lemmas V and D, the
+  ratings, and the review history.
+- `notes/GHAT_REPAIR.md`: Lemma R, the repaired auxiliary graph of [18] that Theorem D runs on.
 - `notes/LEMMA15.md`: the gaps in [1, Lemmas 14 to 16] and their repair, with Lemma 14′ (§3),
   the analytic layer (§4 to §7), what is settled (§8), and the region bags that repair the
   round count (§9).
 
-These are working notes. References such as "lty 1762" or "adpw 2166" point to line numbers in
-plain-text extractions of [1] (arXiv v2) and [9].
+These are working notes. References such as "lty 1762", "adpw 2166" or "adw26 1673" point to
+line numbers in plain-text extractions of [1] (arXiv v2), [9] and [18].
 
 ## Open questions
 
