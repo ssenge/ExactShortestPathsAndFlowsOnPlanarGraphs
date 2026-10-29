@@ -341,8 +341,10 @@ Beyond the results cited in the proofs, these enter as black boxes:
 ## Machine-checked proofs (`lean/`)
 
 Lean 4 (`leanprover/lean4:v4.36.0-rc1`) with Mathlib; the exact Mathlib revision is pinned in
-`lean/lake-manifest.json`. All theorems depend only on the standard axioms (`propext`,
-`Classical.choice`, `Quot.sound`). There is no `sorry`. In a fresh clone, run
+`lean/lake-manifest.json` and in `lean/lakefile.toml`. All theorems depend only on the
+standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorry`.
+`lake env lean SsspFlow/Axioms.lean` prints the axioms of every named theorem; its output is in
+`lean/axioms.txt`. In a fresh clone, run
 `lake exe cache get` before `lake build`, or Lake compiles all of Mathlib from source.
 
 - `lean/SsspFlow/LemmaV.lean`, theorem `SsspFlow.Hierarchy.lemmaV`: Lemma V for an abstract bag
