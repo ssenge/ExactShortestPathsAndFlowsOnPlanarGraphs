@@ -537,8 +537,14 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
   the diameter and size bounds, that the D3 rule always has a legal choice, and the local
   phase of [18, Lemma 3.17], with copies matched across levels by their E_R edges instead of
   by name. The rotation needs one more fixed choice: the two E_R copies of an incised e0 in
-  mode R are ordered the other way round. An independent builder of the definition matched
-  sim/thmD on 98,000 instances (255,476 levels). Lemma R has had no referee pass yet.
+  mode R are ordered the other way round. Lemma N proves that the annuli of [18] are the
+  components of a graph on labelled darts, by induction over the levels, so the node-parts are
+  pieces between cuts and the annuli are closed. It defines the level-1 incision as the cut
+  along an arc γ from s through P to t, which covers the endpoint cases [18] leaves open. It
+  takes five facts on one incision step from [18] (F1 to F5). It also shows that the Reif
+  reduction is correct for every legal corner of s and t. I_ℓ is every edge incised so far,
+  as stored in [18, Def. 3.2]. An independent builder of the definition matched sim/thmD on
+  98,000 instances (260,625 levels), and every live annulus was a whole component.
 - **Ĝ_ℓ** (repaired, Lemma R). It is planar (Lemma R (3)), its hop diameter is at most
   4D + 4 (Lemma R (4); [18, Lemma 3.4] gives 4D between star centres), it has at most
   3 deg(v) + 1 copies of each vertex v and 3 deg + 2 at s and t, so O(n) vertices in all, and
@@ -615,7 +621,8 @@ are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on
 Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above).
 Lemma R proves the needed properties of the repaired graph. Its referee pass (2026-10-29)
 found it correct in substance, with one serious gap: Fact N, the description of node-parts as
-pieces, is not stated in [18] and needs its own proof. A revision is in progress. Negative
+pieces, is not stated in [18]. The revision proves it as Lemma N and fixes the minor points.
+An adversarial pass on Lemma R is pending. Negative
 controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
 2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
 and on the endpoint repair.

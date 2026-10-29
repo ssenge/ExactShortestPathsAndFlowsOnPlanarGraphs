@@ -1,0 +1,43 @@
+{
+ "rule": "formal",
+ "start": 800000,
+ "count": 15000,
+ "thmD_bad": 0,
+ "secs": 78,
+ "extra": {
+  "DEF_match": 39209,
+  "annuli_checked": 49012,
+  "extra_edges": 1485,
+  "instances": 15000,
+  "levels_checked": 39860,
+  "levels_with_extra": 651,
+  "nodeparts_checked": 559521,
+  "pieces_refine_ok": 430840,
+  "residual_components": 3730
+ },
+ "check_level_failures": {},
+ "check_level_counts": {
+  "P3_euler_ok": 39860,
+  "P6_X_copy_matched": 51420,
+  "P6_checked_nodeparts": 405930,
+  "X_deg2": 43806,
+  "X_deg3": 5914,
+  "cut_mode_L": 40866,
+  "cut_mode_R": 8854,
+  "e0_eq_elast_LL": 364,
+  "e0_eq_elast_RR": 2,
+  "e0_eq_elast_incised_LL": 44,
+  "e0_incised_L": 3813,
+  "e0_incised_R": 1735,
+  "e0_incised_at_deg1_terminal_L": 556,
+  "e0_incised_at_deg2_terminal_L": 1064,
+  "e0_incised_at_deg2_terminal_R": 433,
+  "e0_newly_incised_L": 2993,
+  "e0_newly_incised_R": 1373,
+  "ec_selfloop_level": 9805,
+  "max_copies_minus_3deg": 2,
+  "terminal_deg1": 5326,
+  "terminal_deg2": 14109
+ },
+ "notes": []
+}

@@ -1,0 +1,444 @@
+{
+ "D1_n4/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 610,
+   "P6_X_copy_matched": 630,
+   "cut_mode_L": 592,
+   "terminal_deg2": 310,
+   "X_deg2": 602,
+   "cut_mode_R": 28,
+   "e0_eq_elast_LL": 8,
+   "X_deg3": 18,
+   "e0_incised_R": 6,
+   "e0_incised_at_deg2_terminal_R": 6,
+   "e0_newly_incised_R": 6,
+   "e0_incised_L": 4,
+   "e0_incised_at_deg2_terminal_L": 4,
+   "e0_newly_incised_L": 4,
+   "nodeparts_checked": 2310,
+   "pieces_refine_ok": 1410
+  },
+  "notes": []
+ },
+ "D1_n4/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 610,
+   "P6_X_copy_matched": 630,
+   "cut_mode_R": 280,
+   "cut_mode_L": 340,
+   "terminal_deg2": 310,
+   "e0_eq_elast_RL": 28,
+   "X_deg2": 558,
+   "X_deg3": 62,
+   "e0_eq_elast_RR": 3,
+   "e0_eq_elast_LR": 17,
+   "e0_eq_elast_LL": 4,
+   "e0_incised_R": 6,
+   "e0_incised_at_deg2_terminal_R": 6,
+   "e0_newly_incised_R": 6,
+   "e0_incised_L": 4,
+   "e0_incised_at_deg2_terminal_L": 4,
+   "e0_newly_incised_L": 4,
+   "nodeparts_checked": 2310,
+   "pieces_refine_ok": 1410
+  },
+  "notes": []
+ },
+ "D2_single_edge_c0/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 600,
+   "terminal_deg1": 600,
+   "e0_eq_elast_LL": 300,
+   "X_deg3": 300,
+   "X_deg2": 300,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "D2_single_edge_c0/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_R": 314,
+   "terminal_deg1": 600,
+   "e0_eq_elast_RR": 78,
+   "X_deg3": 300,
+   "X_deg2": 300,
+   "cut_mode_L": 286,
+   "e0_eq_elast_LR": 81,
+   "e0_eq_elast_LL": 64,
+   "e0_eq_elast_RL": 77,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "D2_single_edge_c3/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 600,
+   "terminal_deg1": 600,
+   "e0_eq_elast_LL": 300,
+   "X_deg3": 300,
+   "X_deg2": 300,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "D2_single_edge_c3/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_R": 314,
+   "terminal_deg1": 600,
+   "e0_eq_elast_RR": 78,
+   "X_deg3": 300,
+   "X_deg2": 300,
+   "cut_mode_L": 286,
+   "e0_eq_elast_LR": 81,
+   "e0_eq_elast_LL": 64,
+   "e0_eq_elast_RL": 77,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "n2_par3/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 614,
+   "P6_X_copy_matched": 656,
+   "cut_mode_R": 64,
+   "X_deg2": 586,
+   "cut_mode_L": 564,
+   "e0_eq_elast_LL": 7,
+   "X_deg3": 42,
+   "e0_incised_L": 14,
+   "e0_eq_elast_incised_LL": 7,
+   "e0_newly_incised_L": 14,
+   "e0_eq_elast_RR": 7,
+   "e0_incised_R": 14,
+   "e0_eq_elast_incised_RR": 7,
+   "e0_newly_incised_R": 14,
+   "nodeparts_checked": 2348,
+   "pieces_refine_ok": 1448
+  },
+  "notes": []
+ },
+ "n2_par3/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 614,
+   "P6_X_copy_matched": 656,
+   "cut_mode_R": 235,
+   "X_deg2": 499,
+   "cut_mode_L": 393,
+   "e0_eq_elast_RL": 46,
+   "X_deg3": 129,
+   "e0_eq_elast_LR": 41,
+   "e0_eq_elast_LL": 7,
+   "e0_incised_L": 14,
+   "e0_eq_elast_incised_LL": 7,
+   "e0_newly_incised_L": 14,
+   "e0_eq_elast_RR": 7,
+   "e0_incised_R": 14,
+   "e0_eq_elast_incised_RR": 7,
+   "e0_newly_incised_R": 14,
+   "nodeparts_checked": 2348,
+   "pieces_refine_ok": 1448
+  },
+  "notes": []
+ },
+ "n3_pendant_par/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 617,
+   "P6_X_copy_matched": 651,
+   "cut_mode_L": 500,
+   "terminal_deg1": 317,
+   "cut_mode_R": 134,
+   "X_deg2": 617,
+   "e0_incised_L": 9,
+   "e0_incised_at_deg1_terminal_L": 9,
+   "e0_newly_incised_L": 9,
+   "X_deg3": 17,
+   "e0_incised_R": 8,
+   "e0_newly_incised_R": 8,
+   "nodeparts_checked": 2370,
+   "pieces_refine_ok": 1470
+  },
+  "notes": []
+ },
+ "n3_pendant_par/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 617,
+   "P6_X_copy_matched": 651,
+   "cut_mode_R": 373,
+   "terminal_deg1": 317,
+   "X_deg2": 617,
+   "cut_mode_L": 261,
+   "e0_incised_L": 6,
+   "e0_incised_at_deg1_terminal_L": 6,
+   "e0_newly_incised_L": 6,
+   "X_deg3": 17,
+   "e0_incised_R": 11,
+   "e0_newly_incised_R": 11,
+   "e0_incised_at_deg1_terminal_R": 3,
+   "nodeparts_checked": 2370,
+   "pieces_refine_ok": 1470
+  },
+  "notes": []
+ },
+ "path3/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 600,
+   "terminal_deg1": 600,
+   "X_deg2": 600,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "path3/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_R": 314,
+   "terminal_deg1": 600,
+   "X_deg2": 600,
+   "cut_mode_L": 286,
+   "nodeparts_checked": 900,
+   "pieces_refine_ok": 600
+  },
+  "notes": []
+ },
+ "C4_opposite/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 549,
+   "terminal_deg2": 600,
+   "X_deg2": 600,
+   "cut_mode_R": 51,
+   "nodeparts_checked": 1612,
+   "pieces_refine_ok": 1012
+  },
+  "notes": []
+ },
+ "C4_opposite/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_R": 294,
+   "terminal_deg2": 600,
+   "cut_mode_L": 306,
+   "X_deg2": 600,
+   "nodeparts_checked": 1612,
+   "pieces_refine_ok": 1012
+  },
+  "notes": []
+ },
+ "C4_adjacent/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 588,
+   "terminal_deg2": 600,
+   "e0_eq_elast_LL": 12,
+   "X_deg2": 588,
+   "X_deg3": 12,
+   "cut_mode_R": 12,
+   "nodeparts_checked": 1612,
+   "pieces_refine_ok": 1012
+  },
+  "notes": []
+ },
+ "C4_adjacent/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_R": 253,
+   "terminal_deg2": 600,
+   "X_deg2": 536,
+   "cut_mode_L": 347,
+   "e0_eq_elast_RL": 30,
+   "X_deg3": 64,
+   "e0_eq_elast_LR": 23,
+   "e0_eq_elast_RR": 7,
+   "e0_eq_elast_LL": 4,
+   "nodeparts_checked": 1612,
+   "pieces_refine_ok": 1012
+  },
+  "notes": []
+ },
+ "K4/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 570,
+   "X_deg2": 600,
+   "cut_mode_R": 30,
+   "nodeparts_checked": 2824,
+   "pieces_refine_ok": 1624
+  },
+  "notes": []
+ },
+ "K4/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 340,
+   "X_deg2": 560,
+   "cut_mode_R": 260,
+   "e0_eq_elast_RL": 21,
+   "X_deg3": 40,
+   "e0_eq_elast_LR": 19,
+   "nodeparts_checked": 2824,
+   "pieces_refine_ok": 1624
+  },
+  "notes": []
+ },
+ "grid_pendant_st/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 600,
+   "terminal_deg1": 600,
+   "X_deg2": 600,
+   "nodeparts_checked": 6300,
+   "pieces_refine_ok": 3300
+  },
+  "notes": []
+ },
+ "grid_pendant_st/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 600,
+   "P6_X_copy_matched": 600,
+   "cut_mode_L": 289,
+   "terminal_deg1": 600,
+   "cut_mode_R": 311,
+   "X_deg2": 600,
+   "nodeparts_checked": 6300,
+   "pieces_refine_ok": 3300
+  },
+  "notes": []
+ },
+ "grid_corner_st/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 690,
+   "P6_X_copy_matched": 870,
+   "cut_mode_L": 598,
+   "terminal_deg2": 780,
+   "X_deg2": 690,
+   "cut_mode_R": 182,
+   "e0_incised_L": 48,
+   "e0_incised_at_deg2_terminal_L": 48,
+   "e0_newly_incised_L": 48,
+   "X_deg3": 90,
+   "e0_incised_R": 42,
+   "e0_incised_at_deg2_terminal_R": 42,
+   "e0_newly_incised_R": 42,
+   "nodeparts_checked": 7867,
+   "pieces_refine_ok": 4867
+  },
+  "notes": []
+ },
+ "grid_corner_st/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 690,
+   "P6_X_copy_matched": 870,
+   "cut_mode_L": 397,
+   "terminal_deg2": 780,
+   "X_deg2": 690,
+   "cut_mode_R": 383,
+   "e0_incised_L": 48,
+   "e0_incised_at_deg2_terminal_L": 48,
+   "e0_newly_incised_L": 48,
+   "X_deg3": 90,
+   "e0_incised_R": 42,
+   "e0_incised_at_deg2_terminal_R": 42,
+   "e0_newly_incised_R": 42,
+   "nodeparts_checked": 7867,
+   "pieces_refine_ok": 4867
+  },
+  "notes": []
+ },
+ "bridge/formal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 694,
+   "P6_X_copy_matched": 788,
+   "cut_mode_L": 672,
+   "terminal_deg2": 788,
+   "X_deg2": 788,
+   "cut_mode_R": 116,
+   "nodeparts_checked": 3071,
+   "pieces_refine_ok": 2171
+  },
+  "notes": []
+ },
+ "bridge/anylegal": {
+  "thmD_bad": 0,
+  "bad": {},
+  "stats": {
+   "P3_euler_ok": 694,
+   "P6_X_copy_matched": 788,
+   "cut_mode_R": 358,
+   "terminal_deg2": 788,
+   "X_deg2": 788,
+   "cut_mode_L": 430,
+   "nodeparts_checked": 3071,
+   "pieces_refine_ok": 2171
+  },
+  "notes": []
+ }
+}

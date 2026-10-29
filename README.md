@@ -8,7 +8,7 @@ model. The main claims are:
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
   $\tilde O(D)$ rounds (Theorem D, new, one referee pass and one adversarial pass; it needs a
-  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, one referee pass with one gap being closed), where only a
+  repair at $s$ and $t$ of a construction of [18], proved in Lemma R, one referee pass, adversarial pass pending), where only a
   $(1-o(1))$-approximation was known in $\tilde O(D)$.
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
@@ -50,7 +50,7 @@ Please read this before relying on anything here.
   The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
   Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
   computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; a referee
-  pass found it correct in substance with one gap, which is being closed.
+  pass found one gap, now closed by Lemma N. Its adversarial pass is pending.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -353,8 +353,10 @@ defines the repaired graph formally and proves what Theorem D needs from it: the
 [18, Thm 3.1 (1), (2)], planarity with an explicit rotation at every copy, the diameter bound,
 and the local phase of [18, Lemma 3.17]. An independent implementation of its definition
 matched the tested graph on 98,000 instances. A referee pass found Lemma R correct in
-substance, with one serious gap: a description of the dual nodes that it cites from [18] is not
-stated there and needs its own proof. A revision is in progress. These failures may come from a misreading of [18] on our side.
+substance, with one serious gap: a description of the dual nodes that it cited from [18] is
+not stated there. The revision proves it (Lemma N, by induction over the levels) and also
+shows that the reduction is correct for every legal choice at $s$ and $t$. An adversarial
+pass on Lemma R is pending. These failures may come from a misreading of [18] on our side.
 We have not checked whether they affect the approximate algorithm of [18].
 
 ## What is assumed
@@ -469,7 +471,8 @@ test round counts.
   failures, `planar_check.py` tests planarity and diameter, and `lane1.sh`/`lane2.sh` give the
   runs. `logs/summary.txt` sums them up. `repair/` checks Lemma R: `formal_ghat.py` builds
   the repaired graph from its written definition, and `test_repair.py` and `witness.py`
-  compare it with `thmD.py` and check its properties.
+  compare it with `thmD.py` and check its properties; `test_mono.py`, `witness_mono.py` and
+  `run_mono.sh` rerun them with the monotone I_ℓ of the revision and also check Lemma N.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
