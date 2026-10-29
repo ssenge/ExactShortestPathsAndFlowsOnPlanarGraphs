@@ -24,7 +24,8 @@ including level 1, where the degenerate endpoint cases are left open in [18].
   the index of δ at its tail.
 - The corner c = (v, i) lies between r_v(i) and r_v(i+1). Its in-dart in(c) = rev r_v(i)
   enters v. Its out-dart out(c) = r_v(i+1) leaves v. The edges of r_v(i) and r_v(i+1) are the
-  two flanks of c. A dart δ has the tail corner τ(δ) = (tail δ, pos(δ) − 1), which is the
+  two flanks of c. [18] numbers corners one higher (corner j lies between r_v(j−1) and
+  r_v(j)); only the names differ. A dart δ has the tail corner τ(δ) = (tail δ, pos(δ) − 1), which is the
   corner with out(c) = δ, and the head corner η(δ) = (head δ, pos(rev δ)), which is the corner
   with in(c) = δ.
 - A face is a cyclic walk of darts in which δ is followed by out(η(δ)). The corner η(δ) lies
@@ -636,7 +637,7 @@ with RULE in formal or anylegal, and `python3 -I witness.py`.
 
   There were no failures, and the builder matched build_ghat on every level.
 - *Second round*, with the monotone I_ℓ of this revision. A wrapper around test_repair.py
-  (test_mono.py and witness_mono.py, not yet in sim/thmD/repair/) records every P_i′ that the
+  (test_mono.py and witness_mono.py in sim/thmD/repair/) records every P_i′ that the
   driver incises and rebuilds Definition R from I_ℓ. It ran on 98,000 generated instances
   (260,625 levels) and on the 12 witnesses, 300 runs each under each rule. On 4,569 levels,
   I_ℓ has edges outside the sim's set (10,929 such edges in all). All checks above passed, and

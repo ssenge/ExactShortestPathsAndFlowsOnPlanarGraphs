@@ -92,20 +92,28 @@ children, the incisions and Ĝ_ℓ stay the same.
   all annuli of a level at once. That is two more calls per level and the same Õ(D) bound.
 - **Local knowledge.** Every node of A knows i1 and i2 after [18, Lemma 5.6], and j_A and k_A
   by [18, Sec. 5.1], so it computes i⁻ and i⁺ locally. The source is elected as for P_i.
+- **Calls.** Whether a side overlaps is tested directly (LEMMA_O.md §9): a node of P_i knows
+  locally whether it lies on a bound, since by (I4) of LEMMA_O.md the nodes of the bounds are
+  those with an old token of an edge off P. One part-wise aggregation per annulus, in Õ(D)
+  rounds by [18, Thm 3.26], tells every node which sides overlap and which ranges are empty.
 - **Use of the results.** The two paths are marked as tree paths (Lemma 5.2 of [18]) and enter
   the final minimum and the cut extraction of [18, Sec. 5.2]. That extraction gives a cut of
   weight equal to the path length for them too.
 - **Ties.** Among the computed paths of least length, take the one with the least index t; at
   equal t, take the first computed.
 
-Computing P_{j_A} and P_{k_A} in every annulus instead would also work, at the same cost.
-Lemma S1 below proves that too.
+Computing P_{j_A} and P_{k_A} in every annulus instead would also work, at the same cost, but
+Lemma S1 alone does not show it. If Λ = λ_q on [i1, t] and i1 < j_A, then j_A lies in [i1, t].
+If i1 ≥ j_A, then i1 lies in the range [j_A, i1] of the j-side, which is then a good child or
+gets the exact overlap rule, as in the case t ≤ i1 of Lemma S2. The k-side is symmetric. The
+same remark shows that P_{i⁻} is needed only when i1 < j_A, and P_{i⁺} only when i2 > k_A.
 
 ## Setting
 
 - **Lengths.** All lengths are w = K·c + 1 on dual edges (NOTES §5, weights). They are
-  positive, and every tree path of Theorem D is w-shortest. K exceeds the hop length of every
-  simple path, so w-shortest means shortest for c, with fewer hops breaking ties. The driver
+  positive, and every tree path of Theorem D is w-shortest. Parallel edges of G are merged
+  first, with capacities added (GHAT_REPAIR.md), so K = 19n + 1 exceeds the number of nodes
+  of every annulus and hence the hop length of every simple path, so w-shortest means shortest for c, with fewer hops breaking ties. The driver
   takes K per level, which is the same.
 - **The path P.** P = p_0 … p_m is a w-shortest f-to-g path in G* ([18, Alg. 3, line 2],
   computed exactly), hence also c-shortest. d(u, v) denotes the w-length of P[u..v]. Positions
@@ -310,7 +318,7 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   300,000 with up to 70 vertices under each of two tie-breaks (logs/ends0_*.json).
 - **With the repair.** No check failed in 1,440,000 instances (logs/ends1_*.json): the same
   1,200,000 seeds, 40,000 instances with up to 160 vertices, and 200,000 with many equal
-  capacities. The computed lengths at i⁻ and i⁺ always equal λ, as (INV) says.
+  capacities. The computed lengths at i⁻ and i⁺ always equal λ_{i⁻} and λ_{i⁺}, as (INV) says.
 - **The checks.** c24_interval held in 460,000 further instances, 89,951 of them with a
   dropped index in range (logs/c24_*.json, logs/sep_*.json). hull_i12 and sep_fail held in
   the 210,000 instances of logs/sep_*.json, 23,910 of them with an index strictly between x
