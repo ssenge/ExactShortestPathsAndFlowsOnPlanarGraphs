@@ -10,7 +10,8 @@ model. The main claims are:
   $\tilde O(D)$ rounds (Theorem D, new), where only a $(1-o(1))$-approximation was known in
   $\tilde O(D)$. It needs two repairs of [18]: of its auxiliary graph at $s$ and $t$ (Lemma R,
   one referee pass, one adversarial pass) and of its recursion, which as written can miss the
-  minimum cut (Lemma S, new, not yet refereed).
+  minimum cut (Lemma S, one referee pass, correct with gaps; the side lemma it needs is being
+  proved).
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
@@ -54,7 +55,8 @@ Please read this before relying on anything here.
   pass found one gap, now closed by Lemma N. An adversarial pass found no counterexample to
   Lemma R or Lemma N, but found that the recursion of [18] itself can miss the minimum cut
   (11 vertices: minimum 15, computed 37). Lemma S repairs this with two more shortest-path
-  calls per level; it has had no referee pass yet.
+  calls per level. A referee pass found it correct with gaps; the side lemma it needs is being
+  proved.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -317,7 +319,7 @@ the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side
 edges. It is deterministic given the embedding algorithm of [15], as in [18], and
 deterministic face identifiers (G6). The proof has had
 one referee pass (correct with gaps, all fixed) and one adversarial pass (below). The
-recursion repair of Lemma S is newer and has had neither yet.
+recursion repair of Lemma S is newer: one referee pass, with a side lemma still to prove.
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
@@ -380,7 +382,10 @@ round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form
 [18, Claim 2.4]: a dropped index is dominated by every index between it and $i_1$, or by every
 index between it and $i_2$. So one of $a$, $b$ carries the minimum. With the repair the driver
 is right on all 25 failing instances of the search (161 of 300 runs were wrong without it)
-and on 1,740,000 sweep instances, where it made 6 errors in 1,200,000 without the repair. As
+and on 1,440,000 sweep instances, where it made 6 errors in 1,200,000 without the repair.
+A referee pass found Lemma S correct with gaps. The gaps are a side lemma (Lemma O) about one
+incision, which the earlier proof of Theorem D also used without proof, and the exact form of
+[18, Claim 2.3]. Their proof is in progress. As
 we read [18], its own approximate recursion has the same defect; we have not checked whether
 another reading avoids it.
 
@@ -506,7 +511,9 @@ test round counts.
   checks its interval claim (`c24_interval`), the hull of part (b) (`hull_i12`) and the
   separation fact (`sep_fail`). `fix/` checks the smallest instance and reruns the 25 failing
   instances with and without the repair; `lane_ends.sh`, `lane_c24.sh` and `lane_sep.sh` give
-  the sweeps.
+  the sweeps. `refereeS/` is the referee's instrumented copy (`patch.py` turns `thmD_ref.py`
+  into `thmD_refS.py`), which checks Lemma S1 with exact weights, the separation facts and the
+  invariant of Lemma S on 162,000 instances.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
