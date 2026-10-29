@@ -451,8 +451,79 @@ add a chord e = (t, s) with infinite capacity. It splits f into f₁ and f₂.
 This improves [9, Thm 1.3], which is (1−o(1))-approximate, undirected only, and runs in
 D·n^{o(1)}.
 
+### Theorem D (exact minimum st-cut, undirected planar, Õ(D))
+
+Let G be an undirected planar network with integer capacities in {0, …, poly(n)} and terminals
+s, t. A CONGEST algorithm computes the value of a minimum st-cut, which is the maximum st-flow
+value, in Õ(D) rounds. Every vertex learns the value, its side of a minimum cut, and which of
+its edges cross it. The algorithm is deterministic, given the embedding algorithm of [15] (which
+[18] also uses). Before: exact Õ(D²) [9, Thm 1.2] (directed, so also undirected),
+min{Õ(D²), D·n^{o(1)}} by Theorem C, and (1−o(1))-approximate in Õ(D) [18, Thm 1.1].
+The flow assignment is not computed; for it, Theorem C remains the best bound.
+
+*Proof.* [18] implements Reif's algorithm: O(log n) levels of incisions in the dual, and on
+each level one SSSP computation per annulus, all annuli of the level at once. Its only access
+to SSSP is [18, Thm 4.1]: given a source node-part f_i in every level-ℓ annulus A_i, compute
+an SSSP tree T_i of A_i rooted at f_i such that
+1. every subpath of a tree path is approximately shortest (the approximate triangle
+   inequality, [18, Def. A.1]);
+2. every vertex v ∈ p(g) knows the length of the f_i-to-g tree path;
+3. every vertex knows, for each incident edge e, which trees contain a copy of e* and the IDs
+   of its ends there.
+
+[18] proves this with (1+ε)-approximate trees, through the minor-aggregation algorithm of its
+[34] simulated on annuli. Everything else in [18] is exact. Lemma 2.7 of [18] and its proof
+(Claim A.2) hold with ε = δ = 0: the uncrossing replaces subpaths by subpaths of exact
+shortest paths, so the P_i do not cross and are exact shortest p_i0-to-p_i1 paths. The cut
+read off in [18, Sec. 5.2] then has the minimum value, and the step that makes P_m simple
+loses nothing. So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do
+this on the graph Ĝ_ℓ of [18, Thm 3.1], as Lemma D does on Ĝ:
+- **Ĝ_ℓ.** It is planar ([18, Lemma 3.5]), has hop diameter at most 4D ([18, Lemma 3.4]),
+  has at most 3 deg(v) + 1 copies of each vertex v, and is built in O(1) rounds once the
+  incisions are stored ([18, Lemma 3.15]). A CONGEST round on Ĝ_ℓ takes four rounds on G
+  ([18, Lemma 3.16]). Each level-ℓ node-part f is a path p̂(f) of E_R edges, these paths are
+  vertex-disjoint, and there is one E_C edge between p̂(f) and p̂(g) for each edge fg of a
+  level-ℓ annulus and no other E_C edge ([18, Thm 3.1 (1)–(3)]). The E_S edges join copies of
+  one vertex.
+- **Embedding.** The proof of [18, Lemma 3.5] turns Ĝ_0 into Ĝ_ℓ by four steps that are local
+  at the copies of each incised edge, and Ĝ_0 inherits the embedding of G. So every vertex
+  of G computes the rotations of its copies. Alternatively, run [15] on Ĝ_ℓ.
+- **Weights.** 0 on both arcs of each E_R edge. On the E_C edge for the annulus edge fg,
+  K·c(e) + 1 in both directions, where e is the primal edge of fg, c(e) its capacity and
+  K = |V(Ĝ_ℓ)| + 1. M on both arcs of each E_S edge, with M > K·Σ_e c(e) + K. All weights
+  are integers of polynomial size.
+- **Distances.** Let x ∈ p̂(f) and y ∈ p̂(g) with f, g in one annulus A. Then
+  dist_{Ĝ_ℓ}(x, y) = min over f-to-g paths Q in A of K·c(Q) + |Q|. For ≤, lift Q: its edges
+  are E_C edges, and consecutive ones are joined along the zero-weight paths p̂(·). For ≥, a
+  walk shorter than M uses no E_S edge, so it stays in Ĝ_ℓ[E_R ∪ E_C]. Its E_R steps stay in
+  one p̂(·) at a time and its E_C steps are annulus edges, so it projects to a walk in A of the
+  same weight. Every candidate on the right is below M, so the bound M is never reached.
+  Writing d_K for this distance, the exact dual distance is ⌊d_K / K⌋, since |Q| < K.
+- **SSSP.** Add a virtual source σ with an arc of weight 0 to one copy on p̂(f_i), for every
+  annulus A_i. Every vertex y of Â_i has a candidate below M from its own source, and every
+  walk from another source uses an E_S edge, so dist(σ, y) = d_K(f_i, g) for y ∈ p̂(g).
+  Theorem A with a virtual source (Lemma V) computes these distances exactly in Õ(D) rounds on
+  Ĝ_ℓ, so in Õ(D) rounds on G.
+- **Tree.** All copies on p̂(g) have the same distance. Each node-part g ≠ f_i picks as parent
+  the E_C edge into p̂(g) with d(x) + w(x, y) = d(y) and the smallest ID, by part-wise
+  aggregation over the paths p̂(·) ([18, Claim 3.30, Cor. 3.23], Õ(D)). Every E_C weight is
+  positive, so parents have strictly smaller distance and the choice is a tree. Tree paths are
+  shortest for the weights K·c + 1, hence shortest for c, so (1) holds with ratio 1. (2) is the
+  distance read on p̂(g), and (3) is the parent choice, known at the ends of each E_C edge.
+
+Each level costs Õ(D), and there are O(log n) levels. ∎
+
+*Why [18] did not do this.* [18] runs approximate SSSP of its [34] on the annuli themselves,
+which may have large diameter, so it needs minor aggregation. Running one exact SSSP on all of
+Ĝ_ℓ with the weights above needs only CONGEST on a planar graph of diameter O(D).
+
+*Status.* Unreviewed (2026-10-29). It rests on Theorem A and on [18].
+
 ### Ratings and dependencies
 
+- **D: modest to solid.** Exact minimum st-cut in undirected planar networks within
+  polylogarithmic factors of Ω(D), a question that [18] leaves open for lack of exact SSSP.
+  The proof is a composition: Theorem A inside [18], with the weighting of Lemma D.
 - **C: significant.** It brings the main theorem of a PODC'25 paper from Õ(D²) to D·n^{o(1)},
   which is near-optimal given Ω(D). The proof is entirely a composition, and it is only as
   sound as [1].
@@ -493,6 +564,8 @@ These checks test the sequential semantics only. They do not test round counts, 
 - **Weighted directed girth in planar digraphs** (Õ(D²), Parter).
 - **Removing n^{o(1)} from Theorem C.** This would need a negative-weight reduction with
   polylog overhead.
+- **Undirected max-flow assignment in Õ(D).** Theorem D gives the value and a minimum cut.
+  [18] asks for the assignment too.
 
 ## Sources
 
