@@ -1,0 +1,1 @@
+{"counts": {"inst": 169453, "A1": 2496928, "Pbar": 21726939, "Pbar_trunc": 135, "S1_checks": 10410188, "Sgen_Q": 21969124, "Sgen_Q_trunc": 79610, "Sgen_checks": 32589334, "S1_case2": 5392029, "Ssep_checks": 5392029, "stopped_early": 1}, "nfail": 0, "secs": 2400.0}

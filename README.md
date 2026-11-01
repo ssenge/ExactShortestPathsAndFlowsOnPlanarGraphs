@@ -57,7 +57,9 @@ Please read this before relying on anything here.
   (11 vertices: minimum 15, computed 37). Lemma S repairs this with two more shortest-path
   calls per level. A referee pass found it correct with gaps; the side lemma it needs (Lemma O)
   is proved, passed 342,000 test instances, and had one referee pass (correct with minor gaps,
-  all fixed; no adversarial pass yet).
+  all fixed). An adversarial pass on both found no failure in 25.1 million runs, and a second
+  referee pass on the paper form found gaps in the side naming and the cut extraction, now
+  closed (`notes/RECURSION.md`).
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -321,7 +323,8 @@ edges. It is deterministic given the embedding algorithm of [15], as in [18], an
 deterministic face identifiers (G6). The proof has had
 one referee pass (correct with gaps, all fixed) and one adversarial pass (below). The
 recursion repair of Lemma S is newer: one referee pass each on Lemma S and on its side lemma
-(Lemma O), both fixed; no adversarial pass yet.
+(Lemma O), both fixed, one adversarial pass on both, with no failure in 25.1 million runs, and a
+second referee pass on the whole of Theorem D, whose fixes are in `notes/RECURSION.md`.
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
@@ -529,7 +532,11 @@ test round counts.
   342,000 instances, 232,868 incisions, no failed check. `refereeO/` is the referee's copy
   (`patchR.py` turns `thmD_O.py` into `thmD_R.py`; `thmD_F.py` tests the whole-path overlap
   reading): 162,000 instances, the 25 saved instances in 15,000 runs, and 84,000 instances of the
-  whole-path reading, with no failure.
+  whole-path reading, with no failure. `attackSO/` is the adversarial pass on Lemmas S and O:
+  every run on all connected loopless maps with at most 8 edges (with a cap of runs per instance),
+  adversarial policies, hill-climbing and the saved hits, 25,109,452 runs with no failure
+  (`logs/summary.txt`). `refereeD/` is the simulator of the referee pass on the paper form of
+  Theorem D: 240,000 runs with no failure.
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine

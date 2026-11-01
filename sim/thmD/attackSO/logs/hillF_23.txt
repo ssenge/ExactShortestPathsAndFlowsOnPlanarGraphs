@@ -1,0 +1,1 @@
+{"seed": 23, "steps": 78253, "restarts": 526, "runs": 315116, "inc": 1157336, "nfail": 0, "best": 145.0, "secs": 3400.0}

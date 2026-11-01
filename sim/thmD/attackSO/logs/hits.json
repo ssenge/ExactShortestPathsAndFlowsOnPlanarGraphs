@@ -1,0 +1,594 @@
+{
+ "geo": true,
+ "ends": 1,
+ "maxruns": 2000,
+ "rand": 2000,
+ "nhits": 25,
+ "counts": {
+  "paths_P": 236566,
+  "paths_Pi": 726320,
+  "inc": 726320,
+  "old_end_x": 339380,
+  "old_end_y": 331791,
+  "old_end_both": 293373,
+  "junction_child_end_at_x_or_y": 709719,
+  "both_ends_split": 348522,
+  "G_inc": 726320,
+  "G_ok_two_sides": 726320,
+  "G_P_checked": 7899479,
+  "G_end_new": 781469,
+  "G_newedge_checked": 1478179,
+  "K_gamma_checked": 1452640,
+  "K_chords": 3426817,
+  "child": 987816,
+  "child_range_ends_at_x_or_y": 291468,
+  "G_child_checked": 987816,
+  "child_range_starts_at_x_or_y": 286487,
+  "paths_leaf": 784175,
+  "overlap_one": 412864,
+  "i12_outside": 381591,
+  "t_strict_between_xy_in_range": 239529,
+  "G_bound_checked": 3647186,
+  "child_single_index": 203960,
+  "K_piece_checked": 24552903,
+  "K_ann_checked": 1224382,
+  "K_runs": 236566,
+  "runs": 236566,
+  "levels_max": 5,
+  "flag_dev_mirrored_endpoint": 63353,
+  "x_eq_y": 63639,
+  "Q_linear_nodes>=1": 378419,
+  "G_end_old": 671171,
+  "lin_unchanged": 325592,
+  "rand_runs": 150000,
+  "rand_bad": 0,
+  "instances": 75,
+  "complete": 46,
+  "ties_P": 87896,
+  "changed_P": 56287,
+  "ties_Pi": 140359,
+  "child_both_bounds": 40320,
+  "ties_leaf": 129524,
+  "changed_Pi": 79585,
+  "changed_leaf": 76221,
+  "Q_linear_nodes>=3": 184224,
+  "Q_old_edges>=3": 248509,
+  "both_bounds": 3972,
+  "Q_all_old": 293299,
+  "both_bounds_and_overlap": 3972,
+  "flag_xb_cross_nonincised_part": 5464,
+  "flag_xa_cross_same_annulus": 3388,
+  "level>=4": 30493,
+  "lin_split3": 3915
+ },
+ "per": [
+  [
+   482726,
+   "given",
+   198,
+   true,
+   0
+  ],
+  [
+   482726,
+   "one_two",
+   487,
+   true,
+   0
+  ],
+  [
+   482726,
+   "one",
+   1059,
+   true,
+   0
+  ],
+  [
+   641981,
+   "given",
+   237,
+   true,
+   0
+  ],
+  [
+   641981,
+   "one_two",
+   44,
+   true,
+   0
+  ],
+  [
+   641981,
+   "one",
+   154,
+   true,
+   0
+  ],
+  [
+   821116,
+   "given",
+   332,
+   true,
+   0
+  ],
+  [
+   821116,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   821116,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   726193,
+   "given",
+   231,
+   true,
+   0
+  ],
+  [
+   726193,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   726193,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   977856,
+   "given",
+   703,
+   true,
+   0
+  ],
+  [
+   977856,
+   "one_two",
+   421,
+   true,
+   0
+  ],
+  [
+   977856,
+   "one",
+   971,
+   true,
+   0
+  ],
+  [
+   453407,
+   "given",
+   248,
+   true,
+   0
+  ],
+  [
+   453407,
+   "one_two",
+   756,
+   true,
+   0
+  ],
+  [
+   453407,
+   "one",
+   1093,
+   true,
+   0
+  ],
+  [
+   183997,
+   "given",
+   202,
+   true,
+   0
+  ],
+  [
+   183997,
+   "one_two",
+   324,
+   true,
+   0
+  ],
+  [
+   183997,
+   "one",
+   1918,
+   true,
+   0
+  ],
+  [
+   522628,
+   "given",
+   294,
+   true,
+   0
+  ],
+  [
+   522628,
+   "one_two",
+   420,
+   true,
+   0
+  ],
+  [
+   522628,
+   "one",
+   384,
+   true,
+   0
+  ],
+  [
+   407155,
+   "given",
+   100,
+   true,
+   0
+  ],
+  [
+   407155,
+   "one_two",
+   167,
+   true,
+   0
+  ],
+  [
+   407155,
+   "one",
+   458,
+   true,
+   0
+  ],
+  [
+   884688,
+   "given",
+   394,
+   true,
+   0
+  ],
+  [
+   884688,
+   "one_two",
+   716,
+   true,
+   0
+  ],
+  [
+   884688,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   615392,
+   "given",
+   728,
+   true,
+   0
+  ],
+  [
+   615392,
+   "one_two",
+   1073,
+   true,
+   0
+  ],
+  [
+   615392,
+   "one",
+   1700,
+   true,
+   0
+  ],
+  [
+   316434,
+   "given",
+   822,
+   true,
+   0
+  ],
+  [
+   316434,
+   "one_two",
+   802,
+   true,
+   0
+  ],
+  [
+   316434,
+   "one",
+   856,
+   true,
+   0
+  ],
+  [
+   600149,
+   "given",
+   1092,
+   true,
+   0
+  ],
+  [
+   600149,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   600149,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   304061,
+   "given",
+   204,
+   true,
+   0
+  ],
+  [
+   304061,
+   "one_two",
+   184,
+   true,
+   0
+  ],
+  [
+   304061,
+   "one",
+   380,
+   true,
+   0
+  ],
+  [
+   908334,
+   "given",
+   250,
+   true,
+   0
+  ],
+  [
+   908334,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   908334,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   111934,
+   "given",
+   1409,
+   true,
+   0
+  ],
+  [
+   111934,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   111934,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   784040,
+   "given",
+   327,
+   true,
+   0
+  ],
+  [
+   784040,
+   "one_two",
+   1314,
+   true,
+   0
+  ],
+  [
+   784040,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   152616,
+   "given",
+   2000,
+   false,
+   0
+  ],
+  [
+   152616,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   152616,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   707594,
+   "given",
+   590,
+   true,
+   0
+  ],
+  [
+   707594,
+   "one_two",
+   820,
+   true,
+   0
+  ],
+  [
+   707594,
+   "one",
+   944,
+   true,
+   0
+  ],
+  [
+   157796,
+   "given",
+   97,
+   true,
+   0
+  ],
+  [
+   157796,
+   "one_two",
+   214,
+   true,
+   0
+  ],
+  [
+   157796,
+   "one",
+   1332,
+   true,
+   0
+  ],
+  [
+   400421,
+   "given",
+   2000,
+   false,
+   0
+  ],
+  [
+   400421,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   400421,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   426880,
+   "given",
+   1117,
+   true,
+   0
+  ],
+  [
+   426880,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   426880,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   900584,
+   "given",
+   2000,
+   false,
+   0
+  ],
+  [
+   900584,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   900584,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   39132,
+   "given",
+   2000,
+   false,
+   0
+  ],
+  [
+   39132,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   39132,
+   "one",
+   2000,
+   false,
+   0
+  ],
+  [
+   76234,
+   "given",
+   2000,
+   false,
+   0
+  ],
+  [
+   76234,
+   "one_two",
+   2000,
+   false,
+   0
+  ],
+  [
+   76234,
+   "one",
+   2000,
+   false,
+   0
+  ]
+ ],
+ "nfail": 0,
+ "fails": [],
+ "secs": 1704.8
+}

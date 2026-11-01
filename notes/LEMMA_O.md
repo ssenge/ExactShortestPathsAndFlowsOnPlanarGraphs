@@ -85,8 +85,8 @@ Lemma N).
   one cut inside each dart of each new edge of Q. Another annulus A″ of the same level cuts only
   darts in its own pieces: a new edge of its incised part has its only pair in A″, and A″ is a
   component (I0), so no piece of A holds such a dart. A^Q is the graph whose nodes are the
-  level-(ℓ+1) pieces that refine pieces of A and whose edges are the level-(ℓ+1) pairs of the
-  edges that have a pair in A. The *subgraphs obtained by incising Q* are the components of
+  level-(ℓ+1) pieces that refine pieces of A and whose edges are the level-(ℓ+1) pairs whose
+  tokens lie in these pieces. The *subgraphs obtained by incising Q* are the components of
   A^Q. Nodes of A off Q do not change, and old pairs do not change. A new edge of Q gets two
   pairs, {(δ,1), (rev δ,2)} and {(δ,2), (rev δ,1)}. This is the incision of
   [18, Remark 2.5] in the reading of Lemma N and of sim/thmD.

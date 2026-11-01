@@ -349,3 +349,67 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
 - Lemma S2 does not use the separation part of (O1) (Claim 10 of LEMMA_O.md), since Lemma S1
   uses (S_1) in A_1.
 - (S_1) is proved with the curve drawing of the Reif reduction, in words, as there.
+
+## Adversarial pass on Lemmas S and O (2026-11-01)
+
+`sim/thmD/attackSO` ran 25,109,452 runs of the recursion with no failed check and no wrong value;
+`logs/summary.txt` has the counters and `aggregate.py` recomputes them. The runs are:
+- every run of the recursion on all connected loopless maps with m ≤ 8 edges, with several
+  capacity vectors, up to a cap of runs per instance. The cap was reached on 1 instance for m = 7
+  and on 534 for m = 8. For m ≤ 7 the maps were also checked against a geometric model of the
+  curves of LEMMA_O.md, with and without the global check of (I1).
+- choices of corner, mode and tie-break by adversarial policies, 696,244 runs, 34,812 more on
+  long strips of depth 7 and above, and hill-climbing, 921,220 runs;
+- the 75 saved hits of the unrepaired recursion, 236,566 runs;
+- the whole-path reading of the overlap test, 423,380 runs by policy and 315,116 by hill-climbing;
+- the alternatives ENDS=2 and ENDS=3 of this note, each on m ≤ 7, hill-climbing and the saved hits;
+- Lemma S1 and (S_1) directly in A_1: 3,185,392 annuli, 10,616,407 checks of S1 and 32,621,289 of
+  the general form of (S_1).
+
+Loops are deleted first, so they are outside the setting; the exhaustive lanes use loopless maps.
+
+## Referee pass on the paper form (2026-11-01)
+
+Verdict: correct with gaps, nothing fatal. An independent token-level simulator in
+`sim/thmD/refereeD` ran 240,000 runs on the driver's families with the repair, with no failure, and
+gave 2 wrong values without it. The corrections below go into the proof.
+
+- **Names of the two copies.** On level 1, p_t^0 is the piece of p_t whose first token in walk
+  order lies just after the entry of γ_t. Then the walk order on a 0-piece runs from its low end to
+  its high end. The pair {(δ,1), (rev δ,2)} of e_k with δ in p_{k-1} joins two such pieces, so the
+  names agree along P. One aggregation over the paths p̂ on level 1 tells every corner of a face
+  of P its index and its σ, and later pieces inherit them. P_i is read from g_i^0, so if the tree
+  was rooted at g_i^1 the path is reversed first.
+- **Which side.** Let δ be the dart of a new edge of Q at its end nearer to g_x. The copy
+  {(δ,1), (rev δ,2)} lies on the low side and {(δ,2), (rev δ,1)} on the high side. Reason: at g_x the
+  low part ends with (δ,1) (LEMMA_O.md, parts at g_x), and at an internal node the part that holds
+  (rev δ,2) of one edge holds (δ′,1) of the next. Hosts store this with the edge. It also tells
+  a node which bound it lies on, since (Old) only says that it lies on one.
+- **Order of a level.** Build Ĝ_ℓ, get the component identifiers from Lemma R(6), compute the
+  overlap and empty-range flags per annulus of the previous level, aggregate the stored sides over
+  each component, set the weights, drop parallel edges, run SSSP. A called side is one subgraph
+  with one copy of each edge of Q, so a component is the called child of a side exactly when it
+  holds a new copy of that side. If Q has no new edge, nothing is cut and the one component lies
+  on the side given by Lemma O(a). Sides are not connected, so the aggregation is per annulus.
+- **The cut.** Let W be a computed path or walk of least length, with W = U·Q·V as above. An overlap
+  walk is simple, since it is shortest by (C23) and w > 0. Since P is c′-shortest, U and V are at
+  least as long as P[p_t, p_x] and P[p_t, p_y], whose union contains P[p_x, p_y]. So the closed walk
+  C = Q̄ ∪ P[p_x, p_y] has c′-length at most λ′. It is a simple dual cycle, or a loop if x = y and
+  |Q| = 1: the internal nodes of Q are pieces of distinct faces off P, and Q has no edge of P. Close
+  the curve of Q along γ on one side of γ: the closed curve meets G only in edges of C and crosses
+  γ exactly once, so C separates s from t. Hence c′(C) = λ′, and C is a minimum cut, and a bond.
+- **The 11-vertex run.** It has one overlap, on level 2 in the annulus with range [0,3], which serves
+  t in [1,3] with lengths at least 99, in an annulus with no piece of p_4^0 or p_5^0. So the
+  conclusion holds. Its computed paths are unique for w, but for capacities the leaf path P_0 of the
+  annulus [0,1] has two shortest walks of length 105; nothing is incised there. Faces are numbered
+  by their least dart, with next(δ) the successor of rev δ in the rotation.
+- **Departures from [18] to declare.** Vertices store incised parts, I_ℓ, while [18, Def. 3.2]
+  stores whole paths, and the two give different graphs on some levels. The overlap rule serves
+  [j_A, i], where [18] writes j ≤ m ≤ i with j the index of the bound. Paths are read from g_i^0.
+- **[18, Lemma 5.6].** Its proof assumes that an annulus holds only copies of the faces of its range,
+  which is false (see the defect). We take i_1 and i_2 over all P-pieces of A, by one aggregation.
+- **Small corrections.** Lemma O: A^Q has the pairs whose tokens lie in its pieces, not all pairs of
+  the edges that have a pair in A; the induction is over all live annuli of a level at once, since
+  the proof uses the sibling annuli; the least length excludes P itself. Lemma N(c)(≤): the exchange
+  is between two crossings consecutive along C with both ends on the same bank, which exist when
+  there are at least 3 crossings, since the algebraic crossing number is ±1.

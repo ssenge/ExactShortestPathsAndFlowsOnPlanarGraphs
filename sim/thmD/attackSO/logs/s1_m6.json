@@ -1,0 +1,27 @@
+{
+ "argv": [
+  "s1_test.py",
+  "maps",
+  "logs/maps8nl.json",
+  "6",
+  "0",
+  "1",
+  "logs/s1_m6.json",
+  "1700"
+ ],
+ "counts": {
+  "maps": 240,
+  "A1": 79255,
+  "Pbar": 226954,
+  "Pbar_trunc": 0,
+  "S1_checks": 18591,
+  "Sgen_Q": 2759,
+  "Sgen_Q_trunc": 0,
+  "S1_case2": 7402,
+  "Ssep_checks": 7402,
+  "Sgen_checks": 2807
+ },
+ "nfail": 0,
+ "fails": [],
+ "secs": 9.1
+}

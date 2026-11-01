@@ -1,0 +1,15 @@
+geoK.py (global check of (I1) for K_l), smoke and negative controls, 2026-10-30
+
+clean:
+  exhaustive m=5 (one,r012, 100 runs/inst): 1,644 inst, 27,116 runs, 1,189 incisions, 2,634 chords,
+    112,669 piece checks, 29,489 annulus checks, 0 flags
+  run_adv seeds 700000.., all families, 90 s: 4,491 inst, 8,982 runs, 25,608 incisions, 88,889 chords,
+    1,021,830 piece checks, 53,537 annulus checks, 0 flags
+  overhead: 5.8 s -> 7.2 s on 300 instances (GEO=1 both)
+
+negative controls (GEOK_NEG=...), exhaustive m=6 shard 0/4, caps one, 30 runs/inst, 1,358 inst:
+  nocut   (strips of Q not cut)          186 failing inst: K_omega_shared (and K_sample_on_chord_end)
+  nochord (no chords for internal nodes)  56 failing inst: K_slot_shared, K_omega_shared
+  flipq   (end chord in the wrong half)  178 failing inst: K_piece_split 161, K_slot_shared 166, K_omega_shared 178
+  wrongq  (q in a random gamma interval)   0 on m=6 (usually one interval only);
+          on run_adv seeds 700000.., 90 s: 573 of 8,802 runs flag K_cross
