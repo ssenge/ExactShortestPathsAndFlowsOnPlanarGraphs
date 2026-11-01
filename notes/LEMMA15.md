@@ -69,7 +69,9 @@ Notation is that of [1, Sec. 5]:
     |∂S⁺_X| = O(D log² n).
   - c_X: the centre.
 
-The following are used as black boxes.
+The following are used as black boxes. In the region form of §9, which is the form used (§9.9),
+(G1) and (G1′) are not used: Lemmas B1 and B5 and §9.5 replace them. The black boxes are then
+(G3), (G5), (G6) and the given embedding, and (G4) is proved where it is stated.
 
 - **(G1) Decomposition** [1, Lemma 9], as built by [8, Sec. 4.2]. We use Properties 1 to 3
   and 5 to 7 of [1], T_X in place of Property 4, and the child shape of [8, Sec. 4.2].
@@ -1054,9 +1056,10 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
 - **The round count** (S9). Property 6 is false for induced bags, so the parallel schedule
   of [1] needed a new argument. §9 gives one with region bags: Lemma B1, proved, refereed
   and attacked once, with the separator of Lemma B5, which is deterministic.
-- **Black boxes.**
+- **Black boxes.** In the region form of §9, which is the form used, (G1) and (G1′) are not
+  used: Lemmas B1 and B5 and §9.5 replace them.
   - (G1) in the form (G1′), read off [8]'s construction, with T_X in place of [1]'s
-    Property 4.
+    Property 4. Only the G[X] statements of §3 to §6 use it.
   - (G3), which is [10, Thm 1] (refereed). The centres search for K exhaustively, which
     CONGEST allows.
   - (G4), (G5) and (G6).
@@ -1385,6 +1388,8 @@ Read R_X for G[X] throughout, and "e ∈ R_X" for "e ∈ E(G[X])".
   Labels stay Õ(D/ε).
 - **Height.** A child has at most (2/3)|X| + |S_X| vertices, so the height stays O(log n),
   with leaves of size O(D log² n).
+- **Claim 3.** Its "q has at least one edge" comes from y ≠ z in Lemma B5.
+- **Property 2** is replaced by the bag knowledge of §9.6.
 
 ### 9.6 Rounds
 
@@ -1415,6 +1420,14 @@ Each bag's algorithm sends O(1) messages per edge and round. Lemma B1(a), at dep
 d + 1, bounds the number of bags that use an edge, so running all bags of one depth in
 lockstep costs a constant factor. A level of the decomposition takes O(D log² n log log n)
 rounds, the last factor from the connectors.
+
+**Bag knowledge.** Every vertex knows its chain and, for each of its edges, the bags Y whose
+R_Y or T_Y contains the edge, with O(1) more floods per level. The ID of a child is (ID of its
+parent, smallest side ID in the child). Lemma B5 gives each vertex the side of each of its edge
+ends and path-edge sides, and the split at z_s is local. The components are floods over edges of
+R_Y, which finish within diam(R_Y) ≤ c(Y)(2D + 1) rounds even before T_Y exists, and both ends of
+an edge see the flood. Connectors are known to their ends. A non-hub vertex has all its edges in
+one child by Lemma B1(b), which gives its chain.
 
 **Lemma B5 (separator).** Let R be a connected plane graph with n vertices, and T a spanning
 tree of R with root r and depth h. Every vertex knows its rotation, its parent and its
@@ -1680,3 +1693,28 @@ through a hole; the adversarial pass below does.
   standard ones: sides of edges, a crosscut argument and a non-crossing count. The
   component bound O(log² n) is weaker than the O(log n) that [8, Def. 4.1 (6)] claims, by one
   log factor, which Õ hides.
+
+### 9.9 The final statement
+
+This is the form that the paper states as its Label Hypothesis. §3 to §6 are written for G[X], and
+§9.5 lists the changes for R_X. With them, the following holds.
+
+Let G be a planar network with a known embedding, with integer arc lengths in [1, W], W = poly(n),
+and arcs in both directions on every edge, and let ε ∈ (0, 1] with 1/ε ≤ poly(n). A CONGEST algorithm
+computes in Õ(D/ε) rounds a decomposition tree of height O(log n). Its bags X carry a vertex set X,
+the arcs A_X of R_X, and hubs H_X, where H_X = ∂S⁺_X for a non-leaf bag and H_X = X for a leaf, such that:
+- **(V1)** the root has R_V = G (§9.1);
+- **(V2)** every vertex of X ∖ H_X lies in exactly one child (Lemma B1(b), since S_X ⊆ H_X);
+- **(V3)** every arc of R_X with both ends outside H_X is an arc of R_Y for a child Y (Lemma B1(b));
+- **(L1)** T_X ⊆ R_X spans X and has diameter O(D log² n), |H_X| = O(D log³ n) for non-leaf bags,
+  every leaf has O(D log² n) vertices (Lemma B1(e), §9.5), for every depth every edge lies in at most
+  two R_X, hence in at most two T_X (Lemma B1(a)), and every vertex has the bag knowledge of §9.6;
+- **(L2)** for every non-leaf X, every v ∈ X and every h ∈ H_X, the vertex v knows d̃_X(v, h) and
+  d̃_X(h, v) with dist_{R_X} ≤ d̃_X ≤ (1+ε)·dist_{R_X} (Lemma 16′ with §9.5 and §7), where
+  dist_G ≤ dist_{R_X}. The values are sums over O(log n) levels of oracle answers on graphs with
+  the weights of (I3), so they have polylogarithmically many bits. In a leaf the values are exact.
+
+The black boxes are (G3), (G5), (G6) and the given embedding. Local computation is not polynomial
+(G3). The statement has had the passes reported in §9.8; a further referee pass (2026-11-01) checked
+that each clause above is proved in this file and that no step of the region form uses a statement
+of [1] that §2 refutes. It did not re-prove §3 to §9 from scratch. No human has checked it.

@@ -155,8 +155,8 @@ exact distances from $s$ and a shortest-path tree in $\tilde O(D)$ rounds. The a
 deterministic, given a deterministic planar embedding and deterministic face identifiers
 (`notes/LEMMA15.md` §9.6; see [Status](#status)). Local computation is not polynomial: with
 the realization theorem [10], which gives existence only, a bag centre finds a realization by
-exhaustive search. [1, Thm 1] constructs one in polynomial time, which would make local
-computation polynomial; we have not checked that theorem.
+exhaustive search. A polynomial bound needs a realization that respects a prescribed cyclic
+order of the terminals; [1, Thm 1] constructs one in polynomial time but promises no order.
 
 The proof has three ingredients.
 1. **Reduction.** By [3, Lemma 3.1, Thm 1.7, App. C.1], exact SSSP needs $O(\log^2 n)$ calls to
@@ -579,8 +579,8 @@ line numbers in plain-text extractions of [1] (arXiv v2), [9] and [18].
   depth + 1.
 - Theorems A, C′ and D are deterministic given an embedding. Are Theorems B and C? That
   needs a deterministic version of [6].
-- Can the realization step run in polynomial local time? [1, Thm 1] claims a polynomial-time
-  construction; we have not checked it.
+- Can the realization step run in polynomial local time, with a prescribed cyclic order of the
+  terminals? [1, Thm 1] claims a polynomial-time construction but promises no order.
 - A maximum st-flow assignment in undirected planar networks in $\tilde O(D)$. Theorem D
   gives the value and a minimum cut; [18] asks for the assignment as well.
 

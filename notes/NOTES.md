@@ -76,7 +76,8 @@ distances from s and a shortest path tree in Õ(D) rounds. With the region decom
 LEMMA15.md §9 the algorithm is deterministic, given a deterministic planar embedding and
 deterministic face identifiers (LEMMA15.md §9.6, Determinism). Local computation is not
 polynomial: the realization step [10] gives existence only, so a centre searches exhaustively.
-[1, Thm 1] would make it polynomial (unchecked).
+A polynomial bound needs a realization that respects a prescribed cyclic order of the terminals;
+[1, Thm 1] promises no order (LEMMA15.md, (G3)).
 
 **Status: the algorithm is correct given Lemma 14′; the Õ(D) bound holds with region bags**
 (`LEMMA15.md`, §9).
