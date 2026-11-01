@@ -534,8 +534,8 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
     the reported cut is 0. Smallest witness: n = 4; edges (0,3), (0,1), (1,2), (2,3) with
     capacity 1 and (3,1) with capacity 5; rotations 0: [03, 01], 1: [12, 13, 01], 2: [12, 23],
     3: [23, 03, 13]; s = 1, t = 2. Minimum cut 2, literal Ĝ_ℓ gives 0.
-  - D2. The rule "always add (u_{j−1}, u_j)" wires e0* wrongly when e0 = e_last = st or the
-    other end has degree 1. Witness: the single edge st with capacity 3 gives distance 29 = M
+  - D2. The rule "always add (u_{j−1}, u_j)" wires e0* wrongly when e0 = e_last = st.
+    Witness: the single edge st with capacity 3 gives distance 29 = M
     instead of K·3 + 1 = 22.
   - D3. [18, Sec. 5] lets s choose any edge of p(p_0) at s outside P as e0, but the formula of
     Remark 3.3 needs the edge e_i whose corner i lies in p_0. In about 30% of instances no such
