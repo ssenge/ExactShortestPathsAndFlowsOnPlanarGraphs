@@ -1,0 +1,339 @@
+======== ctl.*.json
+   ('ctl.name_flip.json', 120072, 0, 300.0, True, None)
+   ('ctl.name_swap.json', 183881, 0, 300.0, True, None)
+   ('ctl.rule_flip.json', 120072, 0, 300.0, True, None)
+  runs 424025 instances 0 incisions 249370 abort 117864 crash 28426 enum_incomplete 0
+  FAILS {'FAIL a1.pair_joins_0': 468214, 'FAIL a1.pair_joins_1': 468214, 'FAIL a1.delta_is_last_of_0piece': 381100, 'FAIL a1.revdelta_is_first_of_0piece': 380818, 'FAIL a1.c_star_t_ends_0piece': 251146, 'FAIL a1.c_star_s_ends_1piece': 250613, 'FAIL a2.rule': 209217, 'FAIL a2.stored_low_pair_on_low': 398896, 'FAIL a2.stored_high_pair_on_high': 398896, 'FAIL a2.gx_low_part_ends_with_delta1': 75575, 'FAIL a2.gy_low_part_starts_with_rev2': 75575, 'FAIL a3.rule': 582911, 'FAIL a3.rule_root_in_truth_child': 291053, 'FAIL inv.compute_piece_missing': 117864, 'FAIL a1.c_star_s_starts_0piece': 250099, 'FAIL a1.c_star_t_starts_1piece': 249748, 'FAIL inv.Pi_ends_exist': 28426, 'FAIL a1.rule_equals_pair_propagation': 142009, 'FAIL b.no_edge_copy_of_P': 392518, 'FAIL b.C_edges_distinct': 392518, 'FAIL b.bond_separates_s_t': 420560, 'FAIL b.bond_exactly_two_components': 420560, 'FAIL b.bond_every_edge_crosses': 420560, 'FAIL j.edges_distinct': 50135, 'FAIL j.separates_s_t': 51615, 'FAIL j.two_components': 51615, 'FAIL j.every_edge_crosses': 51615, 'FAIL o.a_P_pieces': 174731, 'FAIL a3.called_side_holds_one_copy_of_each_edge_of_Q': 43880, 'FAIL a3.called_side_is_one_subgraph': 48329, 'FAIL o.old_end_on_a_bound': 47158, 'FAIL a3.no_new_edge_Q_is_a_whole_bound': 47158, 'FAIL a3.no_new_edge_other_side_not_called': 45444, 'FAIL a4.node_on_Pb_iff_low': 111645, 'FAIL a4.bound_nodes_are_old_token_nodes': 243976, 'FAIL d.annuli_disjoint': 41921, 'FAIL a4.node_on_Pa_iff_high': 132352, 'FAIL b.C_at_least_mincut': 269815, 'FAIL b.winner_bond': 194142, 'FAIL b.winner_C_is_mincut': 149023, 'FAIL b.winner_cut_value_c': 175216, 'FAIL b.min_cp_walk_is_mincut': 194142, 'FAIL a3.no_new_edge_side_is_part_a': 2034, 'FAIL a3.rule_no_new': 2032, 'FAIL o.old_end_x_side': 2065, 'FAIL o.old_end_y_side': 2045, 'FAIL a4.pair_on_a_bound': 77338, 'FAIL a4.low_label_iff_Pb': 30858, 'FAIL q.hull': 20219, 'FAIL a4.high_label_iff_Pa': 46484, 'FAIL o.other_annulus_cuts_only_its_own': 6780, 'FAIL a3.no_new_edge_one_component': 174, 'FAIL a3.no_new_edge_same_tokens': 174, 'FAIL o.called_side_has_no_bad_edge': 740, 'FAIL a3.no_new_copy_means_not_on_called_side': 660, 'FAIL a4.node_one_label': 11}
+  -- a1.
+     a1.c_star_s_ends_1piece                                 chk       570315 fail   250613
+     a1.c_star_s_starts_0piece                               chk       570315 fail   250099
+     a1.c_star_t_ends_0piece                                 chk       570315 fail   251146
+     a1.c_star_t_starts_1piece                               chk       570315 fail   249748
+     a1.delta_is_last_of_0piece                              chk       881112 fail   381100
+     a1.exactly_one_0_piece                                  chk      1451427 fail        0
+     a1.pair_joins_0                                         chk       881112 fail   468214
+     a1.pair_joins_1                                         chk       881112 fail   468214
+     a1.revdelta_is_first_of_0piece                          chk       881112 fail   380818
+     a1.rule_equals_pair_propagation                         chk       570315 fail   142009
+     a1.two_pieces                                           chk      1451427 fail        0
+  -- mode.
+     mode.exists_flank_off_P                                 chk      1140630 fail        0
+  -- a2.
+     a2.gx_low_part_ends_with_delta1                         chk       194853 fail    75575
+     a2.gy_low_part_starts_with_rev2                         chk       194889 fail    75575
+     a2.parity_literal                                       chk       364478 fail        0
+     a2.parity_same_side                                     chk       364478 fail        0
+     a2.stored_high_pair_on_high                             chk       560440 fail   398896
+     a2.stored_low_pair_on_low                               chk       560440 fail   398896
+  -- a3.
+     a3.called_side_holds_one_copy_of_each_edge_of_Q         chk      1168048 fail    43880
+     a3.called_side_is_one_subgraph                          chk       483066 fail    48329
+     a3.component_on_one_side                                chk       446458 fail        0
+     a3.copy_in_one_component                                chk      1120880 fail        0
+     a3.no_component_holds_copies_of_both_sides              chk       446458 fail        0
+     a3.no_new_copy_means_not_on_called_side                 chk          703 fail      660
+     a3.no_new_edge_Q_is_a_whole_bound                       chk        53738 fail    47158
+     a3.no_new_edge_ends_agree                               chk        53738 fail        0
+     a3.no_new_edge_one_component                            chk        53738 fail      174
+     a3.no_new_edge_other_side_not_called                    chk        53564 fail    45444
+     a3.no_new_edge_same_tokens                              chk        53738 fail      174
+     a3.no_new_edge_side_is_part_a                           chk        53564 fail     2034
+     a3.rule                                                 chk       785092 fail   582911
+     a3.rule_no_new                                          chk       107128 fail     2032
+     a3.rule_root_in_truth_child                             chk       434737 fail   291053
+  -- a4.
+     a4.bound_nodes_are_old_token_nodes                      chk     13550354 fail   243976
+     a4.bounds_have_no_common_pair                           chk       918185 fail        0
+     a4.high_label_iff_Pa                                    chk      1699154 fail    46484
+     a4.low_label_iff_Pb                                     chk      1699154 fail    30858
+     a4.no_node_on_both_bounds                               chk       918185 fail        0
+     a4.node_on_Pa_iff_high                                  chk     13550354 fail   132352
+     a4.node_on_Pb_iff_low                                   chk     13550354 fail   111645
+     a4.node_one_label                                       chk      1134467 fail       11
+     a4.old_pair_off_P_has_label                             chk      1699154 fail        0
+     a4.pair_on_a_bound                                      chk      1699154 fail    77338
+  -- b.
+     b.C_at_least_mincut                                     chk      1851624 fail   269815
+     b.C_edges_distinct                                      chk      1851624 fail   392518
+     b.C_no_longer_than_W                                    chk      1851624 fail        0
+     b.C_simple_cycle_or_loop                                chk      1851624 fail        0
+     b.P_shortest_for_cprime                                 chk       570315 fail        0
+     b.Q_image_is_walk                                       chk      1514087 fail        0
+     b.W_ends                                                chk      1851624 fail        0
+     b.W_length_is_lambda_t                                  chk      1851624 fail        0
+     b.W_simple                                              chk      1851624 fail        0
+     b.bond_every_edge_crosses                               chk      1851624 fail   420560
+     b.bond_exactly_two_components                           chk      1851624 fail   420560
+     b.bond_separates_s_t                                    chk      1851624 fail   420560
+     b.cU_ge_P                                               chk      1851624 fail        0
+     b.cV_ge_P                                               chk      1851624 fail        0
+     b.floor_Lambda_K_is_mincut_cprime                       chk       424025 fail        0
+     b.inner_distinct_faces                                  chk      1851624 fail        0
+     b.inner_off_P                                           chk      1851624 fail        0
+     b.least_cprime_is_mincut_cprime                         chk       424025 fail        0
+     b.least_w_is_Lambda                                     chk       424025 fail        0
+     b.loop_is_dual_loop                                     chk       337537 fail        0
+     b.min_cp_walk_is_mincut                                 chk       908384 fail   194142
+     b.no_edge_copy_of_P                                     chk      1851624 fail   392518
+     b.rule_winner                                           chk       424025 fail        0
+     b.some_walk                                             chk       424025 fail        0
+     b.value_c                                               chk       424025 fail        0
+     b.winner_C_is_mincut                                    chk       908384 fail   149023
+     b.winner_bond                                           chk       908384 fail   194142
+     b.winner_cut_value_c                                    chk       908384 fail   175216
+  -- c23.
+     c23.every_common_node                                   chk        60814 fail        0
+     c23.sum_is_lambda                                       chk        31621 fail        0
+  -- d.
+     d.annuli_disjoint                                       chk       918185 fail    41921
+     d.levels_le_1_plus_ceil_log2_m                          chk       424025 fail        0
+     d.range_halves                                          chk       483066 fail        0
+     d.share_at_most_one_index                               chk        46935 fail        0
+     d.shared_index_is_end_of_both                           chk        46935 fail        0
+  -- j.
+     j.edges_distinct                                        chk       249370 fail    50135
+     j.every_edge_crosses                                    chk       249370 fail    51615
+     j.separates_s_t                                         chk       249370 fail    51615
+     j.two_components                                        chk       249370 fail    51615
+  -- o.
+     o.AQ_closed_under_pairs                                 chk     22195746 fail        0
+     o.a_P_pieces                                            chk      1630293 fail   174731
+     o.called_side_has_no_bad_edge                           chk         4003 fail      740
+     o.old_end_on_a_bound                                    chk        53738 fail    47158
+     o.old_end_x_side                                        chk        54517 fail     2065
+     o.old_end_y_side                                        chk        54481 fail     2045
+     o.other_annulus_cuts_only_its_own                       chk      1127660 fail     6780
+  -- q.
+     q.hull                                                  chk       249689 fail    20219
+     q.inner_off_P                                           chk       249689 fail        0
+  -- inv.
+     inv.A1_connected                                        chk       570315 fail        0
+     inv.Pi_dist                                             chk       249689 fail        0
+     inv.Pi_ends_exist                                       chk       278115 fail    28426
+     inv.compute_dist                                        chk      1053829 fail        0
+     inv.offP_pieces_unique                                  chk       918185 fail        0
+     inv.piece_refines_one_name                              chk     13550354 fail        0
+     inv.pieces_unique                                       chk      5036906 fail        0
+  -- controls
+     ctlA1.delta_in_p_k                       chk       881112 caught       587408 (66.7%)
+     ctlA2.even_dart                          chk       560440 caught       220336 (39.3%)
+     ctlA2.mirror_at_x>y                      chk       168268 caught       103833 (61.7%)
+     ctlA2.rev_dart                           chk       560440 caught       351223 (62.7%)
+     ctlA3.swapped_sides                      chk       777840 caught       193578 (24.9%)
+     ctlA4.swapped_labels                     chk      1699154 caught      1699152 (100.0%)
+     ctlB.U_ge_P0x                            chk      1851624 caught       712877 (38.5%)
+     ctlB.first_0_piece                       chk       783333 caught       737831 (94.2%)
+     ctlB.no_closure                          chk      1071832 caught      1071832 (100.0%)
+     ctlB.whole_W                             chk      1851624 caught      1134191 (61.3%)
+  -- strata and stats
+     a1.P_faces                                                   1451427
+     a1.m=0                                                        144288
+     a2.chk                                                        560440
+     a2.chk|Qhasold=0                                              555923
+     a2.chk|Qhasold=1                                                4517
+     a2.chk|len1                                                    52616
+     a2.chk|lenN                                                   507824
+     a2.chk|level=1                                                478897
+     a2.chk|level=2                                                 61637
+     a2.chk|level=3                                                 18676
+     a2.chk|level=4                                                  1230
+     a2.chk|modes=L/L                                               35834
+     a2.chk|modes=L/LR                                              61366
+     a2.chk|modes=L/R                                               28860
+     a2.chk|modes=LR/L                                              60182
+     a2.chk|modes=LR/LR                                            187694
+     a2.chk|modes=LR/R                                              58996
+     a2.chk|modes=R/L                                               29595
+     a2.chk|modes=R/LR                                              62210
+     a2.chk|modes=R/R                                               35703
+     a2.chk|new_run_reaches_end=0                                      80
+     a2.chk|new_run_reaches_end=1                                  560360
+     a2.chk|ova=0,ovb=0                                            551798
+     a2.chk|ova=0,ovb=1                                              2856
+     a2.chk|ova=1,ovb=0                                              5758
+     a2.chk|ova=1,ovb=1                                                28
+     a2.chk|pos=first                                              142237
+     a2.chk|pos=last                                               142273
+     a2.chk|pos=mid                                                223314
+     a2.chk|pos=only                                                52616
+     a2.chk|x<y                                                    167971
+     a2.chk|x<y|len1                                                16933
+     a2.chk|x<y|lenN                                               151038
+     a2.chk|x=y                                                    224201
+     a2.chk|x=y|len1                                                18662
+     a2.chk|x=y|lenN                                               205539
+     a2.chk|x>y                                                    168268
+     a2.chk|x>y|len1                                                17021
+     a2.chk|x>y|lenN                                               151247
+     a2.parity_literal #notsamepiece                                  139
+     a2.parity_mixed_new_old                                         2182
+     a3.components                                                 446458
+     a3.components=1                                                53564
+     a3.components=2                                               194565
+     a3.components=3                                                 1204
+     a3.components=4                                                   33
+     a3.components=5                                                    4
+     a3.components_without_new_copy                                 54615
+     a3.components_without_new_copy|H                                2765
+     a3.components_without_new_copy|L                               51850
+     a3.components_without_new_copy|side_called=0                    6298
+     a3.components_without_new_copy|side_called=1                   48317
+     a3.high_comps>1                                                  536
+     a3.incisions                                                  249370
+     a3.low_comps>1                                                   884
+     a3.no_copy_on_uncalled_side                                       43
+     a3.no_copy_though_Q_has_new                                      703
+     a3.no_new_edge                                                 53738
+     a3.no_new_edge_called=0                                         4073
+     a3.no_new_edge_called=1                                        49491
+     a3.no_new_edge_given=H                                          4443
+     a3.no_new_edge_given=L                                         49295
+     a3.rule #chk|truth=0                                          397822
+     a3.rule #chk|truth=1                                          387270
+     a3.with_new_edge                                              195632
+     a4.both_bounds                                                 25980
+     a4.bound_nodes                                               1289215
+     a4.bounds                                                     373850
+     a4.nodes_with_old_token                                      1134467
+     b.min_cp_walks                                                908384
+     b.rule_winner.loop                                            187651
+     b.rule_winner.overlap                                              3
+     b.rule_winner.tag=Pi                                           10776
+     b.rule_winner.tag=end                                          43713
+     b.rule_winner.tag=leaf                                        369533
+     b.rule_winner.tag=ov                                               3
+     b.rule_winner.x<y                                              53171
+     b.rule_winner.x=y                                             315898
+     b.rule_winner.x>y                                              54956
+     b.stat.Q1edge                                                 951671
+     b.stat.U_longer_than_P                                        240699
+     b.stat.loop                                                   337537
+     b.stat.overlap                                                 63242
+     b.stat.strict_shortcut                                        521314
+     b.stat.tied_W                                                 336781
+     b.stat.walks                                                 1851624
+     b.stat.x<y                                                    540873
+     b.stat.x=y                                                    779792
+     b.stat.x>y                                                    530959
+     b.winner.loop                                                 237331
+     b.winner.overlap                                               12364
+     b.winner.runs                                                 424025
+     b.winner.walks                                                908384
+     b.winner.x<y                                                  208854
+     b.winner.x=y                                                  491662
+     b.winner.x>y                                                  207868
+     c.Pi_seen                                                     249689
+     c.alternations>1                                               22033
+     cap_paths_reached.P                                             2832
+     cap_paths_reached.Pi                                            3963
+     d.annuli_holding_piece_of_one_face>2                            1702
+     d.annuli_holding_piece_of_one_p_t^sigma>2                       1677
+     d.index_mult>2                                                     0
+     d.leaves                                                      522206
+     d.level_checked                                               664866
+     d.levels_gt_log2(m+1)+1                                         2862
+     d.levels_with_ranges                                          811156
+     d.levels|1                                                    360216
+     d.levels|2                                                     41674
+     d.levels|3                                                     17002
+     d.levels|4                                                      4679
+     d.levels|5                                                       452
+     d.levels|6                                                         2
+     d.live_annuli                                                1053381
+     d.range_pairs                                                 267672
+     d.range_pairs_sharing                                          46935
+     mode.s=L                                                       93980
+     mode.s=LR                                                     383231
+     mode.s=R                                                       93104
+     mode.t=L                                                       93933
+     mode.t=LR                                                     384902
+     mode.t=R                                                       91480
+     o.old_end_x                                                    54517
+     o.old_end_y                                                    54481
+     overlap.a                                                      10434
+     overlap.b                                                       4668
+     q.call_H                                                      244500
+     q.call_L                                                      238566
+     q.empty_range_H                                                  230
+     q.empty_range_L                                                  390
+     q.hasold                                                       55548
+     q.inner_linear_nodes                                           13075
+     q.inner_node_parts=1                                           10674
+     q.inner_node_parts=2                                          366411
+     q.inner_node_parts=3                                             241
+     q.inner_node_parts=4                                               8
+     q.len1                                                        103391
+     q.lenN                                                        145979
+     q.ov_a                                                         10414
+     q.ov_b                                                          4640
+     q.rel.x<y                                                      88433
+     q.rel.x=y                                                      73102
+     q.rel.x>y                                                      87835
+     q.with_inner_linear                                             4957
+     stat.only_repair_paths_reach_Lambda                                5
+     ties.P                                                        174102
+     ties.Pi                                                        74302
+  -- levels by m {0: 1, 1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 4, 7: 4, 8: 4, 9: 5, 10: 5, 11: 5, 12: 5, 13: 5, 14: 5, 15: 5, 16: 5, 17: 6, 18: 5, 20: 5}
+     max levels 6 max m 20 worst ratio levels/log2(m+1) 5 4 1.547
+     max #live ranges holding one index 2 ; max #annuli holding a piece of one p_t^sigma 4 ; of one face p_t 4
+  -- smallest failing instances
+      a1.c_star_s_ends_1piece [2, 3] {"n": 3, "ends": [[0, 1], [1, 2]], "rot": [[0], [1, 2], [3]], "cap": [0, 1], "s": 2, "t": 0, "tag": "randmap:zero_some"} f,g,cs,ct 0 0 0 0 seq [] level 1 None
+      a1.c_star_s_starts_0piece [2, 3] {"n": 3, "ends": [[0, 1], [1, 2]], "rot": [[0], [1, 2], [3]], "cap": [0, 1], "s": 2, "t": 0, "tag": "randmap:zero_some"} f,g,cs,ct 0 0 0 0 seq [] level 1 None
+      a1.c_star_t_ends_0piece [2, 3] {"n": 3, "ends": [[0, 1], [1, 2]], "rot": [[0], [1, 2], [3]], "cap": [0, 1], "s": 2, "t": 0, "tag": "randmap:zero_some"} f,g,cs,ct 0 0 0 0 seq [] level 1 None
+      a1.c_star_t_starts_1piece [2, 3] {"n": 3, "ends": [[0, 1], [1, 2]], "rot": [[0], [1, 2], [3]], "cap": [0, 1], "s": 2, "t": 0, "tag": "randmap:zero_some"} f,g,cs,ct 0 0 0 0 seq [] level 1 None
+      a1.delta_is_last_of_0piece [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 1
+      a1.pair_joins_0 [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 1
+      a1.pair_joins_1 [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 1
+      a1.revdelta_is_first_of_0piece [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 1
+      a1.rule_equals_pair_propagation [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 None
+      a2.gx_low_part_ends_with_delta1 [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (0,)
+      a2.gy_low_part_starts_with_rev2 [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (1,)
+      a2.rule [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 ('x>y', 'len1', 'only', 0, 0)
+      a2.stored_high_pair_on_high [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (frozenset({(1, 1), (0, 2)}), 'x>y')
+      a2.stored_low_pair_on_low [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (frozenset({(0, 1), (1, 2)}), 'x>y')
+      a3.called_side_holds_one_copy_of_each_edge_of_Q [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 ('L', 2, 4)
+      a3.called_side_is_one_subgraph [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 ('H', [], 'x>y', 'len1')
+      a3.no_new_copy_means_not_on_called_side [27, 18] {"n": 18, "ends": [[0, 1], [1, 2], [2, 0], [3, 4], [4, 5], [5, 3], [6, 7], [7, 8], [8, 6], [9, 10], [10, 11], [11, 9], [0, 3], [1, 4], [2, 5], [3, 6], [4, 7], [5, 14], [6, 13], [7, 15], [12, 0], [12, 1], [13, 9], [14, 8], [15, 10], [6, 16], [1, 17]], "rot": [[5, 24, 0, 41], [2, 43, 1, 52, 26], [28, 4, 3], [11, 30, 6, 25], [8, 27, 7, 32], [34, 10, 29, 9], [17, 36, 12, 50, 31], [14, 33, 13, 38], [16, 47, 15], [23, 18, 45], [20, 49, 19], [22, 21], [40, 42], [37, 44], [35, 46], [39, 48], [51], [53]], "cap": [442075, 981445, 96631, 401854, 784265, 229499, 593040, 278989, 890175, 74315, 323237, 621141, 672498, 325477, 761211, 319510, 299037, 193212, 846054, 5244, 320640, 608243, 312779, 677108, 280257, 675353, 264090], "s": 9, "t": 12, "tag": "rings:gen"} f,g,cs,ct 8 1 1 0 seq [] level 2 ('H', {'L': True, 'H': True})
+      a3.no_new_edge_Q_is_a_whole_bound [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 None
+      a3.no_new_edge_one_component [23, 13] {"n": 13, "ends": [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [8, 9], [9, 10], [10, 11], [11, 8], [0, 4], [1, 5], [2, 6], [4, 8], [5, 9], [6, 10], [7, 11], [12, 0], [12, 1], [12, 2], [12, 3]], "rot": [[7, 24, 0, 39], [2, 41, 1, 26], [4, 43, 3, 28], [6, 45, 5], [15, 30, 8, 25], [10, 27, 9, 32], [12, 29, 11, 34], [36, 14, 13], [23, 16, 31], [18, 33, 17], [20, 35, 19], [22, 37, 21], [44, 38, 40, 42]], "cap": [1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0], "s": 12, "t": 8, "tag": "rings:z01"} f,g,cs,ct 6 11 0 0 seq [] level 2 2
+      a3.no_new_edge_other_side_not_called [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 ('H', {'L': True, 'H': True})
+      a3.no_new_edge_same_tokens [23, 13] {"n": 13, "ends": [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [8, 9], [9, 10], [10, 11], [11, 8], [0, 4], [1, 5], [2, 6], [4, 8], [5, 9], [6, 10], [7, 11], [12, 0], [12, 1], [12, 2], [12, 3]], "rot": [[7, 24, 0, 39], [2, 41, 1, 26], [4, 43, 3, 28], [6, 45, 5], [15, 30, 8, 25], [10, 27, 9, 32], [12, 29, 11, 34], [36, 14, 13], [23, 16, 31], [18, 33, 17], [20, 35, 19], [22, 37, 21], [44, 38, 40, 42]], "cap": [1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0], "s": 12, "t": 8, "tag": "rings:z01"} f,g,cs,ct 6 11 0 0 seq [] level 2 None
+      a3.no_new_edge_side_is_part_a [7, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 0], [1, 0], [1, 0], [1, 0]], "rot": [[0, 7, 9, 2, 11, 13], [1, 12, 10, 8, 6, 4], [3], [5]], "cap": [1, 1, 0, 0, 0, 2, 0], "s": 2, "t": 0, "tag": "small:r012"} f,g,cs,ct 2 4 0 4 seq [] level 2 ('L', 'H', 1, 2, 'x<y')
+      a3.rule [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (0, 'L', True, False, {'L': 0, 'H': 1}, {'L': True, 'H': True}, 'L')
+      a3.rule_no_new [7, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 0], [1, 0], [1, 0], [1, 0]], "rot": [[0, 7, 9, 2, 11, 13], [1, 12, 10, 8, 6, 4], [3], [5]], "cap": [1, 1, 0, 0, 0, 2, 0], "s": 2, "t": 0, "tag": "small:r012"} f,g,cs,ct 2 4 0 4 seq [] level 2 ('H', False, True)
+      a3.rule_root_in_truth_child [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 None
+      a4.bound_nodes_are_old_token_nodes [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 2 3
+      a4.high_label_iff_Pa [6, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 3], [1, 3], [0, 2]], "rot": [[0, 10, 2], [1, 8, 6, 4], [3, 11], [5, 7, 9]], "cap": [2, 0, 2, 0, 1, 0], "s": 0, "t": 3, "tag": "small:r012"} f,g,cs,ct 1 2 1 0 seq [] level 3 (frozenset({(1, 1), (0, 2)}), 'H')
+      a4.low_label_iff_Pb [8, 4] {"n": 4, "ends": [[0, 1], [0, 2], [0, 3], [1, 0], [1, 0], [1, 3], [3, 0], [2, 0]], "rot": [[0, 7, 9, 4, 2, 15, 13], [1, 10, 8, 6], [3, 14], [5, 11, 12]], "cap": [0, 2, 2, 2, 2, 2, 1, 0], "s": 0, "t": 1, "tag": "small:r012"} f,g,cs,ct 3 5 4 2 seq [] level 3 (frozenset({(11, 1), (10, 2)}), 'L')
+      a4.node_on_Pa_iff_high [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 2 (3, set())
+      a4.node_on_Pb_iff_low [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 2 (3, set())
+      a4.node_one_label [38, 23] {"n": 23, "ends": [[0, 2], [2, 3], [3, 4], [4, 1], [0, 5], [5, 6], [6, 7], [7, 1], [0, 8], [8, 9], [9, 10], [10, 1], [0, 11], [11, 12], [12, 13], [13, 1], [0, 14], [14, 15], [15, 16], [16, 1], [0, 17], [17, 18], [18, 19], [19, 1], [0, 20], [20, 21], [21, 22], [22, 1], [2, 5], [3, 6], [4, 7], [6, 9], [7, 10], [8, 11], [12, 15], [15, 18], [17, 20], [19, 22]], "rot": [[0, 8, 16, 24, 32, 40, 48], [23, 15, 7, 55, 47, 39, 31], [2, 56, 1], [4, 58, 3], [6, 60, 5], [57, 10, 9], [59, 12, 62, 11], [61, 14, 64, 13], [18, 66, 17], [63, 20, 19], [65, 22, 21], [67, 26, 25], [28, 68, 27], [30, 29], [33, 34], [69, 36, 70, 35], [38, 37], [41, 42, 72], [71, 44, 43], [46, 74, 45], [49, 73, 50], [52, 51], [75, 54, 53]], "cap": [0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1], "s": 0, "t": 1, "tag": "theta:zero_some"} f,g,cs,ct 14 7 5 0 seq [] level 3 (2, {'H', 'L'})
+      a4.pair_on_a_bound [6, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 3], [1, 3], [0, 2]], "rot": [[0, 10, 2], [1, 8, 6, 4], [3, 11], [5, 7, 9]], "cap": [2, 0, 2, 0, 1, 0], "s": 0, "t": 3, "tag": "small:r012"} f,g,cs,ct 1 2 1 0 seq [] level 3 (frozenset({(1, 1), (0, 2)}), 'H')
+      b.C_at_least_mincut [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [2, 0]], "rot": [[0, 5], [1, 2], [3, 4]], "cap": [0, 1, 1], "s": 2, "t": 0, "tag": "randmap:z01"} f,g,cs,ct 0 1 0 0 seq [] level 1 (0, 2, 11)
+      b.C_edges_distinct [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, [1, 1])
+      b.bond_every_edge_crosses [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, [1, 1])
+      b.bond_exactly_two_components [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, [1, 1])
+      b.bond_separates_s_t [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, [1, 1])
+      b.min_cp_walk_is_mincut [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 {'w': 1162, 'cp': 20, 't': 0, 'seq': 0, 'overlap': False, 'loop': False, 'x': 1, 'y': 0, 'cC': 20, 'ok': False, 'cut_c': 0, 'tag': 'leaf', 'level': 1, 'Qlen': 1}
+      b.no_edge_copy_of_P [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, [1])
+      b.winner_C_is_mincut [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [2, 0]], "rot": [[0, 5], [1, 2], [3, 4]], "cap": [0, 1, 1], "s": 2, "t": 0, "tag": "randmap:z01"} f,g,cs,ct 0 1 0 0 seq [] level 1 (2, 11)
+      b.winner_bond [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 {'w': 1162, 'cp': 20, 't': 0, 'seq': 0, 'overlap': False, 'loop': False, 'x': 1, 'y': 0, 'cC': 20, 'ok': False, 'cut_c': 0, 'tag': 'leaf', 'level': 1, 'Qlen': 1}
+      b.winner_cut_value_c [3, 3] {"n": 3, "ends": [[0, 1], [1, 2], [0, 2]], "rot": [[0, 4], [1, 2], [3, 5]], "cap": [1, 1, 1], "s": 0, "t": 1, "tag": "randmap:one"} f,g,cs,ct 1 0 0 0 seq [] level 1 (0, 2)
+      d.annuli_disjoint [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 2 2
+      inv.Pi_ends_exist [6, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 0], [1, 0], [1, 0]], "rot": [[0, 7, 9, 11, 2], [1, 10, 8, 6, 4], [3], [5]], "cap": [0, 1, 1, 0, 0, 1], "s": 2, "t": 1, "tag": "small:z01"} f,g,cs,ct 0 3 0 1 seq [] level 2 (2, [(0, 0), (0, 1)])
+      inv.compute_piece_missing [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 2 (0, 'leaf', [(0, 1), (1, 1), (2, 0), (2, 1)])
+      j.edges_distinct [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 [2, 2]
+      j.every_edge_crosses [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 [2, 2]
+      j.separates_s_t [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 [2, 2]
+      j.two_components [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 [2, 2]
+      o.a_P_pieces [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 ((2, 0), {'L'}, 'H', 1, 0)
+      o.called_side_has_no_bad_edge [8, 4] {"n": 4, "ends": [[0, 1], [0, 2], [0, 3], [1, 0], [1, 0], [1, 3], [3, 0], [2, 0]], "rot": [[0, 7, 9, 4, 2, 15, 13], [1, 10, 8, 6], [3, 14], [5, 11, 12]], "cap": [0, 2, 2, 2, 2, 2, 1, 0], "s": 0, "t": 1, "tag": "small:r012"} f,g,cs,ct 3 5 4 2 seq [] level 2 ('b', frozenset({(11, 1), (10, 2)}))
+      o.old_end_on_a_bound [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 None
+      o.old_end_x_side [7, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 0], [1, 0], [1, 0], [1, 0]], "rot": [[0, 7, 9, 2, 11, 13], [1, 12, 10, 8, 6, 4], [3], [5]], "cap": [1, 1, 0, 0, 0, 2, 0], "s": 2, "t": 0, "tag": "small:r012"} f,g,cs,ct 2 4 0 4 seq [] level 2 ('H', {'L'})
+      o.old_end_y_side [7, 4] {"n": 4, "ends": [[0, 1], [0, 2], [1, 3], [1, 0], [1, 0], [1, 0], [1, 0]], "rot": [[0, 7, 9, 2, 11, 13], [1, 12, 10, 8, 6, 4], [3], [5]], "cap": [1, 1, 0, 0, 0, 2, 0], "s": 2, "t": 0, "tag": "small:r012"} f,g,cs,ct 2 4 0 4 seq [] level 2 ('H', {'L'})
+      o.other_annulus_cuts_only_its_own [23, 13] {"n": 13, "ends": [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [8, 9], [9, 10], [10, 11], [11, 8], [0, 4], [1, 5], [2, 6], [4, 8], [5, 9], [6, 10], [7, 11], [12, 0], [12, 1], [12, 2], [12, 3]], "rot": [[7, 24, 0, 39], [2, 41, 1, 26], [4, 43, 3, 28], [6, 45, 5], [15, 30, 8, 25], [10, 27, 9, 32], [12, 29, 11, 34], [36, 14, 13], [23, 16, 31], [18, 33, 17], [20, 35, 19], [22, 37, 21], [44, 38, 40, 42]], "cap": [1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0], "s": 12, "t": 8, "tag": "rings:z01"} f,g,cs,ct 6 11 0 0 seq [] level 2 (39, 0)
+      q.hull [5, 4] {"n": 4, "ends": [[0, 1], [0, 2], [2, 1], [1, 3], [2, 3]], "rot": [[0, 2], [6, 5, 1], [3, 4, 8], [7, 9]], "cap": [835606, 652292, 237723, 5366, 41733], "s": 1, "t": 0, "tag": "grid:gen"} f,g,cs,ct 1 0 1 1 seq [] level 1 (0, 2, 1, 1, 0)
+  -- examples
+      a2.new_run_isolated_from_ends [29, 14] {"n": 14, "ends": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 6], [0, 6], [1, 7], [2, 8], [3, 9], [4, 10], [5, 11], [12, 0], [12, 1], [12, 2], [12, 3], [12, 4], [12, 5], [9, 13], [13, 6], [13, 7], [13, 10], [13, 11]], "rot": [[11, 24, 0, 37], [39, 1, 26, 2], [4, 41, 3, 28], [6, 43, 5, 30], [32, 8, 45, 7], [34, 10, 47, 9], [23, 51, 12, 25], [27, 13, 53, 14], [16, 29, 15], [18, 31, 17, 48], [20, 33, 19, 55], [22, 35, 21, 57], [44, 46, 36, 38, 40, 42], [49, 52, 50, 56, 54]], "cap": [0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1], "s": 13, "t": 12, "tag": "rings:z01"} f,g,cs,ct 12 9 1 0 seq [] level 2 ('x>y', [(35, 2), (33, 2), (31, 0), (17, 0), (14, 2), (27, 2)], 2)
+      a2.parity_literal_not_same_piece [18, 10] {"n": 10, "ends": [[0, 1], [0, 2], [1, 3], [2, 3], [2, 4], [3, 5], [4, 5], [4, 6], [5, 7], [6, 7], [8, 0], [1, 9], [8, 2], [3, 9], [8, 4], [5, 9], [8, 6], [7, 9]], "rot": [[0, 2, 21], [22, 4, 1], [3, 6, 8, 25], [5, 26, 10, 7], [29, 9, 12, 14], [11, 30, 16, 13], [33, 15, 18], [17, 34, 19], [20, 24, 28, 32], [27, 23, 35, 31]], "cap": [2, 2, 3, 2, 2, 3, 2, 2, 3, 2, 1, 3, 1, 3, 1, 3, 1, 3], "s": 8, "t": 9, "tag": "hubgrid:layer"} f,g,cs,ct 8 6 2 3 seq [] level 2 ((19, 2), (0, 1), [(19, 2), (33, 1)], [(20, 2), (0, 1)], 'x=y')
+      d.piece_mult>2 [19, 13] {"n": 13, "ends": [[0, 1], [1, 2], [2, 0], [3, 4], [4, 5], [5, 3], [6, 7], [7, 8], [8, 6], [9, 10], [10, 11], [11, 9], [0, 3], [2, 5], [3, 6], [5, 8], [6, 9], [12, 0], [12, 1]], "rot": [[5, 24, 0, 35], [2, 37, 1], [26, 4, 3], [11, 28, 6, 25], [8, 7], [30, 10, 27, 9], [17, 32, 12, 29], [14, 13], [16, 31, 15], [23, 18, 33], [20, 19], [22, 21], [34, 36]], "cap": [50, 1, 1, 1, 50, 2, 1, 1, 1, 1, 50, 50, 2, 1, 50, 1, 1, 1, 2], "s": 12, "t": 10, "tag": "rings:big_some"} f,g,cs,ct 1 6 0 0 seq [] level 3 (3, [(0, 0), (1, 2), (2, 3), (4, 4)])

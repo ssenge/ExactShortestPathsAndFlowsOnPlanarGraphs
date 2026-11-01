@@ -536,7 +536,9 @@ test round counts.
   every run on all connected loopless maps with at most 8 edges (with a cap of runs per instance),
   adversarial policies, hill-climbing and the saved hits, 25,109,452 runs with no failure
   (`logs/summary.txt`). `refereeD/` is the simulator of the referee pass on the paper form of
-  Theorem D: 240,000 runs with no failure.
+  Theorem D: 240,000 runs with no failure. `refND/` is the script test of the naming of
+  sides, the cut read from a path, the reading direction and the number of levels: 12,441,126 runs
+  with no failure, every negative control fired (`REPORT.md`).
 - `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine

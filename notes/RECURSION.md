@@ -368,6 +368,16 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
 
 Loops are deleted first, so they are outside the setting; the exhaustive lanes use loopless maps.
 
+## Script test of naming, sides and the cut (2026-11-01)
+
+`sim/thmD/refND` tests claims of the paper form written after its referee pass: the naming of the sides
+of γ, which copy of a new edge of Q lies on which side, the cut read from a path, the reading direction
+and the number of levels. With δ the dart of a new edge of Q at its end nearer to g_x, the pair
+{(δ,1), (rev δ,2)} lies in Lo(J) and {(δ,2), (rev δ,1)} in Hi(J). It ran 12,441,126 runs with no failed
+check, and every negative control fired; `REPORT.md` has the counts and what is not covered. Ties can
+change Q between the roots g⁰ and g¹ of a tree, and both are correct. A value test alone cannot validate
+the side rule: under the flipped rule, the runs that finish still give the right value.
+
 ## Referee pass on the paper form (2026-11-01)
 
 Verdict: correct with gaps, nothing fatal. An independent token-level simulator in

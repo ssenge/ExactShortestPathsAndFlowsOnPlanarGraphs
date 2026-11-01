@@ -1,0 +1,1 @@
+{"lane": "planar", "seed": 101, "runs": 701940, "inst": 116990, "secs": 1420}
