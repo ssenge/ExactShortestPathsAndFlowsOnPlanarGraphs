@@ -454,6 +454,10 @@ standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorr
 
 - `lean/SsspFlow/LemmaVRegion.lean`, theorem `SsspFlow.RHierarchy.lemmaV`: Lemma V for region
   bags. Bags carry arc sets, and an arc of a bag between two non-hubs lies in a common child.
+- `lean/SsspFlow/LemmaVChain.lean`, theorem `SsspFlow.RHierarchy.lemmaV_chain`: Lemma V in the
+  form that fits the labels of [1, Def. 4]. A vertex has estimates only along its chain of bags,
+  which stops at the first bag where it is a hub, and each estimate need only lie between the
+  distance in G and (1+ε) times the distance in the bag.
 
 Not formalized: the CONGEST algorithms and their round counts, planarity and the diameter
 bound of $\hat G$, the decomposition, Lemma 14′ and everything else in the repair that uses

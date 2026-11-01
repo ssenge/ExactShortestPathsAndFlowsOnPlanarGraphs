@@ -196,6 +196,14 @@ and depends only on the standard axioms (propext, Classical.choice, Quot.sound).
   proves the same for region bags, again with standard axioms only. Bags carry arc sets, and
   the hypothesis is that an arc of a bag between two non-hubs lies in a common child, which
   is Lemma B1(b) and (c).
+- **Chain form.** `lean/SsspFlow/LemmaVChain.lean`, theorem `SsspFlow.RHierarchy.lemmaV_chain`,
+  fits the labels of [1, Def. 4]. The chain of v is the root and, from a bag of the chain in which
+  v is no hub, the child that contains v. Estimates exist only along chains, and each one need
+  only satisfy dist_G ≤ estimate ≤ (1+ε) dist_X, so labels may store distances in G or in the
+  bag. The query takes both minima along chains. The proof stops the descent at the first bag
+  with a hub on the walk, so both ends still have that bag on their chains. `sim/check.py` tests
+  this form on the 80 instances of `check.py 40 1` and `check.py 40 7`, with estimates in G, in
+  the bag and a random mix.
 
 The formalization does not cover the CONGEST algorithm or its round count, the construction of the
 hierarchy and of the labels ([1, Lemma 16]), or the counterexample (that one is checked by

@@ -3,6 +3,7 @@
 1. Lemma V: on a recursive separator decomposition with per-bag G[X]-distances to hubs, the
    per-bag convergecast formula gives exact virtual-source distances. Also counts how often the
    single-bag label query (lowest separating bag only) is wrong, while the all-bags query is exact.
+   The query over the chain of a vertex is exact too, for estimates in G, in the bag, or a mix.
 2. Lemma D: weighted face-disjoint graph Ĝ (E_R = 0, E_C = dual dart lengths, E_S = M) gives
    dual distances and the same negative cycles as G*; Ĝ is planar with diameter <= 3D.
 3. Theorem C: Miller–Naor binary search with negative-cycle tests on Ĝ finds the max-flow value,
@@ -82,6 +83,43 @@ def lowest_separating(bags, u, v):
     return None
 
 
+def chain(bags, z):
+    """Root, then the child containing z, down to the first bag where z is a hub (leaf: all hubs)."""
+    i, out = 0, [0]
+    while bags[i]["kids"] and z not in bags[i]["hubs"]:
+        i = next(k for k in bags[i]["kids"] if z in bags[k]["X"])
+        out.append(i)
+    return out
+
+
+def check_chain_form(D, R, bags, phi, truth, to_h, from_h):
+    """Lemma V along chains, with estimates that are distances in G, in the bag, or a random mix."""
+    r = random.Random(len(bags) * 1000003 + sum(min(x, 10**6) for x in phi.values()))  # keeps rng's stream
+    chains = {v: chain(bags, v) for v in D}
+    members = {}
+    for v, c in chains.items():
+        for i in c:
+            members.setdefault(i, []).append(v)
+    to_g = {h: nx.single_source_dijkstra_path_length(R, h, weight="w") for h in D}
+    from_g = {h: nx.single_source_dijkstra_path_length(D, h, weight="w") for h in D}
+    for mode in ("G", "bag", "mix"):
+        pick = lambda g, x: g if mode == "G" or (mode == "mix" and r.random() < 0.5) else x
+        est = {v: INF for v in D}
+        for i, b in enumerate(bags):
+            if i not in members:
+                continue
+            leaf = not b["kids"]
+            sx, rx = D.subgraph(b["X"]), R.subgraph(b["X"])
+            H = b["X"] if leaf else b["hubs"]
+            toX = {h: nx.single_source_dijkstra_path_length(rx, h, weight="w") for h in H} if leaf else to_h[i]
+            frX = {h: nx.single_source_dijkstra_path_length(sx, h, weight="w") for h in H} if leaf else from_h[i]
+            for h in H:
+                A = min(phi[u] + pick(to_g[h].get(u, INF), toX[h].get(u, INF)) for u in members[i])
+                for v in members[i]:
+                    est[v] = min(est[v], A + pick(from_g[h].get(v, INF), frX[h].get(v, INF)))
+        assert est == truth, f"Lemma V along chains fails in mode {mode}"
+
+
 def check_lemma_v(G, rng):
     D = nx.DiGraph()
     D.add_nodes_from(G)
@@ -112,6 +150,7 @@ def check_lemma_v(G, rng):
             for h in H:
                 est[v] = min(est[v], A[h] + from_h[i][h].get(v, INF))
     assert est == truth, "Lemma V formula differs from true virtual-source distances"
+    check_chain_form(D, R, bags, phi, truth, to_h, from_h)
 
     # pairwise label query: all common bags (exact) vs the single lowest separating bag
     bad_single = 0

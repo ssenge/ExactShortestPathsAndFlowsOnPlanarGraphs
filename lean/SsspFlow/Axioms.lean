@@ -5,6 +5,7 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 
 #print axioms SsspFlow.Hierarchy.lemmaV
 #print axioms SsspFlow.RHierarchy.lemmaV
+#print axioms SsspFlow.RHierarchy.lemmaV_chain
 #print axioms SsspFlow.FaceDisjoint.Setup.negCycle_iff
 #print axioms SsspFlow.FaceDisjoint.Setup.walks
 #print axioms SsspFlow.FaceDisjoint.Setup.lemmaD
