@@ -85,7 +85,7 @@ def lemma16(eng, eps=0.05, neg=None):
                 df = Db[i, ix[v]]; db = Df[i, ix[v]]
                 for val, ex in ((f[(v, hh)], df), (bk[(v, hh)], db)):
                     eng.st['L16_checks'] += 1
-                    if val < ex - 1e-9 or val > lam * ex + 1e-6:
+                    if val < ex - eng.cfg.get('tol', 1e-9) or val > lam * ex + eng.cfg.get('tol', 1e-6):
                         if neg == 'l16':
                             eng.st['neg_L16_detected'] += 1
                         else:
@@ -157,7 +157,7 @@ def e2e(eng, neg=None):
                     Dp = sp_matrix(pn, parcs, pports)
                     Mp = Dp[:, [pn.index(x) for x in pports]]
                     fin = np.isfinite(Mp)
-                    if (M[fin] < Mp[fin] - 1e-9).any() or (M[fin] > (1 + gam) * Mp[fin] + 1e-9).any():
+                    if (M[fin] < Mp[fin] - eng.cfg.get('tol', 1e-9)).any() or (M[fin] > (1 + gam) * Mp[fin] + eng.cfg.get('tol', 1e-9)).any():
                         eng.fail("Lemma R1 bound violated on glued tile")
                     eng.st['R1_pairs'] += int(fin.sum())
                 for comp in set(pc[x] for x in pports):
@@ -167,7 +167,7 @@ def e2e(eng, neg=None):
                     sel = sel[:eng.cfg['monge_cap']]
                     worst, cnt = monge_check(M[np.ix_(sel, sel)])
                     eng.st['e2e_monge_ineqs'] += cnt
-                    if worst > 1e-7:
+                    if worst > eng.cfg.get('tol', 1e-7):
                         if neg == 'e2e' and shuffled:
                             eng.st['neg_e2e_detected'] += 1
                         else:

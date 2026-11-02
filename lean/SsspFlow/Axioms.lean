@@ -25,3 +25,16 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.Tools.params
 #print axioms SsspFlow.labelOut
 #print axioms SsspFlow.labelIn
+#print axioms SsspFlow.FlowScaling.flow_rev
+#print axioms SsspFlow.FlowScaling.residual_sum
+#print axioms SsspFlow.FlowScaling.fill_eq
+#print axioms SsspFlow.FlowScaling.fill_step
+#print axioms SsspFlow.FlowScaling.step_feasible
+#print axioms SsspFlow.FlowScaling.system_solvable
+#print axioms SsspFlow.FlowScaling.residual_bound
+#print axioms SsspFlow.FlowScaling.scaling_bound
+#print axioms SsspFlow.FlowScaling.invariant_step
+#print axioms SsspFlow.FlowScaling.reduced_nonneg
+#print axioms SsspFlow.FlowScaling.reduced_path
+#print axioms SsspFlow.FlowScaling.floor_of_min
+#print axioms SsspFlow.FlowScaling.exact_feasible

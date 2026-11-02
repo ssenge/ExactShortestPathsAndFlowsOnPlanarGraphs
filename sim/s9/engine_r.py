@@ -170,7 +170,8 @@ class Engine:
         if r is None:
             return None
         S, ins, out = r
-        if not ins or not out:
+        forced = b == 0 and self.cfg.get('forced')   # prescribed root cycle, sim/maxflow/forced.py
+        if not forced and (not ins or not out):
             return None
         W = self.wedges(q, swap)
         L = len(q)
@@ -283,7 +284,7 @@ class Engine:
                     self.fail('R: side in two children', e)
                 if got[(e, t)] == 0:
                     self.st['R_side_lost'] += 1
-        if not kids or kinds[0] != 'in' or any(len(Y) >= len(X) for Y in kids):
+        if not forced and (not kids or kinds[0] != 'in' or any(len(Y) >= len(X) for Y in kids)):
             return None
         return dict(S=S, ins=ins, out=out, W=W, z=z, kids=kids, kidsE=kidsE, kinds=kinds, chords=chords, ndeg=ndeg, cyc=cyc)
 

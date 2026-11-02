@@ -13,6 +13,10 @@ model. The main claims are:
   minimum cut (Lemma S, one referee pass, correct with gaps; the side lemma it needs, Lemma O,
   is proved and has had one referee pass, correct with minor gaps, all fixed).
 
+A newer claim, after the paper and not part of it: exact maximum st-flow in directed planar networks, with the integer flow on every edge, in
+$\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs one extension of the labels, a prescribed root cycle. See
+[`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026, not yet refereed or attacked; treat it as a claim.**
+
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
 the decomposition that [1] uses for its round count (Property 6) is also false. We repair
