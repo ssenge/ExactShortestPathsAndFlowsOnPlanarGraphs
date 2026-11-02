@@ -301,11 +301,9 @@ def ecc_all(eng, dG, tokens, st, mode, rng):
             else:
                 f = T.face.get(v)
                 if f is not None:
-                    w = np.array(T.walks[f]); w = w[T.inX[w]]
-                    tv = T.t[w, T.vid[v]]
                     all_ = np.flatnonzero(T.inX)
                     arr = np.full(T.no, np.inf)
-                    arr[all_] = (tv[:, None] + dG[T.xo[w]][:, T.xo[all_]]).min(0)
+                    arr[all_] = dG[v, T.xo[all_]]
                     cv = T.child.get(v, -2)
                     for f2, walk in enumerate(T.walks):
                         wk = np.array(walk)
@@ -375,9 +373,9 @@ def sum_all(eng, dG, tokens, mode='ok'):
             if u in T.VP:
                 S[u] += dG[u, rest].sum() - dG[u, sorted(on[Y])].sum(); continue
             S[u] += sum(dG[u, h] for h in hubs if h not in SX and kid.get(h) != Y)
-            w = np.array(T.walks[T.face[u]]); w = w[T.inX[w]]; all_ = np.flatnonzero(T.inX)
+            all_ = np.flatnonzero(T.inX)
             arr = np.full(T.no, np.inf)
-            arr[all_] = (T.t[w, T.vid[u]][:, None] + dG[T.xo[w]][:, T.xo[all_]]).min(0)
+            arr[all_] = dG[u, T.xo[all_]]
             memo = {}
             def value(key, rec):
                 if key not in memo:
