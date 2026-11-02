@@ -174,7 +174,7 @@ This is an audit, not a new proof of §3 to §9, and it is the first thing for a
 
 ## 7. Checks
 
-Results are in `sim/maxflow/REPORT.md`. `mf.py` runs Sections 2 and 3 with portal distances perturbed adversarially within [d, (1+ε)d], and compares against an independent Dinic. `forced.py` builds N for flow instances, checks Lemma N, and runs the construction of `notes/LEMMA15.md` with the
+Results are in `sim/maxflow/REPORT.md`: 359,477 instances and about 2.2 million iterations with no failure, all controls fired. The algebra of Sections 2 and 3 is in `lean/SsspFlow/FlowScaling.lean`, without `sorry`: the fill, the bound on the residual, the invariant, nonnegative reduced costs, the floor argument and feasibility of the result. Planarity, the portal metric and rounds are not in Lean. `mf.py` runs Sections 2 and 3 with portal distances perturbed adversarially within [d, (1+ε)d], and compares against an independent Dinic. `forced.py` builds N for flow instances, checks Lemma N, and runs the construction of `notes/LEMMA15.md` with the
 prescribed root cycle. Negative controls in both.
 
 ## 8. Not covered by the checks
