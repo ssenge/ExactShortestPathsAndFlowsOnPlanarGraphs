@@ -3,6 +3,7 @@ python3 -I diam.py SEED SECS [big]   main lane
 python3 -I diam.py ctl SEED SECS     negative controls
 python3 -I diam.py scale             tokens against D^2 on grids
 python3 -I diam.py sum SEED SECS     sums of distances, with controls
+python3 -I diam.py second            an instance that needs the second token
 """
 import collections, json, os, random, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -521,6 +522,50 @@ def controls(seed, secs):
     return out
 
 
+def second_token():
+    """A forced root: q ends at a, and the closing edge separates two combs at a, in one corner of P.
+    Without the second token the eccentricity of the far end of the longer comb is wrong."""
+    sys.path.insert(0, os.path.join(HERE, '..', 'maxflow'))
+    from forced import Forced
+
+    class FB(Forced, Bags):
+        pass
+    out = []
+    for b, c, tooth in ((4, 5, 6), (6, 8, 9), (3, 3, 5)):
+        pos = [(0.0, 0.0)]; E = []
+
+        def add(p, prev):
+            pos.append(p); E.append((prev, len(pos) - 1)); return len(pos) - 1
+        for sgn, m in ((1, b), (-1, c)):
+            prev = 0
+            for x in range(1, m + 1):
+                prev = add((sgn * float(x), 0.0), prev); t = prev
+                for i in range(1, tooth + 1):
+                    t = add((sgn * (x + 0.2), (0.8 if x % 2 else -0.8) * i / tooth), t)
+        prev = 0; q = [0]
+        for p in [(0.0, 1.0)] + [(float(x), 1.0) for x in range(1, b + 2)] + [(b + 1.0, 0.0)] + [(float(x), -1.0) for x in range(b + 1, -1, -1)]:
+            prev = add(p, prev); q.append(prev)
+        E.append((prev, 0))
+        assert drawing_ok(pos, E)
+        g = PG(pos, E, seed=1)
+        eng = FB(g, random.Random(1), dict(leaf=8, tries=30, modes={'bal': 1.0}, zall=0.0, swap=0.3, degenerate=False, txmode='bfs', stop=True, root=0), q, False)
+        eng.run()
+        par = {0: None}; stack = [0]
+        while stack:
+            x = stack.pop()
+            for y in eng.Tadj[x]:
+                if y not in par:
+                    par[y] = x; stack.append(y)
+        dG = shortest_path(mk(list(g.ends), g.n), unweighted=True)
+        st = collections.Counter(); tokens = {}; eng.tb = {}
+        for bb in sorted(eng.bags, key=lambda z: eng.bags[z]['depth']):
+            if eng.bags[bb]['kids']:
+                check_bag(eng, bb, par, dG, st, random.Random(1), tokens); eng.tb[bb] = tokens[bb][0]
+        ok = ecc_all(eng, dG, tokens, st, 'ok', random.Random(1)); top1 = ecc_all(eng, dG, tokens, st, 'top1', random.Random(1))
+        out.append(dict(n=g.n, ok_wrong=ok[0], top1_wrong=top1[0], fails=sum(v for a, v in st.items() if a.startswith('FAIL'))))
+    return out
+
+
 def scale():
     """Tokens and dictionary against D^2 on full square grids."""
     res = []
@@ -539,6 +584,8 @@ if __name__ == '__main__':
         print(json.dumps(controls(int(sys.argv[2]), float(sys.argv[3]))))
     elif sys.argv[1] == 'scale':
         print(json.dumps(scale()))
+    elif sys.argv[1] == 'second':
+        print(json.dumps(second_token()))
     elif sys.argv[1] == 'sum':
         print(json.dumps(dict(sum_lane(int(sys.argv[2]), float(sys.argv[3]))), sort_keys=True))
     else:
