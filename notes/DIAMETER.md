@@ -1,7 +1,7 @@
 # Exact eccentricities and diameter of unweighted planar networks in Õ(D²) rounds
 
 **Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/`. Not yet refereed and not yet attacked, and no human has
-checked it. It does not use the Label Hypothesis of [3]. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the pattern bound of [2].
+checked it. The Sum Corollary in Section 5 was added after the referee and the attacker had started. It does not use the Label Hypothesis of [3]. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the pattern bound of [2].
 Importance if it survives: solid, since the best stated bound for the diameter is Õ(D³) [2].
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides
@@ -128,9 +128,29 @@ Let E(u) = max E_X(u) over the chain. All of this is local.
 
 The diameter and radius follow by one convergecast over T. This proves the theorem. ∎
 
+Tokens can carry the identifier of a vertex that attains them, and so can A_X, so every vertex also learns a farthest vertex.
+
+**Sum Corollary.** In Õ(D²) rounds every vertex u learns S(u) = Σ_v d_G(u,v). So the closeness of every vertex, a medoid and the Wiener index are computed in Õ(D²) rounds, deterministically. Importance if it survives: modest. Two literature searches found no earlier CONGEST bound for these on planar networks; that is not proof that none exists.
+
+For v ∈ X° off S_X let Y(v) be its child. Each p ∈ L_X broadcasts Y(p) over T_X. Add to each non-leaf bag X, with one word per value since values are at most nD:
+- (A) For each face and pattern, the count and the sum of offsets of the vertices of X° off P_X, by a convergecast over T_X as in Step 5.
+- (B) For each child Y, the same over the vertices of Y° off P_X, by a convergecast and a broadcast over T_Y. These are O(k²) keys per child, and children run in parallel by (H2).
+- (C) For p ∈ S_X, the sum of d_G(v,p) over v ∈ X°. For p ∈ L_X off S_X, the sum over v ∈ X° off S_X, and the sum over v ∈ Y(p)° by a convergecast over T_{Y(p)}.
+
+Let S_X(u) be the sum of d_G(u,v) over the v for which X is the last bag on both chains. These sets of v partition V along the chain of u, so S(u) = Σ_X S_X(u). All of S_X(u) is known to u locally:
+- If X is a leaf, then all v lie in X° ⊆ L_X, and the invariant gives the values.
+- If u ∈ S_X, then v runs over X°, and S_X(u) is the first sum of (C).
+- Otherwise v runs over S_X ∩ X° and over the vertices of X° off S_X in other children than Y(u). The first part is known by the invariant. If u ∈ L_X, the second part is the difference of the two sums of (C). If u is off P_X, take the vertices of L_X ∩ X° off S_X in other children by the invariant, and those off P_X by Lemma 1, which gives d_G(u,v) = off_v + M_u(Φ_v, π_v), where π_v is the pattern of v and
+
+      M_u(Φ,π) = min_{o′ on Φ} ( min_o ( t_u(o) + d_G(x(o), x(o′)) ) + π(o′) ).
+
+  So the sum over those v is Σ_{(Φ,π)} (sum + count·M_u(Φ,π)) with the entries of (A), minus the same expression with the entries of (B) for Y(u). The subtraction is linear, so it does not matter that the formula need not give d_G(u,v) for v in the child of u. ∎
+
+With integer vertex weights of O(log n) bits, the weighted sums follow in the same way; the simulator does not run this form.
+
 ## 6. Checks
 
-Results are in `sim/diameter/REPORT.md`. `diam.py` builds real region bags and checks Lemmas 1, 2 and 3, the alternation, Fact 0 through the first-hit formula, the formula of Step 2, and finally E(u) against BFS for every vertex. Negative controls in `diam.py ctl`.
+Results are in `sim/diameter/REPORT.md`. `diam.py` builds real region bags and checks Lemmas 1, 2 and 3, the alternation, Fact 0 through the first-hit formula, the formula of Step 2, and finally E(u) against BFS for every vertex. Negative controls in `diam.py ctl`. `diam.py sum` checks S(u) from the tables of the Sum Corollary against BFS, with its own controls.
 
 ## 7. Not covered by the checks
 

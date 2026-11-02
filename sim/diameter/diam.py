@@ -2,6 +2,7 @@
 python3 -I diam.py SEED SECS [big]   main lane
 python3 -I diam.py ctl SEED SECS     negative controls
 python3 -I diam.py scale             tokens against D^2 on grids
+python3 -I diam.py sum SEED SECS     sums of distances, with controls
 """
 import collections, json, os, random, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -334,8 +335,85 @@ def ecc_all(eng, dG, tokens, st, mode, rng):
     return bad, int((E > truth).sum()), int((E < truth).sum())
 
 
+def sum_all(eng, dG, tokens, mode='ok'):
+    """Section 5, Sum Corollary: S(u) from labels, hub sums and (count, offset sum) per pattern only."""
+    g = eng.g; n = g.n
+    chains = []; on = collections.defaultdict(set)
+    for v in range(n):
+        b = 0; c = []
+        while True:
+            c.append(b); on[b].add(v); B = eng.bags[b]
+            if not B['kids'] or v in B['q']:
+                break
+            b = next(k for k in B['kids'] if v in eng.bags[k]['X'])
+        chains.append(c)
+    S = np.zeros(n)
+    for b, B in eng.bags.items():
+        Xo = sorted(on[b])
+        if not B['kids']:
+            for u in Xo:
+                S[u] += dG[u, Xo].sum()
+            continue
+        T, _ = tokens[b]; SX = set(B['q'])
+        kid = {v: next(k for k in B['kids'] if v in eng.bags[k]['X']) for v in Xo if v not in SX}
+        rest = [v for v in Xo if v not in SX]
+        hubs = [p for p in T.VP & B['X'] if p in on[b]]
+        if mode == 'xo':
+            hubs = sorted(T.VP & B['X'])
+        total = collections.defaultdict(lambda: [0, 0]); inkid = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0]))
+        for v in rest:
+            if v in T.vid:
+                vec = T.vec(v); off = int(vec[0]); key = (T.face[v], tuple((vec - off).astype(int)))
+                for rec in (total[key], inkid[kid[v]][key]):
+                    rec[0] += 1; rec[1] += off
+        for u in Xo:
+            if u in SX:
+                S[u] += dG[u, Xo].sum(); continue
+            S[u] += sum(dG[u, h] for h in hubs if h in SX)
+            Y = kid[u]
+            if u in T.VP:
+                S[u] += dG[u, rest].sum() - dG[u, sorted(on[Y])].sum(); continue
+            S[u] += sum(dG[u, h] for h in hubs if h not in SX and kid.get(h) != Y)
+            w = np.array(T.walks[T.face[u]]); w = w[T.inX[w]]; all_ = np.flatnonzero(T.inX)
+            arr = np.full(T.no, np.inf)
+            arr[all_] = (T.t[w, T.vid[u]][:, None] + dG[T.xo[w]][:, T.xo[all_]]).min(0)
+            memo = {}
+            def value(key, rec):
+                if key not in memo:
+                    memo[key] = (arr[T.walks[key[0]]] + np.array(key[1])).min()
+                return (1 if mode == 'cnt1' else rec[0]) * memo[key] + (0 if mode == 'nooff' else rec[1])
+            S[u] += sum(value(k, r) for k, r in total.items())
+            if mode != 'nosub':
+                S[u] -= sum(value(k, r) for k, r in inkid[Y].items())
+    return S
+
+
+def sum_lane(seed, secs):
+    """Main lane for S(u), then each mutation must make some S(u) wrong."""
+    rng = random.Random(seed); st = collections.Counter(); t0 = time.time(); s = seed * 1000
+    while time.time() - t0 < secs:
+        s += 1
+        r = instance(s, False, rng)
+        if r is None:
+            continue
+        g, fam = r
+        try:
+            out = run_one(g, s, rng, collections.Counter())
+        except Fail:
+            continue
+        if not out:
+            continue
+        eng, dG, tokens, par = out
+        truth = dG.sum(1)
+        st['runs'] += 1; st['chk.sum'] += g.n; st['FAIL.sum'] += int((sum_all(eng, dG, tokens) != truth).sum())
+        st['max.n'] = max(st['max.n'], g.n)
+        for mode in ('nosub', 'nooff', 'cnt1', 'xo'):
+            st['ctl.' + mode] += bool((sum_all(eng, dG, tokens, mode) != truth).any())
+    return st
+
+
 def instance(s, big, rng):
-    fams = ['dl', 'grid', 'k2m', 'fan', 'nested', 'pend', 'flower']
+    fams =['dl', 'grid', 'k2m', 'fan', 'nested', 'pend', 'flower']
     fam = fams[s % len(fams)]
     args = params(fam, random.Random(s * 31 + 7))
     if big and fam == 'dl':
@@ -444,7 +522,7 @@ def controls(seed, secs):
 
 
 def scale():
-    """Tokens and dictionary against D^2 on square grids with diagonals removed at random."""
+    """Tokens and dictionary against D^2 on full square grids."""
     res = []
     for k in (6, 10, 14, 18, 24, 30, 40):
         st = collections.Counter(); rng = random.Random(k)
@@ -461,5 +539,7 @@ if __name__ == '__main__':
         print(json.dumps(controls(int(sys.argv[2]), float(sys.argv[3]))))
     elif sys.argv[1] == 'scale':
         print(json.dumps(scale()))
+    elif sys.argv[1] == 'sum':
+        print(json.dumps(dict(sum_lane(int(sys.argv[2]), float(sys.argv[3]))), sort_keys=True))
     else:
         print(json.dumps(dict(lane(int(sys.argv[1]), float(sys.argv[2]), len(sys.argv) > 3)), sort_keys=True))
