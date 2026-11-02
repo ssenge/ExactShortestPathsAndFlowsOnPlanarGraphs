@@ -305,7 +305,7 @@ def net_case(rng, st, s, big):
     dN = nx.diameter(Hg)
     st['max_hop_ratio_x100'] = max(st['max_hop_ratio_x100'], 100 * dN // max(1, D))
     st['chk.N_hops'] += 1
-    if dN > 6 * D + 8:
+    if dN > 6 * D + 2:
         st['FAIL.N_hops'] += 1
     # straight-line drawing of N in which the apex is drawn in the slit face
     em = nx.check_planarity(Hp)[1]
@@ -354,7 +354,6 @@ def net_case(rng, st, s, big):
     tol = 1e-13 * max(w.values()) * ndN   # lengths reach 1e10, the checks run on floats
     eng = Forced(g, random.Random(s + 1), dict(leaf=rng.choice([6, 8, 14]), tries=40, modes={'bal': 1.0}, zall=0.0, swap=0.0,
                                                degenerate=False, txmode='bfs', stop=True, tol=tol), qi, swap)
-    st['chk.T_contains_path'] += 1
     run_engine(eng, st, s, rng)
     # the metric of N on portal corners is that of Gamma
     st['max_portals'] = max(st['max_portals'], len(I.portals))
@@ -435,7 +434,7 @@ def lane(seed, secs, what):
 
 
 def neg(seed, secs):
-    """Controls: a wrong gluing must be caught; a non-facial curve must fail the apex test."""
+    """Control: a wrong gluing must be caught."""
     rng = random.Random(seed)
     st = collections.Counter()
     t0 = time.time()

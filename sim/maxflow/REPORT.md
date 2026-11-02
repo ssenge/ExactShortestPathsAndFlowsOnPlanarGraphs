@@ -51,6 +51,15 @@ was exactly 6, against the bound 6D + 2. Largest depth 22, largest a_Y 4.
 
 **Negative control.** With the wrong glued metric at the root: 314 failures in 9,954 root pairs, 767 runs.
 
+## Limits
+
+- `mf.py` works on Γ with scale 2(faces+1), so Lemma N(6) is not exercised there. Noise means four fixed modes.
+- `forced.py` does not check the diameter of T_X, c(X) or region connectivity; the referee ran these on its instances, with no failure. Below the root it uses fundamental cycles, and bags with no cycle in the tries stay leaves.
+- The hop bound was tested as 6D + 8 in the lanes above. It is now 6D + 2 in the code; the measured ratio stays at most 6.
+- Portal containment on the cycle is at face level.
+- The tolerance in `forced.py` is relative, since lengths reach 1e10.
+- The referee's scripts in `referee/` combine N, δ, the Step Lemma and SSSP on N, see `notes/MAXFLOW.md`, Section 7.
+
 ## Not covered
 
 - Rounds, messages and who knows what: no CONGEST simulation.
