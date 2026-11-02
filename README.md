@@ -17,6 +17,9 @@ A newer claim, after the paper and not part of it: exact maximum st-flow in dire
 $\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs one extension of the labels, a prescribed root cycle. See
 [`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026, not yet refereed or attacked; treat it as a claim.**
 
+A second newer claim, also not part of the paper: in undirected unweighted planar networks every vertex learns its exact eccentricity, so the diameter and radius are found, in
+$\tilde O(D^2)$ rounds, where the best stated bound for the diameter is $\tilde O(D^3)$. It does not need the Label Hypothesis. See [`notes/DIAMETER.md`](notes/DIAMETER.md). **Written on 3 Nov 2026, not yet refereed or attacked; treat it as a claim.**
+
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
 the decomposition that [1] uses for its round count (Property 6) is also false. We repair
