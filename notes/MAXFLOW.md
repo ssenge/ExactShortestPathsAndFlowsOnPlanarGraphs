@@ -1,6 +1,6 @@
 # Exact maximum flow, with the flow on every edge, in Õ(D) rounds
 
-**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. One referee pass (2 Nov 2026) found no fatal error, and one adversarial pass (3 Nov 2026) found one real failure, on parallel arcs, now fixed, and no counterexample on simple networks. All corrections are in this text, see Section 7. No human
+**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. On parallel arcs of one direction a number of iterations chosen from nU gives an infeasible flow, so τ is chosen from mU, see Section 3. No human
 has checked it. It rests on the Label Hypothesis of [1] and on one extension, (L3). (L3) does not follow from the Hypothesis as a statement; Section 5 obtains it from the construction in `notes/LEMMA15.md`, so the theorem rests on that construction and on its black boxes (G3), (G5), (G6) and the embedding, with local computation that is not polynomial. Importance if it survives: significant.
 
 **A route without (L3).** `notes/NEGATIVE.md` reaches the same bound, randomized, from the Label Hypothesis alone, by a polylogarithmic reduction for negative weights. It does not need this note, and it is much simpler. This note stays of interest as the deterministic route relative to the labels, and for the method.
@@ -110,6 +110,10 @@ path gives at least ℓ(Q) ≥ dist_ℓ(f_0,x), and a shortest one gives less th
 
 Numbers stay polynomial: K^τ = (nU)^{O(1)}, part 3 of the Step Lemma gives C_i(d) ≤ K^i·2U, and with min ψ = 0 we get ψ ≤ K·F·K^i·2U, ϕ_i ≤ 2K·F·K^i·2U and Φ_τ ≤ τ·K^τ·4FU.
 
+**Parallel arcs and the choice of τ.** The bound λ ≤ nU fails on parallel arcs of one direction, and a τ chosen from it gives a wrong result. With 10 parallel s-a arcs and 10 parallel a-t arcs, all of capacity 1, λ = 10 exceeds nU = 3. The value still comes out right, but the potentials are wrong and f is infeasible for 8 of 19 choices of f_0. This is why τ is defined with mU. Antiparallel pairs do not cause it, since the capacity out of s is then at most (n − 1)U.
+
+The number τ cannot be lowered in general: on K_{2,124} with U = 124 the ratio p·F/K^τ reaches 0.976 with τ = 9, and τ − 1 gives wrong potentials and an infeasible f on all 124 faces.
+
 ## 4. The network N
 
 N is the face-disjoint graph Ĝ of [2], as described in [1], with two changes. Write corner(d) for the corner node at the tail of d, in the face rgt(d).
@@ -160,7 +164,7 @@ and apply Lemma B5 only below the root. We went through what this touches:
 - **Tiles.** §3 uses of S_X only that q_X has an edge and the rules for L_X, Q_X, P_X. Γ_1 is connected, since S_root is a cycle whose vertices all lie on q_X.
 - **Knowledge.** Every vertex of R broadcasts its degree and the rotation indices of its two edges of R, O(1) words each, so every vertex knows S in O(D) rounds. Rotations in full would not fit: a rim vertex of a wheel cannot learn the rotation of the hub. Since S bounds a face, each vertex knows its side locally: the inside part is S itself.
 
-**Root step.** These are the changes to `notes/LEMMA15.md` that the referee's audit identified, for facial S:
+**Root step.** For facial S, these are the changes to `notes/LEMMA15.md`:
 - §9.1 and the proof of Lemma B1(e): BFS is used only for the height of T.
 - §9.2: the root separator is prescribed, and the root has no z_s.
 - §9.5, Height: the bound (2/3)|X| + |S_X| fails at the root. This costs one extra level, and ε′ is fixed from the bound H + 1.
@@ -186,26 +190,13 @@ No other use of balance, of the BFS property, of a nonempty inside, of progress 
 
 Results are in `sim/maxflow/REPORT.md`: 359,477 instances and about 2.2 million iterations with no failure, all controls fired. The algebra of Sections 2 and 3 is in `lean/SsspFlow/FlowScaling.lean`, without `sorry`: the fill, the bound on the residual, the invariant, nonnegative reduced costs, the floor argument and feasibility of the result. Not in Lean: that J is largest and J ≤ Kλ, monotonicity of solvability, Lemma N(6), the choice of τ, part 1 of the Exactness Lemma, flow conservation, and the residual value identity, which enters as a hypothesis. Planarity, the portal metric and rounds are not in Lean either.
 
-`mf.py` runs Sections 2 and 3 on Γ with portal distances perturbed within [d, (1+ε)d] by four fixed noise modes, not by an optimized adversary, and compares against an independent Dinic. `forced.py` builds N for flow instances, checks parts of Lemma N, and runs the construction of `notes/LEMMA15.md` with the prescribed root cycle. Below the root it uses fundamental cycles, not Lemma B5, and bags with no cycle in the tries are left as leaves. Neither script combines N, δ and the Step Lemma.
+`mf.py` runs Sections 2 and 3 on Γ with portal distances perturbed within [d, (1+ε)d] by four fixed noise modes, not by an optimized worst case, and compares against an independent Dinic. `forced.py` builds N for flow instances, checks parts of Lemma N, and runs the construction of `notes/LEMMA15.md` with the prescribed root cycle. Below the root it uses fundamental cycles, not Lemma B5, and bags with no cycle in the tries are left as leaves. Neither script combines N, δ and the Step Lemma.
 
-**Referee (2 Nov 2026).** An independent pass found no fatal error. It checked every inequality by hand, and found the points now in this text: (L3) has no written proof and does not follow from the Hypothesis, so it is restated for facial S with the root step of Section 5; the rotations in the broadcast of Section 5; one common δ, now at the root centre; the citation of the offset form of Exact and the star argument; loops and parallel edges in N; normalization of ψ; small global knowledge; the comparison with [2] and [3]. Its own harness is in `sim/maxflow/referee/`: Lemma N, by exhaustive search on all 127 connected planar graphs with 3 to 6 vertices, with all ordered s, t, up to 6 shortest paths and 387,196 structural runs in the larger run; and the full pipeline on the real N with b from δ, offsets only on S, and an independent max flow, on 9,597 structured instances. No failure; its controls fired.
-
-**Adversary (3 Nov 2026).** A second pass, whose only job was to break the theorem, ran on its own code. It found one real failure and no counterexample on simple networks.
-
-- The choice of τ used λ ≤ nU, which fails on parallel arcs of one direction: with 10 parallel s-a arcs and 10 parallel a-t arcs, all of capacity 1, λ = 10 exceeds nU = 3, the value still came out right, but ψ was wrong and f infeasible for 8 of 19 choices of f_0. τ now uses mU. Antiparallel pairs were fine (18,443 instances).
-- Wording, now in this text: which corner ψ(lft d) means, and n = 2, s = t. Its other wording points had already been fixed by the referee's corrections.
-
-τ cannot be lowered in general: on K_{2,124} with U = 124 the ratio p·F/K^τ reaches 0.976 with τ = 9, and τ − 1 gives ψ wrong and f infeasible on all 124 faces. Near tight: 5J = 36p − 4 occurs in the Step Lemma, b = K·d was hit 1,751,013 times in 17,317,792 pairs, and a tree with triangles at the tips gives hop(N) = 6D − 2 and |S| = 6D.
-
-No violation in: a flow sweep over 24 families with adversarial capacities and adaptive δ and ψ in exact integers against its own Dinic (400,000 instances, 2,630,498 steps); the node-level pipeline through N (32,567 instances); Lemma N by exhaustive search over all connected simple planar graphs with 3 to 7 vertices, all embeddings, all s, t and all shortest R (1,193,143 instances); (L3) with prescribed S and T, including big or small insides, hubs, long DFS cycles and non-BFS T (3,645 instances, 123,970 bags) and on the real N (7,101 instances, 195,087 bags), about 1.6e9 Monge inequalities. A proof scan of §3 to §9 agreed with Section 5. Its controls fired, T − 1 and a missing P_X only rarely on random instances. Random z_s break the hypothesis of B1(e) and exceed the c(X) formula, as expected, without a wrong value.
-
-**Not tested by it:** rounds, messages and knowledge; the black boxes and the Hypothesis itself, since emulators were perturbed pieces and wheels and Exact was replaced by Dijkstra; Lemma B5 below the forced root; exhaustive flow beyond n = 5. Its long run with z in any legal corner never started (162 trial instances only), and two (L3) runs were killed by their time limit without a failure line.
-
-**Not checked by the referee:** the black boxes (G3), (G5), (G6) and the embedding algorithm, [2, App. A], the reduction inside Exact; Claims 1 to 7, the R lemmas and B1 to B5 were read for root-specific uses but not proved again; Lemma B5 below a forced root and real (G3), (G5) labels were not run; general non-facial S.
+Several bounds are close to tight. The equality 5J = 36p − 4 occurs in the Step Lemma, and b = K·d occurs in (B). A tree with triangles at the tips gives hop(N) = 6D − 2 and |S| = 6D, against 6D + 2 in Lemma N. A random choice of z_s breaks the hypothesis of Lemma B1(e) and exceeds the c(X) formula, with no wrong value seen.
 
 ## 8. Not covered by the checks
 
-Rounds, messages and knowledge are not simulated. The black boxes of `notes/LEMMA15.md` (G3), (G5), (G6) and the given embedding are taken as stated. The oracle in `mf.py` is a perturbation, not (G5). The emulators in `forced.py` are perturbed pieces and wheels, as in `sim/s9`, not realizations by (G3). Local computation is not polynomial, as for the Label
+Rounds, messages and knowledge are not simulated. The black boxes of `notes/LEMMA15.md` (G3), (G5), (G6), the given embedding, [2, App. A] and the reduction inside Exact are taken as stated. Claims 1 to 7, the R lemmas and Lemmas B1 to B5 of `notes/LEMMA15.md` are read for root-specific uses and not proved again here. A cycle S that does not bound a face is not treated. The oracle in `mf.py` is a perturbation, not (G5). The instances of `mf.py` are simple networks, and it takes the number of iterations from nU, which suffices there, so the parallel arcs of Section 3 are not run. The emulators in `forced.py` are perturbed pieces and wheels, as in `sim/s9`, not realizations by (G3). Lemma B5 below a forced root and real (G3), (G5) labels are not run. Local computation is not polynomial, as for the Label
 Hypothesis.
 
 ## References

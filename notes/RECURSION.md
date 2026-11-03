@@ -1,18 +1,9 @@
 # Lemma S: the recursion of Theorem D
 
-*Status (2026-10-29).* The defect was found by the adversarial pass on Lemma R
-(sim/thmD/attackR). Referee pass on the first version (2026-10-29): correct with gaps, nothing
-fatal. The referee checked the algebra of Lemma S1 and the logic of Lemma S2 in full. Its two
-serious points are older gaps of Theorem D, not new ones. One is the side fact (O): which side
-of an incision each copy of P lands on. The other is the exact form of [18, Claim 2.3]. This
-revision changes four things:
-- Lemma S1 now runs in A_1 and needs neither of the two gaps. Its separation step (S_1) is
-  proved here by a parity argument.
-- The level-ℓ facts are collected as Lemma O. Its proof is in LEMMA_O.md, with five changes to
-  the statement. Referee pass on Lemma O (2026-10-29): correct with minor gaps, all fixed; it
-  supplies what Lemma S2 uses, in the form S2 uses it (LEMMA_O.md §12).
-- The minor points are fixed.
-- The test counts are corrected.
+*Status.* Proved, given Lemma O, whose proof is in LEMMA_O.md and which supplies what Lemma S2
+uses, in the form S2 uses it. Lemma S1 runs in A_1 and needs neither the side fact (O), which says
+on which side of an incision each copy of P lands, nor the exact form of [18, Claim 2.3]. Its
+separation step (S_1) is proved here by a parity argument.
 
 Theorem D (NOTES.md §5) runs the recursion ShortestCycle of [18, Alg. 3] with exact trees. Its
 proof said that the minimum over the computed P_t is the minimum cut. As written, the recursion
@@ -38,8 +29,8 @@ as i12_outside. The witness P_{i1} or P_{i2} then lies outside the range of A, a
 annulus may have dropped it already. Two drops can rest on each other, and then no computed
 path has the minimum length.
 
-Smallest instance found (simple graph, n = 11, m = 22, s = 5, t = 3). Data and trace are in
-sim/thmD/attackR/logs/trace_min_simple0.txt; the lengths below are capacities c.
+Smallest instance found (simple graph, n = 11, m = 22, s = 5, t = 3). The lengths below are
+capacities c.
 
 - ends (0,1),(0,2),(2,7),(1,3),(7,8),(8,4),(4,5),(8,9),(7,10),(4,9),(5,8),(6,5),(7,0),(9,5),
   (5,10),(1,2),(8,2),(1,7),(8,10),(0,3),(2,3),(9,6)
@@ -70,10 +61,9 @@ and p_5, so it serves as both P_4 and P_5.
 **How often it happens.**
 - The repository driver (sim/thmD/thmD.py) reports 37 on 2 of 80 runs of this instance; the
   runs differ in f, g and the corners.
-- The adversarial runs met the defect 54 times, counting runs. Its two searches found 45
-  instances: 40 in 1 million multigraphs with n ≤ 12, and 5 in 1.5 million simple graphs with
-  generic capacities.
-- The 25 instances it saved (20 + 5) give wrong values on the driver too, in 161 of 300 runs.
+- The defect also occurs on multigraphs with n ≤ 12 and on simple graphs with generic
+  capacities. On 25 saved instances, 20 multigraphs and 5 simple graphs, the driver gives wrong
+  values in 161 of 300 runs.
 
 As we read [18], its own recursion is the same, and exact trees are a special case of its
 approximate ones, so [18, Thm 1.1] would inherit the defect. The step of [18, Sec. 5.2] that
@@ -114,7 +104,8 @@ same remark shows that P_{i⁻} is needed only when i1 < j_A, and P_{i⁺} only 
   positive, and every tree path of Theorem D is w-shortest. Parallel edges of G are merged
   first, with capacities added (GHAT_REPAIR.md), so K = 19n + 1 exceeds the number of nodes
   of every annulus and hence the hop length of every simple path, so w-shortest means shortest for c, with fewer hops breaking ties. The driver
-  takes K per level, which is the same.
+  takes K per level, which is the same. Loops of G are deleted first, so they are outside the
+  setting.
 - **The path P.** P = p_0 … p_m is a w-shortest f-to-g path in G* ([18, Alg. 3, line 2],
   computed exactly), hence also c-shortest. d(u, v) denotes the w-length of P[u..v]. Positions
   along P strictly increase with the index.
@@ -166,9 +157,9 @@ same remark shows that P_{i⁻} is needed only when i1 < j_A, and P_{i⁺} only 
 ## Lemma O (sides of one incision)
 
 The level-ℓ facts below are what the recursion needs beyond A_1. The exact exchange of
-NOTES §5 already used them for [18, Lemma 2.7]. In the first version they were taken from
-[18, Remark 2.5] and the planar picture; the referee found them true in substance, but not
-proved from Lemma N and F1 to F5, which are local. LEMMA_O.md proves them by an induction over
+NOTES §5 already used them for [18, Lemma 2.7]. They agree in substance with [18, Remark 2.5] and
+the planar picture, but they do not follow from Lemma N and F1 to F5, which are local. LEMMA_O.md
+proves them by an induction over
 the levels, in a curve model: each incision is drawn as an arc C_Q, closed by a part of γ into a
 simple closed curve J_Q, and "side" means a side of J_Q. Four standard facts of plane topology
 are used (Jordan, θ-curve, parity of crossings, one transversal crossing switches sides).
@@ -191,8 +182,7 @@ and Q = P_i′ its incised part from a piece g_x of p_x^0 to a piece g_y of p_y^
   side if it is on P_b. Then P_i meets that path at g_x, so its side gets no call, and the
   called side, if any, holds all of g_x. The same holds at g_y with the last edge. For t
   strictly between x and y, every walk in A from A's piece of p_t^0 to its piece of p_t^1
-  meets a node of Q. (The first version said that both ends always split, which is false for
-  old end edges.)
+  meets a node of Q.
 - **(O2)** A side on which P_i does not meet the bounding path is one subgraph. It has no bad
   edge, and it holds exactly one copy of each edge of Q. A bad edge in a subgraph of the j-side
   is an edge of P_a; on the k-side, of P_b.
@@ -216,7 +206,7 @@ rule, which sides get a call with which range), and incision as a split of nodes
 §9): the bound in the overlap test is the copy of the parent's incised part, not its whole path
 as [18] writes; a side with overlap gets no call, and overlap is tested directly, not through
 the bad edges of [18, Claim 5.8]; a side with an empty range gets no call. The whole-path test
-gave the right value in 84,000 test instances but is not proved. Matching [18]'s two sides to the low and
+gave no wrong value in simulation but is not proved. Matching [18]'s two sides to the low and
 high sides is a reading, the same one Lemma N and the driver make. [18, Claim 2.3] is not used,
 nor F2, F4 or F5 of GHAT_REPAIR.md, nor the converse of [18, Claim 5.8].
 
@@ -301,7 +291,7 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
 ## Tests (sim/thmD)
 
 - **fix/.** verify_min.py checks the instance above: minimum cut 15 and a planar rotation.
-  confirm_ends.py runs the driver on the 25 saved instances of the adversarial search, 12 runs
+  confirm_ends.py runs the driver on the 25 saved instances above, 12 runs
   each. Without the repair 161 of 300 runs give a wrong value (logs/ends0.jsonl); with it, 0 of
   300 (logs/ends1.jsonl, and logs/ends1b.jsonl with the check of Lemma S1).
 - **thmD.py --ends 1.** It adds the repair and three checks:
@@ -329,72 +319,32 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   split; 72,194 end pieces with an old end token, each on the predicted side; 417,577 sides
   without overlap, each one subgraph; 818,830 checks of (INV) at children; (I5) in the strong
   form for 205,947 indices, 10,829 outside the range; (C23) on [j_A, i] in 320,774 checks.
-- **refereeS/.** This is the referee's instrumented copy of the driver, thmD_refS.py. It ran
-  162,000 instances with no failure (r_*.txt). It checked:
-  - Lemma S1 with w-lengths for every t in (i1, i2): 51,401 checks, 11,101 of them outside the
-    range;
-  - (S) in A for every t between x and y: 20,396 checks;
-  - (S_1) in A_1: 24,687 checks;
-  - (O1): no subgraph mixed the two sides, in 91,651 incisions;
-  - the containment and distance parts of (INV) for every index of every called child: 316,328
-    checks;
-  - copies of P in each annulus form intervals;
-  - an end of Q that did not split always came with an overlap.
 
 ## Points of doubt
 
-- Lemma O (LEMMA_O.md) has had one referee pass. Its points of doubt are in its §11: the four
-  topology facts are used without proof; matching [18]'s sides to the low and high sides, and
-  the bound as the incised copy, are readings; the invariant (I) has many parts.
+- The points of doubt of Lemma O are in LEMMA_O.md §11: the four topology facts are used without
+  proof; matching [18]'s sides to the low and high sides, and the bound as the incised copy, are
+  readings; the invariant (I) has many parts.
 - Lemma S2 does not use the separation part of (O1) (Claim 10 of LEMMA_O.md), since Lemma S1
   uses (S_1) in A_1.
 - (S_1) is proved with the curve drawing of the Reif reduction, in words, as there.
 
-## Adversarial pass on Lemmas S and O (2026-11-01)
-
-`sim/thmD/attackSO` ran 25,109,452 runs of the recursion with no failed check and no wrong value;
-`logs/summary.txt` has the counters and `aggregate.py` recomputes them. The runs are:
-- every run of the recursion on all connected loopless maps with m ≤ 8 edges, with several
-  capacity vectors, up to a cap of runs per instance. The cap was reached on 1 instance for m = 7
-  and on 534 for m = 8. For m ≤ 7 the maps were also checked against a geometric model of the
-  curves of LEMMA_O.md, with and without the global check of (I1).
-- choices of corner, mode and tie-break by adversarial policies, 696,244 runs, 34,812 more on
-  long strips of depth 7 and above, and hill-climbing, 921,220 runs;
-- the 75 saved hits of the unrepaired recursion, 236,566 runs;
-- the whole-path reading of the overlap test, 423,380 runs by policy and 315,116 by hill-climbing;
-- the alternatives ENDS=2 and ENDS=3 of this note, each on m ≤ 7, hill-climbing and the saved hits;
-- Lemma S1 and (S_1) directly in A_1: 3,185,392 annuli, 10,616,407 checks of S1 and 32,621,289 of
-  the general form of (S_1).
-
-Loops are deleted first, so they are outside the setting; the exhaustive lanes use loopless maps.
-
-## Script test of naming, sides and the cut (2026-11-01)
-
-`sim/thmD/refND` tests claims of the paper form written after its referee pass: the naming of the sides
-of γ, which copy of a new edge of Q lies on which side, the cut read from a path, the reading direction
-and the number of levels. With δ the dart of a new edge of Q at its end nearer to g_x, the pair
-{(δ,1), (rev δ,2)} lies in Lo(J) and {(δ,2), (rev δ,1)} in Hi(J). It ran 12,441,126 runs with no failed
-check, and every negative control fired; `REPORT.md` has the counts and what is not covered. Ties can
-change Q between the roots g⁰ and g¹ of a tree, and both are correct. A value test alone cannot validate
-the side rule: under the flipped rule, the runs that finish still give the right value.
-
-## Referee pass on the paper form (2026-11-01)
-
-Verdict: correct with gaps, nothing fatal. An independent token-level simulator in
-`sim/thmD/refereeD` ran 240,000 runs on the driver's families with the repair, with no failure, and
-gave 2 wrong values without it. The corrections below go into the proof.
+## Remarks on naming, sides and the cut
 
 - **Names of the two copies.** On level 1, p_t^0 is the piece of p_t whose first token in walk
   order lies just after the entry of γ_t. Then the walk order on a 0-piece runs from its low end to
   its high end. The pair {(δ,1), (rev δ,2)} of e_k with δ in p_{k-1} joins two such pieces, so the
   names agree along P. One aggregation over the paths p̂ on level 1 tells every corner of a face
   of P its index and its σ, and later pieces inherit them. P_i is read from g_i^0, so if the tree
-  was rooted at g_i^1 the path is reversed first.
+  was rooted at g_i^1 the path is reversed first. Ties can change Q between the roots g⁰ and g¹ of a
+  tree, and both are correct.
 - **Which side.** Let δ be the dart of a new edge of Q at its end nearer to g_x. The copy
   {(δ,1), (rev δ,2)} lies on the low side and {(δ,2), (rev δ,1)} on the high side. Reason: at g_x the
   low part ends with (δ,1) (LEMMA_O.md, parts at g_x), and at an internal node the part that holds
   (rev δ,2) of one edge holds (δ′,1) of the next. Hosts store this with the edge. It also tells
-  a node which bound it lies on, since (Old) only says that it lies on one.
+  a node which bound it lies on, since (Old) only says that it lies on one. A value test alone
+  cannot validate this rule: under the flipped rule, the runs that finish still give the right
+  value.
 - **Order of a level.** Build Ĝ_ℓ, get the component identifiers from Lemma R(6), compute the
   overlap and empty-range flags per annulus of the previous level, aggregate the stored sides over
   each component, set the weights, drop parallel edges, run SSSP. A called side is one subgraph
@@ -413,12 +363,12 @@ gave 2 wrong values without it. The corrections below go into the proof.
   conclusion holds. Its computed paths are unique for w, but for capacities the leaf path P_0 of the
   annulus [0,1] has two shortest walks of length 105; nothing is incised there. Faces are numbered
   by their least dart, with next(δ) the successor of rev δ in the rotation.
-- **Departures from [18] to declare.** Vertices store incised parts, I_ℓ, while [18, Def. 3.2]
+- **Departures from [18].** Vertices store incised parts, I_ℓ, while [18, Def. 3.2]
   stores whole paths, and the two give different graphs on some levels. The overlap rule serves
   [j_A, i], where [18] writes j ≤ m ≤ i with j the index of the bound. Paths are read from g_i^0.
 - **[18, Lemma 5.6].** Its proof assumes that an annulus holds only copies of the faces of its range,
   which is false (see the defect). We take i_1 and i_2 over all P-pieces of A, by one aggregation.
-- **Small corrections.** Lemma O: A^Q has the pairs whose tokens lie in its pieces, not all pairs of
+- **Details of the proofs.** Lemma O: A^Q has the pairs whose tokens lie in its pieces, not all pairs of
   the edges that have a pair in A; the induction is over all live annuli of a level at once, since
   the proof uses the sibling annuli; the least length excludes P itself. Lemma N(c)(≤): the exchange
   is between two crossings consecutive along C with both ends on the same bank, which exist when

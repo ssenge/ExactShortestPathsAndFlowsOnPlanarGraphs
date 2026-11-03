@@ -1,4 +1,4 @@
-# Candidates #16 and #17: exact SSSP and exact max flow in CONGEST
+# Exact SSSP and exact max flow in CONGEST
 
 Started 2026-10-28. Literature checked on that date (arXiv, DROPS, author pages). Items marked
 **~** are from memory and still need a look at the original paper.
@@ -41,7 +41,7 @@ reweighted edges, and some come from a **virtual source** joined to every vertex
 nonnegative offsets. The reduction is deterministic and costs O(1) extra rounds per call in
 CONGEST.
 
-So CANDIDATES.md was too optimistic when it said "(1+ε)-approx is already tight". That holds
+The statement that (1+ε)-approximation is already tight holds
 only for undirected graphs. In CONGEST, exact SSSP is as hard as directed (1+ε)-SSSP, up to
 polylog factors, and the gap sits in the directed version.
 
@@ -83,9 +83,8 @@ A polynomial bound needs a realization that respects a prescribed cyclic order o
 (`LEMMA15.md`, §9).
 The labels (L) come from [1, Lemmas 15 and 16], whose topological core, [1, Lemma 14], is
 false as stated (LEMMA15.md, (S7)). LEMMA15.md §3 proves Lemma 14′ with a new construction
-(tiles). After the referee's fixes, a referee pass and two adversarial passes found nothing
-wrong in it; no human has checked it. The second adversarial pass found that Property 6 of
-[1, Lemma 9] is false for induced bags (LEMMA15.md, (S9)). Correctness does not use it, but
+(tiles). No human has checked it. Property 6 of [1, Lemma 9] is false for induced bags
+(LEMMA15.md, (S9)). Correctness does not use it, but
 [1]'s Õ(D/ε) bound for the labels does, since it runs all bags of one depth in parallel.
 LEMMA15.md §9 restores the schedule: bags carry the sides of the edges they were cut from,
 and each edge lies in at most two of these region graphs per depth. The separator is
@@ -174,7 +173,7 @@ Behind this sits a mismatch in [1]:
 Lemma V covers both: the minimum over all common bags, and exact leaf-local terms. The fix costs
 nothing. `sim/check.py` finds the single-bag query wrong on about 6% of random pairs.
 
-Explicit counterexample (from the adversarial agent):
+Explicit counterexample:
 - **Decomposition.** The root separator is {a,b}, with children X = {s,a,b,c,u} and
   {w,a,b}. X has separator {c}, with children {s,a,c} and {u,b,c}.
 - **Arcs.** s→a 1, a→w 1, w→b 1, b→u 1, a→c 100, c→u 1, s→c 100.
@@ -258,19 +257,16 @@ model that can run the oracle.
      needed a new parallel schedule (LEMMA15.md, (S9)). The region bags of LEMMA15.md §9
      give it, with the deterministic separator of Lemma B5.
 
-### Still to verify before anything goes public
+### Open points on [1]
 
-Referee pass (agent, 2026-10-28): no error that breaks a result. Every bound in §3-5 holds
-as a composition of the sources. Its points are folded into this file. Still open:
+Every bound in §3-5 holds as a composition of the sources. Still open:
 
-- **[1] Lemmas 14 and 15: (L) is conditional.** `LEMMA15.md` holds the repair. A referee pass
-  and an adversarial pass (2026-10-28) reviewed its first draft.
-  - **Analytic layer: proved and confirmed by both.** Lemmas 15′ and 16′ follow from a stated
+- **[1] Lemmas 14 and 15: (L) is conditional.** `LEMMA15.md` holds the repair.
+  - **Analytic layer: proved.** Lemmas 15′ and 16′ follow from a stated
     topological interface, Lemma 14′. The pieces are: the O′ witness for the LP, which stops
     the error from squaring per level; the triangle and all-orientation Monge constraints;
     rounding; gluing; and finiteness per component.
-  - **Topological layer: proved, refereed once with the fixes in, and attacked twice, the
-    second time on the fixed text.** [1, Lemma 14], that cutting the hub
+  - **Topological layer: proved.** [1, Lemma 14], that cutting the hub
     network merges all holes into one face, fails in three configurations consistent with
     Properties 1 to 7:
     1. separator chords in induced bags;
@@ -283,16 +279,12 @@ as a composition of the sources. Its points are folded into this file. Still ope
     set Γ_d of corners of G (radial graph), with edges labelled by bag. Nothing is cut, so
     every tile is a disk. Children refine parents, ports per bag are O(D log n), and outside
     edges (at most 3|∂S*_X|) go straight into H_X. The prototypes ran 2.7 million Monge checks with
-    every gluing planar, and the adversarial harness 1.55·10⁹ (M) inequalities on 24,850
-    instances, with no failures (§3.7). The second adversarial pass added 14,500 instances
-    with no failure in §3, and found (S9) in the assumptions.
-  - **Round count: repaired with region bags, refereed once with the fixes in, and attacked
-    once** (LEMMA15.md §9, 2026-10-29). Bags carry edge sides, every edge lies in at most two
-    region graphs per depth, and T_X has O(log² n) components. The referee found one gap,
-    the drawing of a virtual closing curve, now proved. The adversarial pass ran 10,400
-    instances with 1.06 million bags, exact hole counts and closings through holes; it broke
-    no lemma, met Lemmas B2 to B4 with equality, and found four defects in the test engine,
-    now fixed.
+    every gluing planar and no failures (§3.7). One of the assumptions, Property 6, is false for
+    induced bags: see (S9).
+  - **Round count: repaired with region bags** (LEMMA15.md §9). Bags carry edge sides, every edge
+    lies in at most two region graphs per depth, and T_X has O(log² n) components. The drawing of
+    a virtual closing curve is proved in the setting of Lemma B3, and Lemmas B2 to B4 are met
+    with equality (LEMMA15.md §9.7).
   - **Realization: no longer needed from [1].** [10, Thm 1] (SODA 2025, refereed) proves
     that every quasimetric that is Monge for a prescribed circular order σ is realized by a
     plane digraph with O(|T|⁶) vertices and the terminals on the boundary in order σ. CONGEST
@@ -300,7 +292,7 @@ as a composition of the sources. Its points are folded into this file. Still ope
     search. [1, Thm 2] would only make the local time polynomial, and its proof does not show
     the order guarantee.
 - **[1] Lemma 9.** A deterministic BDD with Properties 1-7, if we want "deterministic".
-- **More small gaps in [1]** (adversarial agent; all easy):
+- **More small gaps in [1]** (all easy):
   - The LP of Thm 2 (lty 1265-1272) has no triangle-inequality constraints. Add them, or
     take the closure first.
   - Emulator weights are LP rationals, and the size of Thorup's oracle grows with log(aspect
@@ -309,12 +301,7 @@ as a composition of the sources. Its points are folded into this file. Still ope
     component". Lemma 16(b) also silently uses "the first separator vertex on a path from v
     lies in v's child". Lemma V needs neither.
 
-Adversarial pass (agent, 2026-10-28): it broke nothing, and its numerical runs had 0
-failures: 300 Lemma V instances with adversarial (1+ε) overestimates, 600 Lemma D instances,
-600 Theorem C instances and about 440 Theorem C′ instances. Its scripts are
-`sim/attack/lemmaV.py` and `sim/attack/lemmaD_flow.py`.
-
-Its verdict on novelty: [3, §3.1] says the boosting works in any model that can run the
+On novelty: [3, §3.1] says the boosting works in any model that can run the
 oracle, which makes Theorem A close to folklore. The real additions are Lemma V and the query
 fix.
 
@@ -636,28 +623,17 @@ which may have large diameter, so it needs minor aggregation. Running one exact 
 Ĝ_ℓ, with the weights above, needs only CONGEST on a planar graph of diameter O(D) for the
 SSSP step. The other steps still use [18]'s minor-aggregation simulation.
 
-*Status.* Referee pass (2026-10-29): correct with gaps, no fatal or serious issue. Its two
-load-bearing points (the bound on M, and E_C edges outside the annuli) and its minor points
-are fixed above. Adversarial pass (2026-10-29, sim/thmD): the reduction holds on the repaired
-Ĝ_ℓ (79,000 runs, no failure), but [18]'s Ĝ_ℓ read literally does not (D1 to D3 above).
-Lemma R proves the needed properties of the repaired graph. Its referee pass (2026-10-29)
-found it correct in substance, with one serious gap: Fact N, the description of node-parts as
-pieces, is not stated in [18]. The revision proves it as Lemma N and fixes the minor points.
-Adversarial pass on Lemma R and Lemma N (2026-10-29, sim/thmD/attackR, an independent
-implementation): no counterexample in 6.9 million level-1 corner pairs, 1.3 million Table R
-builds and 3.5 million recursion instances; two wording faults in F3 and Lemma R (2), fixed.
-It found the recursion defect above, in 54 of the 3.5 million instances. Lemma S repairs it;
-the repaired driver gives the right value on all 25 failing instances and on 1,440,000 sweep
-instances (6 wrong values in 1,200,000 of them without the repair). Referee pass on Lemma S
-(2026-10-29): correct with gaps, nothing fatal. Its two serious points are older gaps of the
-proof above, the side fact behind the exact exchange and the exact form of [18, Claim 2.3].
-They are now stated as Lemma O (notes/LEMMA_O.md), proved by an induction over the levels in a
-curve model, with five changes to the statement. Referee pass on Lemma O (2026-10-29): correct
-with minor gaps, all fixed; the bound in the overlap test is read as the incised copy. 342,000 test instances
-(232,868 incisions) checked every part of it with no failure. Lemma S1 no longer needs it. Negative
-controls were caught: weights c in place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in
-2,913 of 3,000, and +1 on 30% of E_C arcs in 2,841 of 3,000. It rests on Theorem A, on [18],
-and on the endpoint repair.
+*Status.* The reduction holds on the repaired Ĝ_ℓ, but [18]'s Ĝ_ℓ read literally does not (D1 to
+D3 above). Lemma R proves the needed properties of the repaired graph. Fact N, the description of
+node-parts as pieces, is not stated in [18]; Lemma N proves it. Lemma S repairs the recursion
+defect above: the repaired driver gives the right value on all 25 failing instances and on
+1,440,000 sweep instances (6 wrong values in 1,200,000 of them without the repair). The side fact
+behind the exact exchange and the exact form of [18, Claim 2.3] are stated as Lemma O
+(notes/LEMMA_O.md), proved by an induction over the levels in a curve model; the bound in the
+overlap test is read as the incised copy. On 342,000 test instances (232,868 incisions) every part
+of it held with no failure. Lemma S1 does not need it. Negative controls were caught: weights c in
+place of K·c + 1 in 1,561 of 3,000 instances, M = 1 in 2,913 of 3,000, and +1 on 30% of E_C arcs
+in 2,841 of 3,000. Theorem D rests on Theorem A, on [18], and on the endpoint repair.
 
 ### Ratings and dependencies
 

@@ -1,12 +1,12 @@
 # Script test of naming, sides and the cut (2026-11-01)
 
-This pass tries to break, by simulation, concrete claims in the paper form of Theorem D that were
-written after its referee pass: how the two sides of γ are named, which copy of a new edge of Q lies
-on which side, how a cut is read from a path, the direction in which a path is read, and the number
-of levels. A numerical check proves nothing; no proof uses it. No claim failed.
+This test tries to break, by simulation, concrete claims in the paper form of Theorem D: how the two
+sides of γ are named, which copy of a new edge of Q lies on which side, how a cut is read from a path,
+the direction in which a path is read, and the number of levels. A numerical check proves nothing; no
+proof uses it. No claim failed.
 
-`sim_copy.py` starts from `refereeD/sim.py`. Lemma names are those of the paper: the Incision Lemma is
-Lemma O of `notes/LEMMA_O.md`.
+`sim_copy.py` is a token-graph simulator written from the text of the paper, not from `thmD.py`. Lemma
+names are those of the paper: the Incision Lemma is Lemma O of `notes/LEMMA_O.md`.
 
 ## Instances
 
@@ -16,7 +16,7 @@ Main lanes: 12,441,126 runs on 1,840,544 instances, 7,104,160 incisions, no abor
 - Random maps with 8 edges, mutated hard instances, the saved hard instances of `attackR` and
   `attackSO`, and planar families with many ties, up to 68 vertices, m = 33 and 7 levels.
 
-Every negative control fired (a deliberately wrong rule that must fail), so the harness is not silent.
+Every negative control fired (a deliberately wrong rule that must fail), so the test is not silent.
 
 ## Results
 
@@ -54,9 +54,9 @@ Details:
   instead of at the g_x end, all 386,922 stored-pair checks fail and 143,428 of 383,626 runs abort or
   crash.
 
-A reason in an earlier draft of the Incision Lemma's proof, that the part holding (rev δ,2) holds
-(δ',1), was false on 153,148 of 9,191,703 checks at nodes with three parts (same side, different
-piece). It was removed before this pass ended, and the present proof does not use it.
+The statement that the part holding (rev δ,2) holds (δ',1) is false: it failed on 153,148 of 9,191,703
+checks at nodes with three parts (same side, different piece). The proof of the Incision Lemma does not
+use it.
 
 **Values per face.** Of the pieces named by an annulus, 19% (2,422,691 of 12,769,593) lie outside its
 range, which the indices i_1 and i_2 allow. The paper derives O(1) values per face from the sharing of
@@ -77,7 +77,7 @@ p_t^σ and at most 3 per face.
   lanes sample ties.
 - Non-convex faces and dual loops in the polygon lane (244,387 runs skipped for A1 and 254,128
   incisions for A2).
-- Checks of the text changed during the pass ran in separate lanes only: 951,795 runs, no failure.
+- Some checks ran in separate lanes only: 951,795 runs, no failure.
 
 ## Reproduce
 

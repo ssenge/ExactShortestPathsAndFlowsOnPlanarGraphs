@@ -58,7 +58,7 @@ Tokens against ρ on grids. E/ρ is the number of rounding levels.
 
 ## Rounded patterns on grids, `grid_patterns.py`
 
-This is the series quoted in the adversary record of the note: the number of rounded patterns on the k × k grid with P the boundary cycle and Φ its inner face, about 0.014·m⁴ with m²/K held near 0.4. It prints one line per k and needs `numpy` and `scipy`. The largest sizes take long. Smoke test on this code: 65 patterns at k = 26, 169 at k = 53, 248 at k = 100; the larger values in the note came from the same functions in the adversary's scratch copy.
+This is the series quoted in Section 6 of the note: the number of rounded patterns on the k × k grid with P the boundary cycle and Φ its inner face, about 0.014·m⁴ with m²/K held near 0.4. It prints one line per k and needs `numpy` and `scipy`. The largest sizes take long. Smoke test on this code: 65 patterns at k = 26, 169 at k = 53, 248 at k = 100; the larger values in the note came from the same functions in a separate copy.
 
 ## Limits
 

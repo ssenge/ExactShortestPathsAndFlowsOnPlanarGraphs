@@ -1,9 +1,7 @@
 # Lemma O: the sides of one incision
 
-*Status (2026-10-29).* Referee pass (2026-10-29): correct with minor gaps, no fatal or serious
-error; Lemma O supplies what Lemma S2 uses, in the form S2 uses it. The thirteen minor points are
-fixed in this version (§12). This note proves the level-ℓ facts
-that Lemma S2 (RECURSION.md) takes from Lemma O. The proof is an induction over the levels. Together with Lemma O it proves an
+*Status.* This note proves the level-ℓ facts that Lemma S2 (RECURSION.md) takes from Lemma O, in
+the form S2 uses them. The proof is an induction over the levels. Together with Lemma O it proves an
 invariant (I) of the live annuli (§3), and Lemma O is stated for annuli that satisfy (I). The
 model is a drawing of the token graph on the sphere, in which every incision is a curve and
 every side is a side of a simple closed curve. §0 lists what is proved and what changed;
@@ -485,7 +483,7 @@ if v is on Q (Claim 9). For an edge of Q, let φ be its high pair.
 So φ(W′), with the ends of W1 and W3 replaced by φ(z1) and φ(z2), is a walk in A′ between its
 pieces of p_t^0 and p_t^1, of length at most λ_t. ∎
 
-This covers the cases of the referee's third point. If t = i2 = x or i2 = y, the new walk
+This covers (INV) at junctions and at single touches (§7, point 3). If t = i2 = x or i2 = y, the new walk
 starts or ends with Q^Hi. If W meets Q in one node, R is that node, and both W1 and W3 attach
 to its unique high part. The proof uses that the called side holds exactly one part of every
 node of Q, which fails on a side with overlap.
@@ -666,12 +664,12 @@ depend on RECURSION.md.
   its arc and lies in p_0 or p_m. In p_0, c*_s is the entry of γ_0, so the token's cut point is
   the high end, and by Claim 6c, (I2) and (I4) its pair lies on P_b with this piece as an end.
   Then x_b = 0 or y_b = 0, so k_A ≤ 0 by (I3), and A is a leaf. In p_m the mirror argument puts
-  the pair on P_a, so j_A ≥ m. The referee's flag for this case never fired in 177,000 runs.
+  the pair on P_a, so j_A ≥ m.
 - *A without P_a or P_b.* The claims about the missing path are empty; with x_a = y_a = 0 or
   x_b = y_b = m, (I3) still holds. At level 1 all internal nodes of Q are cyclic and both ends
   split.
 
-## 7. The six gap points of the referee
+## 7. Six delicate points and where they are proved
 
 1. *Jordan separation.* The sides are the sides of the simple closed curve J_Q (Claim 3).
    Claims 4, 5 and 10 give (O1) and (S) at level ℓ from T1 and T4.
@@ -717,11 +715,9 @@ the Jordan curve J_Q in place of a parity count.
   the parts outside P_i′ would count as bad edges; and the test is local, since by (I4) the nodes
   of P_a ∪ P_b are exactly those that carry an old token of an edge off P. The two readings
   differ: the parent's whole path U·Q·V often has U and V inside the child, and P_i can meet
-  them off the copy. In the referee's runs (§12), 1,561 sides of 162,000 instances overlapped
-  only under the whole-path reading. A driver with the whole-path test (sim/thmD/refereeO,
-  thmD_F.py) gave the right value on all 84,000 of its instances, and (C23) held at all 108,059
-  checks at common nodes off the copy, but Claim 15 does not cover those nodes, so the
-  whole-path reading is unproved.
+  them off the copy, so some sides overlap only under the whole-path reading. In simulation the
+  whole-path test gave no wrong value, and (C23) held at common nodes off the copy, but Claim 15
+  does not cover those nodes, so the whole-path reading is unproved.
 - *No call on an overlap side.* This follows [18, Def. 2.8]. [18]'s implementation decides by
   bad edges instead ([18, Claim 5.8]), and the converse of Claim 5.8 fails (GHAT_REPAIR.md, F3),
   so Theorem D tests overlap directly. A called overlap side could break (I2), since P_a and Q^Lo
@@ -824,32 +820,3 @@ So the range of Claim 15 cannot be extended past i in general. Lemma S2 needs [j
   check each part at every incision.
 - The bounding path is read as the incised copy (§9); the whole-path reading of [18] passed
   the tests but is not proved.
-
-## 12. Referee pass (2026-10-29)
-
-Verdict: correct with minor gaps; no fatal or serious error. The referee checked Claims 1 to 15,
-(I) for A_1 and its passage to called children (also when several annuli of one level incise at
-once), and that Lemma O supplies what Lemma S2 uses. The minor points, all fixed above:
-- M1, M2: the bounding path as the incised copy, and the two call rules, are readings, not taken
-  from [18] (§1, §9).
-- M3: Claim 4(b) chose N before r; now the final chord segments are perpendicular to γ and N is
-  shrunk for each r (Claims 3, 4).
-- M4: arc(g) includes the corner arcs (§2.2).
-- M5: Claim 6(b) listed the old chords on the boundaries of Δ_lo and Δ_hi.
-- M6: Claim 3(c) has two chords in p_x when x = y.
-- M7: incision in token form speaks of the pieces of A, not its faces, and says why another
-  annulus of the same level does not cut them (§1).
-- M8: the points q of one level are pairwise distinct (Claim 3).
-- M9: Lemma O no longer cites Lemma S1(b) (§1, §5).
-- M10: the end piece of one old token cannot occur (§6), replacing a point of doubt.
-- M11: the running index of Claim 15 is μ, since m is the last index of P; Claim 1 does not need
-  (I3).
-- M12, M13: NOTES.md §5 and Lemma S2 in RECURSION.md.
-
-Referee tests (sim/thmD/refereeO; patchR.py turns lemmaO/thmD_O.py into thmD_R.py; lanesR.sh,
-lanesF.sh, runHits.py): 162,000 instances in seven lanes R1 to R7 with 118,856 incisions, among
-them three lanes with every legal corner and mode of R0 (anycorner), and the 25 saved instances of
-the adversarial search in 15,000 runs. No failed check. Totals: 420,268 checks of (INV) at
-children, 172,652 of (C23) on [j_A, i], 39,976 linear internal nodes of Q (717 split into three),
-4,515 incisions with both bounds. F1 to F3 (84,000 instances) ran the whole-path overlap test of
-§9 and gave no wrong value.

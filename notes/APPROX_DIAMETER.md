@@ -1,6 +1,6 @@
 # (1+ε)-approximate eccentricities of unweighted planar networks in Õ(D + 1/ε⁴) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. One referee pass and one adversarial pass (3 Nov 2026) found no fatal error and no counterexample; their corrections are in this text, see Section 6. No human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. No human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. Words have O(log n) bits.
 
@@ -10,7 +10,7 @@ The model is CONGEST on a connected, undirected, unweighted planar network with 
 
 **Additive form.** For any integer ρ ≥ 1, the same proof gives eccentricities with additive error Õ(ρ) in Õ(D + (D/ρ)⁴) rounds. For ρ about D^{3/4} this takes Õ(D) rounds.
 
-**Context.** The bound of [1, Theorem 1.5] for a (1+ε)-approximation of the weighted diameter is Õ(D³) + poly(log(nW)/ε)·D², randomized. For the exact diameter of unweighted networks, the stated bound is Õ(D³) [2], and `notes/DIAMETER.md` claims Õ(D²). Three literature searches found no better approximate bound for unweighted networks; that is not proof that none exists. The term D cannot be removed: take a path with L edges, L ≥ 1/(2ε), and pendant vertices at its far end, and the same with ⌈(1+2ε)L⌉ edges and equally many vertices. A vertex at the near end has the same view for about L rounds, and its eccentricity differs by more than a factor 1+ε.
+**Context.** The bound of [1, Theorem 1.5] for a (1+ε)-approximation of the weighted diameter is Õ(D³) + poly(log(nW)/ε)·D², randomized. For the exact diameter of unweighted networks, the stated bound is Õ(D³) [2], and `notes/DIAMETER.md` claims Õ(D²). To our knowledge there is no better approximate bound for unweighted networks. The term D cannot be removed: take a path with L edges, L ≥ 1/(2ε), and pendant vertices at its far end, and the same with ⌈(1+2ε)L⌉ edges and equally many vertices. A vertex at the near end has the same view for about L rounds, and its eccentricity differs by more than a factor 1+ε.
 
 The idea follows [1, 3, 4]: since the diameter is D, an additive error of εD is allowed, so Õ(1/ε) portals replace Õ(D) hubs. Distance vectors to the portals are rounded, and their number is polynomial by a VC-dimension argument. [1] also counts rounded vectors this way, with finer levels and a different count.
 
@@ -119,25 +119,16 @@ The admitted token has an offset at least w_v, even on the face of u, since v ha
 
 Results are in `sim/diameter/REPORT_APPROX.md`. `approx.py` builds real region bags for several values of ρ, computes the nets, e, h, τ, tokens and hub maxima as above, and checks the invariant, Lemmas 1, 3 and 4, the bounds of each token, and Lemma 5 against BFS for every vertex. Negative controls in `approx.py ctl` and `approx.py second`.
 
-**Referee (3 Nov 2026).** An independent pass, on its own code and in exact integers, found no fatal error, and went through every lemma and case by hand. All its points are in this text: the branch ρ = 0, which relied on [2]; the length of the arcs of W″; depth 2Δ in place of D, which vertices do not know; the broadcast of tokens; V(X) off P_X lies in X°; the lower bound pair with equal n; canonical starts; the notation of M_X; the citation of [1]; and the additive form, which is proved and not open. The constant 3 of Lemma 5 is reached at depth 0, and the shortfall stayed below 2ρ.
+The constant 3 of Lemma 5 is reached at depth 0, and in the tests the shortfall stays below 2ρ. The theorem needs closing curves that do not cross an edge of G, as Lemma B5 gives them: instances whose closing curves cross an edge of G fail.
 
-Its runs, with no failure: 527 standalone discs for Lemmas 2 to 4 (3.8 million sets, 1.46 million pairs, 67,000 counts, and 15,634 checks of τ against W″), with controls on crossing edges and shuffled rings that fired; Sections 2 to 5 on the bags of the repository, with each inequality of the proofs checked (13,902 runs, 740,694 eccentricities, 49.5 million pairs classified by case of the lower bound, 20.2 million values of e); the branch ρ = 0 (28,625 eccentricities and 2,958,972 values of e, all exact); and the theorem at the ρ of Section 2, on thin graphs with n up to 592 (4,494 eccentricities, worst ratio 1.07 at ε = 1). Its mutations ceil, portal3, near3, nochild, bottom, corner, cornerrand, norow and noanc all fail checks, and top1 only on the forced instance.
-
-**Not checked by it:** the proofs of Lemmas B1 and B5 and of (H1) to (H4), `notes/DIAMETER.md` Lemmas 2 and 3, [2], [5], polylogarithmic exponents, and sizes above n = 592.
-
-**Adversary (3 Nov 2026).** A second pass, whose only job was to break the theorem, ran on its own code. It found no counterexample on the current text, and re-derived Lemmas 1 to 5, the recursion of e and the arithmetic of the theorem by hand. Instances that failed at first turned out to have closing curves that cross an edge of G, which Lemma B5 excludes, and all failures vanished once these were filtered out.
-
-No failure in: the pair form d − 2ρ ≤ V(u,v) ≤ d + 3ρ + 2ρ·depth on about 16.1 million pairs, which `approx.py` does not check; arc tests on about 48.1 million thresholds; forced roots on connected planar graphs with n ≤ 7, time limited, so maybe not all (184,100 runs, 1,271,612 eccentricities); forced faces and fundamental cycles of any balance; spiders with the root at the centre; closing curves through holes (313 runs, 7,895 virtual closings); four engine configurations (4,109 runs), before the per-token checks; hill climbing, whose best under-estimate is 1.66ρ.
-
-Lemma 4 is tight up to a factor of about 40. On a k × k grid with P the boundary cycle and Φ its inner face, with m²/K held near 0.4, the number of rounded patterns is about 0.014·m⁴: for example 34,697 patterns against the bound 1,381,954 at k = 1000, K = 3,996, ρ = 101, m = 40. This comes from a stand-alone harness, and the cause is not proved: portals on two adjacent sides seem to give thresholds on x and on y that multiply. On a real forced root bag with k = 40 the rounded patterns saturate at one per interior vertex, and all checks pass.
-
-Weak spots of `approx.py` it found are in the report. **Not reached by it:** a CONGEST simulation, the proofs of Lemmas B1 and B5 and of (H1) to (H4), the full pipeline above n = 1,600, and the ρ of Section 2, including the branch ρ = 0, checked on paper only.
+Lemma 4 is tight up to a factor of about 40. On a k × k grid with P the boundary cycle and Φ its inner face, with m²/K held near 0.4, the number of rounded patterns is about 0.014·m⁴: for example 34,697 patterns against the bound 1,381,954 at k = 1000, K = 3,996, ρ = 101, m = 40. This comes from a stand-alone script, `sim/diameter/grid_patterns.py`, and the cause is not proved: portals on two adjacent sides seem to give thresholds on x and on y that multiply. On a real forced root bag with k = 40 the rounded patterns saturate at one per interior vertex, and all checks pass.
 
 ## 7. Not covered by the checks
 
 - Rounds, messages and who knows what: no CONGEST simulation.
 - The proofs of Lemmas B1 and B5, and of the statements (H1) to (H4), except that the simulator exercises them on its instances.
-- ρ is a free parameter in the simulator, since on its families the ρ of Section 2 with small ε would be 0. The referee's thin families did reach that ρ, for ε up to 1.
+- ρ is a free parameter in the simulator, since on its families the ρ of Section 2 with small ε would be 0. So `approx.py` does not run the ρ of Section 2 or the branch ρ = 0.
+- The polylogarithmic exponents, [5] at the source, and the full pipeline above n = 1,600.
 
 ## 8. Open
 

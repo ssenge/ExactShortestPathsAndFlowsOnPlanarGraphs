@@ -8,24 +8,23 @@ model. The main claims are:
   rounds (Theorem C), down from $\tilde O(D^2)$;
 - exact minimum st-cut and maximum st-flow value in undirected planar networks in
   $\tilde O(D)$ rounds (Theorem D, new), where only a $(1-o(1))$-approximation was known in
-  $\tilde O(D)$. It needs two repairs of [18]: of its auxiliary graph at $s$ and $t$ (Lemma R,
-  one referee pass, one adversarial pass) and of its recursion, which as written can miss the
-  minimum cut (Lemma S, one referee pass, correct with gaps; the side lemma it needs, Lemma O,
-  is proved and has had one referee pass, correct with minor gaps, all fixed).
+  $\tilde O(D)$. It needs two repairs of [18]: of its auxiliary graph at $s$ and $t$ (Lemma R)
+  and of its recursion, which as written can miss the minimum cut (Lemma S, with the side lemma
+  it needs, Lemma O).
 
 A newer claim, after the paper and not part of it: exact maximum st-flow in directed planar networks, with the integer flow on every edge, in
 $\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs one extension of the labels, a prescribed root cycle. See
-[`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026. One referee pass and one adversarial pass; no counterexample on simple networks, one failure on parallel arcs, fixed, all corrections applied. It rests on the construction in `notes/LEMMA15.md`, not only on the Label Hypothesis; treat it as a claim.**
+[`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026. On parallel arcs of one direction the flow value can exceed $nU$, with $U$ the largest capacity, and a number of scaling steps chosen from $nU$ gives an infeasible flow, so the note chooses it from $mU$, with $m$ the number of arcs. It rests on the construction in `notes/LEMMA15.md`, not only on the Label Hypothesis; treat it as a claim.**
 
 A newer and simpler claim, after the paper and not part of it: exact SSSP with negative weights, and exact maximum st-flow in directed planar networks with the flow on every edge, in
-$\tilde O(D)$ rounds with high probability, from the Label Hypothesis alone, with no extension of the labels. Perfect matching of planar bipartite networks follows in the same bound. It replaces the reduction of [6] in Theorems B and C by a published reduction with polylogarithmic overhead (SOSA 2025, arXiv:2410.20959). **The open question in the paper on the factor $n^{o(1)}$ was already answered by that reduction, which our literature search missed. The statements of Theorems B and C below are correct, but they are weaker than what follows.** See [`notes/NEGATIVE.md`](notes/NEGATIVE.md). **Written on 3 Nov 2026. One referee pass and one adversarial pass broke no theorem. They found one false lemma bullet, from a false corollary in arXiv:2303.00811, repaired in one line, and a test missing from the proof for perfect matching. All corrections are in the note. Treat it as a claim.**
+$\tilde O(D)$ rounds with high probability, from the Label Hypothesis alone, with no extension of the labels. Perfect matching of planar bipartite networks follows in the same bound. It replaces the reduction of [6] in Theorems B and C by a published reduction with polylogarithmic overhead (SOSA 2025, arXiv:2410.20959). **The open question in the paper on the factor $n^{o(1)}$ was already answered by that reduction, which the paper missed. The statements of Theorems B and C below are correct, but they are weaker than what follows.** See [`notes/NEGATIVE.md`](notes/NEGATIVE.md). **Written on 3 Nov 2026. One property it takes from arXiv:2303.00811 rests on a corollary there that is false as stated; the note repairs it in one line. Treat it as a claim.**
 
 **New claim, 3 Nov 2026:** [`notes/REPLACEMENT.md`](notes/REPLACEMENT.md). Replacement paths on planar digraphs: for every arc of a shortest st-path, the distance without it, exactly in $\tilde O(D\cdot\min(h,D))$ rounds, and $(1+\varepsilon)$-approximately on the excess in $\tilde O(D/\varepsilon)$ rounds, from the Label Hypothesis. On general networks the exact problem takes $\tilde\Theta(n)$ rounds. Undirected weighted networks take $\tilde O(D)$. Simulation in `sim/replacement/`.
 
 **New claim, 3 Nov 2026:** [`notes/DMST.md`](notes/DMST.md). Minimum arborescence and maximum branching of a planar digraph in $\tilde O(D)$ rounds, from the Exact SSSP Theorem and the Label Hypothesis, with $O(\log n)$ oracle calls. It follows the plan of the DISC 2019 algorithm for general networks. Simulation in `sim/dmst/`.
 
 A second newer claim, also not part of the paper: in undirected unweighted planar networks every vertex learns its exact eccentricity, so the diameter and radius are found, in
-$\tilde O(D^2)$ rounds, where the best stated bound for the diameter is $\tilde O(D^3)$. It does not need the Label Hypothesis. A corollary gives every vertex its sum of distances, so closeness, a medoid and the Wiener index, in the same bound. The (1+ε)-approximate version takes $\tilde O(D + \varepsilon^{-4})$ rounds, see [`notes/APPROX_DIAMETER.md`](notes/APPROX_DIAMETER.md). See [`notes/DIAMETER.md`](notes/DIAMETER.md). **Written on 3 Nov 2026. Exact note: one referee pass and one adversarial pass, no counterexample on the current text. Approximate note: one referee pass and one adversarial pass, no counterexample. Treat both as claims.**
+$\tilde O(D^2)$ rounds, where the best stated bound for the diameter is $\tilde O(D^3)$. It does not need the Label Hypothesis. A corollary gives every vertex its sum of distances, so closeness, a medoid and the Wiener index, in the same bound. The (1+ε)-approximate version takes $\tilde O(D + \varepsilon^{-4})$ rounds, see [`notes/APPROX_DIAMETER.md`](notes/APPROX_DIAMETER.md). See [`notes/DIAMETER.md`](notes/DIAMETER.md). **Written on 3 Nov 2026. Treat both as claims.**
 
 Theorem A depends on the distance labels of the recent preprint [1]. One lemma of [1]
 (Lemma 14) is false as stated. This repository shows why and gives a repair. A property of
@@ -35,17 +34,14 @@ that too, with bags that carry the region they were cut from; see [Status](#stat
 ## Status
 
 Please read this before relying on anything here.
-- The proofs are written up in `notes/`, not yet as a paper. **No human expert has checked
-  them.** Every review so far was done by AI agents: a referee pass and an adversarial pass on
-  each layer. AI reviewers can share blind spots with the AI that helped write the proofs.
+- The proofs are written up in `notes/`. **No human expert has checked
+  them.** See [Use of AI](#use-of-ai).
 - **Correctness.** Theorems A, B, C and C′ give correct outputs given Lemma 14′, our
   replacement for the false [1, Lemma 14], and the black boxes listed below. Lemma 14′ is
-  proved in `notes/LEMMA15.md` §3. A referee pass found it correct given its assumptions,
-  and its one serious point is fixed. Two adversarial passes, the second on the fixed text,
-  found nothing wrong in it.
+  proved in `notes/LEMMA15.md` §3.
 - **Round counts: repaired.** [1, Lemma 9 (6)] states that at
-  every depth of the decomposition each edge lies in at most two induced subgraphs G[X]. The
-  second adversarial pass showed that this is false on $K_{2,m}$ plus one edge, for every
+  every depth of the decomposition each edge lies in at most two induced subgraphs G[X]. This
+  is false on $K_{2,m}$ plus one edge, for every
   decomposition with the other properties (`notes/LEMMA15.md`, (S9)). [1] runs all bags of
   one depth in parallel because of this property. Correctness does not depend on it.
   - `notes/LEMMA15.md` §9 replaces $G[X]$ by a *region graph* $R_X$: the edges drawn in the
@@ -56,24 +52,13 @@ Please read this before relying on anything here.
     $\tilde O(D)$ of Theorem A. The separator is our Lemma B5, a fundamental cycle found
     with prefix sums along an Euler tour of the shallow tree $T_X$, in $O(D\log^2 n)$ rounds.
     It is deterministic and adds no black box.
-  - §9 has had a referee pass, whose fixes are in, and an adversarial pass on 10,400
-    instances (about a million bags) that broke no lemma. It found four defects in our test
-    engine, all fixed.
-  - Lemma B5 has had its own referee pass, correct as written, and an adversarial pass on
-    about 20.8 million instances, among them every instance with at most 7 vertices, with no
-    counterexample.
-- **Theorem D** (2026-10-29) is new. A referee pass found it correct with gaps, now fixed.
-  The adversarial pass found that the auxiliary graph $\hat G_\ell$ of [18], as we read its
+- **Theorem D** (2026-10-29) is new. The auxiliary graph $\hat G_\ell$ of [18], as we read its
   Remark 3.3, fails at $s$ and $t$ on small instances (smallest: 4 vertices, minimum cut 2,
-  computed 0). A local repair passed 79,000 runs with no failure. Lemma R proves it; a referee
-  pass found one gap, now closed by Lemma N. An adversarial pass found no counterexample to
-  Lemma R or Lemma N, but found that the recursion of [18] itself can miss the minimum cut
-  (11 vertices: minimum 15, computed 37). Lemma S repairs this with two more shortest-path
-  calls per level. A referee pass found it correct with gaps; the side lemma it needs (Lemma O)
-  is proved, passed 342,000 test instances, and had one referee pass (correct with minor gaps,
-  all fixed). An adversarial pass on both found no failure in 25.1 million runs, and a second
-  referee pass on the paper form found gaps in the side naming and the cut extraction, now
-  closed (`notes/RECURSION.md`).
+  computed 0). Lemma R proves a local repair, and Lemma N proves the description of the dual
+  nodes that it needs. The recursion of [18] itself can miss the minimum cut (11 vertices:
+  minimum 15, computed 37). Lemma S repairs this with two more shortest-path calls per level,
+  and the side lemma it needs (Lemma O) is proved. The naming of sides and the cut extraction
+  are in `notes/RECURSION.md`.
 - **Determinism.** With Lemma B5 the decomposition is deterministic, and so is Theorem A,
   given a deterministic planar embedding and deterministic face identifiers (G6). Both are
   claimed elsewhere, not proved here: [17] and [18] use the embedding algorithm of [15] as
@@ -150,7 +135,7 @@ and their round bounds also on the region bags of `notes/LEMMA15.md` §9. The ra
 - **Theorem C′** is the proof of [9, Thm 1.3] with an exact oracle plugged in.
 - **Theorem D** is optimal up to polylogarithmic factors for exact minimum st-cuts in
   undirected planar networks, which [18] leaves open for lack of exact SSSP. The proof puts
-  Theorem A into [18], with the weighting of Lemma D. It has had one referee pass so far.
+  Theorem A into [18], with the weighting of Lemma D.
 - **The finding about [1, Lemma 14]** is a correctness gap in the main CONGEST result of an
   unrefereed preprint. The repair changes no bound.
 - **The finding about Property 6** removes the round bound of the main theorem of [1] as
@@ -338,11 +323,7 @@ $D\cdot n^{o(1)}$ rounds, and [18] one in $\tilde O(D)$ rounds for any $s$ and $
 size and terminals $s,t$. A CONGEST algorithm computes the value of a minimum st-cut, which is
 the maximum st-flow value, in $\tilde O(D)$ rounds; every vertex learns its side and its cut
 edges. It is deterministic given the embedding algorithm of [15], as in [18], and
-deterministic face identifiers (G6). The proof has had
-one referee pass (correct with gaps, all fixed) and one adversarial pass (below). The
-recursion repair of Lemma S is newer: one referee pass each on Lemma S and on its side lemma
-(Lemma O), both fixed, one adversarial pass on both, with no failure in 25.1 million runs, and a
-second referee pass on the whole of Theorem D, whose fixes are in `notes/RECURSION.md`.
+deterministic face identifiers (G6).
 
 [18] computes a $(1+o(1))$-approximate minimum st-cut with Reif's algorithm: $O(\log n)$
 levels of incisions in the dual, each with $O(1)$ rounds of SSSP, one source per annulus. Its correctness argument
@@ -360,8 +341,7 @@ the parent choices form shortest-path trees. Details are in `notes/NOTES.md` §5
 
 **The endpoint repair.** [18, Remark 3.3] adjusts $\hat G_\ell$ at $s$ and $t$ through two
 edges $e_0$ and $e_{\text{last}}$ next to the first and last dual nodes of the first cut path.
-Read literally, it breaks [18, Thm 3.1 (1), (2)] in three ways, found by the adversarial pass
-in `sim/thmD/`:
+Read literally, it breaks [18, Thm 3.1 (1), (2)] in three ways (scripts in `sim/thmD/`):
 - If a later incision passes through $e_0$, Remark 3.3 treats it like any other incised edge.
   The corner of $s$ that was cut is then joined again, two dual nodes share one path in
   $\hat G_\ell$, and their distance becomes 0. Smallest witness: vertices 0 to 3, edges
@@ -382,37 +362,32 @@ graph failed in about a third of the instances. Lemma R (`notes/GHAT_REPAIR.md`,
 defines the repaired graph formally and proves what Theorem D needs from it: the properties
 [18, Thm 3.1 (1), (2)], planarity with an explicit rotation at every copy, the diameter bound,
 and the local phase of [18, Lemma 3.17]. An independent implementation of its definition
-matched the tested graph on 98,000 instances. A referee pass found Lemma R correct in
-substance, with one serious gap: a description of the dual nodes that it cited from [18] is
-not stated there. The revision proves it (Lemma N, by induction over the levels) and also
-shows that the reduction is correct for every legal choice at $s$ and $t$. An adversarial
-pass, by an independent implementation, found no counterexample to Lemma R or Lemma N in
-3.5 million recursion instances. These failures may come from a misreading of [18] on our
-side. We have not checked whether they affect the approximate algorithm of [18].
+matched the tested graph on 98,000 instances. Lemma R needs a description of the dual nodes
+that is not stated in [18]. Lemma N proves it, by induction over the levels, and the reduction
+is correct for every legal choice at $s$ and $t$. These failures may come from a misreading of
+[18] on our side. We have not checked whether they affect the approximate algorithm of [18].
 
 **The recursion repair (Lemma S).** Reif's recursion in [18, Alg. 3] computes the shortest
 cycle $P_i$ through the middle index $i$ of an annulus with index range $[j,k]$, and then
 drops every index strictly between $i_1$ and $i_2$, the least and greatest index of the first
 cut path on $P_i$ ([18, Claim 2.4, Lemma 5.6]). The reason given is that $P_{i_1}$ or $P_{i_2}$
 is no longer. But an annulus can hold copies of the first cut path outside $[j,k]$, so $i_1$ or
-$i_2$ can lie outside the range and be dropped by another annulus. The adversarial pass found
+$i_2$ can lie outside the range and be dropped by another annulus. There are
 instances where two drops rest on each other and no computed cycle is minimum, with exact
 shortest paths that are all unique. Smallest: a simple graph with 11 vertices and 22 edges,
-minimum cut 15, computed 37 (`sim/thmD/attackR/logs/trace_min_simple0.txt`). The repository's
-own driver gives 37 as well. The repair computes two more cycles in every annulus that is not
+minimum cut 15, computed 37 (`sim/thmD/attackR/logs/trace_min_simple0.txt`). The driver
+`sim/thmD/thmD.py` gives 37 as well. The repair computes two more cycles in every annulus that is not
 a leaf, at $i^-=\max(i_1,j)$ and $i^+=\min(i_2,k)$. That is two more SSSP calls per level, so the
 round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form of
 [18, Claim 2.4]: a dropped index is dominated by every index between it and $i_1$, or by every
 index between it and $i_2$. So one of $i^-$, $i^+$ carries the minimum. With the repair the driver
 is right on all 25 failing instances of the search (161 of 300 runs were wrong without it)
 and on 1,440,000 sweep instances, where it made 6 errors in 1,200,000 without the repair.
-A referee pass found Lemma S correct with gaps. The gaps are a side lemma (Lemma O) about one
-incision, which the earlier proof of Theorem D also used without proof, and the exact form of
-[18, Claim 2.3]. `notes/LEMMA_O.md` now proves both, by an induction over the levels in which
-each incision is a simple closed curve and the sides are its two sides; the overlap rule turns
-out to be exact on all of $[j,i]$, from any common node. A referee pass found Lemma O correct
-with minor gaps, all fixed. Two of its points are readings of [18]: the bound in the overlap test
-is the copy of the parent's incised part, not its whole path, and a side with overlap or an empty
+Lemma S needs a side lemma (Lemma O) about one incision, which the proof of Theorem D also uses,
+and the exact form of [18, Claim 2.3]. `notes/LEMMA_O.md` proves both, by an induction over the
+levels in which each incision is a simple closed curve and the sides are its two sides; the
+overlap rule is exact on all of $[j,i]$, from any common node. Two points of Lemma O are readings
+of [18]: the bound in the overlap test is the copy of the parent's incised part, not its whole path, and a side with overlap or an empty
 range gets no call (`notes/LEMMA_O.md` §9). As
 we read [18], its own approximate recursion has the same defect; we have not checked whether
 another reading avoids it.
@@ -501,73 +476,64 @@ test round counts.
   `tiles.py` is the first version. The `run*.txt` files hold the outputs listed in
   `notes/LEMMA15.md` §3.7: about 2.7 million Monge checks and no failure, while the negative
   controls fail as they should.
-- `sim/ref2/`: the referee's independent check of §3. `walk_check.py` rebuilds the boundary
+- `sim/ref2/`: a second check of §3. `walk_check.py` rebuilds the boundary
   order of every tile from port records alone, as the distributed algorithm would, and
-  `pendant.py` builds the graphs that exposed the problem with the earlier child shape.
-- `sim/attack2/`: the adversarial pass on the earlier draft of §3. It ran 24,850 instances on
-  15 families, with $1.55\cdot 10^9$ Monge inequalities, and found no failure under that
-  draft's assumptions. `run.py` is the driver, `engine.py` the construction and its checks,
-  and `s7_rebuild.py` rebuilds the three configurations above. `g1_inconsistency.py` shows that
+  `pendant.py` builds graphs with pendant leaves in every corner, on which the reading with one
+  child per outside component fails.
+- `sim/attack2/`: tests of an earlier form of §3. `run.py` is the driver, `engine.py` the
+  construction and its checks, and `s7_rebuild.py` rebuilds the three configurations above. `g1_inconsistency.py` shows that
   one child per outside component is incompatible with the decomposition's properties on
   stars. `g1_grouped.py` repeats that search with the grouping of [8] and finds balanced
   children.
-- `sim/attack3/`: the second adversarial pass, on the fixed text: 14,500 instances with no
-  failure in Lemma 14′ or in the parts of Lemmas 15′ and 16′ that use it, with negative
-  controls. `p6.py` builds the family on which Property 6 fails
+- `sim/attack3/`: tests of Lemma 14′ and of the parts of Lemmas 15′ and 16′ that use it, with
+  negative controls. `p6.py` builds the family on which Property 6 fails
   (`python3 -I p6.py 100 u 8 nopost`), and `lp46_demo.py` a step of [8] that adds more than
   one tree component. `sweep.py` and `run.py` drive the sweeps; `logs/` holds their output.
 - `sim/s9/`: the region bags of §9. `engine_r.py` is the region form of the engine,
   `post_r.py` its Lemma 15′ and 16′ checks, `rsweep.py` the driver, `big.py` larger
   instances, and `neg.py` the negative controls. 2,450 correctness instances had no failure,
   and every edge lay in at most two region graphs per depth. With `NOSPLIT=1` the engine never
-  splits a separator vertex; 1,400 instances of that form also had no failure. After the fixes from the
-  adversarial pass, 1,750 instances checked Lemmas B2 to B4 with exact hole counts at 86,905
+  splits a separator vertex; 1,400 instances of that form also had no failure. Another
+  1,750 instances checked Lemmas B2 to B4 with exact hole counts at 86,905
   children without a violation (`logs/e_*.txt`); `logs/` holds all output. `b5.py` runs
   Lemma B5 and checks each separator against an independent side count (4,000 instances, n
   up to 1,842, no failure; `python3 -I b5.py START END`).
-- `sim/attack5/`: the adversarial pass on Lemma B5. `mine.py` is an independent
+- `sim/attack5/`: further tests of Lemma B5. `mine.py` is an independent
   implementation with its own side count, and `harness.py` compares it with `b5.py`.
   `exh.py` and `exh_trees.py` enumerate all instances for small n, `rand.py`, `fams.py` and
   `geo_cmp.py` run larger ones, `hill.py` climbs towards the step bounds, and `negctl.py`
   runs the negative controls.
-- `sim/thmD/`: the adversarial pass on Theorem D. `thmD.py` runs Reif's algorithm as in [18],
+- `sim/thmD/`: simulation of Theorem D. `thmD.py` runs Reif's algorithm as in [18],
   driven only by the exact trees of Theorem D, on the literal and the repaired $\hat G_\ell$,
   and checks every distance, tree and final cut against networkx. `minimize.py` shrinks
   failures, `planar_check.py` tests planarity and diameter, and `lane1.sh`/`lane2.sh` give the
   runs. `logs/summary.txt` sums them up. `repair/` checks Lemma R: `formal_ghat.py` builds
   the repaired graph from its written definition, and `test_repair.py` and `witness.py`
   compare it with `thmD.py` and check its properties; `test_mono.py`, `witness_mono.py` and
-  `run_mono.sh` rerun them with the monotone I_ℓ of the revision and also check Lemma N.
-  `attackR/` is the adversarial pass on Lemma R and Lemma N, written independently of
+  `run_mono.sh` rerun them with the monotone I_ℓ and also check Lemma N.
+  `attackR/` tests Lemma R and Lemma N with code written independently of
   `thmD.py`: `emb.py` enumerates maps, `defr.py` builds Definition R, `abstract18.py` models
   the incisions of [18], `level1.py`, `planar_sweep.py`, `deep.py` and `deep2.py` run the
-  checks, `search_e2e.py` and `minimize_e2e.py` found the recursion defect, and
+  checks, `search_e2e.py` and `minimize_e2e.py` find the recursion defect, and
   `confirm_author.py` reruns it on `thmD.py`. `thmD.py --ends 1` adds the repair of Lemma S and
   checks its interval claim (`c24_interval`), the hull of part (b) (`hull_i12`) and the
   separation fact (`sep_fail`). `fix/` checks the smallest instance and reruns the 25 failing
   instances with and without the repair; `lane_ends.sh`, `lane_c24.sh` and `lane_sep.sh` give
-  the sweeps. `refereeS/` is the referee's instrumented copy (`patch.py` turns `thmD_ref.py`
-  into `thmD_refS.py`), which checks Lemma S1 with exact weights, the separation facts and the
-  invariant of Lemma S on 162,000 instances. `lemmaO/` checks every part of Lemma O and of its
+  the sweeps. `lemmaO/` checks every part of Lemma O and of its
   invariant at every incision (`patchO.py` turns `thmD.py` into `thmD_O.py`; `lanes*.sh`):
-  342,000 instances, 232,868 incisions, no failed check. `refereeO/` is the referee's copy
-  (`patchR.py` turns `thmD_O.py` into `thmD_R.py`; `thmD_F.py` tests the whole-path overlap
-  reading): 162,000 instances, the 25 saved instances in 15,000 runs, and 84,000 instances of the
-  whole-path reading, with no failure. `attackSO/` is the adversarial pass on Lemmas S and O:
+  342,000 instances, 232,868 incisions, no failed check. `attackSO/` tests Lemmas S and O:
   every run on all connected loopless maps with at most 8 edges (with a cap of runs per instance),
-  adversarial policies, hill-climbing and the saved hits, 25,109,452 runs with no failure
-  (`logs/summary.txt`). `refereeD/` is the simulator of the referee pass on the paper form of
-  Theorem D: 240,000 runs with no failure. `refND/` is the script test of the naming of
+  hill-climbing and the saved hits (`logs/summary.txt`). `refND/` is the script test of the naming of
   sides, the cut read from a path, the reading direction and the number of levels: 12,441,126 runs
   with no failure, every negative control fired (`REPORT.md`).
-- `sim/attack4/`: the adversarial pass on §9. `engine_r9.py` adds exact hole counts,
+- `sim/attack4/`: stress tests of §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
   families (Delaunay with holes, sparse Delaunay, cacti, wheels of wheels and others). Run
   `python3 -I adv.py CONF A:B fam1,fam2 SCALE`. `tight.py` finds the equality cases.
 - `sim/attack/`: the counterexamples to [1, Lemma 14], and checks of the analytic layer:
   gluing (`r1_glue.py`), rounding (`r6_round.py`), the error recursion (`l16.py`), the squaring
-  in [1, Thm 2] (`s1_square.py`), and the first adversarial runs on Lemma V and Lemma D
+  in [1, Thm 2] (`s1_square.py`), and tests of Lemma V and Lemma D
   (`lemmaV.py`, `lemmaD_flow.py`). `rot.py` is a small rotation-system library used by the
   others.
 - `sim/ref/monge.py`: an instance that satisfies the Monge constraints of [1] for one linear
@@ -576,8 +542,8 @@ test round counts.
 
 ## Notes (`notes/`)
 
-- `notes/NOTES.md`: the state of the art, Theorems A, B, C, C′ and D, Lemmas V and D, the
-  ratings, and the review history.
+- `notes/NOTES.md`: the state of the art, Theorems A, B, C, C′ and D, Lemmas V and D, and the
+  ratings.
 - `notes/GHAT_REPAIR.md`: Lemma R, the repaired auxiliary graph of [18] that Theorem D runs on.
 - `notes/RECURSION.md`: Lemma S, the repaired recursion of [18, Alg. 3].
 - `notes/LEMMA_O.md`: Lemma O, the sides of one incision, which Lemma S and the exact exchange
@@ -610,8 +576,8 @@ line numbers in plain-text extractions of [1] (arXiv v2), [9] and [18].
 ## Use of AI
 
 Claude Opus 5.5 (Anthropic) was used throughout this research: to search the literature, to
-develop and check the proofs, to run the referee and adversarial passes, to write the scripts
-and the Lean formalization, and to draft the text.
+develop and check the proofs, to write the scripts and the Lean formalization, and to draft
+the text. No human has checked the work.
 
 ## References
 

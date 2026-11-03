@@ -1,20 +1,13 @@
 # Lemma R: the repaired Ĝ_ℓ of Theorem D
 
-*Status (2026-10-29).* Referee pass (2026-10-29): correct in substance; one serious gap (Fact N)
-and the minor points, all addressed in this revision. Adversarial pass (2026-10-29,
-sim/thmD/attackR, an independent implementation): no counterexample to Lemma R or Lemma N in
-6.9 million exhaustive level-1 corner pairs, 1.3 million Table R builds and 3.5 million
-recursion instances (7.7 million levels). It found two wording faults, fixed below (F3 and the
-residual sides in (2)), and a defect in the recursion of [18] one step after this lemma, which
-RECURSION.md repairs.
-
 Theorem D (NOTES.md §5) rests on this lemma. It runs Theorem A on the graph Ĝ_ℓ of [18, Thm
 3.1]. Read literally, the endpoint adjustment of [18, Remark 3.3] breaks [18, Thm 3.1 (1), (2)]
 at s and t (D1 to D3 under Theorem D in NOTES.md §5). This section defines the repaired graph
 without reference to code, states the properties Theorem D needs, and proves them. Lemma N
 first shows that the annuli of [18] are components of a graph on labelled darts. Its proof
 takes the structure of one incision step from [18] (facts F1 to F5 below) and proves the rest,
-including level 1, where the degenerate endpoint cases are left open in [18].
+including level 1, where the degenerate endpoint cases are left open in [18]. The recursion of
+[18] has a further defect, one step after this lemma, which RECURSION.md repairs.
 
 **Conventions.**
 - G is connected and planar, with a fixed rotation system. Parallel edges are allowed. Loops
@@ -111,8 +104,8 @@ including level 1, where the degenerate endpoint cases are left open in [18].
   to (6) do not use which end it is. The Theorem D notes leave the host of an unincised
   e0 = e_last open; R6 (and sim/thmD) take t. For an incised edge the host is forced. Hosted at
   head(δ), the pair {(δ,1), (rev δ,2)} would get the E_C edge L(ηδ)R(τ rev δ), which is not a
-  rim edge, and Ĝ_ℓ can be non-planar. A referee probe found this on every level with an
-  incision when all incised pairs were moved; its smallest witness moves one pair (seed 54 of
+  rim edge, and Ĝ_ℓ can be non-planar. On test instances this happens on every level with an
+  incision when all incised pairs are moved; the smallest witness moves one pair (seed 54 of
   make_instance, n = 8).
 - Ĝ_0 is Definition R with I_0 = ∅ and without R0: no cut corner, no X, and every face is one
   cyclic piece. This is the Ĝ_0 of [18, Sec. 3.1]. Rule M in (6) uses it at ℓ = 1.
@@ -636,7 +629,7 @@ with RULE in formal or anylegal, and `python3 -I witness.py`.
     each run 300 times under each rule.
 
   There were no failures, and the builder matched build_ghat on every level.
-- *Second round*, with the monotone I_ℓ of this revision. A wrapper around test_repair.py
+- *Second round*, with the monotone I_ℓ of Definition R. A wrapper around test_repair.py
   (test_mono.py and witness_mono.py in sim/thmD/repair/) records every P_i′ that the
   driver incises and rebuilds Definition R from I_ℓ. It ran on 98,000 generated instances
   (260,625 levels) and on the 12 witnesses, 300 runs each under each rule. On 4,569 levels,
@@ -653,7 +646,7 @@ with RULE in formal or anylegal, and `python3 -I witness.py`.
   pieces inside every tested live annulus.
 - Negative control for monotonicity: with the sim's set instead of I_ℓ, 2,000 instances give
   482 tokens without a parent token and 272 pieces that refine no single parent piece. Both
-  lie in residual pieces, where Rule M was undefined before this revision.
+  lie in residual pieces, where Rule M would be undefined.
 - Coverage, second round, counted over levels:
   - mode R at 105,698 of 210,288 cut corners under 'anylegal', and at 20,457 of 114,962 under
     'formal';

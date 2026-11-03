@@ -37,7 +37,7 @@ A cycle of length 2D with s and t opposite gives Ω(D): R(e) on P depends on the
 | Undirected unweighted, exact | Θ(D) [2] | nothing new |
 | Least cycle through each vertex, directed | Θ̃(n) [2] | Õ(D²) |
 
-Web searches on 3 Nov 2026 found no earlier bound for replacement paths on planar networks, which is not proof that none exists. The minimum over all arcs in Corollary 5 is the directed girth. [4] has the directed global minimum cut in Õ(D²) rounds, which is that problem on the dual.
+To our knowledge there is no earlier bound for replacement paths on planar networks. The minimum over all arcs in Corollary 5 is the directed girth. [4] has the directed global minimum cut in Õ(D²) rounds, which is that problem on the dual.
 
 **What is new.** Little. Lemma 1 is the residual graph, used for a pair of paths in [5], and we do not claim it as new. Lemma 3 is the formula of [6] for undirected graphs, and Theorem 3 replaces the term h in [2] by Õ(D) with (M). Lemma 2 is a small observation on the bags of [1]. The contribution is that these parts with the oracle of [1] give the first two rows of the table.
 
@@ -111,7 +111,7 @@ For an interval [a, b), let t be the highest bit in which a and b differ. They a
 
 ## 8. Checks
 
-`sim/replacement/rp.py` computes the values centrally, with Dijkstra as the oracle. The truth is one further Dijkstra with the arc removed, or Bellman-Ford with negative weights, for each arc of P. Every instance passes `nx.check_planarity`. The families are grids with diagonals, wheels, cylinders and contracted grids, and the last give high degree at low diameter. The bags of the simulation are components after removing a random BFS layer, so their hubs are not those of [1]. The labels are computed by the calls of Lemma 2, one source per bag. The labels of Theorem 2 are the exact ones, each multiplied by a random factor up to 1 + ε/2, which is noise and not an optimized adversary.
+`sim/replacement/rp.py` computes the values centrally, with Dijkstra as the oracle. The truth is one further Dijkstra with the arc removed, or Bellman-Ford with negative weights, for each arc of P. Every instance passes `nx.check_planarity`. The families are grids with diagonals, wheels, cylinders and contracted grids, and the last give high degree at low diameter. The bags of the simulation are components after removing a random BFS layer, so their hubs are not those of [1]. The labels are computed by the calls of Lemma 2, one source per bag. The labels of Theorem 2 are the exact ones, each multiplied by a random factor up to 1 + ε/2, which is noise and not an optimized worst case.
 
 | Check | Main lane | Big lane | Failures |
 |---|---|---|---|

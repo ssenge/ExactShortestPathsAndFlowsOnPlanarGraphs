@@ -1,6 +1,6 @@
 # Exact eccentricities and diameter of unweighted planar networks in Õ(D²) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/`. One referee pass (3 Nov 2026) found no wrong lemma and one protocol gap, now closed. One adversarial pass (3 Nov 2026) found no counterexample on the current text; its failures on earlier wording are closed by (H3) and (H1) as they stand now. See Section 6. No human has
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/`. No human has
 checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the pattern bound of [2]. It does not use the labels (L2) of the Label Hypothesis of [3]; of that form it uses only the clauses (V1) to (V3) and (L1) of §9.9, and these have no black box beyond the given embedding.
 Importance if it survives: solid, since the best stated bound for the diameter is Õ(D³) [2].
 
@@ -18,7 +18,7 @@ Three things give the improvement.
 - A segment tree over the face holds all patterns in Õ(D²) words. [2] reports a compression with Õ(k²) words from [4]; what is new is the distributed form, which rests on Lemma 3.
 - Cutting the plane along a connected subgraph of real edges puts all hubs of a bag on one face, or several faces whose walks have Õ(D) total length.
 
-Two literature searches found no bound below Õ(D³); that is not proof that none exists.
+To our knowledge there is no bound below Õ(D³).
 
 ## 2. What is used from the hierarchy
 
@@ -33,6 +33,8 @@ subgraph of G, with vertex set V(X), and R_root = G.
 - (H4) All this is built in Õ(D) rounds, deterministically, and each vertex knows its chain and, for each of its edges, the bags that contain it.
 
 The closing edges of the separators of Lemma B5, which may be virtual, are not used here.
+
+Two parts of these statements are needed. Without V(Y) ⊆ V(X) in (H3), a planar instance with n = 7 satisfies the rest of (H1) to (H3) and gives E(2) = 3 against the true 2. Without q_X being a path of T_X in (H1), the length of q_X is not bounded by Õ(D): a wheel with q_root on the rim has D = 2 and Θ(n²) words.
 
 The *chain* of v starts at the root and goes from X to the child that holds v as long as v ∉ S_X and X is no leaf. X° is the set of vertices with X on
 their chain. For a parent A of X let Q_A be the union of S_B over B on the path from the root to A, with B = A included. Then X° = V(X) ∖ Q_A, and V(root)° = V. Indeed a chain stops at the first S_B it meets, and a vertex of V(X) off Q_A lies, by (H3), in the child towards X at each bag on that path.
@@ -67,12 +69,14 @@ P_X then by Fact 0 it lies in the child of u, and v lies in exactly one child, s
 by Fact 0 it lies in R_X, and it has no edge of P_X, since its vertices before b are off P_X. So it is a path in W_Φ from v to the occurrence o′ of the corner that holds its last
 edge, and b ∈ V(X). So t_v(o′) is at most its length, and the term at o′ is at most d_G(u,b) + d_G(b,v). ∎
 
-Hubs S_X alone are not enough below the root, since a shortest path may leave R_X. On the referee's region bags they gave a wrong value on 4,579 of 528,689 pairs. This is why P_X holds all of Q_X.
+The hypothesis on u and v is needed: on other pairs the formula can be too high. Hubs S_X alone are not enough below the root, since a shortest path may leave R_X. On region bags they give a wrong value on about 1% of pairs. This is why P_X holds all of Q_X.
 
 **Lemma 2 (patterns).** The *pattern* of u on Φ is the vector of differences of t_u along the walk, and the *offset* is t_u at the first occurrence. The vectors of all u in
 Φ have at most 2K² − 2K + 2 patterns, with K = K_Φ.
 
 *Proof.* The proof of [2, Theorem 1], which gives this constant, applied to W_Φ and the face given by its cycle. For K = 2, P_X is one edge, and there is one difference in {−1,0,1}. ∎
+
+The constant of Lemma 2 may not be tight. The largest counts found for K = 3, ..., 8, 10, 14 are 7, 13, 21, 31, 42, 55, 68, 76 patterns, which is K² − K + 1 for K ≤ 6.
 
 **Lemma 3 (interval).** Let I be an arc of m consecutive differences on the walk of Φ. The restrictions of the patterns to I take at most (2m)² + 1 values.
 
@@ -131,7 +135,7 @@ The diameter and radius follow by one convergecast over T. This proves the theor
 
 Tokens can carry the identifier of a vertex that attains them, and so can A_X, so every vertex also learns a farthest vertex.
 
-**Sum Corollary.** In Õ(D²) rounds every vertex u learns S(u) = Σ_v d_G(u,v). So the closeness of every vertex, a medoid and the Wiener index are computed in Õ(D²) rounds, deterministically. Importance if it survives: modest. Two literature searches found no earlier CONGEST bound for these on planar networks; that is not proof that none exists.
+**Sum Corollary.** In Õ(D²) rounds every vertex u learns S(u) = Σ_v d_G(u,v). So the closeness of every vertex, a medoid and the Wiener index are computed in Õ(D²) rounds, deterministically. Importance if it survives: modest. To our knowledge there is no earlier CONGEST bound for these on planar networks.
 
 For v ∈ V(X) off S_X let Y(v) be its unique child, by (H3). Each p ∈ L_X off S_X broadcasts Y(p) over T_X. Add to each non-leaf bag X, with one word per value since values are at most n(D + k):
 - (A) For each face and pattern, the count and the sum of offsets of the vertices of X° off P_X, by a convergecast over T_X as in Step 5.
@@ -151,25 +155,13 @@ With integer vertex weights of O(log n) bits, the weighted sums follow in the sa
 
 ## 6. Checks
 
-**Referee (3 Nov 2026).** An independent pass with its own code found no wrong lemma. It found that Lemma 1 as first written needed a table on L_X × L_X that was never distributed, closed by the form above, which needs no new words and which it checked at 10.8 million entries; that membership in X° was not stated as known; several facts now in (H1), (H3) and before Fact 0; and points of wording and credit in Section 1. On 812 instances and 79,434 bags of its own, with n up to 1,278 and its own separators, E(u) and S(u) matched BFS at 69,025 vertices. It simulated source detection (1,793 runs, worst 0.62 of the bound) and the filtered upcast (6,951 runs, worst 0.986). It did not check the proofs of Lemmas B1 and B5, the lemma of [1] that its direct proof of no alternation bypasses, [4] or [5] at the source, lockstep scheduling, or large grids.
-
 Results are in `sim/diameter/REPORT.md`. `diam.py` builds real region bags and checks Lemmas 1, 2 and 3, the alternation, Fact 0 through the first-hit formula, the formula of Step 2, and finally E(u) against BFS for every vertex. Negative controls in `diam.py ctl`. `diam.py sum` checks S(u) from the tables of the Sum Corollary against BFS, with its own controls.
-
-**Adversary (3 Nov 2026).** A second pass, whose only job was to break the theorem, ran on its own code and read Sections 9.3, 9.5, 9.6 and 9.9 of `notes/LEMMA15.md`. It found no counterexample on the current text. All its failures were on earlier wording, which the note has since changed:
-- Vertex nesting was not stated. A planar instance with n = 7 satisfied the old (H1) to (H3) and gave E(2) = 3 against the true 2. (H3) now has V(Y) ⊆ V(X).
-- |E(q_X)| = Õ(D) was not stated. A wheel with q_root on the rim has D = 2 and Θ(n²) words. (H1) now has q_X a path of T_X.
-- The table on L_X × L_X, the same gap the referee found, closed by the form of Lemma 1 in Section 3.
-
-Smaller points are now in this text: Y(p) for p off X°, and how the first vertex of q_X learns q_X.
-
-It tried hard to exceed Lemma 2 and Lemma 3, with no exceedance: on real graphs the best ratio to the bound was 0.53, with K = 3, ..., 8, 10, 14 giving 7, 13, 21, 31, 42, 55, 68, 76 patterns, and the constant 2K² − 2K + 2 is not tight, since graphs reached K² − K + 1 for K ≤ 6. Cyclic sign changes stayed at most 2 on 44,080,777 pairs, on all nodes. The alternation proof and its block extension were redone by hand. Lemma 1 and Lemma 4 held on all roots of n = 4, 5, 6 (328,044 instances for n = 6), on recursive hierarchies of n = 4 and part of n = 5, on 19,063 random adversarial hierarchies, looser than (H1) to (H4), and on region bags including forced corner closings, with E(u) and S(u) at 231,690 vertices and Lemma 1 at 28.1 million pairs. The eligibility hypothesis of Lemma 1 matters: the formula is too high on 11.3 million ineligible pairs. Words as D and n grow fit polylogarithmic factors, though these sizes cannot separate them from small powers. Its partial round simulations (source detection, broadcasts, filtered upcasts, up to n about 640) agreed, with edge load at most twice the words. All 19 mutations fired, including removal of the second token on instances with no forced separator.
-
-**Not reached by it:** a proof; [2], [5] and Lemmas B1 and B5, which were exercised and not proved; a full CONGEST run, in particular of Step 1, of the construction of bags and of the tables of the Sum Corollary; exhaustive runs beyond the sizes above.
 
 ## 7. Not covered by the checks
 
-- Rounds, messages and who knows what: no CONGEST simulation. Word and round counts are by the proofs, and the simulator only counts tokens and dictionary entries.
-- [1] and [2], and the proofs of Lemmas B1 and B5, except that the simulator exercises their statements on its instances.
+- Rounds, messages and who knows what: no CONGEST simulation, in particular of Step 1, of the construction of bags, of the tables of the Sum Corollary and of lockstep scheduling. Word and round counts are by the proofs, and the simulator only counts tokens and dictionary entries.
+- Word counts as D and n grow fit polylogarithmic factors, but these sizes cannot separate them from small powers.
+- [1], [2], [4] and [5] at the source, and the proofs of Lemmas B1 and B5, except that the simulator exercises their statements on its instances.
 - Sizes above about 500 vertices.
 
 ## 8. Open

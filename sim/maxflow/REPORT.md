@@ -4,7 +4,7 @@ Run on 2 Nov 2026 with K = 9, ε = 1/12. No check failed in any lane below. Time
 
 ## Sections 2 and 3, `mf.py`
 
-Portal distances are perturbed within [d, (1+ε)d] by adversarial noise, and the result is compared with an independent Dinic.
+Portal distances are perturbed within [d, (1+ε)d] by noise, and the result is compared with an independent Dinic.
 
 | | Normal lane | Big lane |
 |---|---|---|
@@ -54,11 +54,12 @@ was exactly 6, against the bound 6D + 2. Largest depth 22, largest a_Y 4.
 ## Limits
 
 - `mf.py` works on Γ with scale 2(faces+1), so Lemma N(6) is not exercised there. Noise means four fixed modes.
-- `forced.py` does not check the diameter of T_X, c(X) or region connectivity; the referee ran these on its instances, with no failure. Below the root it uses fundamental cycles, and bags with no cycle in the tries stay leaves.
+- `mf.py` runs simple networks only and takes the number of iterations from nU, which suffices there. The failure on parallel arcs of one direction, `notes/MAXFLOW.md`, Section 3, is not run here.
+- `forced.py` does not check the diameter of T_X, c(X) or region connectivity. Below the root it uses fundamental cycles, and bags with no cycle in the tries stay leaves.
 - The hop bound was tested as 6D + 8 in the lanes above. It is now 6D + 2 in the code; the measured ratio stays at most 6.
 - Portal containment on the cycle is at face level.
 - The tolerance in `forced.py` is relative, since lengths reach 1e10.
-- The referee's scripts in `referee/` combine N, δ, the Step Lemma and SSSP on N, see `notes/MAXFLOW.md`, Section 7.
+- Neither script combines N, δ, the Step Lemma and SSSP on N.
 
 ## Not covered
 

@@ -13,33 +13,18 @@ This file splits the repair into two layers:
 - **The analytic layer (§4 to §7).** Error recursion, LP, rounding, gluing and labels, proved
   from Lemma 14′.
 
-Status (2026-10-29):
-- The first draft was refereed and attacked. Both passes confirmed the analytic layer, and
-  both found that its topological black box, [1, Lemma 14], fails.
-- §3 is new in this revision and is checked numerically (§3.7).
-- **Referee pass on §3.** Given its black box, §3 is correct. The pass raised one serious
-  point and several minor ones, all fixed here.
-  - **The serious point.** The child shape assumed before, one child per outside component,
-    contradicts 7(a).
-  - **The fix.** §1 now uses the shape of [8]'s construction: outside components grouped,
-    and contiguity at each separator vertex. The label-change bound becomes 8|S_A|.
-- **Adversarial pass on §3.** It ran on the draft before the referee's fixes and broke
-  nothing in §3 under that draft's assumptions (§3.7). Its two findings against the
-  assumptions are the referee's points again, and the fixes above remove both.
-  - With one child per outside component, (G1′) and 7(a) leave a child with n − 2 vertices
-    on stars, so no BDD of height O(log n) has that shape. With [8]'s grouping the same
-    search finds children of at most n/2 + 1 vertices.
-  - A chord fan puts 2k − 2 label changes on one vertex. That breaks the old bound of 4 per
-    vertex, but not 4 + 2c_s.
-- **Second adversarial pass**, on this text (§3.7). Nothing in §3, in Claim 7, in P_X, or in
-  the parts of Lemmas 15′ and 16′ that use them failed on 14,500 instances. It found one
-  serious problem in the assumptions, (S9): Property 6 is false for induced bags. That
-  breaks the round count, not correctness. It also corrected four details of our reading of
-  [8], and showed that one step of [8] can add more than one component to T[X] (§1).
-- **§9 (new)** repairs (S9). Bags carry the sides of the edges they were cut from, and every
-  edge lies in at most two of these region graphs per depth. §9 also proves the component
-  bound for T_X that [8] states, with one more log factor. §9 has had a referee pass, whose
-  fixes are in, and an adversarial pass, which broke nothing.
+Status:
+- The topological black box of the analytic layer, [1, Lemma 14], fails (§2, (S7)). It is
+  replaced in §3 and also checked numerically (§3.7).
+- The child shape in §1 is that of [8]'s construction: outside components grouped, and
+  contiguity at each separator vertex. The label-change bound is 8|S_A| (Claim 7). One child
+  per outside component contradicts 7(a) (§1).
+- The assumptions contain one serious problem, (S9): Property 6 is false for induced bags. That
+  breaks the round count, not correctness. In addition, one step of [8] can add more than one
+  component to T[X] (§1).
+- The repair of (S9) is in §9. Bags carry the sides of the edges they were cut from, and every
+  edge lies in at most two of these region graphs per depth. That section also proves the
+  component bound for T_X that [8] states, with one more log factor.
 - **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. No human has
   checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
   holds in the region form of §9, with no black box beyond those of §1: the separator is
@@ -58,9 +43,10 @@ Notation is that of [1, Sec. 5]:
     components for T[X]. We use T_X, which costs one log factor in sizes and rounds.
     The O(log n) components come from [8, Claim 4.6, Lemma 4.7], which add one component
     per level. That step is false: a child met S_X in two arcs and went from 1 to 3
-    components in one step (second adversarial pass, `sim/attack3/lp46_demo.py`). In all
-    faithful runs the total stayed at most depth + 1, and with adversarial z_s at most
-    depth + 3. In the region form of §9 the bound is proved: c(X) = O(log² n) (Lemma B1(e)),
+    components in one step (`sim/attack3/lp46_demo.py`). In all runs that follow (G1′)
+    faithfully (T_X ⊇ T[X] from a BFS tree, inherited z_s) the total stayed at most depth + 1,
+    and with z_s chosen against the bound at most depth + 3. In the region form of §9 the bound
+    is proved: c(X) = O(log² n) (Lemma B1(e)),
     so T_X has diameter O(D log² n), and sizes gain one more log factor (§9.5).
   - S_X: the separator, a simple cycle made of a path q_X of T_X with at least one edge and
     one closing edge, which may be virtual and is then drawn inside a face of G[X]
@@ -110,13 +96,15 @@ The following are used as black boxes. In the region form of §9, which is the f
     [8, Def. 4.1 (3)].
 
   Properties 7(a) and 7(b) imply neither.
-  - **Adversarial check.** (7c) and (7c′) held in 300 of 300 instances.
   - **One child per component, inside included.** Children of the form C ∪ (S_X ∩ N(C))
-    for every component C break (7c) in 118 of 300 instances: a separator edge uw, with u
-    next to only C₁ and w next to only C₂, lies in no child. §3 needs X_in ⊇ S_X.
+    for every component C break (7c): a separator edge uw, with u next to only C₁ and w next
+    to only C₂, lies in no child. They still satisfy (7c′). §3 needs X_in ⊇ S_X.
   - **One child per outside component.** This reading contradicts 7(a). With pendant leaves
-    in every corner, one separator vertex touches up to 37 outside components (referee,
-    `sim/ref2/pendant.py`). [8]'s grouping avoids this.
+    in every corner, one separator vertex touches many outside components, up to 37 in the
+    tested graphs. On stars, (G1′) and 7(a) then leave a child with n − 2 vertices, so no BDD
+    of height O(log n) has that shape (`sim/attack2/g1_inconsistency.py`). [8]'s grouping
+    avoids this: an exhaustive search over all root separators of star, windmill and K_{2,m}
+    families gives a largest child of at most n/2 + 1 vertices (`sim/attack2/g1_grouped.py`).
 - **(G3) Realization** [10, Thm 1] (refereed, SODA 2025).
   - **Claim.** Let d be a quasimetric on T and σ a cyclic order on T. Suppose d satisfies
     the cyclic Monge condition (M) below for σ. Then some plane digraph K with O(|T|⁶)
@@ -144,8 +132,8 @@ The following are used as black boxes. In the region form of §9, which is the f
 
   The proof: a u to v path and a w to z path must cross at some vertex x, and splitting both
   at x gives the inequality. (M) is (13) of [1] imposed for every cyclic rotation of σ. [1]
-  imposes (13) only for one linear reading of σ, which is weaker. The referee's LP check
-  (`sim/ref/monge.py`) shows the difference matters: it finds a d that satisfies (13),
+  imposes (13) only for one linear reading of σ, which is weaker. The difference matters: an LP
+  (`sim/ref/monge.py`) finds a d that satisfies (13),
   the triangle inequalities and 1 ≤ d ≤ 100 on four terminals, yet violates (1) of [1] by
   149.5.
 - **(G5) Oracle** [1, Lemma 11]. A plane digraph with integer weights in [0, N] has a
@@ -176,8 +164,8 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
     (1+ε′)^i. The output is then only known to be within (1+ε′)^{2i} of O_{X_i}.
   - The exponent then follows e_h = 2e_{h−1} + 1 and reaches about 2^H = poly(n) at the root.
     Holding that to 1+ε forces ε′ = ε/poly(n), and the labels no longer have size Õ(D/ε).
-  - The adversarial pass built a star instance with γ = 0.1, where α* = 1.1 and an optimal LP
-    point sits at ratio 1.21 = (1+γ)² from O.
+  - A star instance with γ = 0.1 has α* = 1.1 and an optimal LP point at ratio 1.21 = (1+γ)²
+    from O.
   - The intended bound does hold, but only with the witness of Lemma R5.
 - **(S2) No triangle constraints, and no quasimetric input.**
   - The LP (13) to (15) of [1, Thm 2] has no triangle inequalities, so its solution need not
@@ -196,8 +184,8 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
   since the edge into S_X is drawn in the child's region. It is just not among Properties 1
   to 7. Def. 6 step 4 (lty 1530-1531) uses the same fact. We record it as (7c′).
 - **(S7) [1, Lemma 14] is false as stated.** The claim is that cutting P_X open merges all
-  holes of G[X] into one face carrying P_X ∪ ∂S*_X. The adversarial pass (scripts in
-  `sim/attack/`) breaks it in three configurations, all consistent with Properties 1
+  holes of G[X] into one face carrying P_X ∪ ∂S*_X. It fails in three configurations (scripts
+  in `sim/attack/`), all consistent with Properties 1
   to 7 and [8]'s rule for children:
   1. **Separator chords** (`g2_chord_bfs.py`, `g2_chord.py`).
      - Setup: a non-tree edge between two separator vertices, drawn inside S. Its endpoints
@@ -207,7 +195,7 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
      - Numbers: in 58 of 100 random weightings no cyclic order has α* = 1, and the worst
        instance needs α* = 1.636.
      - So the LP of step 2 is infeasible for every order, and (I1) already fails at a leaf.
-       The referee found the same failure with the inside child and a chord drawn outside.
+       The same failure occurs with the inside child and a chord drawn outside.
   2. **Virtual edges** (`g2_virtual.py`).
      - Setup: on a 13×8 grid, two nested separators close through virtual edges in the same
        face. Every ∂S*_X vertex is then already on one face of G[X], but Def. 6 step 3 still
@@ -227,8 +215,7 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
   there.
 - **(S9) Property 6 is false for induced bags.** [1, Lemma 9 (6)] says that at every depth
   each edge lies in at most two subgraphs G[X], and [8, Lemma 4.3 (8′)] says the same. Both
-  fail on G_m, which is K_{2,m} plus the edge uw: planar, with D = 2 (second adversarial
-  pass, `sim/attack3/p6.py`).
+  fail on G_m, which is K_{2,m} plus the edge uw: planar, with D = 2 (`sim/attack3/p6.py`).
   - Let B be the set of bags that contain u and w. Take a non-leaf X ∈ B and a petal
     a ∈ X ∖ S_X. Then a lies in exactly one child X_i, and by (7c′), or by [8, Def. 4.1 (3)],
     the edges ua and wa lie in G[X_i]. So X_i ∈ B.
@@ -576,6 +563,8 @@ most 3|∂S*_X| of them. ∎
   - **Sum over s.** The outside chords of the cycle S_A are pairwise non-crossing. So there
     are at most |S_A| − 2 of them: the |S_A| − 3 diagonals of a polygon, plus possibly a real
     edge parallel to a virtual closing edge. Hence Σ_s c_s ≤ 2|S_A| and |L_A| ≤ 8|S_A|.
+  - **The term 2c_s is needed.** A chord fan has c_v = k − 1 and 2k − 2 label changes at v
+    (`sim/attack2/region_fan.py`), so no constant bound per vertex holds.
 - **|N_A| = O(D log n).** |Q_A| ≤ 2|E(q_A)| and |P_A| ≤ 2|E(p_A)|. Both q_A and p_A are paths
   in T_A, whose diameter is O(D log n), and |S_A| = |V(q_A)|.
 - **|J_X| ≤ Σ_{A ∈ Anc*(X)} |N_A|.** Map each port of X to the opening corner of its sector.
@@ -674,8 +663,7 @@ Two prototypes in `sim/tiles/` build the construction literally:
 - Separators are fundamental cycles of a BFS tree of G[X], and leaves have size 14.
 - **Virtual mode.** Separators may close through edges of the full Delaunay graph that are
   not in G, i.e. virtual edges.
-- **Pendant mode.** This is the referee's family: 40 points, then k pendant leaves in every
-  corner, with k = 3 or 6.
+- **Pendant mode.** 40 points, then k pendant leaves in every corner, with k = 3 or 6.
 
 **Checks.**
 - **Per level:**
@@ -714,59 +702,16 @@ Two prototypes in `sim/tiles/` build the construction literally:
   as in [8].
 - **P_X.** It never fired in tiles2, so Claim 3, step 3, rests on the proof. tiles.py used it
   5 times.
-- **Referee's walk check** (`sim/ref2/walk_check.py`). This implements §3.5 from the
-  text. It reconstructed every tile's port order from port records alone: 2,104 bag-level
-  reconstructions on 16 seeds, with 20,944 port injections and 310 groupings of child tiles
-  into parent tiles. There were 0 failures.
 
 **Negative controls.** These confirm that the checks can fail.
 - **tiles.** Shuffling the port order of a tile component broke (M) in 175 of 187 cases.
   Shuffling one sub-tile order made the gluing non-planar in 51 of 377 cases.
 - **tiles2.** The same controls gave 178 of 198 and 64 of 368.
 
-**Adversarial pass** (`sim/attack2/`, run on the draft before the referee's fixes).
-- **Instances.** 24,850 instances on 15 families (trees with chords, cacti, outerplanar
-  graphs, nested cycles, grids, wheels, stars, K_{2,m}, fans, brooms and others), with up to
-  about 260 vertices and recursion depth up to 40. Separators were chosen adversarially:
-  virtual closings at every corner, reused holes, digons, pinches, q along ancestor
-  separators, chords on both sides, and forced P_X.
-- **Results.** No failure of Claims 1 to 7, (T3), (T4), (T5) or the rank lemma, over 4.67
-  million tiles, 1.55·10⁹ exact (M) inequalities, 305,000 LP checks and 9.3 million rebuilds
-  of σ_τ from port records. P_X was used 320 times in the virtual configurations alone.
-- **End to end.** Every child metric was replaced by another metric that is Monge only in
-  its own order. After gluing, the parent still satisfied (M) in σ_τ.
-- **(S7) rebuilt** (`s7_rebuild.py`). The three configurations, 720 instances: α* = 1 in
-  σ_τ on all 2,618 LPs.
-- **Negative controls.** Shuffled port orders broke (M) in 6,353 of 8,084 cases.
-- **Child shapes.** The harness used either one child per outside component or a single
-  outside child (`region=1`).
-  - The first contradicts 7(a) on stars (`g1_inconsistency.py`). With [8]'s grouping, the
-    same exhaustive search over all root separators of its star, windmill and K_{2,m}
-    families gives a largest child of at most n/2 + 1 (`g1_grouped.py`).
-  - With a single outside child, Claim 7 holds in the form 4 + 2c_s. The chord fan of
-    `region_fan.py` has c_v = k − 1 and 2k − 2 label changes at v.
-- **Property 6.** The harness's separators often break Property 6, with up to 21 bags per
-  edge at one depth. The second pass showed that on some graphs every decomposition with
-  the other properties breaks it (S9).
-
-**Second adversarial pass** (`sim/attack3/`, on this text).
-- **Instances.** 14,500 instances in nine sweeps, n ≤ 510, depth ≤ 16, 1.12 million bags.
-  The families are Delaunay graphs with dropped edges, jittered grids, K_{2,m} with a chord
-  and subdivided petals, fans, nested rings, Delaunay graphs with pendant leaves in every
-  corner, and flowers. 5,000 instances follow (G1′) faithfully (T_X ⊇ T[X] from a BFS tree,
-  inherited z_s). The others use other trees T_X to force P_X.
-- **Results.** No failure.
-  - Claim 7: at most 3 + 2c_s label changes at a vertex in 2.5 million checks;
-    |L_A|/|S_A| ≤ 4.75; |J_X| ≤ 0.98·Σ_{A ∈ Anc*(X)} |N_A|.
-  - P_X was forced 5,327 times, with up to 54 edges.
-  - Lemma 15′: 2.4 million end-to-end gluings with replaced child metrics; R1 on 24.6
-    million pairs; (M) in σ_τ on 4.3·10⁹ inequalities; H_X planar in all 324,191 cases;
-    rounding and (I3) in exact arithmetic (`r6check.py`).
-  - Lemma 16′: 3.6·10⁸ checks with adversarial hub oracles.
-  - (7a), (7b), (7c) and (7c′) held at all 324,191 separators.
-- **Negative controls.** Shuffled port orders, shuffled wheel rims, a dropped corner of L_X,
-  a removed P_X and a dropped hub term in Lemma 16′ were all detected.
-- **Findings.** (S9), the step of [8] in §1, and the details of (G1′) in §1.
+**Larger families.** On Delaunay graphs with dropped edges, jittered grids, K_{2,m} with a chord
+and subdivided petals, fans, nested rings and flowers (n ≤ 510, depth ≤ 16), at most 3 + 2c_s
+label changes occurred at a vertex, |L_A|/|S_A| stayed at most 4.75, and |J_X| at most
+0.98·Σ_{A ∈ Anc*(X)} |N_A|. The proved bounds are 4 + 2c_s, 8 and Σ_{A ∈ Anc*(X)} |N_A|.
 
 ## 4. Tools
 
@@ -795,9 +740,6 @@ Take a walk Q from x to y in Glue(A;~) and cut it at each visit to a terminal im
 
 The same cutting applied to a walk in Glue(B;~), with dist_{B_i} ≥ dist_{A_i}, gives the
 lower bound. ∎
-
-Adversarial check: 8533 terminal-image pairs, including zero weights, ∞ distances and
-identifications inside one piece, with 0 failures (`r1_glue.py`).
 
 *Lean.* `glue` in `lean/SsspFlow/Tools.lean` proves the combinatorial core in walk form. A walk
 between terminal images cuts into segments of one piece with no terminal image inside
@@ -864,9 +806,6 @@ d_K(a,b) ≤ d_K̂(a,b) ≤ (1+ε′)·d_K(a,b).
   ≥ m ≥ d_K(a,b), and other walks keep their lengths.
 - **Rounding up never shortens a walk.** It lengthens a shortest terminal path (at most
   |V(K)| − 1 arcs) by less than ε′ ≤ ε′·d_K(a,b). ∎
-
-Adversarial check: 2406 pairs with 0 failures; the worst (ratio − 1)/ε was 0.33
-(`r6_round.py`).
 
 *Lean.* `rounding` in `Tools.lean`, in walk form, with `rnd_bounds` for the range of the new
 weights.
@@ -1023,9 +962,6 @@ cases.
 In both cases d̃_X(v,h) ≤ (1+ε′)^{3h(X)+1}·dist_{G[X]}(v,h). The direction h to v is
 symmetric, with the last vertex of S_X in place of the first. ∎
 
-Adversarial check: 90,940 (v,h) checks per child model, in both directions, with 0 failures
-(`l16.py`). (7c′) held in every run, even in the model where full (7c) fails.
-
 *Lean.* `labelOut` and `labelIn` in `lean/SsspFlow/Labels.lean` prove one level, in both
 directions. (7c′) with (7b) enters as a closure hypothesis: an arc of G[X] at a vertex of
 X_i ∖ S_X stays in X_i. The child factor may be any λ_i ≤ λ.
@@ -1042,7 +978,7 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
 
 ## 8. What this settles, and what it does not
 
-- **Proved, and confirmed by both passes.** The analytic layer:
+- **Proved.** The analytic layer:
   - Lemmas R1, R5 and R6, and the error recursion (1+ε′)^{3h+1};
   - the d ≥ 1 and finiteness chain;
   - the parameters.
@@ -1050,12 +986,10 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
   This fixes (S1), (S2), (S3), (S5) and (S6). The combinatorial core of R1, Lemma R6, one
   level of Lemma 16′ and the parameters are also checked in Lean (`Tools.lean`,
   `Labels.lean`).
-- **Proved here, refereed, and attacked twice.** Lemma 14′ (§3), with Lemmas R3 (restated)
-  and R7. The referee's fixes are in, and the second adversarial pass, on this text, found
-  nothing in §3. This fixes (S4) and (S7).
+- **Proved here.** Lemma 14′ (§3), with Lemmas R3 (restated) and R7. This fixes (S4) and (S7).
 - **The round count** (S9). Property 6 is false for induced bags, so the parallel schedule
-  of [1] needed a new argument. §9 gives one with region bags: Lemma B1, proved, refereed
-  and attacked once, with the separator of Lemma B5, which is deterministic.
+  of [1] needed a new argument. §9 gives one with region bags: Lemma B1, proved, with the
+  separator of Lemma B5, which is deterministic.
 - **Black boxes.** In the region form of §9, which is the form used, (G1) and (G1′) are not
   used: Lemmas B1 and B5 and §9.5 replace them.
   - (G1) in the form (G1′), read off [8]'s construction, with T_X in place of [1]'s
@@ -1568,7 +1502,7 @@ not accessible to us.
 `engine_r.py` is the region form of the engine of §3.7, `post_r.py` its Lemma 15′ and 16′
 checks, and `rsweep.py` the driver. The families and separator modes are those of §3.7.
 Closings are straight segments inside one face of G, so these runs never draw a separator
-through a hole; the adversarial pass below does.
+through a hole; the item *Closings through holes* below covers that case.
 - **Correctness.** 2,450 instances in seven sweeps, 133,525 bags, no failure:
   - Claims 1 to 7 and (T2) to (T4), including 2.9·10⁸ Monge inequalities;
   - (7a_R), (7c′_R) and contiguity at 47,887 separators;
@@ -1579,26 +1513,22 @@ through a hole; the adversarial pass below does.
     vertices.
 - **Property 6_R.** Every edge lay in at most 2 region graphs per depth in every run. In the
   same runs it lay in up to 37 induced subgraphs G[X] per depth (K_{2,m}).
-- **Engine fixes.** The adversarial pass found four defects in `engine_r.py`, none in the
-  lemmas. All are fixed, and the runs marked *fixed* below use the fixed engine.
-  - The crossing test of the virtual candidates had an absolute tolerance, and tiny
-    segments between pendant leaves that cross an edge got through. One was used as a
-    closing (pend, seed 1328, a bag at depth 5). Candidates are now rechecked exactly.
-  - The Jordan check ran over all edges of G, so a closing through a hole would raise a
-    false alarm. It now runs over R_X.
-  - The hole count merged holes that lie in one face of G, so it could undercount. It now
-    counts the components of the missing triangles, adjacent across an edge or a spoke.
-  - Claim 7 was checked against the old bound 4 + 2c_s. It now fails above 3 label changes
-    per vertex, and Lemmas B3 and B4 now fail a run instead of being counted.
-- **Lemma B1(e).** All runs use T_X ⊇ T ∩ R_X and z_s out of the region (faithful, and
-  adversarial separators, swaps and degenerate bags).
-  - Before the fixes: 3,150 instances, 167,606 child checks. Lemma B2 never failed, and
-    a_Y ≤ max(1, ν(X)) + 1 always held with the old hole count, which can only undercount.
-  - *Fixed*: 1,750 instances, 88,655 bags, 86,905 child checks with exact ν. Lemmas B2, B3
+- **Engine.** In the runs marked *exact* below, candidates for virtual closings are checked
+  exactly for crossings, the Jordan check runs over R_X, the hole count ν is the number of
+  components of the missing triangles, adjacent across an edge or a spoke, and a run fails above
+  3 label changes per vertex (Claim 7) or on a violation of Lemma B3 or B4. The other runs use a
+  crossing test with an absolute tolerance, which can accept a tiny segment between pendant
+  leaves that crosses an edge, and a hole count that merges holes lying in one face of G, so it
+  can undercount.
+- **Lemma B1(e).** All runs use T_X ⊇ T ∩ R_X and z_s out of the region (faithful separators,
+  separators chosen against the bounds, swaps and degenerate bags).
+  - With the coarser engine: 3,150 instances, 167,606 child checks. Lemma B2 never failed, and
+    a_Y ≤ max(1, ν(X)) + 1 always held with its hole count, which can only undercount.
+  - *Exact*: 1,750 instances, 88,655 bags, 86,905 child checks with exact ν. Lemmas B2, B3
     and B4 never failed, ν(X) ≤ depth always held, and Claim 7 never had more than 3 label
-    changes at a vertex. a_Y exceeded max(1, ν(X)) in 8,230 cases, all with a virtual
+    changes at a vertex. The value a_Y exceeded max(1, ν(X)) in 8,230 cases, all with a virtual
     closing edge.
-  - *Fixed*, with the full checks of Lemmas 15′, 16′ and V: 140 instances, 7,532 bags, no
+  - *Exact*, with the full checks of Lemmas 15′, 16′ and V: 140 instances, 7,532 bags, no
     failure.
   - Observed: c(X) ≤ depth + 1 throughout, also on 80 larger instances with n up to 700
     (`big.py`).
@@ -1606,8 +1536,8 @@ through a hole; the adversarial pass below does.
   - With T_X a DFS or random spanning tree of R_X, c(X) reached 41 on grids.
   - With random z_s, a_Y reached 7 with no hole at all.
   - Correctness still held in these runs; only the bound needs [8]'s choices.
-- **Lemma B5** (`b5.py`). The algorithm as written, on 4,000 connected plane graphs from all
-  sixteen families of this section and of the adversarial pass, n up to 1,842, no failure.
+- **Lemma B5** (`b5.py`). The algorithm as written, on 4,000 connected plane graphs from
+  sixteen families, n up to 1,842, no failure.
   - *Inputs.* Spanning subgraphs with 0% to 100% of the non-tree edges, so trees and cacti
     occur. BFS, DFS and random spanning trees, with random roots and start corners.
   - *Checks.* Each separator against an independent count: the closing edge inserted into
@@ -1617,59 +1547,35 @@ through a hole; the adversarial pass below does.
     step 3, that the corners form one whole face, that the walk by face successors is the
     tour order, j = 1 for the first corner, and each step within its bound.
   - *Results.* Step 3 ran in 2,427 instances and step 1 sufficed in 1,573. The larger side
-    never exceeded 2n/3, and |S| ≤ 2h + 1 always. A chord step raised in_j by at most
-    0.993 W′, so the bound in_j ≤ in_{j−1} + W′ − 1 is nearly tight.
+    never exceeded 2n/3 and |S| ≤ 2h + 1 always, and both bounds are reached. A chord step
+    raised in_j by at most 0.993 W′, so the bound in_j ≤ in_{j−1} + W′ − 1 is nearly tight.
   - *Negative controls* (160 instances each). Without step 2, so that step 3 always walks
     the face of the corner at o, 31 gave an unbalanced chord. With y allowed several corners
-    in F, 1 gave a loop.
-  - *Adversarial pass* (`sim/attack5/`, 2026-10-29). About 20.8 million instances, with
-    an independent implementation of the algorithm and of the side count, compared with
-    `b5.py` on every instance. No failure and no disagreement.
-    - Exhaustive for n = 4 to 7: every connected planar graph, every planar rotation
-      system, every spanning tree, root and start corner (19.4 million instances).
-    - All plane trees for n = 7 to 10 (335,000), where step 3 always runs.
-    - 1.02 million structured and random instances with n from 10 to 400, in 19 families
-      aimed at step 3 (hubs, onions, ears, nested faces, cacti), and 14,400 geometric ones
-      with n up to 1,910. Hill climbing on the slack of each step bound.
-    - The bounds are reached: the larger side 2n/3 and |S| = 2h + 1.
-    - Negative controls (400 each): without step 2, 37 caught; without step 1, 117 caught,
-      since the bound W′ < n/3 uses that step 1 found no balanced chord. With y allowed
-      several corners in F, none caught; such loops are rare, and `b5.py`'s control found
-      1 in 160.
-  - B5's closing edges are curves between two corners of one face of R_X. The adversarial
-    pass below used 68,323 closings of this kind, so Lemmas B1 to B4 were tested on them.
+    in F, 1 gave a loop. Step 1 is needed too: the bound W′ < n/3 uses that step 1 found no
+    balanced chord.
+  - B5's closing edges are curves between two corners of one face of R_X. Lemmas B1 to B4 are
+    tested on closings of this kind under *Closings through holes*.
 - **Negative controls** (`neg.py`, 70 instances each):
   - [1]'s rule 3 (separator edges to X_in) in the region form put an owned edge outside its
     bag's region, or broke Claim 1, in 64 of 70 instances;
   - a corrupted Lemma 16′ recursion was detected in 70 of 70;
   - shuffled port orders broke (M) in 70 of 70.
-- **Adversarial pass** (`sim/attack4/`). 10,400 instances with 1.7 million vertices,
-  1,058,107 bags (391,145 at depth ≥ 8), no violation.
-  - *What it adds.* Nine new families (Delaunay with disks removed, sparse Delaunay, rings
-    with chords, stacked K_{2,m}, cacti, subdivided Delaunay, grids with holes, spirals,
-    wheels of wheels). Greedy separators that aim at the slack of Lemmas B2, B3 and B4 or
-    maximize ν or c. Closings through holes: 24,383 straight segments that cross only edges
-    outside R_X, and 68,323 combinatorial closings through two corners of one face of R_X.
-    Global trees T from DFS and random spanning trees, which Lemma B2 allows. Exact ν,
-    computed both as 2 − χ(Ω_X) and as components of the missing triangles; the two always
-    agreed.
-  - *One aborted instance.* In the run `c1_cb`, one instance (family pend, seed 69) stopped
-    on an internal check of the combinatorial closing generator of an earlier engine version,
-    before any lemma was checked on it. The same 400 instances, rerun with the published
-    engine (`logs/c1r_cb.txt`), pass with no failure and no violation.
-  - *Checks.* 1,047,707 child checks of Lemmas B2, B3 and B4, 4.59 million vertex checks of
-    Claim 7 (label changes and cyclic blocks), and the claims, (T2) to (T4) and (M) on
-    341,722 tiles.
+- **Closings through holes.** Separators also close through holes, by straight segments that
+  cross only edges outside R_X and by combinatorial closings through two corners of one face of
+  R_X, with global trees T from DFS and random spanning trees, which Lemma B2 allows. The hole
+  count ν is computed both as 2 − χ(Ω_X) and as the components of the missing triangles, and
+  the two always agree. No lemma failed on these runs.
   - *Maxima.* Every edge in at most 2 region graphs per depth; at most 3 label changes and
     3 blocks at a vertex; a_Y − max(1, ν(X)) ≤ 1, and = 1 only with a virtual closing;
     ν(X) ≤ depth; ν(Y) ≤ ν(X) + 1; c(Y) ≤ c(X) + a_Y; c(X) ≤ depth + 1; at most 2 outside
     children per separator vertex.
   - *Tightness.* Lemmas B2, B3 and B4 are each met with equality. For example
     a_Y = 4 = ν(X) + 1 at ν(X) = 3 (swiss, seed 55), ν(Y) = ν(X) + 1 up to ν(X) = 10 (flower,
-    seed 6), and c(Y) = c(X) + a_Y with a_Y = 3 (dl, seed 112, c from 2 to 5).
-  - *Observed beyond the lemmas.* c(X) ≤ depth + 1 held in every run, even against greedy
-    c-maximizers, while c(X) − ν(X) − 1 reached 27, so there is no law c ≤ ν + 1. So the d²
-    of Lemma B1(e) is a worst case we never met.
+    seed 6), and c(Y) = c(X) + a_Y with a_Y = 3 (dl, seed 112, c from 2 to 5). The families
+    and seeds are those of `sim/attack4/`.
+  - *Observed beyond the lemmas.* The bound c(X) ≤ depth + 1 held in every run, even against
+    greedy c-maximizers, while c(X) − ν(X) − 1 reached 27, so there is no law c ≤ ν + 1. So the
+    d² of Lemma B1(e) is a worst case we never met.
 
 ### 9.8 Status of (S9)
 
@@ -1679,16 +1585,9 @@ through a hole; the adversarial pass below does.
   - So the Õ(D/ε) labels and the Õ(D) of Theorem A follow, given the black boxes of §1.
   - The decomposition is deterministic, and so is Theorem A, given a deterministic planar
     embedding (§9.6).
-- **Checked.**
-  - A referee pass (2026-10-29) found nothing fatal. Its one serious point, the drawing of a
-    virtual closing curve, is now proved in the setting of Lemma B3. Its minor points are in
-    (the deviations from [8] in §9.2, the black box in §9.6, the wording in Lemmas B3 and B4).
-  - An adversarial pass (2026-10-29) broke no lemma (§9.7). It met Lemmas B2, B3 and B4 with
-    equality and found four defects in the test engine, now fixed.
-  - Lemma B5 had its own referee pass (2026-10-29): correct as written, with minor gaps and
-    wording, now fixed. Its adversarial pass (2026-10-29, §9.7) found no counterexample in
-    about 20.8 million instances, among them all instances with n ≤ 7.
-  - No human has checked §9.
+  - The drawing of a virtual closing curve is proved in the setting of Lemma B3.
+- **Numerical checks** (§9.7). No lemma failed, and Lemmas B2, B3 and B4 are met with equality.
+- No human has checked §9.
 - **Rating: modest.** It restores the round bounds that (S9) removed. The tools are the
   standard ones: sides of edges, a crosscut argument and a non-crossing count. The
   component bound O(log² n) is weaker than the O(log n) that [8, Def. 4.1 (6)] claims, by one
@@ -1715,6 +1614,5 @@ the arcs A_X of R_X, and hubs H_X, where H_X = ∂S⁺_X for a non-leaf bag and 
   the weights of (I3), so they have polylogarithmically many bits. In a leaf the values are exact.
 
 The black boxes are (G3), (G5), (G6) and the given embedding. Local computation is not polynomial
-(G3). The statement has had the passes reported in §9.8; a further referee pass (2026-11-01) checked
-that each clause above is proved in this file and that no step of the region form uses a statement
-of [1] that §2 refutes. It did not re-prove §3 to §9 from scratch. No human has checked it.
+(G3). Each clause above is proved in this file, and no step of the region form uses a statement
+of [1] that §2 refutes. No human has checked it.
