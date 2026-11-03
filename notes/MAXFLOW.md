@@ -3,6 +3,8 @@
 **Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. One referee pass (2 Nov 2026) found no fatal error, and one adversarial pass (3 Nov 2026) found one real failure, on parallel arcs, now fixed, and no counterexample on simple networks. All corrections are in this text, see Section 7. No human
 has checked it. It rests on the Label Hypothesis of [1] and on one extension, (L3). (L3) does not follow from the Hypothesis as a statement; Section 5 obtains it from the construction in `notes/LEMMA15.md`, so the theorem rests on that construction and on its black boxes (G3), (G5), (G6) and the embedding, with local computation that is not polynomial. Importance if it survives: significant.
 
+**A route without (L3).** `notes/NEGATIVE.md` reaches the same bound, randomized, from the Label Hypothesis alone, by a polylogarithmic reduction for negative weights. It does not need this note, and it is much simpler. This note stays of interest as the deterministic route relative to the labels, and for the method.
+
 **Comparison.** The best exact bounds were Õ(D²) [2], which is randomized and unconditional, and D·n^{o(1)} [1], which is randomized and conditional. So this claim does not dominate [2] unconditionally. [3] calls finding the flow assignment in Õ(D) rounds an open question, in the context of its unconditional undirected (1−o(1))-approximation. This note answers it conditionally, and for exact directed flow.
 
 The model is CONGEST on a connected planar network with n vertices and hop diameter D, with a known embedding. Õ hides factors

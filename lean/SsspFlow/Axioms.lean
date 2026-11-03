@@ -38,3 +38,14 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.FlowScaling.reduced_path
 #print axioms SsspFlow.FlowScaling.floor_of_min
 #print axioms SsspFlow.FlowScaling.exact_feasible
+#print axioms SsspFlow.NegScaling.round_low
+#print axioms SsspFlow.NegScaling.round_back
+#print axioms SsspFlow.NegScaling.round_cycle
+#print axioms SsspFlow.NegScaling.bound_drops
+#print axioms SsspFlow.NegScaling.low_phase
+#print axioms SsspFlow.NegScaling.hop_recover
+#print axioms SsspFlow.NegScaling.cycle_up
+#print axioms SsspFlow.NegScaling.cycle_neg
+#print axioms SsspFlow.NegScaling.alt_bound
+#print axioms SsspFlow.NegScaling.short_in_cluster
+#print axioms SsspFlow.NegScaling.forward_arc

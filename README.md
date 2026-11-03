@@ -17,6 +17,9 @@ A newer claim, after the paper and not part of it: exact maximum st-flow in dire
 $\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs one extension of the labels, a prescribed root cycle. See
 [`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026. One referee pass and one adversarial pass; no counterexample on simple networks, one failure on parallel arcs, fixed, all corrections applied. It rests on the construction in `notes/LEMMA15.md`, not only on the Label Hypothesis; treat it as a claim.**
 
+A newer and simpler claim, after the paper and not part of it: exact SSSP with negative weights, and exact maximum st-flow in directed planar networks with the flow on every edge, in
+$\tilde O(D)$ rounds with high probability, from the Label Hypothesis alone, with no extension of the labels. Perfect matching of planar bipartite networks follows in the same bound. It replaces the reduction of [6] in Theorems B and C by a published reduction with polylogarithmic overhead (SOSA 2025, arXiv:2410.20959). **The open question in the paper on the factor $n^{o(1)}$ was already answered by that reduction, which our literature search missed. The statements of Theorems B and C below are correct, but they are weaker than what follows.** See [`notes/NEGATIVE.md`](notes/NEGATIVE.md). **Written on 3 Nov 2026. Treat it as a claim; no referee or adversary has reported yet.**
+
 A second newer claim, also not part of the paper: in undirected unweighted planar networks every vertex learns its exact eccentricity, so the diameter and radius are found, in
 $\tilde O(D^2)$ rounds, where the best stated bound for the diameter is $\tilde O(D^3)$. It does not need the Label Hypothesis. A corollary gives every vertex its sum of distances, so closeness, a medoid and the Wiener index, in the same bound. The (1+ε)-approximate version takes $\tilde O(D + \varepsilon^{-4})$ rounds, see [`notes/APPROX_DIAMETER.md`](notes/APPROX_DIAMETER.md). See [`notes/DIAMETER.md`](notes/DIAMETER.md). **Written on 3 Nov 2026. Exact note: one referee pass and one adversarial pass, no counterexample on the current text. Approximate note: one referee pass and one adversarial pass, no counterexample. Treat both as claims.**
 
@@ -280,6 +283,8 @@ are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_c
 
 ### Theorem B (negative weights)
 
+The bound below is that of the paper. [`notes/NEGATIVE.md`](notes/NEGATIVE.md) claims $\tilde O(D)$ with high probability.
+
 **Theorem B.** Let $G$ be a planar digraph with integer weights of polynomial size, possibly
 negative, hop diameter $D$ and source $s$. A CONGEST algorithm either computes exact distances
 from $s$ or reports a negative cycle, in $D\cdot(\log n)^{O(\sqrt{\log n})}=D\cdot n^{o(1)}$ rounds
@@ -291,6 +296,8 @@ minor-aggregation steps. On planar networks these cost $\tilde O(D)$ through low
 shortcuts [9, Cor. 4.6, Lemma 4.8]. Negative cycles are already reported by [6, Thm 60].
 
 ### Lemma D, Theorem C and Theorem C′ (maximum flow)
+
+The bound of Theorem C below is that of the paper. [`notes/NEGATIVE.md`](notes/NEGATIVE.md) claims $\tilde O(D)$ with high probability.
 
 **Lemma D.** Take the face-disjoint graph $\hat G$ of [9, Sec. 3]. It has a star centre for
 every vertex, a copy of the vertex for every corner, a cycle $E_R$ through the corners of each
@@ -436,6 +443,7 @@ standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorr
   within $1+\varepsilon$ of the distances in each bag. The hypotheses on the hierarchy follow
   from the decomposition's separation property. No finiteness is assumed.
 - `lean/SsspFlow/LemmaD.lean`: Lemma D.
+- `lean/SsspFlow/NegScaling.lean`: the arithmetic of the scaling, the alternation, the short paths in a cluster and the arc inequality of `notes/NEGATIVE.md`.
   - `Setup.negCycle_iff`, `Setup.walks` and `Setup.lemmaD` prove it for any graph with the
     face-cycle, dual-dart and star structure of $\hat G$; parallel arcs and loops are allowed.
   - `rotSetup` builds $\hat G$ from a combinatorial map, `rot_pair` shows that both arcs of an
