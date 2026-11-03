@@ -1,6 +1,6 @@
 # Negative weights and exact maximum flow in Õ(D) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/negative/`, elementary core in `lean/SsspFlow/NegScaling.lean`. Referee and adversary not yet run. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1], and on published black boxes of [2] and [3]. Importance: the bound is significant if [1] stands, the new mathematics is minor. Nearly all of the proof is the reduction of [2] with the algorithm of [1] as its oracle.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/negative/`, elementary core in `lean/SsspFlow/NegScaling.lean`. One referee pass and one adversarial pass on 3 Nov 2026 broke no theorem. They found one false lemma bullet, which comes from a false corollary in [3] and is repaired in Section 8, and one proof step missing in Corollary 5. All corrections are made here, and their records are in Sections 11 and 12. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1], on a known embedding, and on published black boxes of [2], [3], [4] and [5]. Importance: modest. The bound would be significant, but only given the Hypothesis, whose local computation is not polynomial, and the new mathematics is minor. Nearly all of the proof is the reduction of [2] with the algorithm of [1] as its oracle.
 
 **A correction to [1].** The paper [1] lists the removal of the factor n^{o(1)} as open and says that it would need a reduction for negative weights with polylogarithmic overhead. That reduction was already published in [2], and our literature search missed it. The Negative Weights Theorem, part (b) of the Dual SSSP Corollary and the Maximum Flow Theorem of [1] are still correct as stated, but they are weaker than what follows from [1] and [2].
 
@@ -8,9 +8,9 @@ The model is CONGEST on a connected planar network with n vertices, hop diameter
 
 ## 1. Results
 
-**Theorem 1 (negative weights).** Let G be a planar digraph with integer weights of polynomial size, possibly negative, and source s. Given the Label Hypothesis, in Õ(D) rounds with high probability, either every vertex learns dist(s, v), or all vertices learn that G has a negative cycle. The algorithm also gives integer potentials φ with w(u, v) + φ(u) − φ(v) ≥ 0, which the vertices check locally, so an answer with distances is always right. A report of a negative cycle is wrong with probability at most n^{−c}.
+**Theorem 1 (negative weights).** Let G be a planar digraph with integer weights of polynomial size, possibly negative, and source s. Given the Label Hypothesis, in Õ(D) rounds with high probability, either every vertex learns dist(s, v), or all vertices learn that G has a negative cycle. The algorithm also gives integer potentials φ with w(u, v) + φ(u) − φ(v) ≥ 0. An answer with distances passes the local checks of Proposition 7, so it is always right. A report of a negative cycle is wrong with probability at most n^{−c}, and Proposition 7 also removes this error, with O(log nW) more tests.
 
-**Theorem 2 (maximum flow).** Let G be a directed planar network with terminals s, t and integer capacities of polynomial size. Given the Label Hypothesis, every vertex learns the value of a maximum st-flow and the flow on each of its edges, and a minimum st-cut, in Õ(D) rounds with high probability. The output is certified by the cut, so it is always right.
+**Theorem 2 (maximum flow).** Let G be a directed planar network with terminals s ≠ t and integer capacities of polynomial size. Given the Label Hypothesis, every vertex learns the value of a maximum st-flow and the flow on each of its edges, and a minimum st-cut, in Õ(D) rounds with high probability. The output passes the local checks of Proposition 7, so it is always right.
 
 **Corollary 3 (dual distances).** Part (b) of the Dual SSSP Corollary of [1] holds in Õ(D) rounds.
 
@@ -18,19 +18,21 @@ The model is CONGEST on a connected planar network with n vertices, hop diameter
 
 **Corollary 5 (perfect matching, degrees).** In Õ(D) rounds with high probability: a perfect matching of a planar bipartite network, or the report that it has none; more generally a subgraph with prescribed degrees on a planar bipartite network; and an orientation of a planar network with prescribed out-degrees, or the report that it has none.
 
-**Corollary 6 (minimum mean cycle).** Every vertex learns min_C w(C)/|C| over the cycles of a planar digraph in Õ(D) rounds with high probability.
+**Corollary 6 (minimum mean cycle).** Every vertex learns min_C w(C)/|C| over the cycles of a planar digraph, or that it has no cycle, in Õ(D) rounds with high probability.
 
 All of these are given the Label Hypothesis. A path gives Ω(D) for Theorems 1 and 2, so these bounds are optimal up to polylogarithmic factors.
 
 | Problem | Best before | Here |
 |---|---|---|
-| Exact SSSP, negative weights | Õ(D²) [5]; D·n^{o(1)} given the labels [1] | Õ(D) given the labels |
+| Exact SSSP, negative weights | Õ(D²) as stated in [6, Sec. 1.1], [5] has the dual statement; D·n^{o(1)} given the labels [1] | Õ(D) given the labels |
 | Exact maximum st-flow, directed | Õ(D²) [5]; D·n^{o(1)} given the labels [1]; Õ(D) given the labels and (L3), `notes/MAXFLOW.md` | Õ(D) given the labels |
 | Perfect matching, planar bipartite | Õ(D²) with no hypothesis, in the matching repo | Õ(D) given the labels |
 
 **Relation to `notes/MAXFLOW.md`.** That note reaches the same bound for Theorem 2 by scaling over portals. It needs the extra hypothesis (L3), and in return it is deterministic relative to the labels. Theorem 2 needs no (L3), and it is randomized. Theorem 2 is the simpler route.
 
-**What is new.** Little. The reduction is [2], its low-diameter decomposition and order are [3], the oracle is [1], and the corollaries are the reduction of [4]. We add the alternation of Lemma 1, which keeps every oracle call on the planar network, the merging of the calls, a self-contained form of the scaling with its behaviour on negative cycles, and two small repairs, listed in Section 8. Web searches on 3 Nov 2026 found no earlier statement of Theorem 1 or 2 with Õ(D) rounds, which is not proof that none exists. Such a statement needs an exact Õ(D) oracle for nonnegative weights, which earlier work did not have.
+**The core without the Hypothesis.** This note uses [1] only through (O). So any (O) that takes T rounds gives negative weights in Õ(T + D) rounds, and any (O) on Ĝ that takes T rounds gives Theorem 2 in Õ(T + D) rounds. That part survives even if the Hypothesis falls.
+
+**What is new.** Little. The reduction is [2], its low-diameter decomposition and order are [3], the oracle is [1], and the corollaries are the reduction of [4]. The alternation of Lemma 1 is [3, Algorithm 7, Lemma 41, Cor. 45], and [2, Section 2.3] names it as earlier work, the interwoven Dijkstra and Bellman-Ford. The merging of calls is [3, Cor. 27]. We add their use across all clusters at once through offsets, a self-contained form of the scaling with its behaviour on negative cycles, the certified negative side of Proposition 7, which a referee proposed, and three repairs, listed in Section 8. Web searches on 3 Nov 2026 found no earlier statement of Theorem 1 or 2 with Õ(D) rounds, which is not proof that none exists. Such a statement needs an exact Õ(D) oracle for nonnegative weights, which earlier work did not have.
 
 ## 2. Tools
 
@@ -40,14 +42,16 @@ Write w_φ(u, v) = w(u, v) + φ(u) − φ(v). For a set of arcs, dist(V, v) is t
 
 **(M), minor aggregation.** A step of the Distributed Minor-Aggregation Model takes Õ(D) rounds on planar networks [5, Cor. 4.6, Lemma 4.8].
 
-**Lemma 2 (decomposition) [3, Lemma 4, Cor. 27; Lemma 5, Prop. 32, Cor. 33].** Given nonnegative integer weights of polynomial size and an integer d ≥ 1, with high probability, every vertex gets an integer index idx(v) of polynomial size, such that:
+**Lemma 2 (decomposition) [3, Lemma 4, Cor. 27; Lemma 5, Prop. 32, Cor. 33].** Given nonnegative integer weights of polynomial size and an integer d ≥ 1, every vertex gets an integer index idx(v) of polynomial size, such that:
 
-- vertices with equal index form a *cluster*, and any two u, v in a cluster have dist(u, v) ≤ d and dist(v, u) ≤ d in the whole graph with these weights;
-- an arc is *cut* if it goes from a larger index to a smaller one, and it is cut with probability at most Q·w(e)/d + n^{−8}, with Q = O(log² n).
+- vertices with equal index form a *cluster*, and with high probability any two u, v in a cluster have dist(u, v) ≤ d and dist(v, u) ≤ d in the whole graph with these weights;
+- an arc is *cut* if it goes from a larger index to a smaller one, and it is cut with probability at most Q·w(e)/d + O(n^{−8}), with Q = O(log² n).
+
+As stated in [3], the first bullet is false. This is the form with the repair of Section 8.
 
 This takes Õ(1) calls of (O) and Õ(1) steps of (M). With E^rem = ∅ the same indices give the strong components in topological order, in O(log² n) calls of (O).
 
-The set E^rem of [3, Lemma 4] is the set of removed arcs, and the clusters are the strong components without it, in the order of [3, Prop. 32], whose labels decrease along arcs, so idx is a constant minus the label. A cut arc lies in E^rem. In [3, Cor. 27], recursive calls on vertex-disjoint sets are merged into one call of (O), by a large weight on the arcs between the sets.
+The set E^rem of [3, Lemma 4] is the set of removed arcs, and the clusters are the strong components without it, in the order of [3, Prop. 32], whose labels decrease along arcs, so idx is a constant minus the label, once the labels are repaired as in Section 8. A cut arc lies in E^rem. In [3, Cor. 27], recursive calls on vertex-disjoint sets are merged into one call of (O), by a large weight on the arcs between the sets.
 
 ## 3. Few negative arcs
 
@@ -73,7 +77,7 @@ For all levels we show: A(ℓ): for each r and each cluster S, min_φ d_φ(v) = 
 
 A(1): by Lemma 3, P has at most 2 arcs, and t ≥ 2. B(ℓ − 1) gives A(ℓ): every d_φ is the weight of a walk in G[S], and G has no negative cycle, so d_φ(v) ≥ dist. For the repetition r′ of the success event, the arcs of P negative in w_{φ_{ℓ−1,r′}} are cut arcs, at most t of them, so Lemma 1 gives d_φ(v) ≤ w(P). A(ℓ) gives B(ℓ): inside a cluster, this is Johnson's observation for dist(S, ·). For an arc from index i to index j > i, let a, b be the values of min_φ d_φ at its ends. They lie in [−(n − 1), 0], since a path has at most n − 1 arcs of weight at least −1. So w + a − b + (j − i)n ≥ −1 − (n − 1) + n = 0.
 
-At level L no arc is cut, so B(L) is the claim. Potentials are bounded by n + n·max idx. There are L·R decompositions, and L·R·|Φ|·(t + 1) calls for Lemma 1. ∎
+At level L no arc is cut, so B(L) is the claim. On restricted input, potentials are bounded by n + n·max idx. There are L·R decompositions, and L·R·|Φ|·(t + 1) calls for Lemma 1. ∎
 
 ## 5. Scaling
 
@@ -83,11 +87,11 @@ Let w be integer weights of polynomial size, and x = 2((n + 1)w + 1). Then x(C) 
 
 *Proof.* The floor of x_φ/ρ is at least −⌈B/ρ⌉, which is at least −(α + 1) in each case. For a cycle, ⌊y⌋ > y − 1 gives r(C) > x(C)/ρ + (α − 1)|C|. With α = 2, x(C) ≥ 0 suffices. With (2, 1), x(C)/2 ≥ |C|. With ρ = 1 the floor is exact, and r(C) = x(C) + α|C| ≥ 2|C|. Further, x_φ ≥ ρ⌊x_φ/ρ⌋ = ρ(r − α) ≥ ρ(ψ(v) − ψ(u) − α), which is the second claim. Finally 2⌈B/3⌉ < B for B ≥ 5. ∎
 
-Arcs with r > n are dropped before Proposition 4 is applied, which keeps a restricted graph. One more call of (O) on the result gives dist(V, ·) in the graph without them. It is also dist(V, ·) for all arcs of r: a path with an arc above n has weight above n − (n − 1) > 0, and the empty path has weight 0. So this distance is a potential for all arcs of r. This is the note at the end of [2, Lemma 2.9].
+Arcs with r > n are dropped before Proposition 4 is applied, which keeps a restricted graph. The vertices check r_ψ ≥ 0 on the kept arcs first, since a negative cycle would otherwise feed (O) negative weights. One more call of (O) then gives dist(V, ·) in the graph without the dropped arcs. It is also dist(V, ·) for all arcs of r: a path with an arc above n has weight above n − (n − 1) > 0, and the empty path has weight 0. So this distance is a potential for all arcs of r. This is the note at the end of [2, Lemma 2.9].
 
-*Negative cycles.* After each phase, the vertices check r_ψ ≥ 0 locally and aggregate the result in O(D) rounds, and they also check that values stay within the polynomial bound. If w has no negative cycle, all checks pass with high probability. If w has a negative cycle, then x has one, and no potentials exist for x, so some check fails. A failed check is reported as a negative cycle.
+*Negative cycles.* After each phase, the vertices check r_ψ ≥ 0 locally and aggregate the result in O(D) rounds. Values stay polynomial on every input, including inputs with a negative cycle: −(n − 1) − tn ≤ d_φ ≤ 0, since a walk is a simple path plus cycles and each negative cycle has an arc negative in w_φ. If w has no negative cycle, all checks pass with high probability. If w has a negative cycle, then x has one, and no potentials exist for x, so some check fails. A failed check is reported as a negative cycle.
 
-*Distances.* With x_φ ≥ 0, one call of (O) from s gives dist_x(s, v). For a walk, x(P) = 2(n + 1)w(P) + 2|P|. A least walk in x is simple and has least w among walks, and has at most n − 1 arcs. So dist(s, v) = ⌊dist_x(s, v)/(2(n + 1))⌋. The arcs tight in x form a shortest-path tree, since all cycles of x are positive. With offsets 0 on all vertices the same call gives dist(V, ·), which is a potential for w.
+*Distances.* With x_φ ≥ 0, one call of (O) from s gives dist_x(s, v). For a walk, x(P) = 2(n + 1)w(P) + 2|P|. A least walk in x is simple and has least w among walks, and has at most n − 1 arcs. So dist(s, v) = ⌊dist_x(s, v)/(2(n + 1))⌋. The arcs tight in x form a shortest-path tree, since all cycles of x are positive. With offsets −φ on all vertices, shifted by a constant, the same call gives dist_x(V, ·), and floor division by 2(n + 1) turns it into dist_w(V, ·), which is a potential for w.
 
 *Proof of Theorem 1.* O(log n) phases, each with Õ(1) calls of (O) and steps of (M), and each call takes Õ(D) rounds. ∎
 
@@ -95,30 +99,44 @@ Arcs with r > n are dropped before Proposition 4 is applied, which keeps a restr
 
 *Corollary 3.* As in the proof of the Dual SSSP Corollary of [1]: run Theorem 1 on Ĝ with the lengths of its Dual Distance Lemma. Ĝ is planar with at most 7n nodes and hop diameter at most 3D + 2, and an r-round algorithm on it runs in 2r rounds on G. ∎
 
-*Theorem 2.* As in the proof of the Maximum Flow Theorem of [1], with the reduction of [4]: binary search on β with a negative-cycle test by Corollary 3 in the dual with lengths c_β, O(log nU) tests. For the largest feasible β, the distances ψ give the flow ψ(lft d) − ψ(rgt d) + β[d ∈ P] − β[rev d ∈ P]. It is feasible by construction. Then one call of (O), with weight 0 on residual arcs, gives the set reached from s in the residual network. If t is not reached, this set is a cut with the value of the flow, and the output is right. Otherwise a test was wrong, which has probability at most n^{−c}, and the algorithm runs again. ∎
+*Theorem 2.* As in the proof of the Maximum Flow Theorem of [1], with the reduction of [4]: binary search on β between 0 and the capacity out of s, with a negative-cycle test by Corollary 3 in the dual with lengths c_β, O(log nU) tests. The range matters on parallel edges, where the maximum flow can exceed nU, and a smaller range would make the rerun below loop for ever. For the largest feasible β, the distances ψ give the flow ψ(lft d) − ψ(rgt d) + β[d ∈ P] − β[rev d ∈ P]. It is feasible by construction, if the distances are right. Then one call of (O), with weight 0 on residual arcs, gives the set reached from s in the residual network. If the checks of Proposition 7 pass, this set is a cut with the value of the flow, and the output is right. Otherwise a test was wrong, which has probability at most n^{−c}, and the algorithm runs again. ∎
 
-*Corollary 4.* This is [4]. Route b on a breadth-first tree: each tree edge gets the sum of b below it, in O(D) rounds, which gives a flow f_0 with net outflow b. A flow f with net outflow b is f_0 + g for a circulation g, and g(d) = ψ(lft d) − ψ(rgt d) for face potentials ψ. The condition f ≤ c is ψ(lft d) − ψ(rgt d) ≤ c(d) − f_0(d). By the two standard facts in [1, Section 5], this has a solution if and only if the dual with lengths c − f_0 has no negative cycle. Use Corollary 3. ∎
+*Corollary 4.* This is [4]. Route b on a breadth-first tree: each tree edge gets the sum of b below it, in O(D) rounds, which gives a flow f_0 with net outflow b. A flow f with net outflow b is f_0 + g for a circulation g, and g(d) = ψ(lft d) − ψ(rgt d) for face potentials ψ. The condition f ≤ c is ψ(lft d) − ψ(rgt d) ≤ c(d) − f_0(d). This system of difference constraints has a solution if and only if the dual with lengths c − f_0 has no negative cycle. A dual 2-cycle d*, (rev d)* is negative exactly when c(d) + c(rev d) < 0, which excludes a flow directly. Use Corollary 3. ∎
 
-*Corollary 5.* Color the sides X and Y from a breadth-first tree, in O(D) rounds. For prescribed degrees g, set b = g on X and b = −g on Y, c(d) = 1 for darts from X to Y and c(d) = 0 for their reverses. An integer flow is the subgraph of the darts with f(d) = 1. The flow of Corollary 4 is an integer, since ψ is one. For perfect matching g = 1.
+*Corollary 5.* Corollary 4 needs demands with sum 0, so each case first tests the sum by one aggregation and reports that none exists if it is not 0. Color the sides X and Y from a breadth-first tree, in O(D) rounds. For prescribed degrees g, set b = g on X and b = −g on Y, c(d) = 1 for darts from X to Y and c(d) = 0 for their reverses. An integer flow is the subgraph of the darts with f(d) = 1. The flow of Corollary 4 is an integer, since ψ is one. For perfect matching g = 1.
 
 For out-degrees a(v), start from any orientation O_0. Reversing an arc from u to v moves one unit of out-degree from u to v. So set c(d) = 1 for the darts of O_0, c(d) = 0 for their reverses, and b(v) = outdeg_{O_0}(v) − a(v). The arcs to reverse are those with f(d) = 1. ∎
 
-*Corollary 6.* The weights q·w − p have a negative cycle if and only if the minimum mean is below p/q. Two different means with cycle lengths at most n differ by at least 1/n². So O(log nW) tests with Theorem 1 find an interval of width below 1/n², which holds one fraction with denominator at most n. ∎
+*Corollary 6.* The weights q·w − p have a negative cycle if and only if the minimum mean is below p/q. Two different means with cycle lengths at most n differ by at least 1/n². So O(log nW) tests with Theorem 1 find an interval of width below 1/n², which holds one fraction with denominator at most n. With W above every weight, one test at W + 1 tells whether there is a cycle at all. ∎
+
+**Proposition 7 (certificates).** Each of these takes local checks and O(D) rounds of aggregation, and each is sound whatever (O), the decomposition and the tests returned.
+
+(a) *Distances.* Let φ satisfy x_φ ≥ 0 and let D(v) be finite or ∞. Check that D(s) = 0, that D(v) ≤ D(u) + x_φ(u, v) on every arc with D(u) finite, that no arc goes from a finite to an infinite value, and that each finite v ≠ s has an in-arc from a finite vertex with equality. Then D = dist_{x_φ}(s, ·).
+
+(b) *Flow.* Let f be antisymmetric with f ≤ c and conservation, of value λ, and let X be a set with s ∈ X and t ∉ X such that every dart leaving X has f = c. Then f is a maximum flow and X is a minimum cut.
+
+(c) *Negative cycle.* Let p < 0 and q > 0 be integers, ψ integer potentials, X ≠ ∅ a set of vertices, and let each vertex of X point to an out-neighbour in X along an arc with q·w(u, v) − p + ψ(u) − ψ(v) = 0. Then G has a cycle of mean p/q.
+
+*Proof.* (a) By induction, D(v) ≤ x_φ(P) for every walk P from s, and the third check means that unreached vertices are exactly those with ∞. Walk back from v along arcs with equality. A repeated vertex would give a simple cycle with x(C) = x_φ(C) = 0. But x(C) = 2(n + 1)w(C) + 2|C|, and 0 < 2|C| < 2(n + 1), so x(C) ≠ 0. So the walk ends in s, and D(v) is the value of a walk. (b) This is the max-flow min-cut argument: the value is the capacity of X. (c) Pointers on a finite set close into a cycle C. Summing the equalities around C gives q·w(C) = p|C|. ∎
+
+Such a certificate exists when G has a negative cycle. Take the minimum mean p/q < 0 by Corollary 6 and potentials ψ for q·w − p by Theorem 1. A cycle of minimum mean has reduced weight 0, and all reduced weights are nonnegative, so all its arcs are tight. A nontrivial strong component of the tight arcs, by Lemma 2 with E^rem = ∅, gives X and the pointers. So Theorem 1 becomes Las Vegas: run again until a certificate passes. Corollaries 4 to 6 get certified answers in the same way, since a negative cycle in the dual excludes a flow, and potentials with a tight cycle prove the minimum mean.
 
 ## 7. Costs
 
 With the Q of [3], t = O(log² n), R = O(log n), L = O(log n): Lemma 1 runs L·R·|Φ| = O(log³ n) times with t + 1 calls each, so O(log⁵ n) calls per restricted problem, plus O(log² n) decompositions. With O(log n) phases of scaling this is O(log⁶ n) calls of (O) and more for the decompositions, and O(log n) more for the binary search of Theorem 2. These are large factors. Only their polylogarithmic form is claimed.
 
-## 8. Two small points in [2]
+## 8. Points in [3] and [2]
 
-Both have one-line repairs, and the proof above contains them.
+All have short repairs, and the proof above contains them. The first one matters. The adversary and the referee both found it, and we had missed it.
 
+- **[3, Cor. 33] is false as stated.** Section 5.2 of [3] recurses into connected components, and all components of one set inherit the same ℓ. The base case draws a label from [ℓN², (ℓ + n − 1)N²], which is one point when n = 1, while its correctness line claims an interval of length at least |V|². So equal labels do not mean one strong component, even with probability 1. With kept arcs a→b and c→d, N = 4 and a removed arc a→c of weight above d, the labels are (16, 0, 16, 0) for a, b, c, d on every run. If the recursion runs on components of G minus E^rem, a removed arc can then lie inside a "cluster", which loses the hypothesis of Lemma 3, so the proof of Proposition 4 does not cover that step. Take n = 9 and three clusters x→y→z with weights −1, −1 and return z→x of 5, joined by arcs of weight 1. Each has weak diameter 5. If they collide, the shortest path in their union has 8 arcs against d = 5. No output was ever wrong because of this (7,867 instances in one test, 1,104 runs in each of five label modes in another), so it is a gap in the proof and not an observed failure. *Repair:* in the base case take r = ℓ·K + id(leader), with K above every identifier. [3] already elects this leader. Labels are then distinct with no randomness, and the order does not change, since ordered sets differ in ℓ. This ran 57,114 times with 0 collisions and 0 order failures. Recursion on components of the network also works, since no arc lies between colliding parts (proven, 6,832 decompositions with a collision and 0 with an arc inside), although the first bullet of Lemma 2 stays literally false. Longer intervals of N^{c+2} values are a third way.
+- [3, Cor. 27] asks for a threshold with exactly ⌈c log n⌉ vertices, which does not exist when V_i is smaller. Take all of V_i. [3, Cor. 33], line 1, draws numbers that are distinct with high probability in n_i only. Break ties by identifier.
 - [2, Lemma 2.6] builds t + 1 layers where each crossing uses an arc, and it asks for the layer t. A path with fewer than t arcs does not reach this layer. The layered graph also is not planar, so we could not use it here in any case. Stay arcs of weight M repair it, and Lemma 1 does not need them.
 - [2, Lemma 3.2] takes the return path Q in G[S], while the weak diameter holds in the whole graph. Lemma 3 above takes Q in the whole graph. The closed walk is still in the restricted graph.
 
 ## 9. Checks
 
-`sim/negative/neg.py` runs all of the above centrally, with Dijkstra as the oracle, its own implementation of Algorithms 1 and 2 of [3], and the strong components and their order computed directly. The truth is Bellman-Ford, and `networkx` for flow and for matching.
+`sim/negative/neg.py` runs all of the above centrally, with Dijkstra as the oracle and its own variant of Algorithms 1 and 2 of [3], which piles the geometric tail of [3, Definition 21] on the cap. Algorithm 3 of [3] is not implemented: the strong components and their order are computed directly, so this code cannot see the failure of [3, Cor. 33], and the scripts in `sim/review/negative/` test that. The truth is Bellman-Ford, Karp's theorem, and `networkx` for flow, matching and degrees. Each row below was run on the code that this note describes; the code of the first four rows did not change with the corrections.
 
 No `FAIL` in any counter. The last number of each command is its time in seconds.
 
@@ -126,9 +144,10 @@ No `FAIL` in any counter. The last number of each command is its time in seconds
 |---|---|---|---|---|---|
 | `neg.py 1001 300`, `2001 300` | Proposition 4 with R = 3, t = 8 | 1,528 | 1,603,955 values of A(ℓ), 2,936,330 arcs of B(ℓ), no miss | 100 | 46,246 decompositions, 128 gave up, largest t needed 2 |
 | `neg.py 1002 900 big` | same | 392 | 2,480,672 values, 4,624,731 arcs, no miss | 625 | 15,683 decompositions, 24 gave up, shortest paths up to 575 arcs, largest t needed 3, up to 271,079 oracle calls in a run |
-| `neg.py scale 1003 300` | Lemma 5, with Bellman-Ford as the restricted solver | 155,945 | 2,615,081 distances, 29,921 instances with a negative cycle all reported | | 3,169,748 phases, B up to 38,563,838 |
-| `neg.py full 1004 900` | Theorem 1, the whole stack | 130 | 2,112 distances, 36 instances with a negative cycle all reported | 49 | up to 1,077,679 oracle calls in a run |
-| `neg.py flow 2005 420` | Theorem 2 and perfect matching, in the dual | 218 flows, 123 matchings | value against `networkx`, flow and cut checked; matching against Hopcroft-Karp | | 60 flows and 22 matchings on the whole stack, the rest with Bellman-Ford as the test; 116 instances have a perfect matching |
+| `neg.py scale 1003 300` | Lemma 5, with Bellman-Ford as the restricted solver | 155,945 | 2,615,081 distances, 29,921 instances with a negative cycle; a false report counts as a `FAIL` | | 3,169,748 phases, B up to 38,563,838 |
+| `neg.py full 1004 900` | Theorem 1, the whole stack | 130 | 2,112 distances, 36 instances with a negative cycle; a false report counts as a `FAIL` | 49 | up to 1,077,679 oracle calls in a run |
+| `neg.py flow 3005 420` | Theorem 2 with its cut and rerun, and Corollary 5, in the dual | 283 flows, 195 matchings, 195 degree tests, 283 out-degree tests | value against `networkx`; flow checks and cut value on all 283; matching against Hopcroft-Karp; degrees and out-degrees against `networkx` | | 57 flows and 52 matchings with their degree tests on the whole stack, the rest with Bellman-Ford as the test; 75 flows with tests that lie, 28 reruns; 181 instances have a perfect matching, 110 and 176 degree and out-degree targets are feasible |
+| `neg.py cert 3006 420` | Proposition 7 and Corollary 6 | 162 | mean against Karp's theorem; 141 cycle certificates give a real cycle of that mean; no potentials just above the mean and no tight cycle just below it; 131 distance certificates accepted; 480 corrupted answers all rejected | 40 | 8 runs on the whole stack, n ≤ 16; 31 with a negative minimum mean, 21 acyclic; 2,723 tests |
 
 Every instance of Theorem 1 and Proposition 4 passes `nx.check_planarity`, and so does every flow and matching instance.
 
@@ -139,9 +158,9 @@ Every instance of Theorem 1 and Proposition 4 passes `nx.check_planarity`, and s
 | 2, 2 | 215 | 212 | 3 | 3 | 0 | 0 |
 | 2, 1 | 423 | 382 | 41 | 41 | 1 | 0 |
 
-In these runs the inexact steps and the failures of the event coincide exactly, which is more than the proof asks.
+In these runs the inexact steps and the failures of the event coincide exactly. Cut arcs are almost always negative in w_φ and `needed_t` already minimises over shortest paths and repetitions, so this is close to a restatement.
 
-*Negative controls.* `neg.py ctl <seed> 40 [t]`, with R = 2 and the same instances. A control counts a wrong final potential.
+*Negative controls.* `neg.py ctl <seed> 40 [t]`, with R = 2. The rows share one sequence of instances, except `oneR`, which draws differently after its first instance. A control counts a wrong final potential.
 
 | Control | What it changes | t = 2: wrong of runs | t = 1: wrong of runs |
 |---|---|---|---|
@@ -159,15 +178,54 @@ The first four fire well above the clean rate. The single clean failure at t = 2
 
 - Rounds and messages: there is no CONGEST simulation.
 - The Exact SSSP Theorem, the Label Hypothesis and all their caveats in [1] and `notes/LEMMA15.md`. Local computation is not polynomial, as there.
-- Lemma 2 is a black box from [3]. We read its algorithms and its proof in CONGEST, and we implemented its algorithms, with the constant c = 1, which is far from the "sufficiently large" of its proof. So the simulation does not test the probability bound with its constants. It reports how often the decomposition gives up, and how many cut arcs a path has.
-- The simulation uses t = 8 and R = 3 rather than t = 4Q + 1 and R = Θ(log n), so it is harder on the algorithm than the theorem. It also reports the smallest t that would have sufficed.
-- The Lean file covers the arithmetic of Lemma 5, Lemma 1 for a given alternation, Lemma 3 and the arc inequality of Proposition 4. It does not cover the probabilities, Lemma 2, or the flow.
-- Corollary 6 and the out-degree part of Corollary 5 are not simulated.
+- Lemma 2 is a black box from [3]. We read its algorithms and its proof in CONGEST. `neg.py` implements a variant with the constant c = 1, far from the "sufficiently large" of its proof. So the probability bound with its constants is untested. The code reports how often the decomposition gives up and how many cut arcs a path has.
+- The parameters are not a stress test. The simulation uses t = 8, R = 3 and c = 1, not the values of the theorem, and small c means fewer cuts. With no negative cycle and n ≤ 9, a shortest path has at most 8 arcs, so t = 8 is exact on those lanes whatever the decomposition does. On a hub-rim family the adversary measured a needed t up to 13 with R = 1 and up to 9 with R = 3, both at c = 4, the latter at n = 1,025, where the event for t = 8, R = 3 fails. Outputs stayed right at n ≤ 151, below that point. "Largest t needed 3" in the table is specific to the family and to c = 1.
+- `neg.py` works in the dual directly, not through Ĝ. The scripts of the referee and the adversary do run through Ĝ, on small maps, against their own flow and cut.
+- The whole stack on Corollaries 4 to 6 is small: see the counts in the table.
+- Instances with parallel edges are in the scripts of the adversary only. The range of β in Theorem 2 is by hand.
+- The Lean file covers the arithmetic only: Lemma 5 for B ≥ 5 and its cycle bound, an upper bound of Lemma 1 for a given alternation, the arithmetic of Lemma 3 given the closed-walk inequality, and the arc inequality of Proposition 4. It has no graphs, and no probabilities, Lemma 2, flow, Proposition 7 or simplicity of least walks.
+
+## 11. Record of the adversary
+
+An independent agent, without reading `neg.py` before writing its code, tried to break every statement here. No theorem broke. Its own wrong output comes from Corollary 5 as first written. Scripts are in `sim/review/negative/adversary/`, where `a9_examples.py` prints every smallest instance.
+
+Corrections it led to, all made above:
+
+- Lemma 2, first bullet, false as sourced from [3, Cor. 33]. See Section 8.
+- Corollary 5 omitted the sum test. Path a−b−c with X = {a, c}, Y = {b} and g = 1 gave a false perfect matching: sum b = 1, the dual has no negative cycle, and the output is the dart c→b with a unmatched. So did the orientation of one edge with a = (1, 1).
+- "With offsets 0 on all vertices" in Section 5 was wrong on 54,806 of 77,222 instances without a negative cycle, smallest instance n = 2 with arc (0, 1) of weight −1.
+- "Always right" in Theorem 1 did not follow: raising one distance by 2(n + 1) passed the old check on 142,415 of 142,415 corrupted answers. Proposition 7(a) caught all of them and rejected no right one.
+- The credit for the alternation and the merging was false. See "What is new".
+- The table claimed "flow and cut checked", and no cut was computed. This is now done.
+- "So it is harder on the algorithm than the theorem" was unsupported. See Section 10.
+- "The two standard facts" in Corollary 4: the second is false for a dual 2-cycle when capacities have any sign. The statement holds. See the proof.
+- Corollary 6 was silent on acyclic digraphs. "Potentials bounded by n + n·max idx" holds only for restricted input.
+- Two glitches in [3], in Section 8.
+
+It ran, among others: Lemma 5 for all B ≤ 200,000 and random B up to 10³⁰, with 11,730,753 cycle tuples; Lemma 1 on 5,679,007 values against layered Bellman-Ford; all connected plane multigraphs with n ≤ 4, m ≤ 6 and all rotations for Corollaries 3 to 5 and Theorem 2, on the dual and on Ĝ, including the cut; the deterministic part of Proposition 4 on 284,088 runs with adversarial partitions, where the event failed in 141,998, inexact steps numbered 3,912, and none happened with the event holding. It did not reach rounds, the Label Hypothesis, the constants of the theory, whole-stack runs at larger n, or instances above about 1,000 vertices. One lane names controls that its main routine never calls, so that lane's only evidence of sensitivity is its 2,913 wrong outputs at small t and R.
+
+## 12. Record of the referee
+
+An independent agent checked each proof by hand and with its own code. Scripts are in `sim/review/negative/referee/`. It rated the note modest, and "significant if [1] stands" fair only if read as conditional on a Hypothesis whose local computation is not polynomial. It found the failure of [3, Cor. 33] independently, and on a 144-vertex grid with 30% of the edges kept as arcs it measured 156 to 2,812 expected colliding pairs, depending on the reading.
+
+Corrections it led to, beyond those of Section 11, all made above:
+
+- Proposition 7(c) and the Las Vegas form of Theorem 1 are its proposal, with 47,655 runs of its own.
+- Theorem 2 needed local checks of f ≤ c, conservation, s ∈ X, t ∉ X and no residual arc leaving X, as Proposition 7(b) now says. Its fault injection on the rerun ended with the right value in all 5,858 runs.
+- The search range for β: 10 parallel arcs s→a and 10 parallel arcs a→t with U = 1 and n = 3 have flow 10 above nU = 3, so the old rerun loops for ever. s ≠ t was unstated.
+- The table entry "Õ(D²) [5]" for primal negative weights: [5] proves the dual statement. The wording of [1] is now used.
+- `neg.py` implements a variant of [3], not its algorithms. The table's "all reported" was vacuous, since no potential can exist on such instances.
+- The order of steps in Section 5 and the unnecessary check of the polynomial bound.
+- The core without the Hypothesis, in Section 1.
+- The factor 2 in x is not needed. We keep it as in [2] and it costs nothing.
+
+It rechecked by hand Lemmas 1, 3 and 5, all of Proposition 4, the dropped arcs, the floor recovery and every corollary. Among its runs: Lemma 3 on 30,191,241 shortest paths, Proposition 4 on 623,419 instances with adversarial partitions and six controls that each fire in the implication they should, and Theorem 2 through Ĝ on 41,020 runs. Both glitches in [2] of Section 8 are real and the repairs right; the conclusion of [2, Lemma 3.2] never failed in its tests. It did not check rounds, the Hypothesis or the correctness of Exact, the probability bound at its true constants, n above 16 except for label collisions, or the source behind [2, Lemma 2.9].
 
 ## References
 
-1. S. Senge. Exact shortest paths and flows on planar graphs in CONGEST. This repository, tag `arxiv-v1`.
+1. S. Senge. Exact Shortest Paths and Maximum Flow in Planar Networks in the CONGEST Model. This repository, tag `arxiv-v1`.
 2. N. Fischer, B. Haeupler, R. Latypov, A. Roeyskoe, A. L. Sulser. A Simple Parallel Algorithm with Near-Linear Work for Negative-Weight Single-Source Shortest Paths. SOSA 2025, 216-225, arXiv:2410.20959.
 3. V. Ashvinkumar, A. Bernstein, N. Cao, C. Grunau, B. Haeupler, Y. Jiang, D. Nanongkai, H. H. Su. Parallel, Distributed, and Quantum Exact Single-Source Shortest Paths with Negative Edge Weights. ESA 2024, arXiv:2303.00811.
 4. G. L. Miller, J. Naor. Flow in planar graphs with multiple sources and sinks. SIAM J. Comput. 24(5), 1995.
 5. Y. Abd-Elhaleem, M. Dory, M. Parter, O. Weimann. Distributed Maximum Flow in Planar Graphs. PODC 2025, arXiv:2411.11718.
+6. Y. Abd-Elhaleem, M. Dory, O. Weimann. Õptimal Distributed Maximum Flow Approximation in Undirected Planar Graphs. DISC 2026, arXiv:2608.09500.

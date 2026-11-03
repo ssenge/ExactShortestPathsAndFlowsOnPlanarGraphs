@@ -5,11 +5,12 @@ Run with python -I:
   neg.py <seed> <seconds> [big]    restricted instances, full bottom-up algorithm with the LDD of [3]
   neg.py scale <seed> <seconds>    Scaling Lemma, general weights, with and without negative cycles
   neg.py full <seed> <seconds>     whole stack with the restricted algorithm inside the Scaling Lemma
-  neg.py flow <seed> <seconds>     maximum flow and perfect matching in the dual on the whole stack
+  neg.py flow <seed> <seconds>     maximum flow with its cut and rerun, demands, degrees and out-degrees, in the dual on the whole stack
+  neg.py cert <seed> <seconds>     certificates of Proposition 7 and minimum mean, against Karp's theorem
   neg.py ctl <seed> <seconds> [t]  negative controls, t = 2 by default
   neg.py event <seed> <seconds> <t> <R>  output wrong only if the success event failed
 """
-import collections, heapq, json, math, os, random, sys, time
+import collections, fractions, heapq, json, math, os, random, sys, time
 import networkx as nx
 import numpy as np
 from scipy.sparse import csr_matrix
@@ -652,6 +653,11 @@ def feasible(nf, best, solver, exact):
     U = np.array([a for a, b in best], dtype=np.int64)
     V = np.array([b for a, b in best], dtype=np.int64)
     W = np.array(list(best.values()), dtype=np.int64)
+    return potential(nf, U, V, W, solver, exact)
+
+
+def potential(nf, U, V, W, solver, exact):
+    """dist(V, .) in w, which is a potential, or None if the test reports a negative cycle."""
     if exact:
         return bellman_ford(nf, U, V, W)
     phi = scaling(nf, U, V, W, solver)
@@ -664,23 +670,27 @@ def feasible(nf, best, solver, exact):
     return np.floor_divide(d, 2 * (nf + 1))
 
 
-def solve_flow(I, solver, exact):
-    """Largest beta with a feasible dual, then the flow, as in the Maximum Flow Theorem of [1]."""
+def solve_flow(I, solver, exact, lie=0.0, rng=None):
+    """Largest beta with a feasible dual, then the flow, as in the Maximum Flow Theorem of [1]. With lie > 0 a test may report a false negative cycle."""
     darts = list(I.darts)
-    U = max(I.cap.values(), default=0)
-    lo, hi = 0, len(I.V) * U + 1
+    lo, hi = 0, sum(c for (a, b), c in I.cap.items() if a == I.s) + 1
     path = set(I.R)
     rev = {(b, a) for a, b in I.R}
     def lengths(beta):
         return {d: I.cap.get(d, 0) - (beta if d in path else 0) + (beta if d in rev else 0) for d in darts}
+    def test(beta):
+        if lie and rng.random() < lie:
+            return None
+        return feasible(I.nf, dual_arcs(darts, I.rgt, lengths(beta)), solver, exact)
     while hi - lo > 1:
         mid = (lo + hi) // 2
-        if feasible(I.nf, dual_arcs(darts, I.rgt, lengths(mid)), solver, exact) is not None:
+        if test(mid) is not None:
             lo = mid
         else:
             hi = mid
-    psi = feasible(I.nf, dual_arcs(darts, I.rgt, lengths(lo)), solver, exact)
-    assert psi is not None
+    psi = test(lo)
+    if psi is None:
+        return lo, None
     # psi from a virtual source over all faces, so lft - rgt <= length on the dual dart from rgt to lft
     f = {d: int(psi[I.rgt[d[1], d[0]]] - psi[I.rgt[d]]) + (lo if d in path else 0) - (lo if d in rev else 0) for d in darts}
     return lo, f
@@ -694,6 +704,35 @@ def check_flow(I, f, val):
     for (a, b), x in f.items():
         net[a] += x
     return all(net[v] == (val if v == I.s else -val if v == I.t else 0) for v in I.V) or I.s == I.t
+
+
+def cut_of(I, f):
+    """The set X reached from s in the residual network, and the capacity of the darts leaving it. One call of (O) with weight 0 on residual arcs."""
+    adj = collections.defaultdict(list)
+    for d in I.darts:
+        if f[d] < I.cap.get(d, 0):
+            adj[d[0]].append(d[1])
+    X, st = {I.s}, [I.s]
+    while st:
+        for y in adj[st.pop()]:
+            if y not in X:
+                X.add(y)
+                st.append(y)
+    return X, sum(I.cap.get(d, 0) for d in I.darts if d[0] in X and d[1] not in X)
+
+
+def certified_flow(I, solver, exact, lie=0.0, rng=None):
+    """Theorem 2 with its rerun: flow checks, then t must not be reached in the residual network."""
+    while True:
+        val, f = solve_flow(I, solver, exact, lie, rng)
+        if f is not None and check_flow(I, f, val):
+            X, c = cut_of(I, f)
+            if I.t not in X:
+                ST['chk.cut'] += 1
+                if c != val:
+                    ST['FAIL.cut_value'] += 1
+                return val, f
+        ST['n.rerun'] += 1
 
 
 def nx_maxflow(I):
@@ -723,14 +762,12 @@ def bipartite_instance(rng):
     return V, E3
 
 
-def perfect_matching(V, E, solver, exact):
-    """Miller-Naor with demands +1 and -1 on the two sides; returns the matching, or None if the dual has a negative cycle, or 'odd'."""
+def fixed_demand(V, E, b, cap, solver, exact):
+    """Corollary 4: a flow with net outflow b and f <= cap on every dart, or None. cap is a function of the dart."""
+    if sum(b.values()) != 0:
+        return None
     g = nx.Graph(E)
     g.add_nodes_from(V)
-    side = nx.bipartite.color(g)
-    b = {v: (1 if side[v] == 0 else -1) for v in V}
-    if sum(b.values()) != 0:
-        return 'odd'
     # f0 on a spanning tree with net outflow b
     s = min(V)
     par, order = {s: None}, [s]
@@ -748,17 +785,77 @@ def perfect_matching(V, E, solver, exact):
         sub[p] += sub[x]
     _, rgt, nf, _ = mf.embed(V, E)
     darts = list(rgt)
-    # capacities: from side 0 to side 1 at most 1, and the reverse at most 0
-    cap = {d: (1 if side[d[0]] == 0 else 0) for d in darts}
-    length = {d: cap[d] - f0[d] for d in darts}
+    length = {d: cap(d) - f0[d] for d in darts}
     psi = feasible(nf, dual_arcs(darts, rgt, length), solver, exact)
     if psi is None:
         return None
     f = {d: int(psi[rgt[d[1], d[0]]] - psi[rgt[d]]) + f0[d] for d in darts}
-    M = [d for d in darts if f[d] == 1 and side[d[0]] == 0]
+    net = collections.Counter()
     for d in darts:
-        assert f[d] <= cap[d]
-    return M
+        assert f[d] <= cap(d) and f[d] == -f[d[1], d[0]]
+        net[d[0]] += f[d]
+    assert all(net[v] == b[v] for v in V)
+    return f
+
+
+def prescribed_degrees(V, E, g_deg, solver, exact):
+    """Corollary 5 for a planar bipartite network: darts of the subgraph with degrees g_deg, or None."""
+    g = nx.Graph(E)
+    g.add_nodes_from(V)
+    side = nx.bipartite.color(g)
+    b = {v: (g_deg[v] if side[v] == 0 else -g_deg[v]) for v in V}
+    f = fixed_demand(V, E, b, lambda d: 1 if side[d[0]] == 0 else 0, solver, exact)
+    return None if f is None else [d for d in f if f[d] == 1 and side[d[0]] == 0]
+
+
+def perfect_matching(V, E, solver, exact):
+    """Miller-Naor with demands +1 and -1 on the two sides; returns the matching, or None if there is none."""
+    return prescribed_degrees(V, E, {v: 1 for v in V}, solver, exact)
+
+
+def out_degrees(V, E, a, solver, exact):
+    """Corollary 5, orientations: start from the arcs E as given; returns the out-degree of each vertex after reversal, or None."""
+    darts0 = set(E)
+    out = collections.Counter(u for u, v in E)
+    b = {v: out[v] - a[v] for v in V}
+    f = fixed_demand(V, E, b, lambda d: 1 if d in darts0 else 0, solver, exact)
+    if f is None:
+        return None
+    res = dict(a)
+    for v in V:
+        res[v] = 0
+    for u, v in E:
+        res[v if f[u, v] == 1 else u] += 1
+    return res
+
+
+def nx_degrees_feasible(V, E, side, g_deg):
+    g = nx.DiGraph()
+    g.add_nodes_from(['S', 'T'])
+    for v in V:
+        if side[v] == 0:
+            g.add_edge('S', v, capacity=g_deg[v])
+        else:
+            g.add_edge(v, 'T', capacity=g_deg[v])
+    for u, v in E:
+        a, c = (u, v) if side[u] == 0 else (v, u)
+        g.add_edge(a, c, capacity=1)
+    tot = sum(g_deg[v] for v in V if side[v] == 0)
+    return tot == sum(g_deg[v] for v in V if side[v] == 1) and nx.maximum_flow_value(g, 'S', 'T') == tot
+
+
+def nx_outdeg_feasible(V, E, a):
+    if sum(a.values()) != len(E):
+        return False
+    g = nx.DiGraph()
+    g.add_nodes_from(['S', 'T'])
+    for e in E:
+        g.add_edge('S', ('e', e), capacity=1)
+        g.add_edge(('e', e), e[0], capacity=1)
+        g.add_edge(('e', e), e[1], capacity=1)
+    for v in V:
+        g.add_edge(v, 'T', capacity=a[v])
+    return nx.maximum_flow_value(g, 'S', 'T') == len(E)
 
 
 def lane_flow(seed, secs):
@@ -781,13 +878,34 @@ def lane_flow(seed, secs):
             I = mf.Inst(Vs, E, cap, s, t)
             assert nx.check_planarity(nx.Graph(E))[0]
             ST['chk.planar'] += 1
-            val, f = solve_flow(I, solver, exact)
+            lie = rng.choice([0.0, 0.0, 0.1]) if exact else 0.0
+            val, f = certified_flow(I, solver, exact, lie, rng)
             ST['runs.flow'] += 1
+            ST['runs.flow_lie'] += 1 if lie else 0
             ST['runs.flow_stack'] += 0 if exact else 1
             if val != nx_maxflow(I):
                 ST['FAIL.flow_value'] += 1
             if not check_flow(I, f, val):
                 ST['FAIL.flow_check'] += 1
+            # out-degrees: half planted, half moved, sometimes with the wrong sum
+            E2 = [(a, b) if rng.random() < 0.5 else (b, a) for a, b in E]
+            a = collections.Counter(x if rng.random() < 0.5 else y for x, y in E)
+            for v in Vs:
+                a[v] += 0
+            if rng.random() < 0.5 and len(E) > 0:
+                x, y = rng.sample(sorted(Vs), 2)
+                if a[x] > 0:
+                    a[x] -= 1
+                    a[y] += 1
+            if rng.random() < 0.2:
+                a[rng.choice(sorted(Vs))] += 1
+            a = dict(a)
+            has = nx_outdeg_feasible(Vs, E, a)
+            res = out_degrees(Vs, E2, a, solver, exact)
+            ST['runs.outdeg'] += 1
+            ST['runs.outdeg_has'] += has
+            if has != (res is not None) or (has and res != a):
+                ST['FAIL.outdeg'] += 1
         else:
             V, E = bipartite_instance(rng)
             if len(V) < 2 or len(V) > (64 if exact else 25):
@@ -814,6 +932,172 @@ def lane_flow(seed, secs):
                     ST['FAIL.match'] += 1
             elif M is not None:
                 ST['FAIL.match_false'] += 1
+            # prescribed degrees between 0 and the degree, half from a planted subgraph
+            sub = [e for e in E if rng.random() < 0.5]
+            gd = collections.Counter(x for e in sub for x in e)
+            gd = {v: gd[v] for v in V}
+            if rng.random() < 0.5:
+                x = rng.choice(sorted(V))
+                gd[x] = max(0, gd[x] + rng.choice([-1, 1]))
+            has = nx_degrees_feasible(V, E, side, gd)
+            S2 = prescribed_degrees(V, E, gd, solver, exact)
+            ST['runs.degrees'] += 1
+            ST['runs.degrees_has'] += has
+            if has != (S2 is not None):
+                ST['FAIL.degrees'] += 1
+            elif has:
+                c = collections.Counter(x for e in S2 for x in e)
+                if any(c[v] != gd[v] for v in V):
+                    ST['FAIL.degrees_sub'] += 1
+    print(json.dumps(dict(sorted(ST.items()))))
+
+
+# ---------- certificates of Proposition 7
+
+def dist_certificate(n, U, V, xp, s, d):
+    """Local checks on reduced x: d(s) = 0, no arc improves d, a tight in-arc at each reached v other than s, no arc from reached to unreached."""
+    fin = d < INF
+    if d[s] != 0 or (fin[U] & ~fin[V]).any():
+        return False
+    a = fin[U] & fin[V]
+    if (d[V[a]] > d[U[a]] + xp[a]).any():
+        return False
+    tight = np.zeros(n, dtype=bool)
+    tight[V[a][d[V[a]] == d[U[a]] + xp[a]]] = True
+    tight[s] = True
+    return bool(tight[fin].all())
+
+
+def karp(n, U, V, W):
+    """Minimum cycle mean by Karp's theorem as a Fraction, or None if acyclic. The truth for Corollary 6."""
+    D = [np.zeros(n, dtype=np.int64)]
+    for k in range(n):
+        y = np.full(n, INF, dtype=np.int64)
+        x = D[-1]
+        np.minimum.at(y, V, np.where(x[U] < INF, x[U] + W, INF))
+        D.append(y)
+    best = None
+    for v in np.flatnonzero(D[n] < INF).tolist():
+        m = max(fractions.Fraction(int(D[n][v] - D[j][v]), n - j) for j in range(n) if D[j][v] < INF)
+        best = m if best is None or m < best else best
+    return best
+
+
+def min_mean(n, U, V, W, test):
+    """Corollary 6: least p/q by O(log nW) tests; test(p, q) is a potential for q w - p, or None. Returns None if acyclic."""
+    top = int(np.abs(W).max()) + 1 if len(W) else 1
+    if test(top, 1) is not None:
+        return None
+    lo, hi = fractions.Fraction(-top), fractions.Fraction(top)
+    while hi - lo >= fractions.Fraction(1, n * n):
+        mid = (lo + hi) / 2
+        ST['n.mean_tests'] += 1
+        if test(mid.numerator, mid.denominator) is not None:
+            lo = mid
+        else:
+            hi = mid
+    cand = [fractions.Fraction(math.ceil(lo * q), q) for q in range(1, n + 1)]
+    cand = [c for c in cand if lo <= c < hi]
+    return cand[0] if cand else None
+
+
+def cycle_certificate(n, U, V, W, p, q, psi):
+    """A set X with pointers along tight arcs of q w - p, from the strong components of the tight arcs, or None."""
+    rp = q * W - p + psi[U] - psi[V]
+    if (rp < 0).any():
+        return None
+    lab, _ = scc_order(n, U, V, rp == 0)
+    ptr = {}
+    for i in np.flatnonzero(rp == 0).tolist():
+        if lab[U[i]] == lab[V[i]]:
+            ptr[int(U[i])] = i
+    return ptr or None
+
+
+def cycle_of(ptr, V):
+    """Walk the pointers until they close. Local checks say each pointer stays in X; here we get the cycle itself."""
+    v, seen = next(iter(ptr)), {}
+    path = []
+    while v not in seen:
+        seen[v] = len(path)
+        path.append(ptr[v])
+        v = int(V[ptr[v]])
+    return path[seen[v]:]
+
+
+def lane_cert(seed, secs):
+    rng = random.Random(seed)
+    ST.clear()
+    end = time.time() + secs
+    while time.time() < end:
+        n, U, V, W = general_instance(rng, False)
+        exact = rng.random() < 0.9
+        if len(U) == 0 or n > (40 if exact else 16):
+            continue
+        ST['runs'] += 1
+        ST['runs.stack'] += 0 if exact else 1
+        solver = sample_solver(3, 8, 1.0, rng, False)
+        pot = lambda p, q: potential(n, U, V, q * W - p, solver, exact)
+        mm = karp(n, U, V, W)
+        got = min_mean(n, U, V, W, pot)
+        if got != mm:
+            ST['FAIL.mean'] += 1
+            continue
+        if mm is None:
+            ST['n.acyclic'] += 1
+        else:
+            p, q = mm.numerator, mm.denominator
+            psi = pot(p, q)
+            ptr = cycle_certificate(n, U, V, W, p, q, psi)
+            ST['chk.cycle'] += 1
+            if ptr is None or any(int(V[i]) not in ptr or (q * W[i] - p + psi[U[i]] - psi[V[i]]) != 0 for i in ptr.values()):
+                ST['FAIL.cert'] += 1
+                continue
+            C = cycle_of(ptr, V)
+            if fractions.Fraction(int(W[C].sum()), len(C)) != mm:
+                ST['FAIL.cycle_mean'] += 1
+            # just above the minimum mean there are no potentials; just below there are, and no tight cycle
+            d = fractions.Fraction(1, 2 * n * n)
+            hi, lo = mm + d, mm - d
+            ST['chk.above_below'] += 1
+            if pot(hi.numerator, hi.denominator) is not None:
+                ST['FAIL.above'] += 1
+            psi2 = pot(lo.numerator, lo.denominator)
+            if psi2 is None:
+                ST['FAIL.below'] += 1
+            elif cycle_certificate(n, U, V, W, lo.numerator, lo.denominator, psi2) is not None:
+                ST['FAIL.below_cert'] += 1
+            ST['n.negative'] += mm < 0
+        if bellman_ford(n, U, V, W) is None:
+            continue
+        # distances with their certificate, and corrupted answers
+        phi = scaling(n, U, V, W, solver if not exact else exact_solver)
+        xp = scale_up(W, n) + phi[U] - phi[V]
+        s = rng.randrange(n)
+        off = np.full(n, INF, dtype=np.int64)
+        off[s] = 0
+        d = oracle(n, U, V, xp, off)
+        ST['chk.dist_cert'] += 1
+        if not dist_certificate(n, U, V, xp, s, d):
+            ST['FAIL.dist_cert'] += 1
+        for kind in ['raise', 'lower', 'set', 'unreach']:
+            e = d.copy()
+            fin = np.flatnonzero(d < INF).tolist()
+            fin = [v for v in fin if v != s]
+            if not fin:
+                continue
+            if kind == 'raise':
+                e[rng.choice(fin)] += rng.randrange(1, 2 * (n + 1) + 1)
+            elif kind == 'lower':
+                e[rng.choice(fin)] -= rng.randrange(1, 2 * (n + 1) + 1)
+            elif kind == 'set':
+                for v in rng.sample(fin, rng.randrange(1, len(fin) + 1)):
+                    e[v] += 2 * (n + 1)
+            else:
+                e[rng.choice(fin)] = INF
+            ST['chk.fault'] += 1
+            if dist_certificate(n, U, V, xp, s, e):
+                ST['FAIL.fault_accepted'] += 1
     print(json.dumps(dict(sorted(ST.items()))))
 
 
@@ -913,6 +1197,8 @@ if __name__ == '__main__':
         lane_full(int(a[1]), float(a[2]))
     elif a[0] == 'flow':
         lane_flow(int(a[1]), float(a[2]))
+    elif a[0] == 'cert':
+        lane_cert(int(a[1]), float(a[2]))
     elif a[0] == 'event':
         lane_event(int(a[1]), float(a[2]), int(a[3]), int(a[4]))
     elif a[0] == 'ctl':
