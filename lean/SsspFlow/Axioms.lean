@@ -49,3 +49,11 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.NegScaling.alt_bound
 #print axioms SsspFlow.NegScaling.short_in_cluster
 #print axioms SsspFlow.NegScaling.forward_arc
+#print axioms SsspFlow.Arborescence.reduced_nonneg_out
+#print axioms SsspFlow.Arborescence.reduced_nonneg_in
+#print axioms SsspFlow.Arborescence.reduced_le
+#print axioms SsspFlow.Arborescence.tight
+#print axioms SsspFlow.Arborescence.upper_step
+#print axioms SsspFlow.Arborescence.lower_step
+#print axioms SsspFlow.Arborescence.removed_ge
+#print axioms SsspFlow.Arborescence.halving
