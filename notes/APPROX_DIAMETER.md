@@ -125,7 +125,10 @@ Results are in `sim/diameter/REPORT_APPROX.md`. `approx.py` builds real region b
 
 ## 8. Open
 
-- The exponent 4. Lemma 4 counts grid points by Sauer-Shelah, and uses no more than single crossing. At ρ = 1 it gives K⁴, while [2] gives O(K²).
+The proof also gives an additive form, for any integer ρ ≥ 1: eccentricities with additive error Õ(ρ) in Õ(D + (D/ρ)⁴) rounds. For ρ about D^{3/4} this takes Õ(D) rounds.
+
+
+- The exponent 4. Lemma 4 counts grid points by Sauer-Shelah, and uses no more than single crossing. At ρ = 1 it gives K⁴, while [2] gives O(K²). Rounding alone cannot do better from pairwise conditions: exact search over lattice paths of m positions, with the single crossing condition only, gives largest families of 9, 25, 61 for m = 3, 4, 5, which is about m⁴/10. A packing may do better. For vectors in {−1,+1}^K with sum 0 and no cyclic alternation, exact search for the largest family with pairwise L∞ distance of prefix sums at least τ gives 17 and 5 for K = 8, τ = 2, 4, and 26 and 6 for K = 10, τ = 2, 4. This fits (K/τ)² + 1, on very small cases only. A proof would allow tokens for a packing of patterns, by a filtered upcast with pruning.
 - The (1+ε)-approximation of the sum of distances. An additive error of εD per vertex is not a factor (1+ε) if most vertices are close to u.
 - Weighted networks with bounds below [1]. Lemmas 2 to 4 do not use unit lengths, but the first hits f would need exact distances, and the argument for net sizes needs a bound on the weighted length of P_X.
 
