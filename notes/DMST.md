@@ -1,6 +1,6 @@
 # Minimum arborescences of planar digraphs in Õ(D) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/dmst/`, the arithmetic in `lean/SsspFlow/Arborescence.lean`. One referee pass on 3 Nov 2026 found no failing instance and no gap that changes a result. Its corrections are made here, and its record is in Section 8. The adversary has not reported yet. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. The bound of [2] already holds on planar networks. What may be first here is a bound of the form Õ(D), and it is conditional. The plan is that of [2], with the oracle of [1].
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/dmst/`, the arithmetic in `lean/SsspFlow/Arborescence.lean`. One referee pass and one adversary pass on 3 Nov 2026 found no failing instance and no gap that changes a result. Their corrections are made here, and their records are in Sections 8 and 9. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. The bound of [2] already holds on planar networks. What may be first here is a bound of the form Õ(D), and it is conditional. The plan is that of [2], with the oracle of [1].
 
 The model is CONGEST on a connected planar network G with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. A *digraph on G* has its arcs on edges of G.
 
@@ -19,7 +19,7 @@ A path gives Ω(D). If the weights are symmetric, this is the minimum spanning t
 - Section 3 has a short and complete proof of one contraction. We read the conference version of [2], whose proofs of correctness are in a full version that we did not read, and which decomposes a step into steps of the algorithm of Edmonds. Section 3 does not need that decomposition.
 - Unpacking and β also differ. [2] uses centers and small and large parts, and here they are subtree sums and (M).
 
-The unconditional primal bound Õ(D²) for SSSP is [6, Thm 1.6] on undirected and [7, Lemma 4] on directed networks. The bound of [4] is on the dual. The stated Õ(D² + D·|S|) of [7] is of no use with S the vertices of all c. The check that matters is whether the labels of [7] fit the Virtual Source Lemma of [1], which allows ε = 0. If they do, the same algorithm has the bound Õ(D²) with no hypothesis. We did not check this here. Approximation is treated in [5].
+The unconditional primal bound Õ(D²) for SSSP is [6, Thm 1.6] on undirected and [7, Lemma 4] on directed networks. The bound of [4] is on the dual. The stated Õ(D² + D·|S|) of [7] is of no use with S the vertices of all c. Exact labels do fit the Virtual Source Lemma of [1], which allows ε = 0: `notes/EXACT_LABELS.md` of the repository ExactPlanarBipartiteMatching proves this, with its own review still running. So the same algorithm has the bound Õ(D²) with no hypothesis. Approximation is treated in [5].
 
 ## 2. Tools
 
@@ -65,7 +65,7 @@ Each cycle has at least two super-vertices and avoids {r}, so there are at most 
 
 ## 4. The algorithm
 
-1. *Start.* One call of (O) gives the set reached from r, and all else is dropped. Each v ≠ r subtracts its least in-weight from its in-arcs, and takes an arc that attains it as its chosen arc. This changes the weight of every arborescence by the same constant, and it makes all weights nonnegative. So negative weights are allowed. All in-arcs of r are deleted.
+1. *Start.* One call of (O), with weight 1 on each arc, gives the set reached from r, and all else is dropped. Each v ≠ r subtracts its least in-weight from its in-arcs, and takes an arc that attains it as its chosen arc. This changes the weight of every arborescence by the same constant, and it makes all weights nonnegative. So negative weights are allowed. All in-arcs of r are deleted.
 2. *Step, while an active component exists.* In parallel for each active component K:
    - find a super-vertex c on its cycle;
    - compute d, then β and an arc that attains it;
@@ -85,7 +85,7 @@ These checks take local tests and Õ(1) steps of (M), the latter to test that th
 
 All values are of polynomial size, since by Lemma 1(a) weights never grow.
 
-*The cycle.* Contract each super-vertex in (M), and take the chosen arcs as meta-arcs. A spanning forest of these by Borůvka takes O(log n) steps of (M). A component with k super-vertices has k − 1 forest arcs. So if it is active, exactly one chosen arc is left out, and this arc closes a cycle, which must be the cycle of the component. Let c be its head. An aggregate over the component names c and tells whether the component holds r.
+*The cycle.* Contract each super-vertex in (M), and take the chosen arcs as meta-arcs, with keys per arc and not per network edge. A network edge with both arcs chosen is a cycle, seen locally in one round, and either head serves as c. A spanning forest of the meta-arcs by Borůvka takes O(log n) steps of (M). A component with k super-vertices has k − 1 forest arcs. So if it is active, exactly one chosen arc is left out, and this arc closes a cycle, which must be the cycle of the component. Let c be its head. An aggregate over the component names c and tells whether the component holds r.
 
 *The distances.* One call of (O) on the reversed digraph serves all components. Let K₀ = n + 1. A network edge inside a super-vertex gets weight 1 in both directions, whichever arcs H has on it. An arc (x, y) of R inside an active component gets weight K₀(K₀ w(x, y) + 1). Every other arc is removed. The offsets are 0 on the vertices of c. A shortest path has fewer than K₀ arcs, so d comes back by floor division twice. Removed arcs get one common weight above every finite distance, and a larger value counts as ∞. The second term K₀ · 1 counts arcs of R on the path, so a path of the shortest-path forest visits a super-vertex in one stretch: otherwise a shortcut inside it would save an arc of R. All weights are positive, so tight arcs give a forest, and each vertex stores its pointer for each step.
 
@@ -95,7 +95,7 @@ All values are of polynomial size, since by Lemma 1(a) weights never grow.
 
 At the end all super-vertices are single vertices, and each vertex knows its in-arc. There are at most log₂ n + 1 calls of (O) and Õ(1) steps of (M), which gives Õ(D). ∎
 
-*Corollary 2.* Let M be the largest weight, of any sign. Replace w by M − w, and add a virtual root ρ with an arc of weight M to each vertex. The weight of an arborescence is then nM − w(B), for the branching B that it gives. The root ρ stays in the root component, and arcs from it never enter an oracle call, since the calls run inside active components. Its arcs are read by their heads in the aggregate for β and in Step 1. On the network, the root component falls into trees, one per chosen arc out of ρ, and such an arc marks its tree as not active, so the test for the cycle still works. A vertex whose final in-arc comes from ρ is a root of B. ∎
+*Corollary 2.* If there are no arcs, the empty branching is the answer. Otherwise let M be the largest weight, of any sign. Step 1 needs no reach call, since ρ reaches every vertex, so there are at most ⌊log₂ n⌋ calls of (O). Replace w by M − w, and add a virtual root ρ with an arc of weight M to each vertex. The weight of an arborescence is then nM − w(B), for the branching B that it gives. The root ρ stays in the root component, and arcs from it never enter an oracle call, since the calls run inside active components. Its arcs are read by their heads in the aggregate for β and in Step 1. On the network, the root component falls into trees, one per chosen arc out of ρ, and such an arc marks its tree as not active, so the test for the cycle still works. A vertex whose final in-arc comes from ρ is a root of B. ∎
 
 ## 6. Checks
 
@@ -143,7 +143,7 @@ Steps against the bound of Lemma 4, on families built to need many steps:
 - The Exact SSSP Theorem, the Label Hypothesis and their caveats in [1]. The steps of (M) as black boxes.
 - The Lean file covers the arithmetic of Lemmas 1 to 3 and the count of Lemma 4, not the graph statements or the rounds.
 - The instances of the random lanes use few steps. The families `pairs` and `rings` exist to reach the bound of Lemma 4.
-- The general instances of `dmst.py` have no negative weights, no unreached vertices and no network edges without arcs. Its ties are deterministic, and marking is done by walking pointers. It has no control for the K₀ term or for ≤ against <. The referee's harness covers all of these, and found nothing.
+- The general instances of `dmst.py` have no negative weights, no unreached vertices and no network edges without arcs. Its ties are deterministic, and marking is done by walking pointers. It has no parallel arcs, and ρ is an ordinary vertex there, so the root component falling into trees is not run. It has no control for the K₀ term or for ≤ against <. The harnesses of Sections 8 and 9 cover all of these, and found nothing.
 
 ## 8. Record of the referee
 
@@ -161,6 +161,23 @@ Corrections it led to, all made above:
 - Proposition 5 is its proposal.
 
 It did not check the Exact SSSP Theorem or the Label Hypothesis, (M) beyond the citations, rounds and messages, the full version of [2], whether the labels of [7] fit the Virtual Source Lemma, or whether [5] already implies an unconditional approximate planar bound.
+
+## 9. Record of the adversary
+
+An independent agent wrote two testers from the note alone, in `sim/review/dmst/adversary/`. One runs Sections 4 and 5 with a shortest-path solver for each call of (O), floor decoding, tight pointers, subtree sums and every free choice through a chooser. The other shares no code with it and checks Section 3 on arbitrary states, including states the algorithm never reaches. Its truth is brute force on 143,045,359 runs and its own Chu-Liu on all. Every network passed a planarity check, and arcs were only placed on its edges.
+
+It found no failure in 355,395,677 runs of the algorithm and 67,461,309 single contractions, with 383,507,204 pairs of Lemma 2 and 1,185,472,317 trees of Lemma 3. Coverage is exhaustive up to n = 4 or 5 on small weight alphabets and sampled above. Its ruler family takes exactly ⌊log₂(n − 1)⌋ steps up to n = 2049, so the bound of Lemma 4 is tight, and no run exceeded it. Of its 22 variants, 3 are neutral by design and all others that change the algorithm are caught. `internal_one_way`, weight 1 only along arcs of H, is an equivalent mutant: each super-vertex was strongly connected in H in all 276,440,107 checks, so "both directions" in Section 5 is more than needed and harmless.
+
+Corrections it led to, all made above:
+
+- Keys of the forest are per arc. Built per network edge, the forest gave an invalid tree in 283,806 of 578,432 runs.
+- The reach call uses weight 1, since (O) needs nonnegative weights.
+- Corollary 2 skips the reach call, and it names the case with no arcs.
+- Section 7 now lists what `dmst.py` does not run.
+
+It also reported a false clause in Lemma 2 and the form of "Several components". Both had been corrected after the referee, and it had read an earlier text. Its hand-checked instances of them are in `witness.py`.
+
+It did not test rounds or messages, the Exact SSSP Theorem or the Label Hypothesis (its (O) is a solver), (M) and (T2) beyond a model of them, networks with multiple edges, or n above 2049, and tie enumeration was capped. It did not read the Lean file.
 
 ## References
 
