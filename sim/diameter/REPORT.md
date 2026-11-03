@@ -47,7 +47,7 @@ Every ratio is flat or grows slowly, which fits Õ(D²) words. This is not a mea
 | Offset of a token replaced by 0 | 2,388 | 1,639 | 0 | 94,246 |
 | P_X without ancestors and without T-paths | 2,327 | 1,533 | 48,327 | 0 |
 
-The second mutation did not fire on these families, so these lanes do not show that the second token is needed. Two tokens occur (1,304 patterns in 628 runs), and the second is often a farthest vertex (1,013 of 22,390 cases), but it was never the only one. Perturbing such instances and rebuilding the bags did not fire it either. `diam.py second` forces the configuration: the root separator ends at a cut vertex a, and its closing edge separates two combs at a, in one corner of P. There the mutation gives wrong values for 18 of 48, 35 of 77 and 70 of 158 vertices, and the unmutated rule for none.
+The second mutation did not fire on these families, so these lanes do not show that the second token is needed, though it fired on the adversary's instances (2 of 150 and 1 of 71). Two tokens occur (1,304 patterns in 628 runs), and the second is often a farthest vertex (1,013 of 22,390 cases), but it was never the only one. Perturbing such instances and rebuilding the bags did not fire it either. `diam.py second` forces the configuration: the root separator ends at a cut vertex a, and its closing edge separates two combs at a, in one corner of P. There the mutation gives wrong values for 18 of 48, 35 of 77 and 70 of 158 vertices, and the unmutated rule for none.
 
 ## Sum Corollary, `diam.py sum`, 60 s
 
@@ -59,6 +59,7 @@ The second mutation did not fire on these families, so these lanes do not show t
 - The engine leaves a bag as a leaf if it finds no separator in its tries, so leaf size is not bounded as in (H1), and the forced root is the only hand-made case.
 - Below 40 × 40 grids only, and random lanes stop at n = 550.
 - The weighted form of the Sum Corollary is not run.
+- `diam.py` checks Lemma 1 only on token pairs, reads true distances in E(u) and not the output of Steps 2 and 3, checks Lemma 3 on the nodes of the segment tree and alternation on 40 sampled pairs per face, and has no negative control for Lemmas 2 and 3. About a third of the vertices lie in forced leaves, which are trivially right, and wheels never split here. The adversary's own code, see `notes/DIAMETER.md`, Section 6, closes these on its instances and is not in this repository.
 
 ## Reproduce
 
