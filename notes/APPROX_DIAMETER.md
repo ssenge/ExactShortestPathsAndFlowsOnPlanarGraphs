@@ -1,6 +1,6 @@
 # (1+ε)-approximate eccentricities of unweighted planar networks in Õ(D + 1/ε⁴) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. One referee pass (3 Nov 2026) found no fatal error; its corrections are in this text, see Section 6. Not yet attacked, and no human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. One referee pass and one adversarial pass (3 Nov 2026) found no fatal error and no counterexample; their corrections are in this text, see Section 6. No human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. Words have O(log n) bits.
 
@@ -20,7 +20,7 @@ Let r be the root of T and Δ = ecc(r), found by a BFS, so D ≤ 2Δ. Let H be a
 
     ρ = ⌊ ε·Δ / (2(2H + 5)) ⌋.
 
-If ρ = 0, then D = Õ(1/ε). In that case run the algorithm below with N_X = L_X, every occurrence a portal, and r = g. All errors vanish, and Lemma 4 gives O(K_Φ⁴) words per face, so Õ(D⁴) = Õ(1/ε⁴) rounds. The exact algorithm of `notes/DIAMETER.md` would take Õ(D²) rounds, but it uses [2]. From now on ρ ≥ 1.
+If ρ = 0, then D = Õ(1/ε). In that case run the algorithm below with N_X = L_X, every occurrence with vertex in V(X) a portal, and r = g. All errors vanish, and Lemma 4 gives O(K_Φ⁴) words per face, so Õ(D⁴) = Õ(1/ε⁴) rounds. The exact algorithm of `notes/DIAMETER.md` would take Õ(D²) rounds, but it uses [2]. From now on ρ ≥ 1.
 
 For a non-leaf X, P_X, L_X, the faces, walks, corners and occurrences are as in `notes/DIAMETER.md`, and each q ∈ L_X announces itself over T_X, so every vertex of X knows L_X. Since V(X) ⊆ V(A) for the parent A, (H3) gives that a vertex of V(X) off P_X lies in X°, and its child is X when A is the parent on its chain. Let ℓ_X be the hop metric of P_X. For a leaf X, let T_X be broadcast over itself, in Õ(D) words, let ℓ_X be its hop metric, and let L_X = V(X). In both cases ℓ_X(x,y) ≥ d_G(x,y), since the edges are real. Let M_X be the number of edges of P_X or of T_X, so M_X = Õ(D).
 
@@ -125,6 +125,14 @@ Its runs, with no failure: 527 standalone discs for Lemmas 2 to 4 (3.8 million s
 
 **Not checked by it:** the proofs of Lemmas B1 and B5 and of (H1) to (H4), `notes/DIAMETER.md` Lemmas 2 and 3, [2], [5], polylogarithmic exponents, and sizes above n = 592.
 
+**Adversary (3 Nov 2026).** A second pass, whose only job was to break the theorem, ran on its own code. It found no counterexample on the current text, and re-derived Lemmas 1 to 5, the recursion of e and the arithmetic of the theorem by hand. Instances that failed at first turned out to have closing curves that cross an edge of G, which Lemma B5 excludes, and all failures vanished once these were filtered out.
+
+No failure in: the pair form d − 2ρ ≤ V(u,v) ≤ d + 3ρ + 2ρ·depth on about 16.1 million pairs, which `approx.py` does not check; arc tests on about 48.1 million thresholds; forced roots on connected planar graphs with n ≤ 7, time limited, so maybe not all (184,100 runs, 1,271,612 eccentricities); forced faces and fundamental cycles of any balance; spiders with the root at the centre; closing curves through holes (313 runs, 7,895 virtual closings); four engine configurations (4,109 runs), before the per-token checks; hill climbing, whose best under-estimate is 1.66ρ.
+
+Lemma 4 is tight up to a factor of about 40. On a k × k grid with P the boundary cycle and Φ its inner face, with m²/K held near 0.4, the number of rounded patterns is about 0.014·m⁴: for example 34,697 patterns against the bound 1,381,954 at k = 1000, K = 3,996, ρ = 101, m = 40. This comes from a stand-alone harness, and the cause is not proved: portals on two adjacent sides seem to give thresholds on x and on y that multiply. On a real forced root bag with k = 40 the rounded patterns saturate at one per interior vertex, and all checks pass.
+
+Weak spots of `approx.py` it found are in the report. **Not reached by it:** a CONGEST simulation, the proofs of Lemmas B1 and B5 and of (H1) to (H4), the full pipeline above n = 1,600, and the ρ of Section 2, including the branch ρ = 0, checked on paper only.
+
 ## 7. Not covered by the checks
 
 - Rounds, messages and who knows what: no CONGEST simulation.
@@ -133,7 +141,7 @@ Its runs, with no failure: 527 standalone discs for Lemmas 2 to 4 (3.8 million s
 
 ## 8. Open
 
-- The exponent 4. Lemma 4 counts grid points by Sauer-Shelah, and uses no more than single crossing. At ρ = 1 it gives K⁴, while [2] gives O(K²). Rounding alone cannot do better from pairwise conditions: exact search over lattice paths of m positions, with the single crossing condition only, gives largest families of 9, 25, 61 for m = 3, 4, 5, which is about m⁴/10. A packing may do better. For vectors in {−1,+1}^K with sum 0 and no cyclic alternation, exact search for the largest family with pairwise L∞ distance of prefix sums at least τ gives 17 and 5 for K = 8, τ = 2, 4, and 26 and 6 for K = 10, τ = 2, 4. This fits (K/τ)² + 1, on very small cases only. A proof would allow tokens for a packing of patterns, by a filtered upcast with pruning.
+- The exponent 4. Lemma 4 counts grid points by Sauer-Shelah, and uses no more than single crossing. At ρ = 1 it gives K⁴, while [2] gives O(K²). A better exponent cannot come from counting rounded patterns on large D: about 0.014·m⁴ of them occur on grids, see Section 6. Tokens could still be dropped by domination or a packing. Rounding alone cannot do better from pairwise conditions: exact search over lattice paths of m positions, with the single crossing condition only, gives largest families of 9, 25, 61 for m = 3, 4, 5, which is about m⁴/10. A packing may do better. For vectors in {−1,+1}^K with sum 0 and no cyclic alternation, exact search for the largest family with pairwise L∞ distance of prefix sums at least τ gives 17 and 5 for K = 8, τ = 2, 4, and 26 and 6 for K = 10, τ = 2, 4. This fits (K/τ)² + 1, on very small cases only. A proof would allow tokens for a packing of patterns, by a filtered upcast with pruning.
 - The (1+ε)-approximation of the sum of distances. An additive error of εD per vertex is not a factor (1+ε) if most vertices are close to u.
 - Weighted networks with bounds below [1]. Lemmas 2 to 4 do not use unit lengths, but the first hits f would need exact distances, and the argument for net sizes needs a bound on the weighted length of P_X.
 
