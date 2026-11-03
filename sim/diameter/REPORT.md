@@ -6,17 +6,17 @@ Run on 3 Nov 2026 on region bags built by the engine of `sim/s9`, on the familie
 
 | | Normal lane | Big lane |
 |---|---|---|
-| Runs | 14,540 | 4,773 |
-| Bags with a separator | 350,968 | 197,459 |
-| Eccentricities, E(u) against BFS | 1,457,083 | 764,177 |
-| Token evaluations, each equal to d_G | 47,342,058 | 77,819,749 |
-| Sandwich and near hub | 5,310,842 | 3,129,237 |
-| Lemma 2, patterns per face | 537,479 | 324,488 |
-| Lemma 3, nodes of the segment tree | 28,150,329 | 31,091,661 |
-| Alternation, sampled pairs | 5,250,602 | 3,021,357 |
-| Step 3, first-hit formula, vertices | 872,783 | 421,801 |
-| Step 2, recursive table, entries | 68,569,213 | 50,117,322 |
-| Corners of a component on one face, Euler | 350,968 | 197,459 |
+| Runs | 14,852 | 4,927 |
+| Bags with a separator | 358,363 | 203,851 |
+| Eccentricities, E(u) against BFS | 1,488,027 | 788,540 |
+| Token evaluations, each equal to d_G | 48,365,986 | 80,410,774 |
+| Sandwich and near hub | 5,423,060 | 3,229,554 |
+| Lemma 2, patterns per face | 548,847 | 335,108 |
+| Lemma 3, nodes of the segment tree | 28,747,912 | 32,090,203 |
+| Alternation, sampled pairs | 5,361,090 | 3,118,887 |
+| Step 3, first-hit formula, vertices | 890,847 | 435,790 |
+| Step 2, recursive table, entries | 70,013,431 | 51,713,012 |
+| Corners of a component on one face, Euler | 358,363 | 203,851 |
 | Largest n, D | 550, 36 | 550, 38 |
 | Largest number of bags | 443 | 438 |
 | Largest \|E(P_X)\| / D | 11.0 | 10.75 |
@@ -42,16 +42,16 @@ Every ratio is flat or grows slowly, which fits Õ(D²) words. This is not a mea
 
 | Mutation | Runs | Runs with a wrong value | Too high | Too low |
 |---|---|---|---|---|
-| Top token on the own face, whatever its child | 2,254 | 906 | 25,599 | 0 |
-| Own face: only the top token, dropped if in the own child | 2,439 | 0 | 0 | 0 |
-| Offset of a token replaced by 0 | 2,388 | 1,639 | 0 | 94,246 |
-| P_X without ancestors and without T-paths | 2,327 | 1,533 | 48,327 | 0 |
+| Top token on the own face, whatever its child | 2,138 | 863 | 24,359 | 0 |
+| Own face: only the top token, dropped if in the own child | 2,551 | 0 | 0 | 0 |
+| Offset of a token replaced by 0 | 2,594 | 1,782 | 0 | 102,323 |
+| P_X without ancestors and without T-paths | 2,449 | 1,589 | 41,062 | 0 |
 
 The second mutation did not fire on these families, so these lanes do not show that the second token is needed, though it fired on the adversary's instances (2 of 150 and 1 of 71). Two tokens occur (1,304 patterns in 628 runs), and the second is often a farthest vertex (1,013 of 22,390 cases), but it was never the only one. Perturbing such instances and rebuilding the bags did not fire it either. `diam.py second` forces the configuration: the root separator ends at a cut vertex a, and its closing edge separates two combs at a, in one corner of P. There the mutation gives wrong values for 18 of 48, 35 of 77 and 70 of 158 vertices, and the unmutated rule for none.
 
 ## Sum Corollary, `diam.py sum`, 60 s
 
-250 runs and 25,226 values S(u) from the tables of the corollary, all equal to the sum over BFS. Each mutation made some S(u) wrong: without the subtraction for the own child in 250 runs, without the sum of offsets in 250, with count 1 per pattern in 247, and with hubs outside X° in 249.
+298 runs and 30,539 values S(u) from the tables of the corollary, all equal to the sum over BFS. Each mutation made some S(u) wrong: without the subtraction for the own child in 298 runs, without the sum of offsets in 298, with count 1 per pattern in 295, and with hubs outside X° in 297.
 
 ## Limits
 
