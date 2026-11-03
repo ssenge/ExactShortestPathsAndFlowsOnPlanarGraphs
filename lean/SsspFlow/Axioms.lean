@@ -57,3 +57,7 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.Arborescence.lower_step
 #print axioms SsspFlow.Arborescence.removed_ge
 #print axioms SsspFlow.Arborescence.halving
+#print axioms SsspFlow.Replacement.crossing
+#print axioms SsspFlow.Replacement.no_forward_use
+#print axioms SsspFlow.Replacement.no_backward_use
+#print axioms SsspFlow.Replacement.reduced_telescope

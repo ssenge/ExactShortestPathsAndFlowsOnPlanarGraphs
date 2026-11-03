@@ -20,6 +20,8 @@ $\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs o
 A newer and simpler claim, after the paper and not part of it: exact SSSP with negative weights, and exact maximum st-flow in directed planar networks with the flow on every edge, in
 $\tilde O(D)$ rounds with high probability, from the Label Hypothesis alone, with no extension of the labels. Perfect matching of planar bipartite networks follows in the same bound. It replaces the reduction of [6] in Theorems B and C by a published reduction with polylogarithmic overhead (SOSA 2025, arXiv:2410.20959). **The open question in the paper on the factor $n^{o(1)}$ was already answered by that reduction, which our literature search missed. The statements of Theorems B and C below are correct, but they are weaker than what follows.** See [`notes/NEGATIVE.md`](notes/NEGATIVE.md). **Written on 3 Nov 2026. Treat it as a claim; no referee or adversary has reported yet.**
 
+**New claim, 3 Nov 2026, not yet refereed:** [`notes/REPLACEMENT.md`](notes/REPLACEMENT.md). Replacement paths on planar digraphs: for every arc of a shortest st-path, the distance without it, exactly in $\tilde O(D\cdot\min(h,D))$ rounds, and $(1+\varepsilon)$-approximately on the excess in $\tilde O(D/\varepsilon)$ rounds, from the Label Hypothesis. On general networks the exact problem takes $\tilde\Theta(n)$ rounds. Undirected weighted networks take $\tilde O(D)$. Simulation in `sim/replacement/`.
+
 **New claim, 3 Nov 2026, not yet refereed:** [`notes/DMST.md`](notes/DMST.md). Minimum arborescence and maximum branching of a planar digraph in $\tilde O(D)$ rounds, from the Exact SSSP Theorem and the Label Hypothesis, with $O(\log n)$ oracle calls. It follows the plan of the DISC 2019 algorithm for general networks. Simulation in `sim/dmst/`.
 
 A second newer claim, also not part of the paper: in undirected unweighted planar networks every vertex learns its exact eccentricity, so the diameter and radius are found, in
@@ -445,6 +447,7 @@ standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorr
   within $1+\varepsilon$ of the distances in each bag. The hypotheses on the hierarchy follow
   from the decomposition's separation property. No finiteness is assumed.
 - `lean/SsspFlow/LemmaD.lean`: Lemma D.
+- `lean/SsspFlow/Replacement.lean`: the crossing step, the telescoping and the two cases of the undirected formula of `notes/REPLACEMENT.md`.
 - `lean/SsspFlow/Arborescence.lean`: the arithmetic of the contraction and the halving count of `notes/DMST.md`.
 - `lean/SsspFlow/NegScaling.lean`: the arithmetic of the scaling, the alternation, the short paths in a cluster and the arc inequality of `notes/NEGATIVE.md`.
   - `Setup.negCycle_iff`, `Setup.walks` and `Setup.lemmaD` prove it for any graph with the
