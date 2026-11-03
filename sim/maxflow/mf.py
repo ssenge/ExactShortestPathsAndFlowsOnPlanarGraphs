@@ -1,6 +1,6 @@
 """Exact maximum flow by scaling over the portals of one BFS path: logic of notes/MAXFLOW.md, centrally.
 
-An oracle for portal distances is modelled by true distances plus adversarial noise in [d, (1+eps)d].
+An oracle for portal distances is modelled by true distances plus worst-case noise in [d, (1+eps)d].
 No rounds, no labels, no hierarchy here. Run: python -I mf.py <seed> <seconds>, or ctl <seed> <seconds>.
 Needs networkx for embeddings and the planarity check.
 """

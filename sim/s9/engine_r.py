@@ -1,7 +1,7 @@
 """Level-by-level: build [8]-shaped children for every non-leaf bag at depth d (separators may be
 chosen against Gamma_d), then run the construction of LEMMA15.md §3.2 and check §3 claims."""
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 import math, random, collections, itertools
 import numpy as np, networkx as nx
 from scipy.sparse import coo_matrix

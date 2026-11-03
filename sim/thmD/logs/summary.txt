@@ -1,4 +1,4 @@
-Theorem D (NOTES.md §5) -- computational attack, 2026-10-29
+Theorem D (NOTES.md §5) -- computational test, 2026-10-29
 ==========================================================
 Code: ../thmD.py (single file, python3 -I), ../minimize.py, ../summarize.py, ../lane1.sh, ../lane2.sh
 Per-run tables: runs_table.txt; raw: [A-H,N]_*.json (first 200 failing instances each), min_*.json.

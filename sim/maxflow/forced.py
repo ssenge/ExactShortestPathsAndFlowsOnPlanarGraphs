@@ -6,7 +6,7 @@ Run: python -I forced.py <seed> <seconds> [net|gen], or neg <seed> <seconds> for
 """
 import collections, json, os, random, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
-for d in ('s9', 'attack3'):
+for d in ('s9', 'lemma14prime'):
     sys.path.insert(0, os.path.join(HERE, '..', d))
 sys.path.insert(0, HERE)
 import numpy as np

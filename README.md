@@ -212,7 +212,7 @@ decomposition:
    holes stay two faces. 53 of 60 weightings have no valid order, and the worst is off by 1.73.
 
 A control run on 300 instances with all hubs on one face gave factor 1 every time, so these
-are not artefacts of the linear program. The scripts are in `sim/attack/` (`g2_chord_bfs.py`,
+are not artefacts of the linear program. The scripts are in `sim/counterexamples/` (`g2_chord_bfs.py`,
 `g2_chord.py`, `g2_virtual.py`, `g2_pinch.py`, and the control `lp_sanity.py`).
 
 **The repair** (`notes/LEMMA15.md`) has two layers.
@@ -375,7 +375,7 @@ is no longer. But an annulus can hold copies of the first cut path outside $[j,k
 $i_2$ can lie outside the range and be dropped by another annulus. There are
 instances where two drops rest on each other and no computed cycle is minimum, with exact
 shortest paths that are all unique. Smallest: a simple graph with 11 vertices and 22 edges,
-minimum cut 15, computed 37 (`sim/thmD/attackR/logs/trace_min_simple0.txt`). The driver
+minimum cut 15, computed 37 (`sim/thmD/testR/logs/trace_min_simple0.txt`). The driver
 `sim/thmD/thmD.py` gives 37 as well. The repair computes two more cycles in every annulus that is not
 a leaf, at $i^-=\max(i_1,j)$ and $i^+=\min(i_2,k)$. That is two more SSSP calls per level, so the
 round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form of
@@ -465,6 +465,8 @@ planarity (Lemmas R3, R5, R7, and the Monge condition).
 ## Numerical checks (`sim/`)
 
 Requires Python 3 with `numpy`, `scipy` and `networkx`. Run each script from its own directory.
+The first arXiv version refers to the tree at the tag `arxiv-v1`, where some of these directories
+have older names.
 These scripts test finite families and the sequential meaning of the statements. They do not
 test round counts.
 
@@ -476,16 +478,16 @@ test round counts.
   `tiles.py` is the first version. The `run*.txt` files hold the outputs listed in
   `notes/LEMMA15.md` §3.7: about 2.7 million Monge checks and no failure, while the negative
   controls fail as they should.
-- `sim/ref2/`: a second check of §3. `walk_check.py` rebuilds the boundary
+- `sim/tiles_check/`: a second check of §3. `walk_check.py` rebuilds the boundary
   order of every tile from port records alone, as the distributed algorithm would, and
   `pendant.py` builds graphs with pendant leaves in every corner, on which the reading with one
   child per outside component fails.
-- `sim/attack2/`: tests of an earlier form of §3. `run.py` is the driver, `engine.py` the
+- `sim/tiles_early/`: tests of an earlier form of §3. `run.py` is the driver, `engine.py` the
   construction and its checks, and `s7_rebuild.py` rebuilds the three configurations above. `g1_inconsistency.py` shows that
   one child per outside component is incompatible with the decomposition's properties on
   stars. `g1_grouped.py` repeats that search with the grouping of [8] and finds balanced
   children.
-- `sim/attack3/`: tests of Lemma 14′ and of the parts of Lemmas 15′ and 16′ that use it, with
+- `sim/lemma14prime/`: tests of Lemma 14′ and of the parts of Lemmas 15′ and 16′ that use it, with
   negative controls. `p6.py` builds the family on which Property 6 fails
   (`python3 -I p6.py 100 u 8 nopost`), and `lp46_demo.py` a step of [8] that adds more than
   one tree component. `sweep.py` and `run.py` drive the sweeps; `logs/` holds their output.
@@ -498,7 +500,7 @@ test round counts.
   children without a violation (`logs/e_*.txt`); `logs/` holds all output. `b5.py` runs
   Lemma B5 and checks each separator against an independent side count (4,000 instances, n
   up to 1,842, no failure; `python3 -I b5.py START END`).
-- `sim/attack5/`: further tests of Lemma B5. `mine.py` is an independent
+- `sim/lemmaB5/`: further tests of Lemma B5. `mine.py` is an independent
   implementation with its own side count, and `harness.py` compares it with `b5.py`.
   `exh.py` and `exh_trees.py` enumerate all instances for small n, `rand.py`, `fams.py` and
   `geo_cmp.py` run larger ones, `hill.py` climbs towards the step bounds, and `negctl.py`
@@ -511,7 +513,7 @@ test round counts.
   the repaired graph from its written definition, and `test_repair.py` and `witness.py`
   compare it with `thmD.py` and check its properties; `test_mono.py`, `witness_mono.py` and
   `run_mono.sh` rerun them with the monotone I_ℓ and also check Lemma N.
-  `attackR/` tests Lemma R and Lemma N with code written independently of
+  `testR/` tests Lemma R and Lemma N with code written independently of
   `thmD.py`: `emb.py` enumerates maps, `defr.py` builds Definition R, `abstract18.py` models
   the incisions of [18], `level1.py`, `planar_sweep.py`, `deep.py` and `deep2.py` run the
   checks, `search_e2e.py` and `minimize_e2e.py` find the recursion defect, and
@@ -521,22 +523,22 @@ test round counts.
   instances with and without the repair; `lane_ends.sh`, `lane_c24.sh` and `lane_sep.sh` give
   the sweeps. `lemmaO/` checks every part of Lemma O and of its
   invariant at every incision (`patchO.py` turns `thmD.py` into `thmD_O.py`; `lanes*.sh`):
-  342,000 instances, 232,868 incisions, no failed check. `attackSO/` tests Lemmas S and O:
+  342,000 instances, 232,868 incisions, no failed check. `testSO/` tests Lemmas S and O:
   every run on all connected loopless maps with at most 8 edges (with a cap of runs per instance),
-  hill-climbing and the saved hits (`logs/summary.txt`). `refND/` is the script test of the naming of
+  hill-climbing and the saved hits (`logs/summary.txt`). `checkND/` is the script test of the naming of
   sides, the cut read from a path, the reading direction and the number of levels: 12,441,126 runs
   with no failure, every negative control fired (`REPORT.md`).
-- `sim/attack4/`: stress tests of §9. `engine_r9.py` adds exact hole counts,
+- `sim/s9_stress/`: stress tests of §9. `engine_r9.py` adds exact hole counts,
   closings through holes, greedy separators that aim at the slack of Lemmas B2 to B4, and
   other global trees; `engine_c9.py` draws closings combinatorially; `fams9.py` adds nine
   families (Delaunay with holes, sparse Delaunay, cacti, wheels of wheels and others). Run
   `python3 -I adv.py CONF A:B fam1,fam2 SCALE`. `tight.py` finds the equality cases.
-- `sim/attack/`: the counterexamples to [1, Lemma 14], and checks of the analytic layer:
+- `sim/counterexamples/`: the counterexamples to [1, Lemma 14], and checks of the analytic layer:
   gluing (`r1_glue.py`), rounding (`r6_round.py`), the error recursion (`l16.py`), the squaring
   in [1, Thm 2] (`s1_square.py`), and tests of Lemma V and Lemma D
   (`lemmaV.py`, `lemmaD_flow.py`). `rot.py` is a small rotation-system library used by the
   others.
-- `sim/ref/monge.py`: an instance that satisfies the Monge constraints of [1] for one linear
+- `sim/monge/monge.py`: an instance that satisfies the Monge constraints of [1] for one linear
   reading of the order but not for the circular one, which is why the notes impose them in all
   rotations.
 

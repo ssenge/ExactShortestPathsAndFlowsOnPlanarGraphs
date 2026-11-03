@@ -1,0 +1,27 @@
+testSO results of an earlier run (2026-10-30; logs not kept, numbers as noted then)
+All runs: thmD_R.py checks (Lemma O, extra, final value vs networkx) + worst-case path hook.
+
+Exhaustive loopless maps (every map with m edges, all ordered (s,t), caps as listed,
+EVERY run of the recursion: all f,g, all legal corners+modes (anycorner), all w-shortest P,
+all w-shortest P_i at every annulus, all overlap sources z; cap 300 runs/instance (m=7: 200)):
+  m=2 caps one,zero,all012         88 inst      680 runs       0 inc   0 fail
+  m=3 caps one,zero,all012       1102 inst    11228 runs      48 inc   0 fail
+  m=4 caps one,zero,all012      13612 inst   170604 runs    2968 inc   0 fail
+  m=5 caps all01,r012x2,gen     28770 inst   433335 runs   18346 inc   0 fail
+  m=6 caps one,zero,r012x2,gen  26890 inst   476163 runs   44301 inc   0 fail
+  m=7 caps one,r012,gen        109248 inst  2083265 runs  284511 inc   0 fail (5 instances hit the run cap)
+  m=7 coverage: x=y 78364, overlap_one 7499, old_end_both 6432, i12_outside 6462, linear nodes 785,
+                t strictly between x,y in range 45070, child with both bounds 1701, levels max 3
+With loops (maps incl. loops, m=3,4): failures only of the G^ oracle (i_dist, iii_*, 'tree broken')
+  and 'no legal corner' (g = inner face of a loop at t, the loop on P); all 988 failing instances
+  contain a loop. Loops are outside the setting (GHAT_REPAIR.md: loops are deleted first).
+
+Direct S1 / (S_1) in A_1, loopless maps m=5,6,7 (1548 maps, caps one and random 0..2, all s,t,
+all f,g, <=4 shortest P, all legal corners): 688,464 A_1; 2,097,079 shortest Pbar;
+206,219 S1 interval checks (74,715 with t strictly between x and y); 74,715 (S_1) checks with
+Qbar from a shortest Pbar; 31,955 (S_1) checks with arbitrary simple Qbar (31,611 Qbar). 0 fail.
+
+Policy smoke (30 inst, 90 runs): 263 incisions, 64 with both bounds (24% vs ~3% in earlier tests).
+Hill smoke (60 s): 3972 runs, 18832 incisions, both bounds 5322, overlap on both sides 183,
+  linear node split in three 1472, overlap side of several subgraphs 1720. 0 fail.
+The first-wave 1-hour lanes (advA, advB, hill x2, exhaustive m=8 shard) were lost unfinished.

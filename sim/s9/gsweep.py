@@ -1,7 +1,7 @@
 """Like comm.py, on the bounded-degree expansion of each family instance. Adds vertex multiplicities."""
 import sys, os, random, collections, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 import comm
 from comm import probe
 from gadget import expand

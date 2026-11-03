@@ -43,7 +43,7 @@ Notation is that of [1, Sec. 5]:
     components for T[X]. We use T_X, which costs one log factor in sizes and rounds.
     The O(log n) components come from [8, Claim 4.6, Lemma 4.7], which add one component
     per level. That step is false: a child met S_X in two arcs and went from 1 to 3
-    components in one step (`sim/attack3/lp46_demo.py`). In all runs that follow (G1′)
+    components in one step (`sim/lemma14prime/lp46_demo.py`). In all runs that follow (G1′)
     faithfully (T_X ⊇ T[X] from a BFS tree, inherited z_s) the total stayed at most depth + 1,
     and with z_s chosen against the bound at most depth + 3. In the region form of §9 the bound
     is proved: c(X) = O(log² n) (Lemma B1(e)),
@@ -102,9 +102,9 @@ The following are used as black boxes. In the region form of §9, which is the f
   - **One child per outside component.** This reading contradicts 7(a). With pendant leaves
     in every corner, one separator vertex touches many outside components, up to 37 in the
     tested graphs. On stars, (G1′) and 7(a) then leave a child with n − 2 vertices, so no BDD
-    of height O(log n) has that shape (`sim/attack2/g1_inconsistency.py`). [8]'s grouping
+    of height O(log n) has that shape (`sim/tiles_early/g1_inconsistency.py`). [8]'s grouping
     avoids this: an exhaustive search over all root separators of star, windmill and K_{2,m}
-    families gives a largest child of at most n/2 + 1 vertices (`sim/attack2/g1_grouped.py`).
+    families gives a largest child of at most n/2 + 1 vertices (`sim/tiles_early/g1_grouped.py`).
 - **(G3) Realization** [10, Thm 1] (refereed, SODA 2025).
   - **Claim.** Let d be a quasimetric on T and σ a cyclic order on T. Suppose d satisfies
     the cyclic Monge condition (M) below for σ. Then some plane digraph K with O(|T|⁶)
@@ -133,7 +133,7 @@ The following are used as black boxes. In the region form of §9, which is the f
   The proof: a u to v path and a w to z path must cross at some vertex x, and splitting both
   at x gives the inequality. (M) is (13) of [1] imposed for every cyclic rotation of σ. [1]
   imposes (13) only for one linear reading of σ, which is weaker. The difference matters: an LP
-  (`sim/ref/monge.py`) finds a d that satisfies (13),
+  (`sim/monge/monge.py`) finds a d that satisfies (13),
   the triangle inequalities and 1 ≤ d ≤ 100 on four terminals, yet violates (1) of [1] by
   149.5.
 - **(G5) Oracle** [1, Lemma 11]. A plane digraph with integer weights in [0, N] has a
@@ -185,7 +185,7 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
   to 7. Def. 6 step 4 (lty 1530-1531) uses the same fact. We record it as (7c′).
 - **(S7) [1, Lemma 14] is false as stated.** The claim is that cutting P_X open merges all
   holes of G[X] into one face carrying P_X ∪ ∂S*_X. It fails in three configurations (scripts
-  in `sim/attack/`), all consistent with Properties 1
+  in `sim/counterexamples/`), all consistent with Properties 1
   to 7 and [8]'s rule for children:
   1. **Separator chords** (`g2_chord_bfs.py`, `g2_chord.py`).
      - Setup: a non-tree edge between two separator vertices, drawn inside S. Its endpoints
@@ -215,7 +215,7 @@ Two assumptions on the graph the oracle runs on. Both hold for every call in The
   there.
 - **(S9) Property 6 is false for induced bags.** [1, Lemma 9 (6)] says that at every depth
   each edge lies in at most two subgraphs G[X], and [8, Lemma 4.3 (8′)] says the same. Both
-  fail on G_m, which is K_{2,m} plus the edge uw: planar, with D = 2 (`sim/attack3/p6.py`).
+  fail on G_m, which is K_{2,m} plus the edge uw: planar, with D = 2 (`sim/lemma14prime/p6.py`).
   - Let B be the set of bags that contain u and w. Take a non-leaf X ∈ B and a petal
     a ∈ X ∖ S_X. Then a lies in exactly one child X_i, and by (7c′), or by [8, Def. 4.1 (3)],
     the edges ua and wa lie in G[X_i]. So X_i ∈ B.
@@ -564,7 +564,7 @@ most 3|∂S*_X| of them. ∎
     are at most |S_A| − 2 of them: the |S_A| − 3 diagonals of a polygon, plus possibly a real
     edge parallel to a virtual closing edge. Hence Σ_s c_s ≤ 2|S_A| and |L_A| ≤ 8|S_A|.
   - **The term 2c_s is needed.** A chord fan has c_v = k − 1 and 2k − 2 label changes at v
-    (`sim/attack2/region_fan.py`), so no constant bound per vertex holds.
+    (`sim/tiles_early/region_fan.py`), so no constant bound per vertex holds.
 - **|N_A| = O(D log n).** |Q_A| ≤ 2|E(q_A)| and |P_A| ≤ 2|E(p_A)|. Both q_A and p_A are paths
   in T_A, whose diameter is O(D log n), and |S_A| = |V(q_A)|.
 - **|J_X| ≤ Σ_{A ∈ Anc*(X)} |N_A|.** Map each port of X to the opening corner of its sector.
@@ -1572,7 +1572,7 @@ through a hole; the item *Closings through holes* below covers that case.
   - *Tightness.* Lemmas B2, B3 and B4 are each met with equality. For example
     a_Y = 4 = ν(X) + 1 at ν(X) = 3 (swiss, seed 55), ν(Y) = ν(X) + 1 up to ν(X) = 10 (flower,
     seed 6), and c(Y) = c(X) + a_Y with a_Y = 3 (dl, seed 112, c from 2 to 5). The families
-    and seeds are those of `sim/attack4/`.
+    and seeds are those of `sim/s9_stress/`.
   - *Observed beyond the lemmas.* The bound c(X) ≤ depth + 1 held in every run, even against
     greedy c-maximizers, while c(X) − ν(X) − 1 reached 27, so there is no law c ≤ ν + 1. So the
     d² of Lemma B1(e) is a worst case we never met.

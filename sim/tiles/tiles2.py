@@ -10,7 +10,7 @@ sub-tile component in boundary order, planarity of the wheel model of every glui
 import sys, os, itertools, collections, random
 import numpy as np, networkx as nx
 from scipy.spatial import Delaunay
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'attack'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'counterexamples'))
 from rot import Plane
 
 # ---------------- input graphs ----------------
@@ -307,7 +307,7 @@ def run(n=140, drop=0.25, seed=1, leaf_size=14, verbose=False, virtual=False, ne
     rng = random.Random(seed)
     pos, E = random_plane(n, drop, seed)
     if pend:
-        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'ref2'))
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tiles_check'))
         from walk_check import add_pendants
         pos, E = add_pendants(pos, E, pend, seed)
     Gnx = nx.Graph(E)

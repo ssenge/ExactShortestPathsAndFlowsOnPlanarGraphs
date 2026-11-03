@@ -1,7 +1,7 @@
 """Post-run checks on an Engine: Lemma 16' recursion, Lemma 15' gluing with substitute disk graphs,
 Property 6 / T_X congestion counts, §3.5 walk reconstruction from port records."""
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 import math, random, collections, itertools
 import numpy as np, networkx as nx
 from core import sp_matrix, add_arc, monge_check
@@ -31,7 +31,7 @@ def dists_in(eng, X, sources, rev=False, E=None):
 
 
 def lemma16(eng, eps=0.05, neg=None):
-    """d~_X per Lemma 16' with adversarial hub oracles; checks dist <= d~ <= (1+eps)^(3h+1) dist."""
+    """d~_X per Lemma 16' with worst-case hub oracles; checks dist <= d~ <= (1+eps)^(3h+1) dist."""
     rng = eng.rng; bags = eng.bags
     h = height(eng)
     hubs = {b: eng.dss(b) | (bags[b].get('S', set()) if bags[b]['kids'] else set()) for b in bags}

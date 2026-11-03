@@ -1,7 +1,7 @@
 """S9 probe: owned edges (lambda_d), phantoms, and the communication graph Comm_Y = G[Y minus phantoms].
 python3 comm.py CONF START:END [families]"""
 import sys, os, json, random, collections
-A3 = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3')
+A3 = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime')
 sys.path.insert(0, A3)
 import networkx as nx
 from sweep import CONF, params

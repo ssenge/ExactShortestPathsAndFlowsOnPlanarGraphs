@@ -5,7 +5,7 @@ independent count of the two sides of the cycle.
 usage: python3 -I b5.py START END [fam1,fam2,...]"""
 import sys, os, math, random, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, '..', 'attack3')); sys.path.insert(0, os.path.join(HERE, '..', 'attack4'))
+sys.path.insert(0, os.path.join(HERE, '..', 'lemma14prime')); sys.path.insert(0, os.path.join(HERE, '..', 's9_stress'))
 import networkx as nx
 from geo import FAMS, drawing_ok
 from sweep import params

@@ -2,7 +2,7 @@
 python3 scale.py CONF FAM 'json-args' SEEDS"""
 import sys, os, json, random, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 from gadget import expand
 from gsweep import vmult
 from comm import probe

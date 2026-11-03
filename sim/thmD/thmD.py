@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Computational attack on "Theorem D" (exact min st-cut via Reif + exact SSSP on G^_l).
+"""Computational test of "Theorem D" (exact min st-cut via Reif + exact SSSP on G^_l).
 
 Single file (run with python3 -I).  Components:
   * Builder / Emb       : planar rotation systems with multi-edges, faces, corners.

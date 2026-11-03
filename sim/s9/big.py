@@ -1,6 +1,6 @@
 """Larger instances for the component bound: python3 big.py CONF START:END (FAST mode of rsweep)."""
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 import sys, os
 os.environ['FAST'] = '1'
 import sweep

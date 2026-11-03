@@ -7,7 +7,7 @@ python3 -I diam.py second            an instance that needs the second token
 """
 import collections, json, os, random, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
-for d in ('attack3', 's9'):
+for d in ('lemma14prime', 's9'):
     sys.path.insert(0, os.path.join(HERE, '..', d))
 import numpy as np
 from scipy.sparse import coo_matrix

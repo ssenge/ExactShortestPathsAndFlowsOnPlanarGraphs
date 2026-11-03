@@ -2,10 +2,10 @@
 graphs. python3 rsweep.py CONF START:END [families] [gadget]"""
 import sys, os, random, collections, json, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 import networkx as nx
 from sweep import CONF, params, MODES_ALL
-# T_X built from T (as in [8]) but otherwise adversarial: separator modes, z directions, swaps
+# T_X built from T (as in [8]) but otherwise worst-case: separator modes, z directions, swaps
 CONF['advb'] = dict(modes=MODES_ALL, zall=1.0, swap=0.5, degenerate=True, txmode='bfs', tries=120)
 CONF['pxb'] = dict(modes={"avoid": 6, "bal": 1}, zall=0.0, swap=0.3, degenerate=False, txmode='bfs', tries=400, bal=0.97)
 CONF['chb'] = dict(modes={"chord": 4, "bnd": 1, "bal": 1}, zall=0.0, swap=0.3, degenerate=True, txmode='bfs', tries=200)

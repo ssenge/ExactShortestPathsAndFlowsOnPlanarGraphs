@@ -161,7 +161,7 @@ resulting subgraphs are discarded.
   P_a or P_b (the overlap rule of lines 9 to 14), and a side whose index range is empty. The
   remaining subgraphs are the annuli of level ℓ. None of these others is incised again.
   [18, Claim 5.8] states the first sentence as "if and only if", but the converse fails: a side
-  can overlap P_a without a bad edge (sim/thmD/attackR, seed 308940). Only the direction stated
+  can overlap P_a without a bad edge (sim/thmD/testR, seed 308940). Only the direction stated
   here is used below.
 - **F4** ([18, Claim 2.12]). Every annulus is connected.
 - **F5** ([18, Lemma 2.6]). An edge is incised at most once. So R1 gives at most four tokens

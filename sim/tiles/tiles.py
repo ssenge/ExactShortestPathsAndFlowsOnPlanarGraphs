@@ -10,7 +10,7 @@ sub-tile component in boundary order, planarity of the wheel model of every glui
 import sys, os, itertools, collections, random
 import numpy as np, networkx as nx
 from scipy.spatial import Delaunay
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'attack'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'counterexamples'))
 from rot import Plane
 
 # ---------------- input graphs ----------------

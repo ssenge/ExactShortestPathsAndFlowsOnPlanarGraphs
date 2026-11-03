@@ -2,7 +2,7 @@
 a corrupted Lemma 16' recursion must be detected; shuffled port orders must break Monge."""
 import sys, os, random, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'attack3'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lemma14prime'))
 from sweep import CONF, params
 from geo import FAMS, virtual_candidates
 from core import PG, Fail

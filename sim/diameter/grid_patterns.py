@@ -1,5 +1,5 @@
 """Rounded patterns on the k x k grid against m^4, with m^2/K held near 0.4. Quoted in notes/APPROX_DIAMETER.md.
-P is the boundary cycle, Phi its inner face, tau by Dijkstra per portal. Written by the adversarial pass.
+P is the boundary cycle, Phi its inner face, tau by Dijkstra per portal.
 python3 -I grid_patterns.py"""
 import json, sys
 import numpy as np
