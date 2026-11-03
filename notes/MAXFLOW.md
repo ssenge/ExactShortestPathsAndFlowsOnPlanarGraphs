@@ -1,6 +1,6 @@
 # Exact maximum flow, with the flow on every edge, in Õ(D) rounds
 
-**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. One referee pass (2 Nov 2026) found no fatal error; its corrections are in this text, see Section 7. Not yet attacked, and no human
+**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. One referee pass (2 Nov 2026) found no fatal error, and one adversarial pass (3 Nov 2026) found one real failure, on parallel arcs, now fixed, and no counterexample on simple networks. All corrections are in this text, see Section 7. No human
 has checked it. It rests on the Label Hypothesis of [1] and on one extension, (L3). (L3) does not follow from the Hypothesis as a statement; Section 5 obtains it from the construction in `notes/LEMMA15.md`, so the theorem rests on that construction and on its black boxes (G3), (G5), (G6) and the embedding, with local computation that is not polynomial. Importance if it survives: significant.
 
 **Comparison.** The best exact bounds were Õ(D²) [2], which is randomized and unconditional, and D·n^{o(1)} [1], which is randomized and conditional. So this claim does not dominate [2] unconditionally. [3] calls finding the flow assignment in Õ(D) rounds an open question, in the context of its unconditional undirected (1−o(1))-approximation. This note answers it conditionally, and for exact directed flow.
@@ -17,7 +17,7 @@ rounds, such that one vertex, the root centre, also knows, for all a, b in S, a 
 
 **Flow Theorem.** Let G be a directed planar network with terminals s, t and integer capacities in {0,…,U}, U = n^{O(1)}. Given the Label
 Hypothesis and (L3), every vertex learns the value of a maximum st-flow, and the integer flow of a maximum st-flow on each of its edges, in Õ(D)
-rounds. The algorithm is deterministic relative to the labels.
+rounds. The algorithm is deterministic relative to the labels. The cases n = 2 and s = t are trivial, so below n ≥ 3 and s ≠ t.
 
 A minimum st-cut follows from reachability in the residual graph, by the Exact SSSP Theorem. A path gives Ω(D), so the bound is optimal up to
 polylogarithmic factors. Only a fixed ε = 1/12 is needed from the labels.
@@ -45,7 +45,7 @@ Fix ε = 1/12 and K = 9, so that K ≥ (1+ε)(1+3ε)/(2ε) = 8.125. *Portal boun
 
     (B)    K·d_C(u,v)/(1+3ε) ≤ b(u,v) ≤ K·d_C(u,v).
 
-*System(J)*, for an integer J, has integer unknowns ψ on P and the constraints
+*System(J)*, for an integer J, has integer unknowns ψ on P, where for a dart d with σ(d) ≠ 0 we read ψ(rgt d) at corner(d) and ψ(lft d) at corner(rev d), and the constraints
 
     ψ(v) − ψ(u) ≤ b(u,v)                         for all u, v in P,
     ψ(lft d) − ψ(rgt d) ≤ K·C(d) − σ(d)·J         for all d with σ(d) ≠ 0.
@@ -74,7 +74,7 @@ The same two lines hold with θ in place of κ, using d_C ≥ 0 and C ≥ 0, so 
 Kλ(1 − 1/(1+3ε)) + 1 = Kλ/5 + 1. The last identity holds because g is antisymmetric. ∎
 
 Solvability of System(J) is monotone in J on J ≥ 0: for 0 ≤ J₁ < J₂, the convex combination of a solution for J₂ and the solution 0 for J = 0 solves System(J₁), and floors make it integer. Any solvable J is at most Kλ. So one vertex that knows b and C on R finds J and ψ by local binary
-search, with ceiling J ≤ K·(max flow value) ≤ K^{i+1}·nU in pass i, and Bellman-Ford. We normalize min ψ = 0.
+search, with ceiling J ≤ K·(max flow value) ≤ K^{i+1}·mU in pass i, and Bellman-Ford. We normalize min ψ = 0.
 
 ## 3. From approximate to exact
 
@@ -90,7 +90,7 @@ and the maximum flow value of C_i is p_i := K^i·λ − β_i ≥ 0, where λ is 
 
     5^τ·p_τ + 5^τ ≤ 9^τ·(λ + 1),    so    p_τ / K^τ < (λ + 1) / 5^τ.
 
-Let F be the number of faces plus 1, and let τ be the least integer with 5^τ ≥ F·(nU + 1). Then τ = O(log nU), and p·F < K^τ for p = p_τ, since λ ≤ nU.
+Let F be the number of faces plus 1, let m be the number of arcs, parallel ones included, and let τ be the least integer with 5^τ ≥ F·(mU + 1). Then τ = O(log nU) for m = n^{O(1)}, and p·F < K^τ for p = p_τ, since λ ≤ mU. The bound λ ≤ nU would fail on parallel arcs.
 
 **Exactness Lemma.** With Φ = Φ_τ, β = β_τ:
 1. λ = ⌈β/K^τ⌉, and p = K^τ·λ − β;
@@ -170,7 +170,7 @@ No other use of balance, of the BFS property, of a nonempty inside, of progress 
 
 ## 6. The algorithm
 
-1. Compute R and T_G in O(D) rounds, broadcast R, build N, S and T. One aggregation in O(D) rounds gives n, U, F and a common M.
+1. Compute R and T_G in O(D) rounds, broadcast R, build N, S and T. One aggregation in O(D) rounds gives n, m, U, F and a common M.
 2. For i = 0, …, τ−1:
    - Run the labels of (L3) on N with lengths 𝓛 for C_i and ε = 1/12. The root centre now knows δ on S, and hence b.
    - The vertices of R send C_i on R to the root centre, which computes J_i and ψ with min ψ = 0, and broadcasts them, Õ(D) words.
@@ -188,7 +188,18 @@ Results are in `sim/maxflow/REPORT.md`: 359,477 instances and about 2.2 million 
 
 **Referee (2 Nov 2026).** An independent pass found no fatal error. It checked every inequality by hand, and found the points now in this text: (L3) has no written proof and does not follow from the Hypothesis, so it is restated for facial S with the root step of Section 5; the rotations in the broadcast of Section 5; one common δ, now at the root centre; the citation of the offset form of Exact and the star argument; loops and parallel edges in N; normalization of ψ; small global knowledge; the comparison with [2] and [3]. Its own harness is in `sim/maxflow/referee/`: Lemma N, by exhaustive search on all 127 connected planar graphs with 3 to 6 vertices, with all ordered s, t, up to 6 shortest paths and 387,196 structural runs in the larger run; and the full pipeline on the real N with b from δ, offsets only on S, and an independent max flow, on 9,597 structured instances. No failure; its controls fired.
 
-**Not checked by it:** the black boxes (G3), (G5), (G6) and the embedding algorithm, [2, App. A], the reduction inside Exact; Claims 1 to 7, the R lemmas and B1 to B5 were read for root-specific uses but not proved again; Lemma B5 below a forced root and real (G3), (G5) labels were not run; general non-facial S.
+**Adversary (3 Nov 2026).** A second pass, whose only job was to break the theorem, ran on its own code. It found one real failure and no counterexample on simple networks.
+
+- The choice of τ used λ ≤ nU, which fails on parallel arcs of one direction: with 10 parallel s-a arcs and 10 parallel a-t arcs, all of capacity 1, λ = 10 exceeds nU = 3, the value still came out right, but ψ was wrong and f infeasible for 8 of 19 choices of f_0. τ now uses mU. Antiparallel pairs were fine (18,443 instances).
+- Wording, now in this text: which corner ψ(lft d) means, and n = 2, s = t. Its other wording points had already been fixed by the referee's corrections.
+
+τ cannot be lowered in general: on K_{2,124} with U = 124 the ratio p·F/K^τ reaches 0.976 with τ = 9, and τ − 1 gives ψ wrong and f infeasible on all 124 faces. Near tight: 5J = 36p − 4 occurs in the Step Lemma, b = K·d was hit 1,751,013 times in 17,317,792 pairs, and a tree with triangles at the tips gives hop(N) = 6D − 2 and |S| = 6D.
+
+No violation in: a flow sweep over 24 families with adversarial capacities and adaptive δ and ψ in exact integers against its own Dinic (400,000 instances, 2,630,498 steps); the node-level pipeline through N (32,567 instances); Lemma N by exhaustive search over all connected simple planar graphs with 3 to 7 vertices, all embeddings, all s, t and all shortest R (1,193,143 instances); (L3) with prescribed S and T, including big or small insides, hubs, long DFS cycles and non-BFS T (3,645 instances, 123,970 bags) and on the real N (7,101 instances, 195,087 bags), about 1.6e9 Monge inequalities. A proof scan of §3 to §9 agreed with Section 5. Its controls fired, T − 1 and a missing P_X only rarely on random instances. Random z_s break the hypothesis of B1(e) and exceed the c(X) formula, as expected, without a wrong value.
+
+**Not tested by it:** rounds, messages and knowledge; the black boxes and the Hypothesis itself, since emulators were perturbed pieces and wheels and Exact was replaced by Dijkstra; Lemma B5 below the forced root; exhaustive flow beyond n = 5. Its long run with z in any legal corner never started (162 trial instances only), and two (L3) runs were killed by their time limit without a failure line.
+
+**Not checked by the referee:** the black boxes (G3), (G5), (G6) and the embedding algorithm, [2, App. A], the reduction inside Exact; Claims 1 to 7, the R lemmas and B1 to B5 were read for root-specific uses but not proved again; Lemma B5 below a forced root and real (G3), (G5) labels were not run; general non-facial S.
 
 ## 8. Not covered by the checks
 

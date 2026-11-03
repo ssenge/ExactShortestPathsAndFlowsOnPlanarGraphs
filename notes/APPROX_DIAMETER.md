@@ -1,6 +1,6 @@
 # (1+ε)-approximate eccentricities of unweighted planar networks in Õ(D + 1/ε⁴) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. Not yet refereed and not yet attacked, and no human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. One referee pass (3 Nov 2026) found no fatal error; its corrections are in this text, see Section 6. Not yet attacked, and no human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. Words have O(log n) bits.
 
@@ -8,9 +8,11 @@ The model is CONGEST on a connected, undirected, unweighted planar network with 
 
 **Approximate Eccentricity Theorem.** For every ε ∈ (0,1], in Õ(D + 1/ε⁴) rounds every vertex u learns a value Ẽ(u) with ecc(u) ≤ Ẽ(u) ≤ (1+ε)·ecc(u). So a (1+ε)-approximation of the diameter and of the radius are computed in the same bound. Given the embedding, the algorithm is deterministic.
 
-**Context.** The bound of [1] for a (1+ε)-approximation of the weighted diameter is Õ(D³) + poly(log(nW)/ε)·D², randomized, and the exact bound for unweighted networks is Õ(D²) by `notes/DIAMETER.md`. Three literature searches found no better approximate bound for unweighted networks; that is not proof that none exists. The term D cannot be removed: on a path, a vertex at one end cannot distinguish lengths L and (1+2ε)L before L rounds.
+**Additive form.** For any integer ρ ≥ 1, the same proof gives eccentricities with additive error Õ(ρ) in Õ(D + (D/ρ)⁴) rounds. For ρ about D^{3/4} this takes Õ(D) rounds.
 
-The idea follows sequential work [1, 3, 4]: since the diameter is at least about D, an additive error of εD is allowed, so Õ(1/ε) portals replace Õ(D) hubs. Distance vectors to the portals are rounded, and their number is polynomial by a VC-dimension argument, as in [1].
+**Context.** The bound of [1, Theorem 1.5] for a (1+ε)-approximation of the weighted diameter is Õ(D³) + poly(log(nW)/ε)·D², randomized. For the exact diameter of unweighted networks, the stated bound is Õ(D³) [2], and `notes/DIAMETER.md` claims Õ(D²). Three literature searches found no better approximate bound for unweighted networks; that is not proof that none exists. The term D cannot be removed: take a path with L edges, L ≥ 1/(2ε), and pendant vertices at its far end, and the same with ⌈(1+2ε)L⌉ edges and equally many vertices. A vertex at the near end has the same view for about L rounds, and its eccentricity differs by more than a factor 1+ε.
+
+The idea follows [1, 3, 4]: since the diameter is D, an additive error of εD is allowed, so Õ(1/ε) portals replace Õ(D) hubs. Distance vectors to the portals are rounded, and their number is polynomial by a VC-dimension argument. [1] also counts rounded vectors this way, with finer levels and a different count.
 
 ## 2. Parameters and nets
 
@@ -18,31 +20,31 @@ Let r be the root of T and Δ = ecc(r), found by a BFS, so D ≤ 2Δ. Let H be a
 
     ρ = ⌊ ε·Δ / (2(2H + 5)) ⌋.
 
-If ρ = 0, then D = Õ(1/ε), and the exact algorithm of `notes/DIAMETER.md` takes Õ(D²) = Õ(1/ε²) rounds. From now on ρ ≥ 1.
+If ρ = 0, then D = Õ(1/ε). In that case run the algorithm below with N_X = L_X, every occurrence a portal, and r = g. All errors vanish, and Lemma 4 gives O(K_Φ⁴) words per face, so Õ(D⁴) = Õ(1/ε⁴) rounds. The exact algorithm of `notes/DIAMETER.md` would take Õ(D²) rounds, but it uses [2]. From now on ρ ≥ 1.
 
-For a non-leaf X, P_X, L_X, the faces, walks, corners and occurrences are as in `notes/DIAMETER.md`, and each q ∈ L_X announces itself over T_X, so every vertex of X knows L_X. Let ℓ_X be the hop metric of P_X. For a leaf X, let T_X be broadcast over itself, in Õ(D) words, let ℓ_X be its hop metric, and let L_X = V(X). In both cases ℓ_X(x,y) ≥ d_G(x,y), since the edges are real. Let E_X be the number of edges of P_X or of T_X, so E_X = Õ(D).
+For a non-leaf X, P_X, L_X, the faces, walks, corners and occurrences are as in `notes/DIAMETER.md`, and each q ∈ L_X announces itself over T_X, so every vertex of X knows L_X. Since V(X) ⊆ V(A) for the parent A, (H3) gives that a vertex of V(X) off P_X lies in X°, and its child is X when A is the parent on its chain. Let ℓ_X be the hop metric of P_X. For a leaf X, let T_X be broadcast over itself, in Õ(D) words, let ℓ_X be its hop metric, and let L_X = V(X). In both cases ℓ_X(x,y) ≥ d_G(x,y), since the edges are real. Let M_X be the number of edges of P_X or of T_X, so M_X = Õ(D).
 
 The *net* N_X is the first-fit maximal subset of L_X, in order of identifiers, whose points are pairwise more than ρ apart in ℓ_X. So every x ∈ L_X has a point near(x) ∈ N_X, the first in that order, with ℓ_X(x, near(x)) ≤ ρ. All vertices of X compute it locally.
 
-**Lemma 1.** |N_X| ≤ 1 + 3E_X/ρ, and this is Õ(1/ε).
+**Lemma 1.** |N_X| ≤ 1 + 3M_X/ρ, and this is Õ(1/ε).
 
-*Proof.* For ρ = 1 the bound follows from |L_X| ≤ E_X + 1. For ρ ≥ 2, the balls of radius ⌊ρ/2⌋ around the points are disjoint. If there are at least two points, each ball holds at least ⌊ρ/2⌋ ≥ ρ/3 edges, since the graph is connected. ∎
+*Proof.* For ρ = 1 the bound follows from |L_X| ≤ M_X + 1. For ρ ≥ 2, the balls of radius ⌊ρ/2⌋ around the points are disjoint. If there are at least two points, each ball holds at least ⌊ρ/2⌋ ≥ ρ/3 edges, since the graph is connected. ∎
 
 ## 3. The vectors τ and single crossing
 
-Let X be a non-leaf. As in Step 3 of `notes/DIAMETER.md`, source detection [5] in W′ from all occurrences with vertex in V(X), to depth D + K_max, takes Õ(D) rounds. It gives f_v(o) for each v ∈ V(X) off P_X and each such occurrence o on the face Φ_v of v. Let walk(o,o′) be the distance along the walk of Φ_v, and let
+Let X be a non-leaf. As in Step 3 of `notes/DIAMETER.md`, source detection [5] in W′ from all occurrences with vertex in V(X), to depth 2Δ + K_max, takes Õ(D) rounds. It gives f_v(o) for each v ∈ V(X) off P_X and each such occurrence o on the face Φ_v of v. Let walk(o,o′) be the distance along the walk of Φ_v, and let
 
     τ_v(o) = min_{o′} f_v(o′) + walk(o′,o)
 
 for all occurrences o of Φ_v. Each vertex computes this locally. There are no further messages, and in particular no table of chords. So τ_v is 1-Lipschitz along the walk, and τ_v(o) ≥ d_G(v, x(o)), since it describes a real walk.
 
-The graph W″_Φ is the part of W′ in Φ, with one more cycle around it: one node ō per occurrence o, edges in both directions between consecutive ō, and one arc from o to ō. It is a directed plane graph in a closed disc with the outer cycle as boundary, and τ_v(o) is the distance from v to ō in it. The depth D + K_max is enough, since τ_v(o) ≤ D + K_Φ: by Fact 0 a shortest path from v to S_X gives an occurrence at distance at most D.
+The graph W″_Φ is the part of W′ in Φ, with one more cycle around it: one node ō per occurrence o, edges in both directions between consecutive ō, of length 1, and one arc from o to ō of length 0. It is a directed plane graph in a closed disc with the outer cycle as boundary, and τ_v(o) is the distance from v to ō in it. The depth 2Δ + K_max is enough, since τ_v(o) ≤ D + K_Φ: by Fact 0 a shortest path from v to S_X gives an occurrence at distance at most D.
 
 **Lemma 2 (arcs).** Let u, v lie in Φ, let f = τ_u − τ_v on the occurrences of Φ, and let c be a number. Then {o : f(o) > c} is an arc of the walk, or empty, or everything. The same holds for {o : f(o) < c}.
 
 *Proof.* Otherwise there are positions p₁, p₂, p₃, p₄ in cyclic order with f(p₂), f(p₄) > c ≥ f(p₁), f(p₃). Take shortest paths π₁, π₃ in W″_Φ from u to p̄₁, p̄₃, and σ₂, σ₄ from v to p̄₂, p̄₄. The set π₁ ∪ π₃ is connected and holds p̄₁ and p̄₃, so in the disc it separates p̄₂ from p̄₄, or contains one of them. So σ_j meets π_i at a vertex w, for some j ∈ {2,4} and i ∈ {1,3}. Exchange the parts after w. Both paths are directed towards the boundary, so τ_u(p_j) + τ_v(p_i) ≤ τ_u(p_i) + τ_v(p_j), that is f(p_j) ≤ f(p_i). This contradicts f(p_j) > c ≥ f(p_i). The second claim follows by exchanging u and v. ∎
 
-**Portals.** Scan the occurrences of Φ with vertex in V(X), in walk order. The first is a portal, and a later one becomes a portal if it is more than ρ steps behind the last portal. So every such occurrence is at most ρ steps after a portal, and there are m_Φ ≤ K_Φ/ρ + 1 portals ô₁, …, ô_m. A face with no such occurrence holds no vertex of X.
+**Portals.** Start each walk at a canonical corner, say the least by identifiers. Scan the occurrences of Φ with vertex in V(X), in walk order. The first is a portal, and a later one becomes a portal if it is more than ρ steps behind the last portal. So every such occurrence is at most ρ steps after a portal, and there are m_Φ ≤ K_Φ/ρ + 1 portals ô₁, …, ô_m. A face with no such occurrence holds no vertex of X.
 
 **Patterns.** For v in Φ the *offset* is τ_v(ô₁), and g_v(i) = τ_v(ô_i) − τ_v(ô₁). The *rounded pattern* is r_v(i) = ⌊g_v(i)/ρ⌋. Since τ_v is 1-Lipschitz, r_v takes at most Y_Φ = K_Φ/ρ + 2 values.
 
@@ -50,7 +52,7 @@ The graph W″_Φ is the part of W′ in Φ, with one more cycle around it: one 
 
 *Proof.* Apply Lemma 2 with c = f(ô₁). The positions with g_u − g_v > 0 lie in an arc that does not hold ô₁, and so do those with g_u − g_v < 0. So each is an interval of the linear order ô₂, …, ô_m, and the two intervals are disjoint. ∎
 
-**Lemma 4 (count).** Let I be a set of m′ portals of Φ. The restrictions of the rounded patterns of Φ to I take at most 1 + N + N(N−1)/2 values, with N = m′·Y_Φ.
+**Lemma 4 (count).** Let I be a set of m′ portals of Φ. The restrictions of the rounded patterns of Φ to I take at most 1 + N + N(N−1)/2 values, with N = m′·Y, where Y ≤ Y_Φ is the number of levels.
 
 *Proof.* Let v correspond to the set A_v = {(i,y) : i ∈ I, g_v(i) ≥ yρ} of grid points, with y over the Y_Φ levels. The restriction of r_v is determined by A_v. This family shatters no three points. Two points with equal i cannot be shattered, since A_v is monotone in y. If i₁ < i₂ < i₃, shattering gives v with the first and the third point but not the second, and w with the second but not the others. Then g_v − g_w is positive, negative, positive at i₁, i₂, i₃, against Lemma 3. So the VC dimension is at most 2, and the Sauer-Shelah lemma gives the bound. ∎
 
@@ -68,7 +70,7 @@ It is local, it describes a real walk, so h^X_v(x) ≥ d_G(v,x), and it costs no
 
     d_G(v,c) ≤ e_v(c) ≤ d_G(v,c) + 2ρ·depth(X).
 
-At the root, run a BFS from each point of the net, by source detection, in Õ(D + 1/ε) rounds. Let X have parent A. Run source detection in R_X from N_X to depth D, in Õ(D + 1/ε) rounds, which gives values b_v(c). Each c ∈ N_X broadcasts its row e_c(c″), c″ ∈ N_A, over T_X, in Õ(1/ε²) words. Then
+At the root, run a BFS from each point of the net, by source detection, in Õ(D + 1/ε) rounds. Let X have parent A. Run source detection in R_X from N_X to depth 2Δ, in Õ(D + 1/ε) rounds, which gives values b_v(c). Each c ∈ N_X broadcasts its row e_c(c″), c″ ∈ N_A, over T_X, in Õ(1/ε²) words. Then
 
     e_v(c) = min( b_v(c), min_{c″ ∈ N_A} h^A_v(c″) + e_c(c″) ).
 
@@ -78,11 +80,11 @@ At the root, run a BFS from each point of the net, by source detection, in Õ(D 
 
 The sum is at most d_G(v,c) + 2ρ + 2ρ·depth(A). ∎
 
-**Dictionary.** On the portals of each face with m_Φ ≥ 2 fix a segment tree, by halving. Going up level by level, as in Step 4 of `notes/DIAMETER.md`, each vertex of X° off P_X forms for its node I the pair of identifiers of its restrictions to the children of I, and all pairs of one level go up T_X by a filtered upcast, with duplicates removed. Then the root of T_X numbers them and broadcasts them. A leaf of the tree is one rounded value. By Lemma 4 a node with m′ portals holds O((m′Y_Φ)²) values, so the words of one face are Σ_{m′} (m_Φ/m′)·O((m′Y_Φ)²) = O((m_ΦY_Φ)²) = O((K_Φ/ρ)⁴), since K_Φ > ρ here. A face with m_Φ = 1 has one pattern and needs no dictionary.
+**Dictionary.** On the portals of each face with m_Φ ≥ 2 fix a segment tree, by halving. Going up level by level, as in Step 4 of `notes/DIAMETER.md`, each vertex of X° off P_X forms for each node I the pair of identifiers of its restrictions to the children of I, and all pairs of one level go up T_X by a filtered upcast, with duplicates removed. Then the root of T_X numbers them and broadcasts them. A leaf of the tree is one rounded value. By Lemma 4 a node with m′ portals holds O((m′Y_Φ)²) values, so the words of one face are Σ_{m′} (m_Φ/m′)·O((m′Y_Φ)²) = O((m_ΦY_Φ)²) = O((K_Φ/ρ)⁴), since K_Φ > ρ here. A face with m_Φ = 1 has one pattern and needs no dictionary.
 
-**Tokens.** For each face and rounded pattern, compute by a convergecast over T_X the largest offset, the child of a vertex that attains it, and the largest offset among vertices in another child. For each c ∈ N_X compute A_X(c) = max_{v ∈ X°} e_v(c).
+**Tokens.** For each face and rounded pattern, compute by a convergecast over T_X the largest offset, the child of a vertex that attains it, and the largest offset among vertices in another child. For each c ∈ N_X compute A_X(c) = max_{v ∈ X°} e_v(c). All of it is broadcast over T_X.
 
-**Rounds.** With κ = Σ_Φ K_Φ/ρ = 2E_X/ρ = Õ(1/ε), the number of keys is at most Σ_{K_Φ>ρ} O((K_Φ/ρ)⁴) + Σ_{K_Φ≤ρ} 1 = O(κ⁴) + 2E_X = Õ(1/ε⁴ + D). So each depth costs Õ(D + 1/ε⁴) rounds, and there are O(log n) depths.
+**Rounds.** With κ = Σ_Φ K_Φ/ρ ≤ 2M_X/ρ = Õ(1/ε), the number of keys is at most Σ_{K_Φ>ρ} O((K_Φ/ρ)⁴) + Σ_{K_Φ≤ρ} 1 = O(κ⁴) + 2M_X = Õ(1/ε⁴ + D). So each depth costs Õ(D + 1/ε⁴) rounds, and there are O(log n) depths.
 
 ## 5. Eccentricities
 
@@ -115,18 +117,21 @@ The admitted token has an offset at least w_v, even on the face of u, since v ha
 
 ## 6. Checks
 
-Results are in `sim/diameter/REPORT_APPROX.md`. `approx.py` builds real region bags for several values of ρ, computes the nets, e, h, τ, tokens and hub maxima as above, and checks the invariant, Lemmas 1, 3 and 4, and Lemma 5 against BFS for every vertex. Negative controls in `approx.py ctl`.
+Results are in `sim/diameter/REPORT_APPROX.md`. `approx.py` builds real region bags for several values of ρ, computes the nets, e, h, τ, tokens and hub maxima as above, and checks the invariant, Lemmas 1, 3 and 4, the bounds of each token, and Lemma 5 against BFS for every vertex. Negative controls in `approx.py ctl` and `approx.py second`.
+
+**Referee (3 Nov 2026).** An independent pass, on its own code and in exact integers, found no fatal error, and went through every lemma and case by hand. All its points are in this text: the branch ρ = 0, which relied on [2]; the length of the arcs of W″; depth 2Δ in place of D, which vertices do not know; the broadcast of tokens; V(X) off P_X lies in X°; the lower bound pair with equal n; canonical starts; the notation of M_X; the citation of [1]; and the additive form, which is proved and not open. The constant 3 of Lemma 5 is reached at depth 0, and the shortfall stayed below 2ρ.
+
+Its runs, with no failure: 527 standalone discs for Lemmas 2 to 4 (3.8 million sets, 1.46 million pairs, 67,000 counts, and 15,634 checks of τ against W″), with controls on crossing edges and shuffled rings that fired; Sections 2 to 5 on the bags of the repository, with each inequality of the proofs checked (13,902 runs, 740,694 eccentricities, 49.5 million pairs classified by case of the lower bound, 20.2 million values of e); the branch ρ = 0 (28,625 eccentricities and 2,958,972 values of e, all exact); and the theorem at the ρ of Section 2, on thin graphs with n up to 592 (4,494 eccentricities, worst ratio 1.07 at ε = 1). Its mutations ceil, portal3, near3, nochild, bottom, corner, cornerrand, norow and noanc all fail checks, and top1 only on the forced instance.
+
+**Not checked by it:** the proofs of Lemmas B1 and B5 and of (H1) to (H4), `notes/DIAMETER.md` Lemmas 2 and 3, [2], [5], polylogarithmic exponents, and sizes above n = 592.
 
 ## 7. Not covered by the checks
 
 - Rounds, messages and who knows what: no CONGEST simulation.
 - The proofs of Lemmas B1 and B5, and of the statements (H1) to (H4), except that the simulator exercises them on its instances.
-- ρ is a free parameter in the simulator. The instances are too small for the ρ of Section 2 with small ε: with H about 13 the value of ρ would be 0 below large D.
+- ρ is a free parameter in the simulator, since on its families the ρ of Section 2 with small ε would be 0. The referee's thin families did reach that ρ, for ε up to 1.
 
 ## 8. Open
-
-The proof also gives an additive form, for any integer ρ ≥ 1: eccentricities with additive error Õ(ρ) in Õ(D + (D/ρ)⁴) rounds. For ρ about D^{3/4} this takes Õ(D) rounds.
-
 
 - The exponent 4. Lemma 4 counts grid points by Sauer-Shelah, and uses no more than single crossing. At ρ = 1 it gives K⁴, while [2] gives O(K²). Rounding alone cannot do better from pairwise conditions: exact search over lattice paths of m positions, with the single crossing condition only, gives largest families of 9, 25, 61 for m = 3, 4, 5, which is about m⁴/10. A packing may do better. For vectors in {−1,+1}^K with sum 0 and no cyclic alternation, exact search for the largest family with pairwise L∞ distance of prefix sums at least τ gives 17 and 5 for K = 8, τ = 2, 4, and 26 and 6 for K = 10, τ = 2, 4. This fits (K/τ)² + 1, on very small cases only. A proof would allow tokens for a packing of patterns, by a filtered upcast with pruning.
 - The (1+ε)-approximation of the sum of distances. An additive error of εD per vertex is not a factor (1+ε) if most vertices are close to u.

@@ -286,7 +286,7 @@ def lane(seed, secs, big):
 
 
 def controls(seed, secs):
-    """Each mutation must make a check fail."""
+    """Each mutation should make a check fail; top1 fires only on the forced instance of second()."""
     out = {}
     for mode in ('nochild', 'top1', 'bottom', 'norow', 'netwide', 'noise'):
         rng = random.Random(seed); t0 = time.time(); s = seed * 1000; c = collections.Counter()
