@@ -520,41 +520,45 @@ def controls(seed, secs):
     return out
 
 
-def second_token():
-    """A forced root: q ends at a, and the closing edge separates two combs at a, in one corner of P.
-    Without the second token the eccentricity of the far end of the longer comb is wrong."""
+def second_instance(b, c, tooth):
+    """A forced root: q ends at a, and the closing edge separates two combs at a, in one corner of P."""
     sys.path.insert(0, os.path.join(HERE, '..', 'maxflow'))
     from forced import Forced
 
     class FB(Forced, Bags):
         pass
+    pos = [(0.0, 0.0)]; E = []
+
+    def add(p, prev):
+        pos.append(p); E.append((prev, len(pos) - 1)); return len(pos) - 1
+    for sgn, m in ((1, b), (-1, c)):
+        prev = 0
+        for x in range(1, m + 1):
+            prev = add((sgn * float(x), 0.0), prev); t = prev
+            for i in range(1, tooth + 1):
+                t = add((sgn * (x + 0.2), (0.8 if x % 2 else -0.8) * i / tooth), t)
+    prev = 0; q = [0]
+    for p in [(0.0, 1.0)] + [(float(x), 1.0) for x in range(1, b + 2)] + [(b + 1.0, 0.0)] + [(float(x), -1.0) for x in range(b + 1, -1, -1)]:
+        prev = add(p, prev); q.append(prev)
+    E.append((prev, 0))
+    assert drawing_ok(pos, E)
+    g = PG(pos, E, seed=1)
+    eng = FB(g, random.Random(1), dict(leaf=8, tries=30, modes={'bal': 1.0}, zall=0.0, swap=0.3, degenerate=False, txmode='bfs', stop=True, root=0), q, False)
+    eng.run()
+    par = {0: None}; stack = [0]
+    while stack:
+        x = stack.pop()
+        for y in eng.Tadj[x]:
+            if y not in par:
+                par[y] = x; stack.append(y)
+    return eng, g, shortest_path(mk(list(g.ends), g.n), unweighted=True), par
+
+
+def second_token():
+    """Without the second token the eccentricity of the far end of the longer comb is wrong."""
     out = []
     for b, c, tooth in ((4, 5, 6), (6, 8, 9), (3, 3, 5)):
-        pos = [(0.0, 0.0)]; E = []
-
-        def add(p, prev):
-            pos.append(p); E.append((prev, len(pos) - 1)); return len(pos) - 1
-        for sgn, m in ((1, b), (-1, c)):
-            prev = 0
-            for x in range(1, m + 1):
-                prev = add((sgn * float(x), 0.0), prev); t = prev
-                for i in range(1, tooth + 1):
-                    t = add((sgn * (x + 0.2), (0.8 if x % 2 else -0.8) * i / tooth), t)
-        prev = 0; q = [0]
-        for p in [(0.0, 1.0)] + [(float(x), 1.0) for x in range(1, b + 2)] + [(b + 1.0, 0.0)] + [(float(x), -1.0) for x in range(b + 1, -1, -1)]:
-            prev = add(p, prev); q.append(prev)
-        E.append((prev, 0))
-        assert drawing_ok(pos, E)
-        g = PG(pos, E, seed=1)
-        eng = FB(g, random.Random(1), dict(leaf=8, tries=30, modes={'bal': 1.0}, zall=0.0, swap=0.3, degenerate=False, txmode='bfs', stop=True, root=0), q, False)
-        eng.run()
-        par = {0: None}; stack = [0]
-        while stack:
-            x = stack.pop()
-            for y in eng.Tadj[x]:
-                if y not in par:
-                    par[y] = x; stack.append(y)
-        dG = shortest_path(mk(list(g.ends), g.n), unweighted=True)
+        eng, g, dG, par = second_instance(b, c, tooth)
         st = collections.Counter(); tokens = {}; eng.tb = {}
         for bb in sorted(eng.bags, key=lambda z: eng.bags[z]['depth']):
             if eng.bags[bb]['kids']:

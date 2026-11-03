@@ -2,11 +2,12 @@
 python3 -I approx.py SEED SECS [big]   main lane
 python3 -I approx.py ctl SEED SECS     negative controls
 python3 -I approx.py scale             tokens against rho on grids
+python3 -I approx.py second            an instance that needs the second token
 """
 import collections, json, os, random, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from diam import Bags, Table, mk, instance, segments, FAMS, PG, Fail, virtual_candidates, np, shortest_path
+from diam import Bags, Table, mk, instance, segments, second_instance, FAMS, PG, Fail, virtual_candidates, np, shortest_path
 
 
 def greedy_net(L, dist, rho):
@@ -197,7 +198,7 @@ def build(eng, dG, rho, st, rng, mode='ok'):
     return lev
 
 
-def ecc_est(eng, dG, lev, rho, mode='ok'):
+def ecc_est(eng, dG, lev, rho, st, mode='ok'):
     """Section 5: the estimate of every eccentricity from e, h, tokens and hub maxima."""
     n = eng.g.n; Est = np.zeros(n)
     for u in range(n):
@@ -224,8 +225,12 @@ def ecc_est(eng, dG, lev, rho, mode='ok'):
                             cand = [z for z in top[:1] if z[1] != cu]
                         else:
                             cand = [z for z in top if z[1] != cu][:1]
-                        for off, _, _ in cand:
-                            Est[u] = max(Est[u], (ac + off + rho * np.array(pat)).min())
+                        for off, _, z in cand:
+                            val = (ac + off + rho * np.array(pat)).min()
+                            Est[u] = max(Est[u], val)
+                            st['chk.token'] += 1
+                            st['FAIL.token_low'] += int(val < dG[u, z] - 2 * rho)
+                            st['FAIL.token_high'] += int(val > dG[u, z] + (3 + 2 * B['depth']) * rho)
             if u in B['q']:
                 break
             b = next(k for k in B['kids'] if u in eng.bags[k]['X'])
@@ -250,7 +255,7 @@ def run(g, s, rng, rho, st, mode='ok', leaf=None):
     eng.par = par
     dG = shortest_path(mk(list(g.ends), g.n), unweighted=True)
     lev = build(eng, dG, rho, st, rng, mode)
-    Est = ecc_est(eng, dG, lev, rho, mode)
+    Est = ecc_est(eng, dG, lev, rho, st, mode)
     H = max(B['depth'] for B in eng.bags.values())
     return Est, dG.max(1), H
 
@@ -305,8 +310,23 @@ def controls(seed, secs):
             c['under_rho'] += int((Est < ecc - rho).sum()); c['over_3rho'] += int((Est > ecc + 3 * rho).sum())
             for k, v in st.items():
                 if k.startswith('FAIL') and v:
-                    c[k] += v
+                    c[k] += int(v)
         out[mode] = dict(c)
+    return out
+
+
+def second():
+    """The forced instance of diam.py: without the second token some value is too low."""
+    out = []
+    for b, c, tooth in ((4, 5, 6), (6, 8, 9), (3, 3, 5), (6, 8, 16)):
+        eng, g, dG, par = second_instance(b, c, tooth)
+        eng.par = par; rng = random.Random(1)
+        for rho in (1, 2):
+            st = collections.Counter()
+            lev = build(eng, dG, rho, st, rng)
+            ok = ecc_est(eng, dG, lev, rho, st); top1 = ecc_est(eng, dG, lev, rho, collections.Counter(), 'top1')
+            ecc = dG.max(1)
+            out.append(dict(n=g.n, rho=rho, ok_low=int((ok < ecc - 2 * rho).sum()), top1_low=int((top1 < ecc - 2 * rho).sum()), fails=sum(v for a, v in st.items() if a.startswith('FAIL'))))
     return out
 
 
@@ -330,5 +350,7 @@ if __name__ == '__main__':
         print(json.dumps(controls(int(sys.argv[2]), float(sys.argv[3]))))
     elif sys.argv[1] == 'scale':
         print(json.dumps(scale()))
+    elif sys.argv[1] == 'second':
+        print(json.dumps(second()))
     else:
         print(json.dumps({k: int(v) for k, v in lane(int(sys.argv[1]), float(sys.argv[2]), len(sys.argv) > 3).items()}, sort_keys=True))
