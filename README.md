@@ -12,6 +12,11 @@ model. The main claims are:
   and of its recursion, which as written can miss the minimum cut (Lemma S, with the side lemma
   it needs, Lemma O).
 
+The paper is *Exact Shortest Paths and Maximum Flow in Planar Networks in the CONGEST Model*,
+[arXiv:2611.02256](https://arxiv.org/abs/2611.02256) (v1, 1 November 2026); the same PDF is in
+`paper/2611.02256v1.pdf`. It covers the claims above, under a Label Hypothesis that it states.
+The claims below came after it and are not in it.
+
 A newer claim, after the paper and not part of it: exact maximum st-flow in directed planar networks, with the integer flow on every edge, in
 $\tilde O(D)$ rounds, by scaling over the faces next to one BFS path. It needs one extension of the labels, a prescribed root cycle. See
 [`notes/MAXFLOW.md`](notes/MAXFLOW.md). **Written on 2 Nov 2026. On parallel arcs of one direction the flow value can exceed $nU$, with $U$ the largest capacity, and a number of scaling steps chosen from $nU$ gives an infeasible flow, so the note chooses it from $mU$, with $m$ the number of arcs. It rests on the construction in `notes/LEMMA15.md`, not only on the Label Hypothesis; treat it as a claim.**
@@ -342,16 +347,21 @@ the parent choices form shortest-path trees. Details are in `notes/NOTES.md` §5
 **The endpoint repair.** [18, Remark 3.3] adjusts $\hat G_\ell$ at $s$ and $t$ through two
 edges $e_0$ and $e_{\text{last}}$ next to the first and last dual nodes of the first cut path.
 Read literally, it breaks [18, Thm 3.1 (1), (2)] in three ways (scripts in `sim/thmD/`):
-- If a later incision passes through $e_0$, Remark 3.3 treats it like any other incised edge.
-  The corner of $s$ that was cut is then joined again, two dual nodes share one path in
-  $\hat G_\ell$, and their distance becomes 0. Smallest witness: vertices 0 to 3, edges
+- If a later incision passes through $e_0$ or $e_{\text{last}}$, Remark 3.3 treats that edge like
+  any other incised edge. Its copies and its $E_C$ edge then attach to the plain copy of $s$ or $t$
+  that belongs to the node-part on the other side of the endpoint split, so the paths of
+  $\hat G_\ell$ on that face no longer match its node-parts, and the two sides of the split are
+  joined at cost 0. Smallest witness: vertices 0 to 3, edges
   $\lbrace 0,3\rbrace,\lbrace 0,1\rbrace,\lbrace 1,2\rbrace,\lbrace 2,3\rbrace$ with capacity 1 and
-  $\lbrace 3,1\rbrace$ with capacity 5, $s=1$, $t=2$: minimum cut 2, computed 0.
-- If $e_0=e_{\text{last}}$ is an edge $st$, the dual edge $e_0^*$ is wired to the wrong copies
-  (one edge $st$ of capacity 3: distance 29 instead of 22).
-- [18, Sec. 5] lets $s$ take any edge outside the path as $e_0$, but the formula needs one
-  particular edge, which in about 30% of instances lies on the path; then we use the
-  mirrored copy.
+  $\lbrace 3,1\rbrace$ with capacity 5, $s=1$, $t=2$: minimum cut 2, computed 0 in 3 of 120 runs
+  that vary $f$, $g$ and the corners, those where $P_1$ runs through $e_{\text{last}}$.
+- If $e_0=e_{\text{last}}$ is the edge $st$, the two endpoint rules change the copies of the same
+  edge: the dual edge $(p_0^0,p_{\text{last}}^1)$ gets no $E_C$ edge and two wrong ones appear. On
+  a triangle $s,t,x$ with capacity 3 on $st$ and 1 elsewhere, both ends choose $st$ in 5 of 80
+  runs, and the literal graph fails its checks in each of them.
+- [18, Sec. 5] lets $s$ take either edge of the face $p(p_0)$ at $s$ whose dual is off the path
+  as $e_0$, but the formula fits only one of the two. In 72 of 300 random instances that edge
+  lies on the path; then we use the mirrored copy.
 
 The repair: an incised $e_0$ attaches on the cut side to a fresh copy of $s$ (and likewise
 $e_{\text{last}}$ at $t$), and each dual edge joins the copies its two path edges actually
@@ -465,8 +475,8 @@ planarity (Lemmas R3, R5, R7, and the Monge condition).
 ## Numerical checks (`sim/`)
 
 Requires Python 3 with `numpy`, `scipy` and `networkx`. Run each script from its own directory.
-The first arXiv version refers to the tree at the tag `arxiv-v1`, where some of these directories
-have older names.
+The arXiv version of the paper (2611.02256v1) refers to the tree at the tag `arxiv-v1`, where some
+of these directories have older names.
 These scripts test finite families and the sequential meaning of the statements. They do not
 test round counts.
 
@@ -508,8 +518,9 @@ test round counts.
 - `sim/thmD/`: simulation of Theorem D. `thmD.py` runs Reif's algorithm as in [18],
   driven only by the exact trees of Theorem D, on the literal and the repaired $\hat G_\ell$,
   and checks every distance, tree and final cut against networkx. `minimize.py` shrinks
-  failures, `planar_check.py` tests planarity and diameter, and `lane1.sh`/`lane2.sh` give the
-  runs. `logs/summary.txt` sums them up. `repair/` checks Lemma R: `formal_ghat.py` builds
+  failures, `planar_check.py` tests planarity and diameter, `endpoints.py` reruns the three
+  endpoint cases of Remark 3.3 on their smallest graphs and counts how often the mirrored copy is
+  needed, and `lane1.sh`/`lane2.sh` give the runs. `logs/summary.txt` sums them up. `repair/` checks Lemma R: `formal_ghat.py` builds
   the repaired graph from its written definition, and `test_repair.py` and `witness.py`
   compare it with `thmD.py` and check its properties; `test_mono.py`, `witness_mono.py` and
   `run_mono.sh` rerun them with the monotone I_ℓ and also check Lemma N.

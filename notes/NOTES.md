@@ -517,17 +517,20 @@ So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do th
 - **Endpoint repair.** Read literally, [18, Remark 3.3] breaks [18, Thm 3.1 (1), (2)] at s and
   t in three ways (sim/thmD):
   - D1. If a later P_i′ incises e0 (or e_last), Remark 3.3 says to treat it "just like any
-    other incised edge". Then the copy at the cut corner of s rejoins D(s, ·), and the two
-    pieces of p_0^0 and p_0^1 in the leaf annulus become one path p̂. Their distance is 0 and
-    the reported cut is 0. Smallest witness: n = 4; edges (0,3), (0,1), (1,2), (2,3) with
-    capacity 1 and (3,1) with capacity 5; rotations 0: [03, 01], 1: [12, 13, 01], 2: [12, 23],
-    3: [23, 03, 13]; s = 1, t = 2. Minimum cut 2, literal Ĝ_ℓ gives 0.
-  - D2. The rule "always add (u_{j−1}, u_j)" wires e0* wrongly when e0 = e_last = st.
-    Witness: the single edge st with capacity 3 gives distance 29 = M
-    instead of K·3 + 1 = 22.
+    other incised edge". Its copies and its E_C edge then attach to the plain copy D(s, i)
+    (or D(t, i)), which belongs to the node-part on the other side of the endpoint split, so
+    the paths of Ĝ_ℓ on that face no longer match its node-parts, and the two sides of the
+    split are joined at cost 0: the reported cut is 0. Smallest witness: n = 4; edges (0,3),
+    (0,1), (1,2), (2,3) with capacity 1 and (3,1) with capacity 5; rotations 0: [03, 01],
+    1: [12, 13, 01], 2: [12, 23], 3: [23, 03, 13]; s = 1, t = 2. Minimum cut 2; the literal
+    Ĝ_ℓ gives 0 in the runs where P_1 runs through e_last, 3 of 120 in sim/thmD/endpoints.py.
+  - D2. The rule "always add (u_{j−1}, u_j)" wires e0* wrongly when e0 = e_last = st: the dual
+    edge (p_0^0, p_last^1) gets no E_C edge and two wrong ones appear. Witness: a triangle
+    s, t, x with capacity 3 on st and 1 elsewhere; both ends choose st in 5 of 80 runs of
+    endpoints.py, and the literal Ĝ_ℓ fails its checks in each of them.
   - D3. [18, Sec. 5] lets s choose any edge of p(p_0) at s outside P as e0, but the formula of
-    Remark 3.3 needs the edge e_i whose corner i lies in p_0. In about 30% of instances no such
-    e_i off P exists; then we take e_{i+1} with the mirrored copy v_i^R.
+    Remark 3.3 needs the edge e_i whose corner i lies in p_0. In 72 of 300 random instances
+    (endpoints.py) no such e_i off P exists; then we take e_{i+1} with the mirrored copy v_i^R.
 
   Repair: (a) when e0 (or e_last) is incised, its E_R copy on the cut-corner side attaches to a
   fresh copy X of s (or t), joined to D(s, i) by an E_S edge, so the corner stays cut;
