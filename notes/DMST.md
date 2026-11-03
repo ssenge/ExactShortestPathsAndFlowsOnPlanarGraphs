@@ -19,7 +19,7 @@ A path gives Ω(D). If the weights are symmetric, this is the minimum spanning t
 - Section 3 has a short and complete proof of one contraction. We read the conference version of [2], whose proofs of correctness are in a full version that we did not read, and which decomposes a step into steps of the algorithm of Edmonds. Section 3 does not need that decomposition.
 - Unpacking and β also differ. [2] uses centers and small and large parts, and here they are subtree sums and (M).
 
-The unconditional primal bound Õ(D²) for SSSP is [6, Thm 1.6] on undirected and [7, Lemma 4] on directed networks. The bound of [4] is on the dual. The stated Õ(D² + D·|S|) of [7] is of no use with S the vertices of all c. Exact labels do fit the Virtual Source Lemma of [1], which allows ε = 0: `notes/EXACT_LABELS.md` of the repository ExactPlanarBipartiteMatching proves this, with its own review still running. So the same algorithm has the bound Õ(D²) with no hypothesis. Approximation is treated in [5].
+The unconditional primal bound Õ(D²) for SSSP is [6, Thm 1.6] on undirected and [7, Lemma 4] on directed networks. The bound of [4] is on the dual. The stated Õ(D² + D·|S|) of [7] is of no use with S the vertices of all c. Exact labels do fit the Virtual Source Lemma of [1], which allows ε = 0: `notes/EXACT_LABELS.md` of the repository ExactPlanarBipartiteMatching proves this. So the same algorithm has the bound Õ(D²) with no hypothesis. Approximation is treated in [5].
 
 ## 2. Tools
 
