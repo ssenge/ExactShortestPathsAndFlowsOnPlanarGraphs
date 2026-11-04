@@ -1,7 +1,9 @@
 # Lemma S: the recursion of Theorem D
 
 *Status.* Proved, given Lemma O, whose proof is in LEMMA_O.md and which supplies what Lemma S2
-uses, in the form S2 uses it. Lemma S1 runs in A_1 and needs neither the side fact (O), which says
+uses, in the form S2 uses it. The recursion argument of Lemma S2, with the conclusion of Lemma S1
+and (INV) as hypotheses, is in Lean (`lean/SsspFlow/Recursion.lean`, see "In Lean" below).
+Lemma S1 runs in A_1 and needs neither the side fact (O), which says
 on which side of an incision each copy of P lands, nor the exact form of [18, Claim 2.3]. Its
 separation step (S_1) is proved here by a parity argument.
 
@@ -319,6 +321,25 @@ finite, so Λ is computed somewhere. Fix t ∈ [j_A, k_A] with λ_t = Λ.
   split; 72,194 end pieces with an old end token, each on the predicted side; 417,577 sides
   without overlap, each one subgraph; 818,830 checks of (INV) at children; (I5) in the strong
   form for 205,947 indices, 10,829 outside the range; (C23) on [j_A, i] in 320,774 checks.
+
+## In Lean
+
+`lean/SsspFlow/Recursion.lean` has no `sorry` and uses the three standard axioms, listed in
+`lean/axioms.txt`. It is an index model of the recursion: the faces of P are indexed by 0, …, m,
+and λ_t is a function of the index. An annulus is a leaf with a range of at most two indices,
+which it computes, or it computes an index i of its range with i1 ≤ i ≤ i2 and has two sides,
+each with an overlap (the overlap rule computes [j, i] or [i, k]), or a called child with the
+range [j, i1] or [i2, k], or an empty range. The repair adds max(i1, j) and min(i2, k). Two facts
+enter as hypotheses: the conclusion of Lemma S1 for every dropped index, and (INV) with (C23), in
+the form that every computed length is λ_t for its index t. Proved:
+- `Rec.computed_subset`: an annulus computes only indices of its range;
+- `Rec.exact`, `Rec.sound`, `Rec.isLeast`: Lemma S2, the least computed length is Λ;
+- `miss`: without the repair, on the index pattern of the instance above (λ_4 = λ_5 = 15,
+  λ_6 = 37, 99 elsewhere; i = 3 with i1 = 3, i2 = 5 at level 1; i = 6 with i1 = 4, i2 = 7 in the
+  child [5, 7]), no computed length is 15, whatever the side [0, 3] computes; `repair_hits`:
+  with the repair, the same tree computes it.
+
+Not in Lean: the proof of Lemma S1, (S_1), Lemma O, the graphs and their walks, and the rounds.
 
 ## Points of doubt
 

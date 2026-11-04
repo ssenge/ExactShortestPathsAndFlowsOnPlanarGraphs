@@ -510,7 +510,9 @@ as the flow value. For Lemma 2.7 we use an exact exchange in place of [18, Claim
   that is not a leaf also computes P_{i⁻} and P_{i⁺} for i⁻ = max(i1, j) and i⁺ = min(i2, k), two more
   SSSP calls per level. Lemma S proves an interval form of [18, Claim 2.4] (a dropped t is
   dominated by every index between t and i1, or by every index between t and i2), and from it
-  that the least computed length is the minimum.
+  that the least computed length is the minimum. The recursion argument, with the conclusion of
+  Lemma S1 and (INV) as hypotheses, is in Lean (`lean/SsspFlow/Recursion.lean`), together with
+  the defect on the index pattern of the instance.
 
 So it suffices to prove [18, Thm 4.1] with exact trees in Õ(D) rounds. We do this on the graph
 Ĝ_ℓ of [18, Thm 3.1], with the endpoint repair below, as Lemma D does on Ĝ:

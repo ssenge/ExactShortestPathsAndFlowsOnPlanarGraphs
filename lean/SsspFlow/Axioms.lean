@@ -61,3 +61,10 @@ Expected output for each: `propext`, `Classical.choice`, `Quot.sound` (or a subs
 #print axioms SsspFlow.Replacement.no_forward_use
 #print axioms SsspFlow.Replacement.no_backward_use
 #print axioms SsspFlow.Replacement.reduced_telescope
+#print axioms SsspFlow.Recursion.Rec.computed_subset
+#print axioms SsspFlow.Recursion.Rec.computed0_subset
+#print axioms SsspFlow.Recursion.Rec.exact
+#print axioms SsspFlow.Recursion.Rec.sound
+#print axioms SsspFlow.Recursion.Rec.isLeast
+#print axioms SsspFlow.Recursion.miss
+#print axioms SsspFlow.Recursion.repair_hits

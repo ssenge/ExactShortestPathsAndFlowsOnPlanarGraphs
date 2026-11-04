@@ -390,7 +390,8 @@ minimum cut 15, computed 37 (`sim/thmD/testR/logs/trace_min_simple0.txt`). The d
 a leaf, at $i^-=\max(i_1,j)$ and $i^+=\min(i_2,k)$. That is two more SSSP calls per level, so the
 round bound is unchanged. Lemma S (`notes/RECURSION.md`) proves an interval form of
 [18, Claim 2.4]: a dropped index is dominated by every index between it and $i_1$, or by every
-index between it and $i_2$. So one of $i^-$, $i^+$ carries the minimum. With the repair the driver
+index between it and $i_2$. So one of $i^-$, $i^+$ carries the minimum. This recursion argument is
+in Lean (`lean/SsspFlow/Recursion.lean`), with the interval form and Lemma O as hypotheses. With the repair the driver
 is right on all 25 failing instances of the search (161 of 300 runs were wrong without it)
 and on 1,440,000 sweep instances, where it made 6 errors in 1,200,000 without the repair.
 Lemma S needs a side lemma (Lemma O) about one incision, which the proof of Theorem D also uses,
@@ -433,6 +434,11 @@ standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorr
   from the decomposition's separation property. No finiteness is assumed.
 - `lean/SsspFlow/LemmaD.lean`: Lemma D.
 - `lean/SsspFlow/Replacement.lean`: the crossing step, the telescoping and the two cases of the undirected formula of `notes/REPLACEMENT.md`.
+- `lean/SsspFlow/Recursion.lean`: the recursion argument of Lemma S2 of `notes/RECURSION.md`, on
+  an index model of [18, Alg. 3] with the conclusion of Lemma S1 and (INV) as hypotheses. With
+  the two extra calls, the least computed length is the minimum (`Recursion.Rec.isLeast`);
+  without them the recursion can miss it (`Recursion.miss`, on the index pattern of the
+  eleven-vertex instance).
 - `lean/SsspFlow/Arborescence.lean`: the arithmetic of the contraction and the halving count of `notes/DMST.md`.
 - `lean/SsspFlow/NegScaling.lean`: the arithmetic of the scaling, the alternation, the short paths in a cluster and the arc inequality of `notes/NEGATIVE.md`.
   - `Setup.negCycle_iff`, `Setup.walks` and `Setup.lemmaD` prove it for any graph with the
@@ -470,7 +476,8 @@ standard axioms (`propext`, `Classical.choice`, `Quot.sound`). There is no `sorr
 
 Not formalized: the CONGEST algorithms and their round counts, planarity and the diameter
 bound of $\hat G$, the decomposition, Lemma 14′ and everything else in the repair that uses
-planarity (Lemmas R3, R5, R7, and the Monge condition).
+planarity (Lemmas R3, R5, R7, and the Monge condition). Of Theorem D, only the recursion
+argument of Lemma S2 is formalized; Lemmas N, R, O and S1 are on paper.
 
 ## Numerical checks (`sim/`)
 
