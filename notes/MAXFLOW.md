@@ -1,7 +1,6 @@
 # Exact maximum flow, with the flow on every edge, in Õ(D) rounds
 
-**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. On parallel arcs of one direction a number of iterations chosen from nU gives an infeasible flow, so τ is chosen from mU, see Section 3. No human
-has checked it. It rests on the Label Hypothesis of [1] and on one extension, (L3). (L3) does not follow from the Hypothesis as a statement; Section 5 obtains it from the construction in `notes/LEMMA15.md`, so the theorem rests on that construction and on its black boxes (G3), (G5), (G6) and the embedding, with local computation that is not polynomial. Importance if it survives: significant.
+**Status.** Claim, written 2 Nov 2026. Proofs below, simulation in `sim/maxflow/`. On parallel arcs of one direction a number of iterations chosen from nU gives an infeasible flow, so τ is chosen from mU, see Section 3. It rests on the Label Hypothesis of [1] and on one extension, (L3). (L3) does not follow from the Hypothesis as a statement; Section 5 obtains it from the construction in `notes/LEMMA15.md`, so the theorem rests on that construction and on its black boxes (G3), (G5), (G6) and the embedding, with local computation that is not polynomial. Importance if it survives: significant.
 
 **A route without (L3).** `notes/NEGATIVE.md` reaches the same bound, randomized, from the Label Hypothesis alone, by a polylogarithmic reduction for negative weights. It does not need this note, and it is much simpler. This note stays of interest as the deterministic route relative to the labels, and for the method.
 

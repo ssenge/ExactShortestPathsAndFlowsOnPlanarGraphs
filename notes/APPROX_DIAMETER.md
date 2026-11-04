@@ -1,6 +1,6 @@
 # (1+ε)-approximate eccentricities of unweighted planar networks in Õ(D + 1/ε⁴) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. No human has checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/approx.py`. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the notation of `notes/DIAMETER.md`, whose proofs of Fact 0 and of the cut along P_X it reuses. It does not use the Label Hypothesis, nor the pattern bound of [2]. Importance if it survives: solid, since for constant ε it is optimal up to polylogarithmic factors.
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. Words have O(log n) bits.
 

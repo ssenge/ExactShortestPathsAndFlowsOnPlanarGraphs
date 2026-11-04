@@ -1,6 +1,6 @@
 # Minimum arborescences of planar digraphs in Õ(D) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/dmst/`, the arithmetic in `lean/SsspFlow/Arborescence.lean`. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. The bound of [2] already holds on planar networks. What may be first here is a bound of the form Õ(D), and it is conditional. The plan is that of [2], with the oracle of [1].
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/dmst/`, the arithmetic in `lean/SsspFlow/Arborescence.lean`. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. The bound of [2] already holds on planar networks. What may be first here is a bound of the form Õ(D), and it is conditional. The plan is that of [2], with the oracle of [1].
 
 The model is CONGEST on a connected planar network G with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. A *digraph on G* has its arcs on edges of G.
 

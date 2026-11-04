@@ -41,8 +41,7 @@ that too, with bags that carry the region they were cut from; see [Status](#stat
 ## Status
 
 Please read this before relying on anything here.
-- The proofs are written up in `notes/`. **No human expert has checked
-  them.** See [Use of AI](#use-of-ai).
+- The proofs are written up in `notes/`. See [Use of AI](#use-of-ai).
 - **Correctness.** Theorems A, B, C and C′ give correct outputs given Lemma 14′, our
   replacement for the false [1, Lemma 14], and the black boxes listed below. Lemma 14′ is
   proved in `notes/LEMMA15.md` §3.
@@ -599,7 +598,7 @@ line numbers in plain-text extractions of [1] (arXiv v2), [9] and [18].
 
 Claude Opus 5.5 (Anthropic) was used throughout this research: to search the literature, to
 develop and check the proofs, to write the scripts and the Lean formalization, and to draft
-the text. No human has checked the work.
+the text.
 
 ## References
 

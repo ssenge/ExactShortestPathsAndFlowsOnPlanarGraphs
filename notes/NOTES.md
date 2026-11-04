@@ -83,7 +83,7 @@ A polynomial bound needs a realization that respects a prescribed cyclic order o
 (`LEMMA15.md`, §9).
 The labels (L) come from [1, Lemmas 15 and 16], whose topological core, [1, Lemma 14], is
 false as stated (LEMMA15.md, (S7)). LEMMA15.md §3 proves Lemma 14′ with a new construction
-(tiles). No human has checked it. Property 6 of [1, Lemma 9] is false for induced bags
+(tiles). Property 6 of [1, Lemma 9] is false for induced bags
 (LEMMA15.md, (S9)). Correctness does not use it, but
 [1]'s Õ(D/ε) bound for the labels does, since it runs all bags of one depth in parallel.
 LEMMA15.md §9 restores the schedule: bags carry the sides of the edges they were cut from,

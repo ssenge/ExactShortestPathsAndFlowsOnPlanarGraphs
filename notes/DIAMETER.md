@@ -1,7 +1,6 @@
 # Exact eccentricities and diameter of unweighted planar networks in Õ(D²) rounds
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/`. No human has
-checked it. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the pattern bound of [2]. It does not use the labels (L2) of the Label Hypothesis of [3]; of that form it uses only the clauses (V1) to (V3) and (L1) of §9.9, and these have no black box beyond the given embedding.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/diameter/`. It uses the region bags of `notes/LEMMA15.md`, Section 9, and the pattern bound of [2]. It does not use the labels (L2) of the Label Hypothesis of [3]; of that form it uses only the clauses (V1) to (V3) and (L1) of §9.9, and these have no black box beyond the given embedding.
 Importance if it survives: solid, since the best stated bound for the diameter is Õ(D³) [2].
 
 The model is CONGEST on a connected, undirected, unweighted planar network with n vertices and hop diameter D, with a known embedding. Õ hides

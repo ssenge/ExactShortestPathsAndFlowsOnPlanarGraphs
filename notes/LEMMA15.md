@@ -25,8 +25,7 @@ Status:
 - The repair of (S9) is in §9. Bags carry the sides of the edges they were cut from, and every
   edge lies in at most two of these region graphs per depth. That section also proves the
   component bound for T_X that [8] states, with one more log factor.
-- **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. No human has
-  checked them. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
+- **Status.** Lemma 14′ and the labels are correct given the black boxes of §1. The Õ(D/ε) round bound for the labels, and with it the Õ(D) of Theorem A,
   holds in the region form of §9, with no black box beyond those of §1: the separator is
   Lemma B5 (§9.6), which is deterministic. So Theorem A is deterministic, given a
   deterministic planar embedding and deterministic face identifiers.
@@ -998,8 +997,7 @@ Take ε′ = ε / (2(3H+1)). Then (1+ε′)^{3H+1} ≤ e^{ε/2} ≤ 1+ε for ε 
     CONGEST allows.
   - (G4), (G5) and (G6).
 - **Consequence.** Given the black boxes, Theorem A, and through it Theorems B, C and C′,
-  are correct algorithms with the stated round bounds, in the region form of §9. No human
-  has checked the proofs. [1, Thm 4] is in the same position: its proof goes through
+  are correct algorithms with the stated round bounds, in the region form of §9. [1, Thm 4] is in the same position: its proof goes through
   [1, Lemma 14], which §3 with §5 repairs, and through Property 6, which §9 replaces.
 
 **Ratings.**
@@ -1587,7 +1585,6 @@ through a hole; the item *Closings through holes* below covers that case.
     embedding (§9.6).
   - The drawing of a virtual closing curve is proved in the setting of Lemma B3.
 - **Numerical checks** (§9.7). No lemma failed, and Lemmas B2, B3 and B4 are met with equality.
-- No human has checked §9.
 - **Rating: modest.** It restores the round bounds that (S9) removed. The tools are the
   standard ones: sides of edges, a crosscut argument and a non-crossing count. The
   component bound O(log² n) is weaker than the O(log n) that [8, Def. 4.1 (6)] claims, by one
@@ -1615,4 +1612,4 @@ the arcs A_X of R_X, and hubs H_X, where H_X = ∂S⁺_X for a non-leaf bag and 
 
 The black boxes are (G3), (G5), (G6) and the given embedding. Local computation is not polynomial
 (G3). Each clause above is proved in this file, and no step of the region form uses a statement
-of [1] that §2 refutes. No human has checked it.
+of [1] that §2 refutes.

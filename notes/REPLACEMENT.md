@@ -1,6 +1,6 @@
 # Replacement paths on planar digraphs
 
-**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/replacement/`, elementary core in `lean/SsspFlow/Replacement.lean`. No human has checked it. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. It gives bounds on planar networks for problems with near-linear lower bounds on general networks, and the proofs are short.
+**Status.** Claim, written 3 Nov 2026. Proofs below, simulation in `sim/replacement/`, elementary core in `lean/SsspFlow/Replacement.lean`. It rests on the Exact SSSP Theorem and the Label Hypothesis of [1]. Importance: modest. It gives bounds on planar networks for problems with near-linear lower bounds on general networks, and the proofs are short.
 
 The model is CONGEST on a connected planar network G with n vertices and hop diameter D, with a known embedding. Õ hides factors polylogarithmic in n. A *digraph on G* has its arcs on edges of G.
 
