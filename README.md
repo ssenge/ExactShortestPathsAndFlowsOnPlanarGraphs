@@ -1,5 +1,7 @@
 # Exact Shortest Paths and Flows on Planar Graphs
 
+> **This repository is no longer updated.** Its content continues in the folder [`exact-shortest-paths-and-flows-on-planar-graphs`](https://github.com/ssenge/ResearchResults/tree/main/exact-shortest-paths-and-flows-on-planar-graphs) of [ResearchResults](https://github.com/ssenge/ResearchResults), where all new results are added. This copy stays as it is, with the tag `arxiv-v1` that the paper refers to.
+
 This repository contains proofs, machine-checked lemmas and numerical checks for exact
 single-source shortest paths (SSSP) and exact maximum flow in planar networks in the CONGEST
 model. The main claims are:
